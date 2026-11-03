@@ -80,3 +80,15 @@ errors carry code/path/message. A nested primitive is not rejected because no ed
 template recognizes it. The enabled subset is intentionally narrower than all upstream.
 Backend.kt uses JDK HttpServer and atomic immutable version bundles. See API.md.
 76 JVM tests pass (the previous 69 plus seven validation/storage/real-HTTP tests).
+
+## Editor/browser milestone
+
+web-editor is a vanilla JS three-panel authoring UI served by Kotlin. It uses the real
+RcdPlayer bundle; no UI approximation. Node model tests cover non-destructive edits,
+custom trees and unsafe ID duplication. player-smoke/editor-smoke.mjs boots a temporary
+backend and exercises all templates, two real animations, bitmap drawing, raw custom JSON,
+publication, failed publication preservation and protocol host event 42.
+Time expressions use `time` (continuous seconds); animationTime-only expressions stop
+repainting on the pinned player. JvmAssets loads assets/catalog.json and defines real
+bitmaps through upstream APIs without changing primitive JSON. External assets are
+classpath resources; no arbitrary server URL fetching. See samples/landing.json.

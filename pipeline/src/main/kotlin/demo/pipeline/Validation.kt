@@ -202,6 +202,12 @@ object Validation {
             "translate" -> "dx dy"
             "rotate" -> "angle pivotX pivotY"
             "drawpath" -> "path"
+            "addbitmap" -> {
+                keys(v,setOf("type","image","varName"),p); required(v,"image",p)
+                if(v.get("image").asText() != "club-bag") fail("$p/image","Unknown catalog bitmap", "UNSUPPORTED_OPERATION")
+                v.get("varName")?.let { text(it,"$p/varName") }; return
+            }
+            "drawbitmap" -> "image left top right bottom"
             "drawtextanchored" -> "text x y panX panY"
             "save", "restore" -> ""
             "paint" -> {
@@ -218,7 +224,7 @@ object Validation {
         keys(v, fields.split(' ').filter { it.isNotEmpty() }.toSet() + optional + "type",p)
         required(v,fields,p)
         for(k in fields.split(' ').filter { it.isNotEmpty() }) {
-            if(k in setOf("path","text")) text(v.get(k),"$p/$k") else scalar(v.get(k),"$p/$k")
+            if(k in setOf("path","text","image")) text(v.get(k),"$p/$k") else scalar(v.get(k),"$p/$k")
         }
         v.get("commands")?.let { array(it,"$p/commands",::command) }
         v.get("flags")?.let { if (!it.isIntegralNumber) fail("$p/flags", "Expected integer") }

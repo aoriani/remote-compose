@@ -47,6 +47,7 @@ application { mainClass.set("demo.pipeline.MainKt") }
 tasks.test { useJUnit() }
 tasks.processResources {
     dependsOn(verifyUpstreams)
+    from(rootProject.file("assets")) { into("assets") }
     from(rootProject.file("upstream/androidx/LICENSE.txt")) {
         into("META-INF")
         rename { "LICENSE-androidx.txt" }

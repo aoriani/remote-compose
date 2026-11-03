@@ -46,6 +46,12 @@ class BackendTest {
         invalid(sample.replace("\"width\": 390,", "\"width\": 5000,"), "INVALID_PROPERTY", "/header/width")
         invalid(sample.replace("\"height\": 844\n", "\"height\": 844, \"compress\": true\n"), "INVALID_PROPERTY", "/header/compress")
     }
+    @Test fun bitmapAdapterEmitsActualEmbeddedResourceOperations() {
+        val source = """{"header":{"profiles":512},"root":{"type":"canvas","commands":[{"type":"addBitmap","image":"club-bag","varName":"photo"},{"type":"drawBitmap","image":"@photo","left":0,"top":0,"right":120,"bottom":120}]}}"""
+        val operations = inspect(compileValidated(source)).getJSONArray("operations").toList()
+        assertTrue(operations.any { it.toString().contains("BitmapData") })
+        invalid(source.replace("club-bag","missing-asset"), "UNSUPPORTED_OPERATION", "/root/commands/0/image")
+    }
     @Test fun previewPublishAndFailurePreservationThroughHttp() {
         val data = Files.createTempDirectory("rc-http-test")
         val project = Path.of("..").toAbsolutePath().normalize()

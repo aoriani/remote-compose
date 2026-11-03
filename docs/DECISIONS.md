@@ -94,3 +94,20 @@ latest is the highest committed numeric version. Alternatives: mutable latest pl
 separate files or a database. Consequence: no source/binary/metadata race, no pointer to
 half-written content; previews never write publication state. This is local prototype
 storage, not a multi-host CMS. Binary GET supplies version, SHA and conditional ETags.
+
+## 011 — JSON-tree authoring and conservative template recognition (2026-11-03)
+
+The editor stores primitive JSON directly. Templates are factories; property forms are
+recognized by structural fingerprints excluding only their editable paths. Raw structural
+changes fall back to custom sections. Reordering/duplication/deletion patch section arrays;
+ID/variable-declaring duplicates are refused pending explicit remapping. No business
+widget discriminator is transmitted. Native clients remain generic protocol players.
+
+## 012 — JVM resource services and real protocol animation (2026-11-03)
+
+A separate classpath asset catalog supplies named bitmaps to upstream defineBitmap;
+JSON still uses upstream addBitmap/drawBitmap commands. ImageIO implements actual PNG
+encoding, replacing the upstream default's empty bitmap service. No JSON widget extension.
+The two animations use continuous time expressions because ID-30 animationTime alone
+does not request continuous repaint in the pinned browser. Tests observe varying real
+player arc/rectangle calls, decoded bitmap drawing and an ID-42 HostAction callback.

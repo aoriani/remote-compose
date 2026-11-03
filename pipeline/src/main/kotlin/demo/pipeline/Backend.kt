@@ -16,7 +16,7 @@ import java.util.concurrent.Executors
 
 fun compileValidated(source: String): ByteArray {
     Validation.parse(source)
-    return try { compile(source).also { inspect(it) } }
+    return try { JvmAssets.encode(source).also { inspect(it) } }
     catch (e: Exception) {
         throw InvalidDocument(listOf(Diagnostic("COMPILATION_ERROR", "/root", e.message ?: "Upstream compilation failed")))
     }

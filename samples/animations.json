@@ -1,0 +1,139 @@
+{
+  "header": {
+    "width": 390,
+    "height": 844,
+    "profiles": 512,
+    "fps": 60
+  },
+  "root": {
+    "type": "column",
+    "children": [
+      {
+        "type": "canvas",
+        "modifiers": [
+          {
+            "fillMaxWidth": 1
+          },
+          {
+            "height": 100
+          }
+        ],
+        "commands": [
+          {
+            "type": "paint",
+            "ops": [
+              {
+                "color": "#E94069"
+              },
+              {
+                "style": "fill"
+              }
+            ]
+          },
+          {
+            "type": "drawCircle",
+            "cx": 48,
+            "cy": 48,
+            "radius": "24 + 8 * sin(time * 3)"
+          },
+          {
+            "type": "paint",
+            "ops": [
+              {
+                "color": "#123047"
+              },
+              {
+                "style": "fill"
+              }
+            ]
+          },
+          {
+            "type": "drawTextAnchored",
+            "text": "MEMBER DEAL",
+            "x": 100,
+            "y": 48,
+            "panX": -1,
+            "panY": 0
+          }
+        ]
+      },
+      {
+        "type": "canvas",
+        "modifiers": [
+          {
+            "fillMaxWidth": 1
+          },
+          {
+            "height": 64
+          }
+        ],
+        "commands": [
+          {
+            "type": "paint",
+            "ops": [
+              {
+                "color": "#DDE6EC"
+              },
+              {
+                "style": "fill"
+              }
+            ]
+          },
+          {
+            "type": "drawRect",
+            "left": 20,
+            "top": 20,
+            "right": 360,
+            "bottom": 36
+          },
+          {
+            "type": "paint",
+            "ops": [
+              {
+                "color": "#007C83"
+              },
+              {
+                "style": "fill"
+              }
+            ]
+          },
+          {
+            "type": "drawRect",
+            "left": 20,
+            "top": 20,
+            "right": "20 + 165 * (1 + sin(time * 2))",
+            "bottom": 36
+          }
+        ]
+      },
+      {
+        "type": "box",
+        "modifiers": [
+          {
+            "fillMaxWidth": 1
+          },
+          {
+            "height": 56
+          },
+          {
+            "background": "#0067A0"
+          },
+          {
+            "onClick": {
+              "type": "HostAction",
+              "actionId": 42
+            }
+          }
+        ],
+        "children": [
+          {
+            "type": "text",
+            "value": "Start scanning",
+            "fontSize": 20,
+            "color": "#FFFFFF"
+          }
+        ]
+      }
+    ]
+  }
+}

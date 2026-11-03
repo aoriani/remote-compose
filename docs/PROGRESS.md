@@ -80,3 +80,12 @@ primitive preservation, real HTTP preview/publish separation, failed publish pre
 ETags, historical versions, restart recovery and concurrent unique versions. Total: 76
 passing JVM tests. The editor and mobile work continues next; prior pending statements
 above describe the previous handoff baseline.
+
+## Editor, animations and interaction milestone
+
+The functional palette/outline/properties/raw highlighted JSON/phone preview/publish
+workflow passes browser end-to-end testing. Eleven templates compile, arbitrary custom
+primitive trees survive operations, real PNG drawing is observed, two continuous-time
+protocol animations change draw calls, and remote HostAction 42 reaches the host log.
+Six Node model tests pass. New bitmap adapter test and updated JVM suite run with the
+next validation. Full mobile work continues; no native business widgets have been added.
