@@ -1,5 +1,30 @@
 # Debugging
 
+## Current state (2026-11-03)
+
+Network isolation is resolved: GitHub git ls-remote and Maven Central HTTP access pass.
+Git staging/committing succeeds with approved escalation. Chrome headless launch fails
+inside the sandbox (SIGABRT/EPERM) and succeeds through supported approved execution.
+Request approval for the failing command; do not work around sandbox restrictions.
+
+The JVM/browser fixture works. Known unresolved issues:
+
+- The upstream player `npm run check` fails with existing TypeScript errors; esbuild
+  bundles and the fixture renders. Do not modify upstream to hide these diagnostics.
+- Unknown JSON modifiers/commands can disappear without error; future authoring service
+  validation must reject unsupported input rather than assume parser strictness.
+- Browser unknown opcodes warn and truncate parsing. Loading can appear successful;
+  tests must reject warnings and assert expected pixels/state.
+- Default parser bitmap services return empty/zero data. Images need real services.
+- If npm defaults to an unwritable home cache, use scripts/node.sh (project cache).
+  Do not run npm's suggested chown against the user's home.
+- CoreDocument size immediately after decode is not header metadata; use Header fields.
+- Gradle may log an FSEvents warning in this sandbox; the recorded tasks still passed.
+
+The older session diagnostics below are retained as historical evidence. They are not
+current Git/network blockers. See [progress](PROGRESS.md) for the current handoff.
+
+
 ## Current environment failures
 
 | Symptom | Observed result | Next action |

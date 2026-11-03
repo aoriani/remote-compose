@@ -48,12 +48,17 @@ def main():
                       str(home / "Library/Android/sdk"), str(home / "Android/Sdk")]
     sdk = next((Path(p) for p in sdk_candidates if p and Path(p).is_dir()), None)
     tools = {}
+    local_node_bins = sorted((ROOT / ".toolchains").glob("node-v22.14.0-*/bin"))
+    tool_env = dict(os.environ)
+    if local_node_bins:
+        tool_env["PATH"] = str(local_node_bins[0]) + os.pathsep + tool_env.get("PATH", "")
     for name in ["git", "node", "npm", "cmake", "kotlinc", "gradle"]:
-        executable = find_executable(name)
+        candidates = [directory / name for directory in local_node_bins] if name in ("node", "npm") else []
+        executable = find_executable(name, candidates)
         tools[name] = {"path": executable}
         if executable:
             tools[name].update(run([executable, "--version"] if name != "kotlinc"
-                                   else [executable, "-version"]))
+                                   else [executable, "-version"], tool_env))
     tools["java"] = {"path": java}
     if java:
         tools["java"].update(run([java, "-version"]))

@@ -1,5 +1,84 @@
 # Research record
 
+## Pinned local-source audit — 2026-11-03
+
+The earlier web-index research below is retained as historical evidence. It is superseded
+where noted here. Both repositories were acquired, relevant source/tests/builds/history
+reviewed, and a genuine JVM-to-browser fixture verified.
+
+| Source | Selected revision |
+| --- | --- |
+| AndroidX | `8932b2c2b5043cc40c46a44cfd04a1671ec50fb7` |
+| Experiments | `a7a76f1d9ecc5aff2af93d0de570a11532552ea3` |
+
+These were the source heads fetched at acquisition; subsequent remote movement was
+observed during history inspection, but local HEADs remain fixed. Fetch scripts and
+Gradle verify the selected revisions/clean status. Compatibility is scoped to the minimal
+fixture, not all operations. See [evidence](evidence/minimal-pipeline.json).
+
+### Verified route
+
+The real static `RemoteComposeJsonParser.parseToByteBuffer` sorts header tags, constructs
+RemoteComposeWriter, parses and returns encodeToByteArray output. A fresh parser/writer
+is used for each invocation. Unchanged remote-core and creation-core Java/Kotlin sources
+compile in a standalone Kotlin JVM Gradle module. No Android runtime, local parser fork,
+TypeScript creation engine or business-component adapter is used. The source API remains
+library-group restricted and is deliberately coupled to its exact revision.
+
+Actual remote-core decodes the result; Header supplies metadata and an unnested operation
+list supplies inspection. The static fixture produces 109 bytes (v1.1.0/API 7/profile 0).
+The browser's real RcdPlayer.loadFromArrayBuffer consumes those exact bytes. Three pixel
+assertions and SHA-256 agreement pass in Chrome; the screenshot was visually inspected.
+
+Tests: 44 RemoteComposeJsonParserTest cases, 19 Mesh2D parser cases and six local compiler
+characterization tests all pass. Upstream's broad TypeScript `npm run check` fails with
+existing errors; bundling and the measured runtime fixture pass. See compatibility.
+
+### Corrections and source findings
+
+- `remote-core/.../json/RemoteComposeJsonParserTest.kt` is commented out; no functioning
+  alternate parser was found. The earlier inference from indexed test text was wrong.
+- Unknown components throw contextual errors. Unknown modifier keys and drawing commands
+  are ignored; local tests verify both. Schema presence does not make parsing strict.
+- Default JVM platform path support uses RemotePathBase, but bitmap byte/size methods are
+  empty/zero stubs. Images need a real platform service before being advertised.
+- HostAction/HostNamedAction/metadata forms exist in the actual modifier parser, alongside
+  local variable changes. Browser CoreDocument has public callbacks; current iOS Obj-C
+  bridge header exposes rendering/touch but no host action callback. Events are untested.
+- Experiments commit `9055d26a9048cfe02fe5dc73fb93d2535df8d3fa` added TS/C++ templates,
+  layouts and animations. Current Loom source and newer conformance docs supersede stale
+  STATUS/GAPS claims that all templates are stubs. We have not independently validated them.
+- WireBuffer's integer reader is big-endian. Browser unknown-op handling returns a prefix
+  with a warning rather than reliably throwing. No browser decompression path was found;
+  keep compression off for the shared subset.
+- Conformance's java-json.sh deliberately substitutes Android org.json for ordering;
+  our JVM uses upstream's desktop org.json dependency. Resource-order parity needs tests.
+
+### Pinned implementation references
+
+All AndroidX paths below are relative to compose/remote at the selected revision:
+
+- [Parser](https://github.com/androidx/androidx/blob/8932b2c2b5043cc40c46a44cfd04a1671ec50fb7/compose/remote/remote-creation-core/src/main/java/androidx/compose/remote/creation/json/RemoteComposeJsonParser.java)
+- [Component registry](https://github.com/androidx/androidx/blob/8932b2c2b5043cc40c46a44cfd04a1671ec50fb7/compose/remote/remote-creation-core/src/main/java/androidx/compose/remote/creation/json/DefaultComponentParsers.java)
+- [Modifier/action registry](https://github.com/androidx/androidx/blob/8932b2c2b5043cc40c46a44cfd04a1671ec50fb7/compose/remote/remote-creation-core/src/main/java/androidx/compose/remote/creation/json/DefaultModifierParsers.java)
+- [Creation schema](https://github.com/androidx/androidx/blob/8932b2c2b5043cc40c46a44cfd04a1671ec50fb7/compose/remote/Documentation/parts/remote_compose_schema.json)
+- [Parser tests](https://github.com/androidx/androidx/blob/8932b2c2b5043cc40c46a44cfd04a1671ec50fb7/compose/remote/remote-creation-core/src/test/java/androidx/compose/remote/creation/json/RemoteComposeJsonParserTest.java)
+- [JVM build dependencies](https://github.com/androidx/androidx/blob/8932b2c2b5043cc40c46a44cfd04a1671ec50fb7/compose/remote/remote-creation-core/build.gradle)
+- [Browser loader/render loop](https://github.com/camaelon/remotecompose-experiments/blob/a7a76f1d9ecc5aff2af93d0de570a11532552ea3/players/typescript/src/web/main.ts)
+- [Browser decode behavior](https://github.com/camaelon/remotecompose-experiments/blob/a7a76f1d9ecc5aff2af93d0de570a11532552ea3/players/typescript/src/core/RemoteComposeBuffer.ts)
+- [Newer conformance findings](https://github.com/camaelon/remotecompose-experiments/blob/a7a76f1d9ecc5aff2af93d0de570a11532552ea3/players/conformance/README.md)
+- [iOS bridge header](https://github.com/camaelon/remotecompose-experiments/blob/a7a76f1d9ecc5aff2af93d0de570a11532552ea3/players/cpp/apps/iosViewer/iosViewer/Bridge/RCMetalRenderer.h)
+
+### Outstanding research
+
+Strict validation strategy; layout/text/font and image fixtures; clocks/repaint;
+host callbacks on all players; official Android integration/version checks; experimental
+iOS lifetime/touch/event integration; larger common opcode/profile subset. The current
+source pair is not mobile-validated. Future fragment/caching research stays separate.
+
+## Initial web-index investigation (historical)
+
+
 Status: partial source investigation, 2026-11-02. No local upstream checkout, compiled
 artifact, player execution, or compatibility measurement exists. Web search excerpts
 are useful evidence but do not replace acquiring complete source and tests.

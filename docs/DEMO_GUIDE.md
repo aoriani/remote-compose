@@ -1,7 +1,11 @@
-# Demonstration plan — not runnable yet
+# Demonstration guide
 
-No working demonstration exists. Do not present the syntax fixture or diagrams as a
-compiled/rendered prototype. [Progress](PROGRESS.md) records the unmet gates.
+The primitive binary pipeline demonstration is runnable. Follow
+[getting started](GETTING_STARTED.md), then serve `player-smoke/` with its npm command.
+The page shows the genuine Remote Compose player rendering the JVM-generated blue
+circle and reports its SHA-256. The automated browser test checks three pixels and
+the exact binary digest. This proves the foundation, not the e-commerce editor demo.
+[Progress](PROGRESS.md) records the remaining gates.
 
 ## Acceptance script to implement and verify
 

@@ -1,0 +1,12 @@
+{
+  "name": "remote-compose-pipeline-smoke",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "serve": "node server.mjs",
+    "test": "node smoke.mjs"
+  },
+  "devDependencies": {
+    "playwright": "1.56.1"
+  }
+}

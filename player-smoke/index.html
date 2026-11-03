@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<title>Remote Compose binary pipeline proof</title>
+<style>
+  body { margin: 24px; font: 16px system-ui; background: #eee; }
+  canvas { display: block; background: white; border: 1px solid #aaa; }
+  pre { white-space: pre-wrap; }
+</style>
+<h1>Remote Compose binary pipeline proof</h1>
+<p>The canvas below uses the pinned experimental Remote Compose player.</p>
+<canvas id="document" width="390" height="844"></canvas>
+<pre id="status">Loading compiled binary…</pre>
+<script src="/player.js"></script>
+<script>
+  window.proof = { ready: false, error: null, events: [] };
+  (async () => {
+    try {
+      const response = await fetch('/document.rc');
+      if (!response.ok) throw new Error(`Binary fetch: HTTP ${response.status}`);
+      const bytes = await response.arrayBuffer();
+      const digest = await crypto.subtle.digest('SHA-256', bytes);
+      const sha256 = Array.from(new Uint8Array(digest), x => x.toString(16).padStart(2, '0')).join('');
+      const player = new RC.RcdPlayer(document.querySelector('canvas'));
+      const decoded = await player.loadFromArrayBuffer(bytes);
+      decoded.addActionCallback({ onAction(name, value) { window.proof.events.push({name, value}); } });
+      window.proof = { ready: true, error: null, events: [], bytes: bytes.byteLength, sha256 };
+      document.querySelector('#status').textContent = JSON.stringify(window.proof, null, 2);
+      window.player = player;
+    } catch (error) {
+      window.proof.error = String(error);
+      document.querySelector('#status').textContent = window.proof.error;
+    }
+  })();
+</script>
+</html>

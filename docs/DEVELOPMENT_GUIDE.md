@@ -1,13 +1,15 @@
 # Development guide
 
-Status: implementation plan. No product modules are present yet.
+Status: the minimal JVM/browser pipeline is implemented. Product service/editor/mobile
+modules remain planned. See [getting started](GETTING_STARTED.md) for runnable commands.
 
 ## First gate
 
-Acquire/pin upstreams, run their relevant tests, then compile the candidate JSON on a
-plain JVM and render its bytes using the real browser player. Save evidence before
-building the editor. Do not replace an unavailable JVM parser with the TypeScript
-creation engine and call that a Kotlin backend.
+The baseline gate passes for `samples/minimal-canvas.json`: upstream JVM compilation,
+binary decoding, 63 upstream parser tests, six local tests and real browser pixel checks.
+Run `sh scripts/verify-pipeline.sh` to preserve it. The compiler directly calls the
+upstream Java parser from Kotlin; it does not use the TypeScript creation engine.
+Next implement strict validation and the preview/publish backend before the full editor.
 
 ## Implementation stages and behavioral tests
 

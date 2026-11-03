@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
-  "status": "research-only-not-compatible-pins",
+  "status": "minimal-jvm-browser-pipeline-verified",
   "androidx": {
     "repository": "https://github.com/androidx/androidx.git",
     "requestedBranch": "androidx-main",
-    "revision": null,
+    "revision": "8932b2c2b5043cc40c46a44cfd04a1671ec50fb7",
     "researchRevisions": [
       "4d0b56080497b79e6ac3d1b3b87f1029edf9c3c7",
       "62d36f9952c23fdd41095a4fd7ba968fade32eaf",
@@ -14,23 +14,34 @@
   "experiments": {
     "repository": "https://github.com/camaelon/remotecompose-experiments.git",
     "requestedBranch": "main",
-    "revision": null
+    "revision": "a7a76f1d9ecc5aff2af93d0de570a11532552ea3"
   },
   "dependencies": {
-    "org.json": {"observedVersion": "20231013", "selectedVersion": null},
-    "androidx.annotation": {"observedVersion": "1.8.1", "selectedVersion": null},
-    "kotlin": null,
-    "gradle": null,
+    "org.json": {
+      "observedVersion": "20231013",
+      "selectedVersion": "20231013"
+    },
+    "androidx.annotation": {
+      "observedVersion": "1.9.1",
+      "selectedVersion": "1.9.1"
+    },
+    "kotlin": "2.2.20",
+    "gradle": "9.2.1",
     "androidGradlePlugin": null,
-    "jdk": null,
-    "node": null,
-    "skia": null
+    "jdk": "25.0.4 (tested JBR; JVM target 17)",
+    "node": "22.14.0",
+    "skia": null,
+    "jspecify": "1.0.0",
+    "playwright": "1.56.1",
+    "esbuild": "0.27.7",
+    "typescript": "5.9.3"
   },
   "verification": {
-    "upstreamsCloned": false,
-    "jvmCompiled": false,
-    "browserRendered": false,
+    "upstreamsCloned": true,
+    "jvmCompiled": true,
+    "browserRendered": true,
     "androidRendered": false,
     "iosRendered": false
-  }
+  },
+  "verificationScope": "Only samples/minimal-canvas.json and the recorded tests; not general cross-platform conformance. Android/iOS unbuilt."
 }

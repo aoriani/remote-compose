@@ -1,41 +1,51 @@
-# Compatibility — no pair validated yet
+# Compatibility
 
-Compiler support, protocol support, and player implementation are separate questions.
-There is no tested common version/profile or operation intersection. Source references
-are in [RESEARCH](RESEARCH.md); dependency pins remain null in `upstream-lock.json`.
+## Selected revisions and proven scope
 
-| Feature | JVM/parser evidence | Browser | Android | iOS |
+- AndroidX: `8932b2c2b5043cc40c46a44cfd04a1671ec50fb7`.
+- Experiments: `a7a76f1d9ecc5aff2af93d0de570a11532552ea3`.
+- Gradle 9.2.1, Kotlin 2.2.20, JBR 25.0.4, JVM target 17, Node 22.14.0,
+  esbuild 0.27.7, TypeScript 5.9.3, Playwright 1.56.1.
+- JVM dependencies: org.json 20231013, jspecify 1.0.0, annotation-jvm 1.9.1;
+  tests use JUnit 4.13.2. Exact transitives are locked.
+
+The unchanged AndroidX sources compile on plain JVM. The 109-byte sample has protocol
+v1.1.0, API level 7, profile 0 and renders in Chrome 156.0.8078.80 using the real
+experimental RcdPlayer. Browser and compiler SHA-256 agree; three canvas pixel assertions
+pass. [Evidence](evidence/minimal-pipeline.json).
+
+**This is a fixture-compatible pair, not a claim of complete protocol compatibility.**
+
+| Area | JVM/parser | Browser | Android | iOS |
 | --- | --- | --- | --- | --- |
-| Layout primitives | Creation registry observed | Project reports implementation | Official player exists | C++ engine reports layout |
-| Text | Parser path observed | Profile/opcode risk reported | Needs actual integration test | Font metrics/parity unmeasured |
-| Canvas/paint | Commands observed | Genuine binary player documented | Official renderer | Skia bridge documented |
-| Time/expression animation | Parser expressions observed | Frame/state tools documented | Runtime capability documented | Engine capability documented |
-| Local interaction | onClick value-change source observed | Must inspect input path | Must test selected API | Must inspect Swift→C++ touch path |
-| Host-visible events | JSON emission not established | Callback API unreviewed | Selected AndroidX callback API unreviewed | Callback ABI unreviewed |
-| Images/resources | Resource subsystem observed | Loader/limits unverified | JVM→Android encoding unverified | Decode/ownership unverified |
-| Patterns/macros | Registry source present | Coverage uncertain | Needs pin-specific test | Expansion gaps reported |
-| Protocol versions/profiles | Header/API mechanisms exist | Exact supported set unknown | Exact supported set unknown | Exact supported set unknown |
-| Built/exercised here | **No** | **No** | **No** | **No** |
+| Minimal circle canvas | Compiled and decoded | Rendered, hash + 3 pixel checks | Unbuilt | Unbuilt |
+| Parser behaviors | 44 general + 19 Mesh2D upstream tests pass | Not a parser implementation | Not exercised | Not exercised |
+| Dimensions/paint/drawing | Actual sample operations inspected | Exact sample pixels verified | Official player source reviewed | C++/Skia bridge source reviewed |
+| Layout/text | Registry and source tests inspected | Implementation exists; untested here | Unbuilt | Unbuilt |
+| Images/resources | Default JVM bitmap service is a stub | Decode capability not tested | Not tested | Not tested |
+| Time/expression animation | Upstream parse tests pass | Runtime animation untested | Not tested | Not tested |
+| Host actions | HostAction parser branch present | CoreDocument callbacks present; not exercised | ID listeners found; not exercised | Current Obj-C bridge exposes touch, no host callback API in header |
+| Patterns/templates | Definition/inflation registry present | Loom implementation present | Not tested | C++ expansion implementation present, unbuilt |
+| Compression | AndroidX supports API-8 writer compression | No decompression path found in buffer loader | Unbuilt | Unverified |
 
-The experimental status document reports missing opcodes, stubs, and remaining state
-divergences. Unknown opcodes can desynchronize the stream; parsed no-ops can silently
-omit content. Its layout notes also expose limitations in the headless Java text
-reference. It contains internally stale statements (features listed both fixed and
-missing); verify code and fixtures at a pin rather than combining those claims.
-[Experiments status](https://github.com/camaelon/remotecompose-experiments/blob/main/STATUS.md)
+## Important limitations
 
-## Verification record to produce
+- The browser buffer loader warns and returns early for unknown opcodes. A document can
+  appear loaded while only a prefix was parsed. Smoke tests reject such warnings and
+  verify expected pixels; a service still needs a tested operation subset.
+- The upstream browser `npm run check` exits 2 with pre-existing type errors across
+  layout, ColorAttribute, shader tests, CanvasPaintContext and other files. esbuild
+  bundling and the minimal browser runtime test succeed. Upstream was not modified.
+- The experimental STATUS/GAPS documents are stale in places. Commit 9055d26 added
+  substantial template, action/layout and animation support. Do not repeat their older
+  claim that all Loom ops are stubs or use old missing-op counts as current truth.
+- No universal supported version/profile intersection is established. API-7 success
+  for this fixture does not establish all API-7 operations. Compression stays off.
+- JVM desktop org.json iteration differs from Android's org.json. Resource ordering and
+  byte parity need ordered fixtures; the minimal fixture contains no such resources.
+- Parser success can include ignored unknown modifiers/commands; strict validation is
+  pending. No claim of e-commerce readiness follows from these tests.
 
-For every required feature, record source and binary SHA-256, upstream commits,
-header/protocol/profile, operation list, dependency/tool versions, commands, rendered
-screenshots, event observations, and environment. Run the same binary on each player.
-Compare at fixed viewport, density, fonts and time. State equality does not prove pixels
-or events match. Text needs an actual rendering reference.
-
-Two animation candidates are a time-driven circle radius and a time-driven progress
-arc. These are proposals, not working examples. Confirm shared expression operators,
-clock variables, draw opcodes and invalidation before selecting them.
-
-iOS research points to a SwiftUI host with Metal-backed Skia/C++ libraries; it is not
-an official AndroidX iOS implementation. Browser rendering must use the experimental
-binary player; HTML widget rendering would not meet this prototype's goal.
+Next expand fixtures for layout/text/fonts/images, continuous animation, host callbacks
+and unsupported-operation rejection; then build and run official Android and experimental
+iOS players against the exact same binary hashes.

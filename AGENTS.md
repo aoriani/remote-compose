@@ -18,12 +18,15 @@ can still require client releases.
 - `docs/`: research, design, evidence, and handoff. Distinguish plans from verified behavior.
 - `samples/`: candidate upstream-format fixtures; see their README for validation status.
 - `scripts/`: portable environment diagnostics and project checks.
-- `upstream-lock.json`: research references and unresolved implementation pins.
-- Backend, editor, and mobile applications are not implemented yet.
+- `upstream-lock.json`: exact sources verified for the minimal JVM/browser fixture.
+- `pipeline/`: standalone Kotlin/JVM compiler CLI, unchanged upstream sources and tests.
+- `player-smoke/`: real binary browser player harness and automated pixel checks.
+- Backend HTTP publishing, full editor, and mobile apps are not implemented yet.
 
 ## Development rules
 
 - Prove JSON → JVM binary → genuine player before implementing the editor.
+  That minimal gate now passes; preserve it with `sh scripts/verify-pipeline.sh`.
 - Inspect pinned upstream source, tests, build files, history, and all applicable
   upstream instructions. Recursively read upstream Markdown as required by AndroidX.
 - Do not treat research commit references as tested compatible dependency pins.

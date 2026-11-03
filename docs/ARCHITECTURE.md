@@ -1,4 +1,12 @@
-# Architecture — proposed, not implemented
+# Architecture
+
+Implemented foundation: `pipeline/` compiles primitive JSON using unchanged AndroidX
+creation/core source, decodes it for inspection, and writes binary plus metadata.
+`player-smoke/` serves that file to the pinned genuine TypeScript player. Its HTML only
+hosts the canvas and status; Remote Compose performs the drawing. The automated test
+checks the binary digest and actual canvas pixels. This is a CLI + static test harness,
+not the Kotlin HTTP publishing backend. The following service/editor/mobile design
+remains proposed.
 
 The server owns UI composition. Clients own protocol execution and a small native debug
 shell. Business widgets exist only as editor templates that expand into upstream JSON.

@@ -2,6 +2,12 @@
 
 Research only. No caching optimization is implemented or proposed for the initial POC.
 
+Update 2026-11-03: the selected sources are now acquired. TS CoreDocument/Loom and C++
+Loom.cpp contain actual expansion implementations, and experiments history commit
+9055d26 documents major template work. Older STATUS/GAPS claims of all macros being
+stubs are obsolete. This corrects the initial uncertainty without establishing tested
+template compatibility here. The primitive proof does not exercise reuse or caching.
+
 ## Confirmed in indexed source, not executed
 
 The creation component registry at fa07a37 implements `definepattern`,
