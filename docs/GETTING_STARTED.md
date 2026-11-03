@@ -34,8 +34,9 @@ are refused, never discarded. Gradle/npm caches are workspace-local and ignored.
 
 `verify-pipeline.sh` runs the JVM tests, builds the compiler CLI, compiles the fixture,
 installs upstream locked npm dependencies, bundles the real player and tests it in
-Chrome. All those steps were exercised in the original working tree. Fresh-checkout
-verification status is recorded in PROGRESS; do not infer untested platform support.
+Chrome. All those steps also passed from a fresh Git clone at `93fce22`, with empty project
+caches and newly fetched sources. See [reproduction evidence](evidence/clean-checkout.json).
+Only macOS arm64 has been exercised; do not infer other platform support.
 
 Expected outputs (ignored/generated):
 

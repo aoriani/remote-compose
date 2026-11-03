@@ -1,0 +1,30 @@
+{
+  "verifiedOn": "2026-11-03",
+  "sourceCommit": "93fce220ad9677a2032ffbaefaa425156e006462",
+  "host": "macOS arm64",
+  "setup": "Fresh local Git clone with --no-hardlinks; no original upstream, toolchain, Gradle/npm cache or build-output reuse. Installed JDK and Chrome remain prerequisites.",
+  "commands": [
+    "python3 scripts/bootstrap-node.py",
+    "python3 scripts/fetch-upstreams.py",
+    "sh scripts/verify-pipeline.sh"
+  ],
+  "results": {
+    "upstreamParserTests": 63,
+    "prototypeTests": 6,
+    "testFailures": 0,
+    "browserPixelAssertions": 3,
+    "binaryBytes": 109,
+    "binarySha256": "58eeeb0c27c70bfac67e8a1f1c94b8f456c4c0b4c252b09d5bb8949d04db4903",
+    "browser": "156.0.8078.80",
+    "projectAndUpstreamTreesCleanAfterRun": true
+  },
+  "notVerified": [
+    "Android",
+    "iOS",
+    "Other host operating systems",
+    "Animations",
+    "Host events",
+    "HTTP publishing",
+    "Visual editor"
+  ]
+}

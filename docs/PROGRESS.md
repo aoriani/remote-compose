@@ -36,8 +36,11 @@ implemented. The work in this session is limited to the requested foundation.
 - Upstream `npm run check`: **failed** (exit 2), existing TypeScript errors across
   ColorAttribute, layout inheritance/access, shader tests, CanvasPaintContext and more.
   Upstream is unchanged. Runtime/bundle success does not imply its typecheck passes.
-- Initial sources/archives and new Wrapper were exercised; fresh Git-checkout end-to-end
-  run is pending the implementation milestone commit.
+- **Fresh-checkout verification passed** at implementation commit `93fce22`: a new Git
+  clone with no reused workspace caches/outputs fetched both exact source pins,
+  SHA-checked Node/Gradle, compiled all sources, passed all 69 JVM tests and the real
+  Chrome digest/pixel checks. Project and both upstream trees remained clean. See
+  [reproduction evidence](evidence/clean-checkout.json).
 - Android/iOS builds, runtime animations, events, larger resource/layout/text fixtures,
   backend endpoints and editor behavior have **not** been tested/implemented.
 
@@ -52,7 +55,7 @@ but Android sdkmanager/avdmanager and CMake remain uninstalled and are not neede
 
 ## Next recommended work
 
-1. Finish fresh-checkout pipeline verification and record the implementation commit.
+1. Preserve the verified minimal baseline at `93fce22` and its clean-checkout evidence.
 2. Add strict input/capability validation and preview compilation to a lightweight Kotlin
    HTTP backend, then immutable atomic publication/ETags with failure preservation tests.
 3. Expand shared fixtures for nested layout/text/images, two continuous animations and
@@ -63,7 +66,8 @@ but Android sdkmanager/avdmanager and CMake remain uninstalled and are not neede
 
 ## Git handoff
 
-Branch: `main`; prior milestone `05f8e48`. The current compiler/browser implementation,
-source lock, scripts and updated docs are ready for the validated implementation commit.
-Nothing was reset, rebased, force-pushed or pushed. Final commit/dirty status and
-fresh-checkout results will be recorded after validation.
+Branch: `main`. Commits: `123b8b1` foundation, `05f8e48` prior diagnostics,
+`93fce22` validated compiler/browser implementation. This handoff/evidence update is
+committed separately; `git log -1 --oneline` identifies that documentation commit.
+No uncommitted implementation remains, and nothing was reset, rebased, force-pushed or
+pushed. The clean-checkout verification passed; remaining work is listed above.

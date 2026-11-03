@@ -19,6 +19,9 @@ actual tests/source reviewed. Neither upstream has been modified.
 
 Minimal fixture: 109 bytes, v1.1.0, API 7 default, profile 0, 390×844. Its SHA-256 is
 58eeeb0c27c70bfac67e8a1f1c94b8f456c4c0b4c252b09d5bb8949d04db4903.
+Implementation commit: `93fce22`. A fresh Git clone with empty project caches reproduced
+the entire pipeline, same binary digest and clean source trees; see
+[evidence](evidence/clean-checkout.json). Installed JDK/Chrome were external prerequisites.
 69 JVM tests pass (63 upstream, six local). Real Chrome checks binary hash and three
 canvas pixels; screenshot was visually inspected. This establishes only the static
 canvas fixture, not layout/text/events/animation or Android/iOS compatibility.

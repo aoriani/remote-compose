@@ -25,7 +25,7 @@ The older session diagnostics below are retained as historical evidence. They ar
 current Git/network blockers. See [progress](PROGRESS.md) for the current handoff.
 
 
-## Current environment failures
+## Historical environment failures
 
 | Symptom | Observed result | Next action |
 | --- | --- | --- |
