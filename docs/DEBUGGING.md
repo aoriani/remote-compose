@@ -11,6 +11,32 @@
 | Android SDK manager | cmdline-tools directory absent | Install command-line tools explicitly; existing SDK platforms alone are insufficient |
 | node/npm/cmake/Gradle | Absent from PATH; no Gradle cache found | Acquire compatible tools/dependencies once networking works |
 
+### Resumed-session diagnosis
+
+Git is now initialized: `main` at `123b8b1`; the startup working tree was clean. The
+initialization error above is historical, not the current repository state.
+
+Reproduction inside the tool execution environment:
+
+```sh
+git ls-remote https://github.com/camaelon/remotecompose-experiments.git HEAD
+curl --connect-timeout 5 -I https://github.com
+scutil --dns
+```
+
+Observed: Git exit 128 (`Could not resolve host: github.com`), curl exit 6, and
+`No DNS configuration available`. Python socket.getaddrinfo also fails for GitHub,
+raw.githubusercontent.com and repo.maven.apache.org with gaierror errno 8. User reports
+the host's same Git request succeeds, so do not change host DNS or blame upstream.
+
+Supported escalation was attempted using exec's `sandbox_permissions=require_escalated`
+for the read-only Git command. The tool rejected the request before running it because
+the approval policy has `sandbox_approval: false`. Its error mentions a separate request
+permissions capability, but no such tool is available in this session's tool inventory.
+Do not mistake connected-app permission controls for shell sandbox controls. Resuming
+source acquisition requires an execution environment that permits these network operations
+or exposes the appropriate permission request mechanism.
+
 `python3 scripts/doctor.py` reports local details without installing tools, accepting
 licenses, changing settings, or calling remote hosts. Raw diagnostic output is local
 machine information; do not use it as a portable dependency lock.

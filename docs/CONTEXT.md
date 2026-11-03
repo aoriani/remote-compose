@@ -1,10 +1,30 @@
 # Durable technical context
 
 Read [progress](PROGRESS.md) before coding. This workspace began empty on 2026-11-02.
-No existing user code or repository was present. The session could create normal files
-but `git init` was denied at `.git`; no branch/commit exists. Shell Git/curl networking
-could not resolve GitHub. No upstream checkout was acquired. Do not treat prior web
+No existing user code or repository was present. The initial session could create normal
+files but `git init` was denied at `.git`. The user subsequently initialized Git and
+committed the foundation: `main`, `123b8b17a0076d3b562e47fda6e76fa7710245e5`.
+The resumed session confirmed a clean initial status. Shell Git/curl networking still
+cannot resolve GitHub. No upstream checkout was acquired. Do not treat prior web
 reviews as a deep local source audit.
+
+## Resumed execution restriction diagnosis
+
+The host Mac can access GitHub according to the user, but this session's execution
+environment cannot: Git exits 128 and curl exits 6 for github.com. Python getaddrinfo
+fails for github.com, raw.githubusercontent.com and repo.maven.apache.org; scutil
+reports no DNS configuration. This localizes the observed failure to the execution
+environment; it does not establish a particular host DNS/network defect.
+
+The supported exec `require_escalated` request was attempted and rejected before
+execution: approval policy `sandbox_approval: false` disallows escalated permission
+requests. The error also mentions `request_permissions: true`, but no corresponding
+request tool is exposed in the available tool inventory. Plugin permissions tools
+control connected apps, not the shell sandbox, and must not be used as a substitute.
+Do not bypass restrictions with another process, transport, or relocated Git metadata.
+Git metadata writes also remain denied: staging the five documentation updates fails
+creating `.git/index.lock` with `Operation not permitted`. User-side initialization
+did not change this tool execution permission. Documentation updates remain unstaged.
 
 ## Important findings
 
@@ -40,8 +60,9 @@ built, launched, or exercised. Re-run doctor on a new machine; do not hardcode t
 
 ## Resume sequence
 
-1. Restore normal Git writes and shell download access in the execution environment.
-2. Inspect status; initialize only if still no repository; commit reviewed saved files.
+1. Restore authorized shell download access and, if still restricted, Git metadata writes
+   in the execution environment. This is a permissions/tooling prerequisite.
+2. Inspect the existing repository status/history; do not initialize or restart the project.
 3. Acquire existing-or-new upstream checkouts and read applicable instructions/all required
    Markdown; pin exact hashes after source/test/history review.
 4. Select compatible dependencies, prove minimal JVM compilation and binary browser

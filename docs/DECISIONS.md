@@ -33,6 +33,12 @@ restricted workspace or use an unreviewed transfer path. Reasoning: normal sourc
 access is necessary for the requested reproducible workflow. Consequence: no commits
 can currently be created; transfer must include the working files until Git is available.
 
+Update after user initialization: the foundation now exists on `main` at `123b8b1`.
+The initial no-repository consequence is superseded. Network restrictions persist in
+the execution environment despite reported host connectivity. A supported escalation
+attempt was rejected by approval policy; preserve exact diagnostics and do not recast
+this permission prerequisite as an architectural limitation.
+
 ## 005 — Fragment caching deferred (2026-11-02)
 
 Decision: investigate patterns and reuse in documentation only. Alternatives: encode

@@ -4,6 +4,14 @@ Updated 2026-11-02. Current phase: **Stage 1, partial research and environment s
 The full prototype is not implemented. Stage 2's mandatory compile/render gate has not
 passed. There are no backend, editor, Android or iOS product modules.
 
+## Resumed session
+
+Read AGENTS, progress, context and decisions before changes. Confirmed the user's
+foundation commit `123b8b17a0076d3b562e47fda6e76fa7710245e5` on `main`, with a clean
+working tree at startup. Preserved all existing research and corrected obsolete claims
+that Git was uninitialized. Upstream access remains an execution-permission issue;
+no architectural conclusion or implementation pin follows from this failure.
+
 ## Completed work
 
 - Inspected empty workspace and Development parent; attempted Git status/history/init.
@@ -21,7 +29,7 @@ passed. There are no backend, editor, Android or iOS product modules.
   links, candidate JSON syntax and research lock consistency checked. This is not a
   compiler/player test.
 - `python3 scripts/doctor.py`: executed; **exit 1 as expected**. Missing Node/npm,
-  CMake, sdkmanager, avdmanager, project Git repository and compatible upstream pins.
+  CMake, sdkmanager, avdmanager and compatible upstream pins on the resumed run.
   Gradle/kotlinc are also absent from PATH; no Wrapper has been added yet.
 - Direct JBR CLI probe: OpenJDK 25.0.4 found; build compatibility not tested.
 - Per-command Xcode selection: Xcode 27.2 and iPhoneSimulator27.2.sdk resolved successfully.
@@ -32,10 +40,17 @@ passed. There are no backend, editor, Android or iOS product modules.
 
 ## Blockers
 
-1. `git init -b main` fails: `.git: Operation not permitted` under the current execution
-   permissions. Files are saved but **not committed**. Branch: none. Commit: none.
-2. Shell outbound source acquisition fails: `Could not resolve host: github.com`.
-   Web tools expose only some cached/indexed source and cannot provide complete checkouts.
+1. Initial Git initialization was completed by the user. Repository reads work, but
+   `git add README.md docs/CONTEXT.md docs/DEBUGGING.md docs/DECISIONS.md docs/PROGRESS.md`
+   exits 128: `Unable to create .../.git/index.lock: Operation not permitted`. This
+   execution environment still lacks normal Git metadata write access.
+2. Exact command `git ls-remote https://github.com/camaelon/remotecompose-experiments.git HEAD`
+   exits 128: `Could not resolve host: github.com`. Curl independently exits 6. Python
+   getaddrinfo fails for GitHub, raw.githubusercontent.com and Maven Central; scutil
+   reports `No DNS configuration available`. User reports successful host access.
+   `require_escalated` was attempted through exec but rejected before execution because
+   the approval policy sets `sandbox_approval: false`. No dedicated permission-request
+   tool is exposed. This is an execution restriction, not an architectural blocker.
 3. Upstream compatible revisions cannot yet be selected/verified; `upstream-lock.json`
    retains null implementation pins. References are not a compatibility lock.
 4. Node/npm/CMake/Gradle and Android command-line tools are absent or unresolved. Selected
@@ -43,7 +58,7 @@ passed. There are no backend, editor, Android or iOS product modules.
 
 ## Next actions
 
-Resolve authorized workspace Git/network access, acquire sources, inspect all required
+Resolve authorized execution-environment Git/network access, acquire sources, inspect all required
 upstream docs/code/tests/history, then select exact revision/dependency pins. Implement a
 minimal plain Kotlin/JVM compiler probe with the upstream creation parser; inspect its
 binary in remote-core and render those same bytes with the real TypeScript player.
@@ -56,7 +71,9 @@ demo; clean-checkout verification. See [development plan](DEVELOPMENT_GUIDE.md).
 
 ## Git handoff
 
-No commits exist, no existing history was modified, and nothing was pushed. All created
-files currently live only in the working directory. Once metadata writes are possible,
-review files, run checks and create `docs: record initial Remote Compose investigation`.
-Do not invent milestone hashes or report this directory as a portable Git clone yet.
+Branch: `main`. Latest commit: `123b8b1` (created by user). Nothing was pushed or rewritten.
+Five documentation files remain modified and unstaged: README, CONTEXT, DEBUGGING,
+DECISIONS and this file. `git add` failed before staging because index.lock creation
+is denied. `python3 scripts/check-project.py` and `git diff --check` pass. Doctor ran
+and exits 1 for missing prerequisites/pins. No compiler/player tests ran. Upstream
+sources/dependencies are still unavailable, so runtime milestones remain unimplemented.

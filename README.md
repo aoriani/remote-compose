@@ -45,6 +45,8 @@ records unresolved pins separately from source research references.
 | [Decisions](docs/DECISIONS.md) | Decision log |
 | [Agent instructions](AGENTS.md) | Resume work in a new session |
 
-The current environment denies `.git` creation and shell network resolution. Files
-are saved in the workspace but cannot yet be committed. No repository history or
-compatible upstream pin is claimed.
+Git has been initialized and the foundation committed on `main` at `123b8b1`.
+The resumed execution environment still cannot resolve GitHub or Maven Central.
+Its supported sandbox escalation request was rejected by the approval policy.
+No compatible upstream pin or working compiler/player pipeline is claimed. See
+[current diagnostics](docs/DEBUGGING.md).
