@@ -1,94 +1,56 @@
-# Durable technical context
+# Durable context
 
-Read [progress](PROGRESS.md), [decisions](DECISIONS.md), then inspect Git status/history.
-The initial empty-workspace research is preserved in history. Foundation commit 123b8b1
-was created by the user; 05f8e48 preserves the five prior sandbox/handoff updates.
+Start with AGENTS, PROGRESS, DECISIONS, Git status/history and upstream-lock.json.
+The minimal pipeline is preserved; do not repeat its research or replace its renderer.
 
-## Working foundation (2026-11-03)
+## Implemented architecture
 
-`pipeline/` builds unchanged AndroidX remote-core + remote-creation-core source in an
-isolated Gradle JVM application. Kotlin calls the real creation JSON parser, then actual
-remote-core decodes the bytes for inspection. `player-smoke/` serves those bytes to the
-real TypeScript RcdPlayer. No widget/editor/HTML approximation draws the remote content.
+pipeline builds unchanged pinned AndroidX remote-core/creation-core. Validation.kt is
+strict service capability validation, independent of editor template recognition. The
+original research CLI remains permissive; public compile/publish use compileValidated.
+Backend.kt uses JDK HttpServer, one atomic JSON version bundle containing source, base64
+binary and metadata, a publication lock and immutable numeric versions. Preview never
+writes versions. Binary responses include the version and digest to avoid metadata races.
 
-Exact sources, dependency versions and scope live in `upstream-lock.json`. Both checkouts
-are ignored and reacquired by scripts; source revisions and clean status are enforced
-before compilation. Upstream root/remote AGENTS and run_tests guidance were inspected,
-Markdown recursively inventoried/scanned, relevant architecture/parser/player guides and
-actual tests/source reviewed. Neither upstream has been modified.
+web-editor/model.mjs edits actual upstream JSON. Recognition is conservative and separate
+from protocol validity. Property forms patch individual paths. Unknown trees stay custom.
+Resource/variable IDs are not safely remapped yet: unsafe duplication is rejected.
+JvmAssets loads the checked-in PNG catalog through real upstream platform services and
+bitmap definitions. No arbitrary URL fetching or custom business protocol is involved.
 
-Minimal fixture: 109 bytes, v1.1.0, API 7 default, profile 0, 390×844. Its SHA-256 is
-58eeeb0c27c70bfac67e8a1f1c94b8f456c4c0b4c252b09d5bb8949d04db4903.
-Implementation commit: `93fce22`. A fresh Git clone with empty project caches reproduced
-the entire pipeline, same binary digest and clean source trees; see
-[evidence](evidence/clean-checkout.json). Installed JDK/Chrome were external prerequisites.
-69 JVM tests pass (63 upstream, six local). Real Chrome checks binary hash and three
-canvas pixels; screenshot was visually inspected. This establishes only the static
-canvas fixture, not layout/text/events/animation or Android/iOS compatibility.
+Android compiles source-coupled official player modules; iOS builds pinned experimental
+rccore/rcskia and an adapted upstream Metal bridge. Native code is a generic renderer
+plus debug shell. Both fetch the exact same latest binary with ETag/SHA checks.
 
-## Nonobvious discoveries
+## Hard-won compatibility findings
 
-- Target `androidx.compose.remote.creation.json.RemoteComposeJsonParser` input, which
-  accepts type/shorthand components and single-key ordered modifier arrays.
-- The apparent alternate remote-core parser was a commented-out test. No working
-  alternate parser exists in the pinned source; the initial research inference is corrected.
-- Unknown components throw contextual exceptions; unknown modifiers and commands can
-  be silently ignored. Strict authoring validation remains to implement.
-- Default JVM platform returns empty image data and zero dimensions. Canvas/path
-  compilation works, but image handling needs real services.
-- Header metadata must be read from Header. CoreDocument dimensions are not populated
-  by setVersion alone; the inspector reports Header properties, not uninitialized size.
-- Byte order is big-endian. Protocol version, target API and profile are separate.
-- The browser loader warns/returns on unknown opcodes, potentially rendering a prefix.
-  Test expected content and reject warnings; do not rely on load completion alone.
-- HostAction and browser callback registration exist at the pin. Local state actions
-  remain distinct from host-visible events. Neither path has a prototype event test yet.
-- Experiments STATUS/GAPS lag code: history and current TS/C++ Loom implementations
-  supersede old claims of all macro ops being stubs. No cross-document cache is proven.
-- Upstream tsc fails with many existing errors; esbuild and the measured browser fixture
-  work. Do not claim the TypeScript project passes all checks.
-- org.json Android vs desktop iteration order differs; use ordered resource fixtures
-  when investigating byte parity. Do not concatenate independently compiled fragments.
+- API7/protocol1.1.0 and profiles0/512/513 are the service subset, not a universal guarantee.
+- Unknown upstream JSON commands/modifiers can vanish silently; strict service rejects
+  unknown operations/properties. Browser load can return a prefix on unknown opcode:
+  tests fail on warnings and assert real draw behavior.
+- Use expression `time` for continuous repaint. animationTime() alone does not sustain
+  scheduling in the pinned browser. The animations live entirely in protocol expressions.
+- JVM default bitmap services are stubs. JvmAssets fixes actual PNG encoding/catalog use.
+- Real SVG path experiment failed Android with Odd command 0 and omitted iOS geometry.
+  Paths are deliberately disabled in service validation pending encoding investigation.
+- Gradient shader persists in paint state. `{"paint":{"shader":0}}` clears it.
+- Android player uses a 160dpi context and scales authored header viewport into the host
+  stage, matching virtual document geometry without API8 density flags or changed bytes.
+- Swift sample touch-up did not call document onClick: the bridge exposes actual C++
+  onClick and hostAction/hostNamedAction; Swift native gesture dispatch calls those APIs.
+- Skia Simulator m144-e2e6623374-4 includes arm64 iosSim archive; ICU needs iOS18.5 target.
+  Link shaper/unicode/harfbuzz/icu libraries as well as libskia or Swift linking fails.
+- AGP9 built-in Kotlin is disabled for compatibility with root Kotlin2.2.20; app is Java.
+- Upstream TypeScript typecheck fails; runtime bundle/tests pass. Keep claims distinct.
 
-## Environment and portability
+## Environment and handoff
 
-Network access now works for GitHub and Maven Central. Normal Git writes and headless
-Chrome still need approved escalation in this execution environment. Approved staging,
-committing and Chrome commands work; no restriction was bypassed. Historical diagnostics
-are in [debugging](DEBUGGING.md) and Git history.
+Tested JBR25.0.4 (JAVA_HOME), Node22.14.0 local bootstrap, Gradle9.2.1; SDK36/AGP9;
+Android17 emulator; full Xcode27.2/iPhone18Pro arm64 Simulator. No IDE GUI required.
+Tools, upstreams, outputs and publication data are ignored and reacquired from scripts.
+Current execution has network/Git access; old sandbox failures are historical, not current.
 
-Use JAVA_HOME, not hardcoded machine paths. Verified local JDK: JBR 25.0.4 inside Android
-Studio Preview, used solely via CLI. Node 22.14.0 is SHA-checked under .toolchains;
-Gradle Wrapper 9.2.1 has a distribution checksum. Gradle/npm caches stay inside workspace.
-Full Xcode 27.2 and SDK were discovered, but no iOS app ran. Android SDK has some packages
-but lacks sdkmanager/avdmanager; no Android build occurred. No global settings changed.
-
-## Resume
-
-1. Read current progress/decisions and inspect dirty files and commits; preserve work.
-2. Set JAVA_HOME, bootstrap Node and fetch pinned sources (getting-started commands).
-3. Run `sh scripts/verify-pipeline.sh`; request Chrome/Git approval if sandbox blocks them.
-4. Implement the lightweight preview/publish backend with strict unknown-input validation,
-   immutable versions, ETags and last-good preservation before the full visual editor.
-5. Add actual feature/player fixtures before expanding compatibility claims.
-
-## Backend milestone
-
-Strict service compilation now uses Validation.kt, separate from the original permissive
-research CLI. Jackson rejects malformed JSON/duplicates/trailing tokens; capability
-errors carry code/path/message. A nested primitive is not rejected because no editor
-template recognizes it. The enabled subset is intentionally narrower than all upstream.
-Backend.kt uses JDK HttpServer and atomic immutable version bundles. See API.md.
-76 JVM tests pass (the previous 69 plus seven validation/storage/real-HTTP tests).
-
-## Editor/browser milestone
-
-web-editor is a vanilla JS three-panel authoring UI served by Kotlin. It uses the real
-RcdPlayer bundle; no UI approximation. Node model tests cover non-destructive edits,
-custom trees and unsafe ID duplication. player-smoke/editor-smoke.mjs boots a temporary
-backend and exercises all templates, two real animations, bitmap drawing, raw custom JSON,
-publication, failed publication preservation and protocol host event 42.
-Time expressions use `time` (continuous seconds); animationTime-only expressions stop
-repainting on the pinned player. JvmAssets loads assets/catalog.json and defines real
-bitmaps through upstream APIs without changing primitive JSON. External assets are
-classpath resources; no arbitrary server URL fetching. See samples/landing.json.
+79 JVM tests, six model tests, browser workflow, Android CLI/instrumentation and iOS
+engine-input smoke passed. See PROGRESS/evidence for precise scope. No physical devices
+were tested. Full expanded fresh-clone validation is next, along with native image/scroll
+and UI automation coverage. Never infer broad compatibility from a successful parse.

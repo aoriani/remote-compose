@@ -1,0 +1,38 @@
+{
+  "date": "2026-11-03",
+  "jvmTests": 79,
+  "nodeTests": 6,
+  "android": {
+    "assemble": true,
+    "unitTests": 1,
+    "lintErrors": 0,
+    "instrumentationTests": 1,
+    "device": "Medium Phone API37 Android17 emulator",
+    "apkSha256": "99aa2660e79de0eb4677f6e1f0d644e0376a2aeb50b2ac400666edcd7e6902cc"
+  },
+  "ios": {
+    "build": "Xcode27.2 arm64 Simulator, CMake3.31.6, iOS18.5 deployment target",
+    "device": "iPhone18Pro Simulator",
+    "hostEvent": 42,
+    "failedRefreshPreserved": true,
+    "executableSha256": "a53599dd042daec3951b9df47b06e181a3ffed619ce5d6e1bb45d2bbdf268115"
+  },
+  "sharedCustomDocument": {
+    "bytes": 932,
+    "sha256": "3ea80866c330a6f27b827ec964b4d86909fa1b77cafc3926e241b9e047a7d871",
+    "localVersion": 4,
+    "visuallyInspected": [
+      "browser",
+      "android",
+      "ios"
+    ],
+    "mobileApplicationHashesUnchanged": true
+  },
+  "excludedFailedExperiment": "Earlier SVG path fixture failed Android/iOS rendering; paths are now rejected by strict service. No success claim for that trial.",
+  "limitations": [
+    "Physical devices and signed iOS packaging untested",
+    "Expanded clean-clone reproduction pending",
+    "Native images and full scroll fidelity not yet asserted",
+    "iOS smoke uses engine input, not automated UI touch"
+  ]
+}

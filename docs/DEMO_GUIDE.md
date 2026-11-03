@@ -1,29 +1,26 @@
-# Demonstration guide
+# Demonstration
 
-The primitive binary pipeline demonstration is runnable. Follow
-[getting started](GETTING_STARTED.md), then serve `player-smoke/` with its npm command.
-The page shows the genuine Remote Compose player rendering the JVM-generated blue
-circle and reports its SHA-256. The automated browser test checks three pixels and
-the exact binary digest. This proves the foundation, not the e-commerce editor demo.
-[Progress](PROGRESS.md) records the remaining gates.
+1. Start the backend/editor using README. Open localhost:8080. Load the demo, change a
+   header property, add a template and Preview. This compiles raw primitive JSON on JVM;
+   the real browser player consumes its binary, not HTML business components.
+2. Switch to Primitive JSON. Edit a label or drawing value and Apply/Preview. Add the
+   animated badge and progress templates. Both animate inside the player. Inspect `time`
+   expressions in raw JSON; no JavaScript animation implements their appearance.
+3. Add a button and click its rendered area. Host event42 appears below the preview.
+4. Publish. Launch Android and iOS as in GETTING_STARTED, enable auto-refresh in Debug.
+   Compare version, byte count and SHA with the published metadata endpoint.
+5. Replace the full raw document with samples/custom-composition.json and Preview.
+   These nested layouts, gradient/circle drawing and custom button are not catalog widgets.
+   The outline labels them custom. Duplicate/move a section and confirm JSON is retained.
+6. Restore the unmodified custom fixture, Publish and wait for native refresh. All three
+   players show the new composition. Neither native app is rebuilt. The recorded fixture
+   is 932 bytes with SHA 3ea80866c330a6f27b827ec964b4d86909fa1b77cafc3926e241b9e047a7d871.
+7. Insert an unknown operation/property and Publish. A path-specific diagnostic appears;
+   native publication and the last successful preview remain intact. Restore valid JSON.
+8. Stop the backend or set an unreachable native URL. Debug remains accessible, errors
+   are visible and the previous valid document stays displayed. Restore the URL/backend.
 
-## Acceptance script to implement and verify
-
-1. Start the actual backend and editor using commands added only after validation.
-2. Open unchanged Android and iOS viewer builds; record app artifact hashes and versions.
-3. Add header, hero, text, image, button, product/content carousels and spacers from palette.
-   Compile and confirm the preview player consumed binary bytes.
-4. Add the two tested animations; show their operations in raw JSON and observe movement.
-5. Publish; show immutable version, ETag, binary size and SHA-256.
-6. Refresh both mobile apps and confirm the same published digest and rendered document.
-7. Replace a template with an uncatalogued nested primitive layout/canvas composition.
-   Reorder and duplicate a safe custom section; show the custom subtree is preserved.
-8. Compile, publish and refresh all players without rebuilding apps; compare app hashes.
-9. Trigger a supported host-visible event and inspect native log ID/payload. Separately
-   demonstrate a local variable change; explain the distinction.
-10. Submit invalid JSON; show diagnostics and unchanged published version. Simulate a
-    fetch failure and confirm the last valid document and native debug sheet still work.
-11. Toggle automatic refresh and interval in both native debug interfaces.
-
-Record exact commands, fixtures, revisions, screenshots, event evidence and platform
-limitations when this script becomes executable. Until then it is an acceptance plan.
+For repeatable interaction smoke use samples/interaction.json (190 bytes, host event42).
+For native animation comparison publish samples/animations.json (556 bytes). The actual
+session records and screenshots are under docs/evidence; versions are local store state,
+so a fresh run need not use the same version numbers. No production readiness is claimed.

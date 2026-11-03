@@ -1,12 +1,8 @@
 # Architecture
 
-Implemented foundation: `pipeline/` compiles primitive JSON using unchanged AndroidX
-creation/core source, decodes it for inspection, and writes binary plus metadata.
-`player-smoke/` serves that file to the pinned genuine TypeScript player. Its HTML only
-hosts the canvas and status; Remote Compose performs the drawing. The automated test
-checks the binary digest and actual canvas pixels. This is a CLI + static test harness,
-not the Kotlin HTTP publishing backend. The following service/editor/mobile design
-remains proposed.
+Implemented: Kotlin validation/compiler/HTTP publication, JSON-preserving browser editor,
+Android official player and iOS C++/Skia Metal viewer. See API.md for the working contract.
+The original CLI/static pixel gate remains as a small regression proof.
 
 The server owns UI composition. Clients own protocol execution and a small native debug
 shell. Business widgets exist only as editor templates that expand into upstream JSON.
@@ -44,19 +40,19 @@ sequenceDiagram
   P->>P: decode replacement before replacing last valid document
 ```
 
-## Intended service contract
+## Implemented service contract
 
-| Endpoint | Intended behavior |
+| Endpoint | Behavior |
 | --- | --- |
 | POST /api/compile | Isolated compilation; no published state mutation; binary response or JSON diagnostic |
 | POST /api/publish | Compile first, allocate immutable version, atomically persist binary/source/metadata/latest |
 | GET /api/documents/latest | Binary plus ETag/version; 304 support; 404 before first publication |
 | GET /api/documents/latest/metadata | Published version, size, digest, protocol/profile and compiler revision |
 
-Implementation should use a single publication transaction/lock and durable atomic
-rename or SQLite transaction. Concurrent requests must not mix source, binary, or
-metadata. Include the version/digest on the binary response: separate metadata and latest
-requests can race publication. Consider immutable version fetches when implementing.
+Publication serializes a lock-protected immutable source/binary/metadata JSON bundle and
+atomically renames it into the numeric version store. Latest is the highest committed
+version. Binary responses carry version/digest; historical source/binary/metadata routes
+are available. Compilation completes before touching publication storage.
 
 ## Editor preservation rules
 

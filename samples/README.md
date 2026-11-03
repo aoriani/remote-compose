@@ -1,10 +1,10 @@
-# Verified minimal fixture
+# Primitive fixtures
 
-`minimal-canvas.json` compiles on a plain JVM using the pinned AndroidX creation parser
-and renders through the pinned experimental TypeScript `RcdPlayer` in Chrome.
-
-Expected: 109 bytes, header v1.1.0, API level 7 default, profile 0, 390×844, blue circle
-center (195,160), radius 64. SHA-256:
-`58eeeb0c27c70bfac67e8a1f1c94b8f456c4c0b4c252b09d5bb8949d04db4903`.
-See [evidence](../docs/evidence/minimal-pipeline.json) and
-[setup](../docs/GETTING_STARTED.md). Android/iOS rendering is not verified.
+minimal-canvas.json remains the 109-byte original verified JVM/browser baseline.
+landing.json exercises editor templates and actual PNG resources. animations.json is
+556 bytes and both expression animations were observed in browser, Android and iOS.
+interaction.json is 190 bytes and host event42 was observed in all three engines.
+custom-composition.json is an uncatalogued nested composition: 932 bytes,
+SHA-256 3ea80866c330a6f27b827ec964b4d86909fa1b77cafc3926e241b9e047a7d871.
+It rendered in all three players while installed mobile application hashes stayed fixed.
+See docs/evidence and docs/COMPATIBILITY.md for the measured scope and exclusions.

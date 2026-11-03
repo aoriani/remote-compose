@@ -5,6 +5,25 @@ from AndroidX **8932b2c2b5043cc40c46a44cfd04a1671ec50fb7**. It calls the actual
 upstream parser; there is no business-widget JSON or format adapter.
 [Source](https://github.com/androidx/androidx/blob/8932b2c2b5043cc40c46a44cfd04a1671ec50fb7/compose/remote/remote-creation-core/src/main/java/androidx/compose/remote/creation/json/RemoteComposeJsonParser.java).
 
+## Current service capability subset
+
+Validation.kt is authoritative for enabled fields. The upstream registry described below
+is broader and does not imply that every entry is enabled or cross-platform verified.
+The service supports box/row/column/spacer/canvas/text/variable, ordered single-key
+modifiers, expressions, named resources, verified paint/draw/transform operations and
+host/local actions. Unsupported operations return 422 with a path; malformed/duplicate
+or trailing-token JSON returns 400. Limits: 1MiB, nesting64, dimensions1..4096, API7,
+profiles0/512/513. Float32 non-finite values are rejected. Custom structures assembled
+from enabled primitives are accepted regardless of template recognition.
+
+See samples/landing.json, animations.json, interaction.json and custom-composition.json.
+Real PNG resources use upstream addBitmap/drawBitmap and a separate classpath catalog.
+Both continuous animations use `time` expressions; they were observed in all three
+players. HostAction42 is observable in all three engines (iOS smoke uses engine input).
+Gradient paint persists: `{"paint":{"shader":0}}` resets it. SVG paths are disabled in
+the strict service after a real Android/iOS rendering failure; the research CLI is
+permissive and must not be mistaken for supported service capability validation.
+
 ## Verified compilable example
 
 [samples/minimal-canvas.json](../samples/minimal-canvas.json) compiles and renders:
@@ -63,13 +82,12 @@ ResourceParser and ExpressionParser resolve named colors, paths, matrices, varia
 arrays and infix mathematical expressions. References accept `$name`/`@name` and namespace
 forms. Canvas fields can consume time expressions such as the upstream test's
 `50 + sin(time) * 10`. A compiled expression is not proof of browser repaint/animation.
-No animation fixture is verified yet.
+Both sample time-expression animations are now verified in browser and native players.
 
 At this pin, onClick/touch actions include local value changes **and HostAction**.
 Named actions may carry a typed value reference; ID actions may carry metadata.
 The browser CoreDocument exposes named and ID callback registration. Android's View
-player exposes ID action listeners. These are source findings; no host event has yet
-been emitted/exercised in the prototype. Preserve the distinction from local state.
+player exposes ID action listeners. HostAction42 is now exercised in browser, Android and iOS engines. Preserve the distinction from local state.
 
 `definepattern`, `patternargument`, `patterninflation`, slots/foreach and referenced
 operations are present. See [future architecture](FUTURE_ARCHITECTURE.md); cross-document
@@ -85,12 +103,11 @@ dimensions, flat operation names, size and SHA-256. The wire integer encoding is
 Malformed JSON, unknown components and missing drawing fields raise errors. The parser
 adds ContextPath information for component errors. **Unknown modifiers and drawing
 commands can silently disappear**; a local characterization test proves this. The CLI
-is a compiler proof, not a complete strict validator. Implement a validation layer
-before exposing it as the authoring service.
+remains a permissive research tool; Validation.kt now protects both service endpoints.
 
 The default JVM platform supports RemotePathBase but returns empty bitmap bytes and
-zero image dimensions. Image encoding needs real platform services/resource handling;
-never claim default image compilation is working. The parser's library-group restriction
+zero image dimensions. JvmAssets supplies the required real platform services and classpath PNG catalog;
+the unadapted default remains nonfunctional for bitmaps. The parser's library-group restriction
 also means this source integration is coupled to the pin.
 
 Upstream ships `Documentation/parts/remote_compose_schema.json`, but runtime parsing/tests

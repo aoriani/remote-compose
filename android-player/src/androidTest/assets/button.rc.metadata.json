@@ -1,0 +1,28 @@
+{
+  "operations": [
+    "Header",
+    "RootLayoutComponent",
+    "BoxLayout",
+    "WidthModifierOperation",
+    "HeightModifierOperation",
+    "BackgroundModifierOperation",
+    "ClickModifierOperation",
+    "HostActionOperation",
+    "ContainerEnd",
+    "LayoutComponentContent",
+    "TextData",
+    "CoreText",
+    "LayoutComponentContent",
+    "ContainerEnd",
+    "ContainerEnd",
+    "ContainerEnd",
+    "ContainerEnd",
+    "ContainerEnd"
+  ],
+  "sha256": "6cb8ad89d9571cb6e9e9e4242358b8258ba7d695e5bc44960262dd02fb8a0586",
+  "bytes": 190,
+  "width": 390,
+  "profiles": 512,
+  "header": "HEADER v1.1.0\n  DOC_WIDTH 390\n  DOC_HEIGHT 844\n  DOC_PROFILES 512",
+  "height": 844
+}

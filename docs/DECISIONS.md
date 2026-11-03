@@ -111,3 +111,20 @@ encoding, replacing the upstream default's empty bitmap service. No JSON widget 
 The two animations use continuous time expressions because ID-30 animationTime alone
 does not request continuous repaint in the pinned browser. Tests observe varying real
 player arc/rectangle calls, decoded bitmap drawing and an ID-42 HostAction callback.
+
+## 013 — Generic mobile players and authored viewport (2026-11-03)
+
+Use pinned official Android source and experimental C++/Skia, with native fetch/debug
+shells only. Android's player context uses160dpi and scales the authored header viewport
+rather than adopting API8 density flags. Swift adapts the upstream Metal bridge to expose
+real host callbacks and onClick; touch-up alone did not dispatch click. Both apps fetch
+identical published bytes. Simulator Skia requires arm64/iOS18.5 and ICU/shaper libraries.
+Physical-device signing remains deferred and explicitly unverified.
+
+## 014 — Restrict paths after actual rendering failure (2026-11-03)
+
+An SVG custom fixture compiled but caused Android Odd command0 and missing iOS geometry.
+Successful compilation is insufficient. Strict service now rejects drawPath/path resources;
+the working custom fixture uses circles and resets persistent shader paint with shader0.
+Keep the failed trial documented rather than hiding it with native UI fallbacks. Re-enable
+paths only after investigating JVM path encoding and running real cross-platform tests.

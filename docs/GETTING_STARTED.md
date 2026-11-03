@@ -1,118 +1,89 @@
 # Getting started
 
-The minimal compiler/browser pipeline is runnable. The editor, Kotlin HTTP publishing
-backend and mobile applications are not implemented yet.
+## JVM backend and browser
 
-## Prerequisites
+Use the commands in [README](../README.md). JDK 25.0.4, Node 22.14.0, Gradle 9.2.1 and
+Chrome 156 were exercised on macOS arm64. JAVA_HOME must name a JDK; an IDE is not
+required. Source acquisition enforces both upstream commit pins and clean checkouts.
 
-- Git, Python 3 and a JDK; tested with JBR 25.0.4 on macOS arm64. Compiled JVM target
-  is 17, but other build JDKs have not been exercised.
-- Google Chrome installed (Playwright uses the `chrome` channel). A channel override
-  is available via CHROME_CHANNEL; only Chrome was tested.
-- Network access to GitHub, Maven Central, Google Maven, Gradle, Node and npm endpoints.
-- Writable workspace plus normal Git metadata writes; sandbox approval may be needed
-  for Git staging/commit and launching headless Chrome.
+`sh scripts/start-backend.sh` serves the editor and APIs on 127.0.0.1:8080.
+Optional environment: PORT, RC_DATA_DIR, RC_BIND_HOST. Binding beyond localhost exposes
+an unauthenticated development server; do so only for your local device network.
+Run `sh scripts/verify-pipeline.sh` for the original minimal gate and
+`sh scripts/verify-demo.sh` for the expanded backend/editor suite. Install npm dependencies
+first. Persistent version bundles are generated data, not tracked source.
 
-Set JAVA_HOME to your JDK home. Existing vendor JDKs can be used from the command line;
-Android Studio is not part of this build workflow. Do not change global Java or Xcode
-settings just to build the proof.
+## Android entirely from CLI
 
-## Verified sequence
-
-From the repository root with JAVA_HOME exported:
+Install a compatible JDK and Android SDK. On macOS the checksum-pinned local tool
+bootstrap installs CMake and SDK command-line binaries without an IDE:
 
 ```sh
-python3 scripts/bootstrap-node.py
-python3 scripts/fetch-upstreams.py
-sh scripts/verify-pipeline.sh
+python3 scripts/bootstrap-mobile.py
+export ANDROID_HOME="$HOME/Library/Android/sdk"
+export PATH="$PWD/.toolchains/android-cli/cmdline-tools/bin:$ANDROID_HOME/platform-tools:$ANDROID_HOME/emulator:$PATH"
+sdkmanager --sdk_root="$ANDROID_HOME" --licenses
+sdkmanager --sdk_root="$ANDROID_HOME" 'platforms;android-36' 'build-tools;36.0.0' platform-tools emulator 'system-images;android-36;google_apis;arm64-v8a'
+avdmanager create avd -n RemoteCompose -k 'system-images;android-36;google_apis;arm64-v8a'
+emulator -avd RemoteCompose -no-snapshot-save
 ```
 
-Node 22.14.0 is downloaded from nodejs.org and checked against the pinned SHA-256.
-Gradle Wrapper 9.2.1 verifies its distribution checksum. Sources are fetched at the
-exact hashes in upstream-lock.json; existing dirty or differently pinned checkouts
-are refused, never discarded. Gradle/npm caches are workspace-local and ignored.
+Accept SDK licenses interactively. The SDK-36 build was verified; the emulator actually
+exercised in this session was an existing API-37 Android 17 Medium Phone AVD. Creating a
+new SDK-36 AVD is the documented equivalent, not a claim that this particular AVD was run.
+Linux uses the official Linux CLI tools and an image matching host architecture instead.
 
-`verify-pipeline.sh` runs the JVM tests, builds the compiler CLI, compiles the fixture,
-installs upstream locked npm dependencies, bundles the real player and tests it in
-Chrome. All those steps also passed from a fresh Git clone at `93fce22`, with empty project
-caches and newly fetched sources. See [reproduction evidence](evidence/clean-checkout.json).
-Only macOS arm64 has been exercised; do not infer other platform support.
-
-Expected outputs (ignored/generated):
-
-- `artifacts/minimal-canvas.rc`: 109 bytes.
-- `artifacts/minimal-canvas.rc.metadata.json`: header, flat operations, size and SHA-256.
-- `artifacts/browser-minimal.png`: actual canvas screenshot.
-- `artifacts/browser-proof.json`: matching binary digest and browser pixel-test result.
-- `pipeline/build/test-results/test/`: JUnit XML, 63 upstream + six local tests.
-
-## Individual commands
+In another terminal, with JAVA_HOME and ANDROID_HOME set:
 
 ```sh
-sh scripts/gradle.sh :pipeline:test :pipeline:installDist --console=plain
-pipeline/build/install/pipeline/bin/pipeline samples/minimal-canvas.json artifacts/minimal-canvas.rc
-sh scripts/node.sh npm ci --prefix upstream/experiments/players/typescript
-sh scripts/node.sh npm run bundle --prefix upstream/experiments/players/typescript
-sh scripts/node.sh npm ci --prefix player-smoke
-sh scripts/node.sh npm test --prefix player-smoke
-sh scripts/node.sh npm run serve --prefix player-smoke
+sh scripts/gradle.sh -Pandroid :android-player:assembleDebug :android-player:testDebugUnitTest :android-player:lintDebug
+adb reverse tcp:8080 tcp:8080
+adb install -r android-player/build/outputs/apk/debug/android-player-debug.apk
+adb shell am start -n demo.remotecompose/.MainActivity
+adb logcat -s RC_DOCUMENT RC_HOST_EVENT
+sh scripts/gradle.sh -Pandroid :android-player:connectedDebugAndroidTest
 ```
 
-Open http://127.0.0.1:8080 while serve runs to see the real binary player. It shows the
-blue circle and a binary digest; no remote UI is approximated in HTML. The tiny Node
-server is only a static proof harness, not the planned Kotlin publishing service.
+Instrumentation uses an in-device test HTTP server and a genuine compiled fixture;
+it need not publish or alter your backend. It can uninstall the application afterward:
+reinstall the APK for a demo. Debug opens a native bottom dialog with URL, interval,
+auto-refresh, status, metadata and bounded event log. Default URL uses localhost and adb
+reverse. Emulator 10.0.2.2 reaches the host as an alternative. A physical device can use
+USB adb reverse or your host LAN address, with backend RC_BIND_HOST=0.0.0.0.
 
-For a different compiled file, run `sh scripts/node.sh node player-smoke/server.mjs
-/path/to/document.rc`. The automated smoke test intentionally expects the minimal
-circle, so arbitrary compositions need their own assertions.
+## iOS Simulator CLI (macOS only)
+
+Requires full Xcode, its licensed command-line tools and an installed iOS Simulator
+runtime. Tested Xcode 27.2, iPhone 18 Pro Simulator, arm64; minimum linked target 18.5.
+The build uses xcrun swiftc plus CMake, not an Xcode GUI project.
 
 ```sh
-python3 scripts/check-project.py
-python3 scripts/doctor.py
+export DEVELOPER_DIR=/Applications/Xcode.app/Contents/Developer
+xcodebuild -version
+xcrun simctl list devices available
+python3 scripts/bootstrap-mobile.py
+sh scripts/build-ios.sh
 ```
 
-The first checks documentation/JSON/metadata integrity, not protocol behavior. Doctor
-reports broader project prerequisites and can exit 1 even when the minimal proof works
-(e.g. missing Android CLI tools or CMake). Upstream `npm run check` currently fails;
-see COMPATIBILITY rather than describing all upstream checks as passing.
+Choose a device UUID from the list and substitute it below:
 
-No Android/iOS application build commands are available yet. The following sections
-record their CLI setup requirements, not completed module builds.
+```sh
+xcrun simctl boot DEVICE_UUID
+xcrun simctl bootstatus DEVICE_UUID -b
+xcrun simctl install DEVICE_UUID ios-player/build/RemoteCompose.app
+xcrun simctl launch DEVICE_UUID demo.remotecompose.ios
+xcrun simctl io DEVICE_UUID screenshot ios-player/build/screenshot.png
+```
 
-## Android CLI workflow — prerequisites, not project validation
+Simulator localhost reaches the Mac backend. Publish a document before launching.
+Native Refresh and Debug remain available when fetching or decoding fails. The debug
+sheet contains URL, auto-refresh, interval, metadata, errors and host log.
 
-Install Android SDK Command-Line Tools from the official Android developer distribution
-on a network-enabled machine. Set ANDROID_HOME to the SDK and include
-`cmdline-tools/latest/bin`, `platform-tools`, and `emulator` in PATH. Use a compatible
-JDK and obtain required licenses explicitly with `sdkmanager --licenses`.
+For the automated engine-input smoke: publish samples/interaction.json, launch with
+`--smoke` and simctl --stdout/--stderr file arguments. It sends the fixture click into
+the real C++ engine, observes event 42, deliberately fetches an unreachable URL, checks
+last-good preservation and restores the URL. This is not a native UI tap automation test.
 
-Choose platform/build-tools/system-image packages matching the eventual pinned build;
-list candidates with `sdkmanager --list`. Create an AVD with `avdmanager create avd`
-using the selected image; list/start it using `emulator -list-avds` and
-`emulator -avd <name>`. Do not assume a particular image is installed.
-
-When the Android module and Wrapper exist, implement and verify the required
-assembleDebug, testDebugUnitTest, lintDebug, and connectedDebugAndroidTest tasks.
-Then use `adb install -r <apk>`, `adb shell am start -n <package>/<activity>` and
-`adb logcat` for installation, launch and logs. Those artifact/package names are not
-defined yet. No Android project command is represented as currently runnable.
-
-For a USB device or emulator, `adb reverse tcp:8080 tcp:8080` allows the app to reach
-a host backend at device localhost:8080. Android Emulator alternatively exposes the
-host through 10.0.2.2. A physical device without reverse needs a reachable host LAN
-address and server binding. Cleartext development networking must be configured in
-the future app; it is not enabled by this documentation.
-
-## iOS CLI workflow — prerequisites, not project validation
-
-Full Xcode is required on macOS; Command Line Tools selection alone is insufficient.
-Use a per-command `DEVELOPER_DIR` pointing to Xcode's Contents/Developer directory,
-then inspect `xcodebuild -version`, `xcrun --sdk iphonesimulator --show-sdk-path`, and
-`xcrun simctl list devices available`. This avoids changing global developer settings.
-The original machine has Xcode 27.2 and an iOS simulator SDK when selected this way.
-
-After implementing an actual scheme, build with xcodebuild for a selected simulator;
-install and launch with simctl. No app/scheme exists yet. Device builds need an Apple
-development team, signing identity and provisioning; simulator builds do not prove
-device signing or performance. iOS builds cannot run on Linux. C++/Skia dependencies
-and a Swift bridge still require investigation at the experiments pin.
+Physical-device iOS packaging/signing is not implemented or tested. It requires the
+device Skia slice, an iPhoneOS build, a development team/certificate/provisioning profile,
+signing entitlements and a reachable backend URL. Linux cannot build this iOS target.

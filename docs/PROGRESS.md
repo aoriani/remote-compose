@@ -1,91 +1,62 @@
 # Progress and handoff
 
-Updated 2026-11-03. Current phase: **Stage 2 minimal JVM/browser pipeline verified**.
-The Kotlin HTTP service, publishing/version store, full editor and mobile apps are not
-implemented. The work in this session is limited to the requested foundation.
+Updated 2026-11-03. Branch main. Current phase: usable cross-platform demonstration,
+with measured compatibility limited to the fixtures below. No remote push performed.
 
-## Completed milestones
+## Implemented
 
-- Preserved the existing repository/history and reviewed all five prior documentation
-  changes. Committed them as `05f8e48` after checks (`123b8b1` is the initial foundation).
-- Confirmed GitHub and Maven Central connectivity after the permission restart.
-  Git writes and Chrome launch work with supported approvals; earlier blockers are resolved.
-- Fetched both upstreams, examined actual source/build/test files, source history and
-  documentation; corrected indexed-source inferences in RESEARCH/JSON_FORMAT/COMPATIBILITY.
-- Selected AndroidX `8932b2c2b5043cc40c46a44cfd04a1671ec50fb7` and experiments
-  `a7a76f1d9ecc5aff2af93d0de570a11532552ea3`. Later moving heads were not adopted.
-- Built unchanged AndroidX core/creation-core in an isolated Kotlin/JVM Gradle app.
-  Kotlin calls the real upstream parser; real remote-core decodes the result.
-- Compiled the primitive circle fixture to 109 bytes, v1.1.0/API 7/profile 0, 390×844.
-- Bundled the actual experimental RcdPlayer, served the compiled bytes and verified
-  exact SHA-256 plus three canvas pixels in Chrome. Visually inspected its screenshot.
-- Added checksum-pinned Node bootstrap, Gradle Wrapper, dependency locks, guarded source
-  acquisition, reproducible verification script and durable evidence.
+- Preserved foundation, exact upstream pins and the 109-byte original proof.
+- Strict primitive validation with malformed/unsupported/property/location diagnostics.
+- Kotlin HTTP preview, immutable atomic publication, history, metadata, ETags and restart
+  persistence; failed compilation cannot replace a publication.
+- Three-panel editor: eleven templates, outline operations, conservative properties,
+  editable highlighted raw JSON, real binary preview, publish and load published source.
+  Custom primitive subtrees survive editing; unsafe ID duplication is rejected.
+- Real PNG adapter/resource catalog, two continuous-time expression animations and
+  protocol HostAction callbacks, with no business widgets in any runtime.
+- Android official player with native debug bottom dialog, conditional refresh,
+  auto-refresh, metadata/errors/events and last-good preservation.
+- iOS C++/Skia Metal player with Swift debug sheet and equivalent fetch/debug behavior.
+- A new uncatalogued composition was published and rendered by browser, Android and iOS
+  at identical SHA-256 while both installed application hashes stayed unchanged.
 
-## Validation results
+## Verified tests and evidence
 
-- `:pipeline:test`: **69 passed** (44 upstream parser + 19 upstream Mesh2D parser + six
-  local compiler tests). Covers real operations/header, deterministic bytes, primitive
-  edits changing binary, malformed input, missing root/fields, unknown component errors,
-  declared profiles and characterization of ignored unknown modifiers/commands.
-- `:pipeline:installDist`: **passed**, no Android runtime dependencies.
-- `npm ci` and upstream `npm run bundle`: **passed**.
-- `npm test --prefix player-smoke`: **passed**, Chrome 156.0.8078.80; exact 109-byte digest
-  and three inside/outside/paint-color assertions. Evidence is tracked under docs/evidence.
-- `python3 scripts/check-project.py` and `git diff --check`: **passed**.
-- Upstream `npm run check`: **failed** (exit 2), existing TypeScript errors across
-  ColorAttribute, layout inheritance/access, shader tests, CanvasPaintContext and more.
-  Upstream is unchanged. Runtime/bundle success does not imply its typecheck passes.
-- **Fresh-checkout verification passed** at implementation commit `93fce22`: a new Git
-  clone with no reused workspace caches/outputs fetched both exact source pins,
-  SHA-checked Node/Gradle, compiled all sources, passed all 69 JVM tests and the real
-  Chrome digest/pixel checks. Project and both upstream trees remained clean. See
-  [reproduction evidence](evidence/clean-checkout.json).
-- Android/iOS builds, runtime animations, events, larger resource/layout/text fixtures,
-  backend endpoints and editor behavior have **not** been tested/implemented.
+- 79 JVM tests: 63 upstream parser tests plus 16 local compiler/backend tests.
+- Six Node editor-model tests.
+- Browser end-to-end: eleven templates compile, real PNG draws, both protocol animations
+  change, arbitrary custom copies survive, publish works, event 42 reaches host, invalid
+  publication preserves previous document and preview. No unknown-opcode warnings.
+- Android assembleDebug, one unit test, lintDebug (zero errors; upstream warnings), one
+  connected instrumentation test on Android 17/API-37 emulator. Instrumentation verifies
+  real network fetch/digest, actual player input/event42 and failed refresh preservation.
+- iOS arm64 Simulator app built with CMake/Swift/Metal, installed and exercised on iPhone
+  18 Pro. Engine-input smoke verifies event42 and actual failing-fetch preservation.
+- Both native players rendered animation fixture; consecutive screenshots show different
+  badge and progress pixel areas. Both then auto-fetched the corrected custom composition.
+- Corrected custom document: 932 bytes, SHA-256
+  `3ea80866c330a6f27b827ec964b4d86909fa1b77cafc3926e241b9e047a7d871`.
+  Screenshots and compact records are in [evidence](evidence/cross-platform.json).
+- Expanded clean-checkout reproduction has not yet been run. The original 69-test minimal
+  pipeline clean-checkout verification remains recorded separately.
 
-## Current constraints
+## Important limitations and next work
 
-Compatibility is established only for the minimal fixture, not all API-7 operations.
-Unknown JSON modifiers/commands can silently vanish; the browser can return a parsed
-prefix on unknown opcodes. Default JVM bitmap services are stubs. Keep compression off.
-Build/source integration is library-group restricted and pinned; see compatibility.
-Node/Gradle caches are local; JDK is supplied via JAVA_HOME. Full Xcode exists locally,
-but Android sdkmanager/avdmanager and CMake remain uninstalled and are not needed by this gate.
+- SVG drawPath generated an Android error and missing C++ geometry in a real trial.
+  Strict service now rejects paths; the corrected fixture uses verified circle primitives.
+  Shader paint state persists: reset with paint shader=0 before solid drawing.
+- Experimental browser typecheck still fails upstream; bundle/runtime tests pass.
+- Physical devices, signed iOS device packaging, Intel iOS Simulator and broad protocol
+  conformance remain unverified. Native gesture/UI automation coverage is partial.
+- Only selected API-7 primitives are enabled; source support does not imply player parity.
+  Images are verified in browser, not yet visually asserted in both native players.
+- Next: repeat the expanded workflow from a clean clone, add durable native UI automation
+  and full landing-page image/scroll fidelity checks; investigate path encoding separately.
+- Reusable binary fragments/cache are research only; no optimization was implemented.
 
-## Next recommended work
+## Git milestones
 
-1. Preserve the verified minimal baseline at `93fce22` and its clean-checkout evidence.
-2. Add strict input/capability validation and preview compilation to a lightweight Kotlin
-   HTTP backend, then immutable atomic publication/ETags with failure preservation tests.
-3. Expand shared fixtures for nested layout/text/images, two continuous animations and
-   host-visible callbacks before claiming broader compatibility.
-4. Implement the editor preserving raw primitive/custom subtrees. No full editor started.
-5. Build/run Android with CLI tools and iOS with the actual C++ bridge, using identical
-   published binary hashes and native refresh/debug shells.
-
-## Git handoff
-
-Branch: `main`. Commits: `123b8b1` foundation, `05f8e48` prior diagnostics,
-`93fce22` validated compiler/browser implementation. This handoff/evidence update is
-committed separately; `git log -1 --oneline` identifies that documentation commit.
-No uncommitted implementation remains, and nothing was reset, rebased, force-pushed or
-pushed. The clean-checkout verification passed; remaining work is listed above.
-
-## Continuing implementation — backend milestone
-
-Strict validation and Kotlin HTTP preview/publishing are implemented. Seven new tests
-pass, including malformed-vs-unsupported diagnostics, exact nested locations, custom
-primitive preservation, real HTTP preview/publish separation, failed publish preservation,
-ETags, historical versions, restart recovery and concurrent unique versions. Total: 76
-passing JVM tests. The editor and mobile work continues next; prior pending statements
-above describe the previous handoff baseline.
-
-## Editor, animations and interaction milestone
-
-The functional palette/outline/properties/raw highlighted JSON/phone preview/publish
-workflow passes browser end-to-end testing. Eleven templates compile, arbitrary custom
-primitive trees survive operations, real PNG drawing is observed, two continuous-time
-protocol animations change draw calls, and remote HostAction 42 reaches the host log.
-Six Node model tests pass. New bitmap adapter test and updated JVM suite run with the
-next validation. Full mobile work continues; no native business widgets have been added.
+`91f43a9`: strict validation and atomic backend. `cf1d42e`: JSON-preserving editor,
+images/animations/host actions. Native implementation and evidence are the next commits;
+use `git log -5` for exact final hashes. No user files were discarded or history rewritten.
+See [setup](GETTING_STARTED.md) for working commands and [context](CONTEXT.md) to resume.

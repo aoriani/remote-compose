@@ -139,3 +139,16 @@ They are **research references, not a selected compatible revision pair**.
 - Inspect official Android player APIs at the same pin. Avoid confusing AOSP framework
   internal RemoteComposePlayer with the AndroidX public library.
 - Determine reproducible JVM artifacts/source inclusion, licenses, and exact versions.
+
+## Runtime findings from the expanded implementation (2026-11-03)
+
+Pins are unchanged. The real compiler, browser, official Android player and C++/Skia iOS
+player now exercised nested layout/text/gradients, two time-expression animations and
+HostAction42; see COMPATIBILITY and evidence/cross-platform.json for scope. JVM ImageIO
+platform services supply actual PNG bytes. The custom932-byte fixture rendered on all
+three without changing installed mobile application hashes. An earlier SVG fixture did
+not: Android reported Odd command0 and iOS omitted its geometry. Paths are now excluded
+from strict service. Persistent gradient paint requires shader0 reset. The iOS bridge's
+engine host callbacks and onClick are wired explicitly; the original sample touch-up
+alone was insufficient. These verified findings supersede earlier unbuilt/untested notes
+in this historical research narrative. No broad protocol or physical-device claim follows.

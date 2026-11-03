@@ -1,0 +1,35 @@
+{
+  "header": {
+    "width": 390,
+    "height": 844,
+    "profiles": 512
+  },
+  "root": {
+    "type": "box",
+    "modifiers": [
+      {
+        "fillMaxWidth": 1
+      },
+      {
+        "height": 56
+      },
+      {
+        "background": "#0067A0"
+      },
+      {
+        "onClick": {
+          "type": "HostAction",
+          "actionId": 42
+        }
+      }
+    ],
+    "children": [
+      {
+        "type": "text",
+        "value": "Start scanning",
+        "fontSize": 20,
+        "color": "#FFFFFF"
+      }
+    ]
+  }
+}

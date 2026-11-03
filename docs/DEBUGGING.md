@@ -85,3 +85,20 @@ Experimental upstream tools include state traces, writer-ID inspection, computed
 and headless rendering. See [status](https://github.com/camaelon/remotecompose-experiments/blob/main/STATUS.md)
 and inspect tool scripts at the pin before using them. A differential between two
 engines identifies disagreement, not which one is correct.
+
+## Current implementation pitfalls
+
+- SVG paths are intentionally rejected by strict validation: a compiled trial failed
+  Android with Odd command0 and omitted C++ geometry. Do not bypass the restriction for
+  a demo or substitute native drawing. Investigate JVM path encoding separately.
+- Gradient paint stays active until cleared: use paint shader=0 before solid colors.
+- Use continuous `time` expressions for animation; animationTime-only repaint stalls
+  on the pinned browser. Unknown-opcode warnings are failures, even if load returns.
+- iOS undefined ICU/shaper symbols: link the auxiliary Skia libraries in build-ios.sh.
+  The prebuilt ICU object requires iOS18.5 minimum deployment target.
+- Android AGP9 built-in Kotlin must stay disabled with this root Kotlin plugin; app is
+  Java. Existing upstream lint warnings are recorded, not hidden compilation failures.
+- Native fetch defaults to localhost8080: Android needs adb reverse; Simulator uses Mac
+  localhost. Debug URL/refresh controls remain native when the remote document fails.
+- Service errors identify JSON pointers. The original permissive research CLI does not
+  enforce the strict service subset. A parser success never proves renderer support.

@@ -52,6 +52,15 @@ class BackendTest {
         assertTrue(operations.any { it.toString().contains("BitmapData") })
         invalid(source.replace("club-bag","missing-asset"), "UNSUPPORTED_OPERATION", "/root/commands/0/image")
     }
+    @Test fun rejectsUnverifiedSvgPathEncodingAndPermitsShaderReset() {
+        invalid("""{"root":{"type":"canvas","commands":[{"type":"drawPath","path":"M 0 0 L 20 20 Z"}]}}""", "UNSUPPORTED_OPERATION", "/root/commands/0/type")
+        compileValidated("""{"root":{"type":"canvas","commands":[{"type":"paint","ops":[{"shader":0},{"color":"#FFFFFF"}]}]}}""")
+    }
+    @Test fun validShorthandAndInvalidFloatBounds() {
+        compileValidated("""{"header":{"profiles":512},"root":{"column":{"children":[{"text":"Uncatalogued shorthand"}]}}}""")
+        invalid(sample.replace("\"radius\": 64", "\"radius\": 1e300"), "INVALID_PROPERTY", "/root/commands/1/radius")
+        invalid(sample.replace("\"radius\": 64", "\"radius\": \"NaN\""), "INVALID_PROPERTY", "/root/commands/1/radius")
+    }
     @Test fun previewPublishAndFailurePreservationThroughHttp() {
         val data = Files.createTempDirectory("rc-http-test")
         val project = Path.of("..").toAbsolutePath().normalize()

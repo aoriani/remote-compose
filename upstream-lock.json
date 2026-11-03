@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "status": "minimal-jvm-browser-pipeline-verified",
+  "status": "cross-platform-demonstration-verified-subset",
   "androidx": {
     "repository": "https://github.com/androidx/androidx.git",
     "requestedBranch": "androidx-main",
@@ -27,21 +27,23 @@
     },
     "kotlin": "2.2.20",
     "gradle": "9.2.1",
-    "androidGradlePlugin": null,
+    "androidGradlePlugin": "9.0.0",
     "jdk": "25.0.4 (tested JBR; JVM target 17)",
     "node": "22.14.0",
-    "skia": null,
+    "skia": "m144-e2e6623374-4",
     "jspecify": "1.0.0",
     "playwright": "1.56.1",
     "esbuild": "0.27.7",
-    "typescript": "5.9.3"
+    "typescript": "5.9.3",
+    "cmake": "3.31.6",
+    "jackson": "2.18.3"
   },
   "verification": {
     "upstreamsCloned": true,
     "jvmCompiled": true,
     "browserRendered": true,
-    "androidRendered": false,
-    "iosRendered": false
+    "androidRendered": true,
+    "iosRendered": true
   },
-  "verificationScope": "Only samples/minimal-canvas.json and the recorded tests; not general cross-platform conformance. Android/iOS unbuilt."
+  "verificationScope": "Pinned API-7 subset: browser editor; Android emulator and arm64 iOS Simulator: interaction fixture, two animations and custom composition. Not protocol conformance or physical-device certification."
 }

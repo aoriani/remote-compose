@@ -33,8 +33,10 @@ object Validation {
         }
     }
     private fun scalar(n: JsonNode, path: String) {
-        if (!(n.isNumber && n.asDouble().isFinite()) && !(n.isTextual && n.asText().isNotBlank() && n.asText().length <= 1024))
+        if (!(n.isNumber && n.asDouble().toFloat().isFinite()) && !(n.isTextual && n.asText().isNotBlank() && n.asText().length <= 1024))
             fail(path, "Expected finite number or nonempty Remote Compose expression/reference")
+        if (n.isTextual && (n.asText().lowercase() in setOf("nan", "infinity", "-infinity", "+infinity") || n.asText().toDoubleOrNull()?.toFloat()?.isFinite() == false))
+            fail(path, "Non-finite float values are not supported")
     }
     private fun text(n: JsonNode, path: String) { if (!n.isTextual) fail(path, "Expected string") }
     private fun number(n: JsonNode, path: String) { if (!n.isNumber || !n.asDouble().isFinite()) fail(path, "Expected finite number") }
@@ -74,11 +76,10 @@ object Validation {
         return n
     }
     private fun resources(n: JsonNode, p: String) {
-        keys(n, setOf("variables", "colors", "paths"), p)
+        keys(n, setOf("variables", "colors"), p)
         n.fields().forEachRemaining { (section, entries) ->
             fun value(v: JsonNode, q: String) { when(section) {
                 "colors" -> color(v, q)
-                "paths" -> text(v, q)
                 "variables" -> if (v.isObject) {
                     keys(v, setOf("value", "export"), q); required(v, "value", q); scalar(v.get("value"), "$q/value")
                     v.get("export")?.let { if (!it.isBoolean) fail("$q/export", "Expected boolean") }
@@ -97,6 +98,8 @@ object Validation {
         if (n.has("type")) { text(n.get("type"), "$path/type"); return n.get("type").asText().lowercase() to n }
         if (n.size() != 1) fail(path, "Use type or a single primitive shorthand key")
         val entry = n.fields().next()
+        if (entry.key.equals("text", true) && entry.value.isTextual)
+            return "text" to mapper.createObjectNode().also { it.set<JsonNode>("value", entry.value) }
         if (!entry.value.isObject) fail(path, "Primitive shorthand must contain an object")
         return entry.key.lowercase() to entry.value
     }
@@ -150,6 +153,7 @@ object Validation {
             "clip" -> {
                 keys(value, setOf("type", "radius"), "$p/$key"); required(value, "type", "$p/$key")
                 enum(value.get("type"), "circle rect roundRect", "$p/$key/type")
+                if(value.has("radius") && value.get("type").asText() != "roundRect") fail("$p/$key/radius", "radius applies only to roundRect")
                 value.get("radius")?.let { number(it, "$p/$key/radius") }
             }
             else -> fail("$p/$key", "Unsupported Remote Compose modifier '$key'", "UNSUPPORTED_OPERATION")
@@ -171,13 +175,14 @@ object Validation {
             else -> fail("$p/type", "Unsupported action", "UNSUPPORTED_OPERATION")
         }
     }
-    private val paintKeys = setOf("color", "style", "width", "strokeWidth", "alpha", "strokeCap", "textSize", "linearGradient")
+    private val paintKeys = setOf("color", "style", "width", "strokeWidth", "alpha", "strokeCap", "textSize", "linearGradient", "shader")
     private fun paint(n: JsonNode, p: String) {
         keys(n, paintKeys, p)
         n.fields().forEachRemaining { (k,v) -> when(k) {
             "color" -> color(v, "$p/$k")
             "style" -> enum(v, "fill stroke fillAndStroke", "$p/$k")
             "strokeCap" -> enum(v, "butt round square", "$p/$k")
+            "shader" -> if (!v.isIntegralNumber || v.asInt() != 0) fail("$p/$k", "Only shader reset (0) is enabled", "UNSUPPORTED_OPERATION")
             "linearGradient" -> {
                 keys(v, setOf("x1", "y1", "x2", "y2", "colors", "stops", "tileMode"), "$p/$k")
                 required(v, "colors", "$p/$k"); array(v.get("colors"), "$p/$k/colors", ::color)
@@ -201,7 +206,6 @@ object Validation {
             "scale" -> "sx sy"
             "translate" -> "dx dy"
             "rotate" -> "angle pivotX pivotY"
-            "drawpath" -> "path"
             "addbitmap" -> {
                 keys(v,setOf("type","image","varName"),p); required(v,"image",p)
                 if(v.get("image").asText() != "club-bag") fail("$p/image","Unknown catalog bitmap", "UNSUPPORTED_OPERATION")

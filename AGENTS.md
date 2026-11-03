@@ -21,7 +21,11 @@ can still require client releases.
 - `upstream-lock.json`: exact sources verified for the minimal JVM/browser fixture.
 - `pipeline/`: standalone Kotlin/JVM compiler CLI, unchanged upstream sources and tests.
 - `player-smoke/`: real binary browser player harness and automated pixel checks.
-- Backend HTTP publishing, full editor, and mobile apps are not implemented yet.
+- `web-editor/`: primitive JSON authoring and genuine browser preview.
+- `android-player/`: Java native debug shell and official AndroidX renderer.
+- `ios-player/`: Swift debug shell, Objective-C++ bridge and C++/Skia Metal renderer.
+- Backend HTTP service and immutable version store are in `pipeline/Backend.kt`.
+- Run `sh scripts/verify-demo.sh` for backend/editor checks; mobile commands are in GETTING_STARTED.
 
 ## Development rules
 
