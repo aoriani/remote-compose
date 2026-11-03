@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "status": "research-only-not-compatible-pins",
+  "androidx": {
+    "repository": "https://github.com/androidx/androidx.git",
+    "requestedBranch": "androidx-main",
+    "revision": null,
+    "researchRevisions": [
+      "4d0b56080497b79e6ac3d1b3b87f1029edf9c3c7",
+      "62d36f9952c23fdd41095a4fd7ba968fade32eaf",
+      "fa07a37857e71e91427b7d68ec6b6f7f2931000a"
+    ]
+  },
+  "experiments": {
+    "repository": "https://github.com/camaelon/remotecompose-experiments.git",
+    "requestedBranch": "main",
+    "revision": null
+  },
+  "dependencies": {
+    "org.json": {"observedVersion": "20231013", "selectedVersion": null},
+    "androidx.annotation": {"observedVersion": "1.8.1", "selectedVersion": null},
+    "kotlin": null,
+    "gradle": null,
+    "androidGradlePlugin": null,
+    "jdk": null,
+    "node": null,
+    "skia": null
+  },
+  "verification": {
+    "upstreamsCloned": false,
+    "jvmCompiled": false,
+    "browserRendered": false,
+    "androidRendered": false,
+    "iosRendered": false
+  }
+}

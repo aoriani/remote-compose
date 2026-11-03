@@ -1,0 +1,17 @@
+{
+  "header": {
+    "width": 390,
+    "height": 844
+  },
+  "root": {
+    "type": "canvas",
+    "modifiers": [
+      { "width": 390 },
+      { "height": 844 }
+    ],
+    "commands": [
+      { "type": "paint", "ops": [{ "color": "#0067A0" }, { "style": "fill" }] },
+      { "type": "drawCircle", "cx": 195, "cy": 160, "radius": 64 }
+    ]
+  }
+}

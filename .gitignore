@@ -1,0 +1,40 @@
+# Local dependencies and fetched upstreams
+node_modules/
+.gradle/
+.kotlin/
+upstream/
+.toolchains/
+.venv/
+__pycache__/
+*.py[cod]
+
+# Generated outputs and runtime data
+build/
+dist/
+out/
+coverage/
+.cache/
+.DS_Store
+*.log
+*.apk
+*.aab
+*.xcarchive
+*.xcresult
+DerivedData/
+.build/
+data/
+artifacts/
+
+# Machine-local configuration and secrets
+local.properties
+.env
+.env.*
+!.env.example
+*.keystore
+*.jks
+*.p12
+*.mobileprovision
+*.provisionprofile
+xcuserdata/
+.idea/
+.vscode/
