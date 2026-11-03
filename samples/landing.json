@@ -26,10 +26,10 @@
             "fillMaxWidth": 1
           },
           {
-            "padding": 20
+            "background": "#0067A0"
           },
           {
-            "background": "#0067A0"
+            "padding": 20
           }
         ],
         "children": [
@@ -48,10 +48,10 @@
             "fillMaxWidth": 1
           },
           {
-            "padding": 24
+            "background": "#DDF3F7"
           },
           {
-            "background": "#DDF3F7"
+            "padding": 24
           }
         ],
         "children": [
@@ -84,10 +84,10 @@
             "fillMaxWidth": 1
           },
           {
-            "padding": 18
+            "background": "#FFF0C4"
           },
           {
-            "background": "#FFF0C4"
+            "padding": 18
           }
         ],
         "children": [
@@ -133,7 +133,9 @@
             "fontSize": 20,
             "color": "#FFFFFF"
           }
-        ]
+        ],
+        "horizontalAlignment": "center",
+        "verticalAlignment": "center"
       },
       {
         "type": "canvas",
@@ -426,10 +428,10 @@
                 "height": 100
               },
               {
-                "padding": 18
+                "background": "#E7EFFA"
               },
               {
-                "background": "#E7EFFA"
+                "padding": 18
               }
             ],
             "children": [
@@ -451,10 +453,10 @@
                 "height": 100
               },
               {
-                "padding": 18
+                "background": "#DDF3E9"
               },
               {
-                "background": "#DDF3E9"
+                "padding": 18
               }
             ],
             "children": [

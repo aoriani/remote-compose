@@ -128,3 +128,12 @@ Successful compilation is insufficient. Strict service now rejects drawPath/path
 the working custom fixture uses circles and resets persistent shader paint with shader0.
 Keep the failed trial documented rather than hiding it with native UI fallbacks. Re-enable
 paths only after investigating JVM path encoding and running real cross-platform tests.
+
+## 015 — Demo fixes retain primitive source and snapshot boundaries (2026-11-03)
+
+The review found padded backgrounds painted only inner text, duplicate selection remaining
+on the original, misleading zoom footprint and ambiguous preview freshness. Fix template
+primitive ordering/alignment, select the copy, fit the actual frame and show draft/preview
+equality. Serialize compile/publish controls and discard previews for superseded source.
+Publication still uses its submitted snapshot; preview remains separate. Existing custom
+or older JSON is preserved, never upgraded by regenerating it from a changed template.

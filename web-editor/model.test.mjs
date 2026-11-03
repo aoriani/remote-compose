@@ -6,3 +6,5 @@ test('custom trees survive property editing, movement, duplication and deletion'
 test('customized template falls back rather than regenerating',()=>{const n=createWidget('hero');n.children.push({type:'canvas',commands:[]});assert.equal(recognize(n).id,null);});
 test('single custom root remains unchanged unless a section operation requires restructuring',()=>{const d={resources:{variables:{x:42}},root:{type:'canvas',commands:[]}};assert.equal(sections(d)[0],d.root);const n=d.root;setSections(d,[n]);assert.equal(d.root,n);setSections(d,[n,createWidget('text')]);assert.equal(d.root.children[0],n);assert.equal(d.resources.variables.x,42);});
 test('unsafe duplicate rejects identifier declarations',()=>{const d={root:[{type:'box',modifiers:[{id:20}]}]};assert.throws(()=>operate(d,0,'duplicate'),/ID/);});
+
+test('duplicate selects the new copy and the next property edit leaves the original intact',()=>{const d={root:[createWidget('text')]};const selected=operate(d,0,'duplicate');assert.equal(selected,1);patch(sections(d)[selected],['value'],'Copied label');assert.equal(sections(d)[0].value,'Discover more for less');assert.equal(sections(d)[1].value,'Copied label');});

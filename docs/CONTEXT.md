@@ -55,3 +55,16 @@ engine-input smoke passed. See PROGRESS/evidence for precise scope. No physical 
 were tested. Expanded fresh-clone validation at86e9595 passed backend/editor tests and both native
 builds; see evidence/expanded-clean-checkout.json. Native image/scroll and UI automation
 coverage remain next. Never infer broad compatibility from a successful parse.
+
+## Demonstration-readiness authoring fixes (2026-11-03)
+
+Template backgrounds must precede padding in ordered modifiers to cover the section;
+button alignment is genuine box alignment. Existing authored JSON is never regenerated
+when factories change: older template structures safely fall back to Custom. Duplicate
+now selects the new copy so a subsequent property edit does not change the original.
+The phone frame follows actual zoom/available width; <=650px uses a stacked layout.
+Draft/preview equality is explicit. Compile/publish controls serialize requests; editing
+while compilation is pending cannot install an obsolete preview. A publish reports the
+submitted snapshot separately from preview. Apply sends malformed JSON to the JVM for
+consistent diagnostics; fetch failures preserve the last canvas. Named and ID logs share
+one 50-entry bound. Seven Node tests and expanded real browser workflow pass.

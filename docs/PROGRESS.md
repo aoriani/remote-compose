@@ -63,3 +63,11 @@ with measured compatibility limited to the fixtures below. No remote push perfor
 images/animations/host actions. `86e9595`: native viewers, cross-platform render proof and setup documentation.
 The final source-guard/reproducibility handoff follows; use `git log -5` for its hash. No user files were discarded or history rewritten.
 See [setup](GETTING_STARTED.md) for working commands and [context](CONTEXT.md) to resume.
+
+## Demonstration-readiness review in progress
+
+Editor fixes and regression checks are validated: all eleven templates exercised through
+add/property/move/duplicate/delete controls, custom resource-backed trees preserved,
+malformed/offline/stale compilation preservation, exact JVM/player digest equality and
+390/768/1100/1500px layout checks. Seven Node model tests pass. Native gesture/landing-page
+review evidence and the final review report are recorded in the next milestone.
