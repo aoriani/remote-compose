@@ -50,7 +50,7 @@ Android17 emulator; full Xcode27.2/iPhone18Pro arm64 Simulator. No IDE GUI requi
 Tools, upstreams, outputs and publication data are ignored and reacquired from scripts.
 Current execution has network/Git access; old sandbox failures are historical, not current.
 
-79 JVM tests, six model tests, browser workflow, Android CLI/instrumentation and iOS
+79 JVM tests, seven model tests, browser workflow, Android CLI/instrumentation and iOS
 engine-input smoke passed. See PROGRESS/evidence for precise scope. No physical devices
 were tested. Expanded fresh-clone validation at86e9595 passed backend/editor tests and both native
 builds; see evidence/expanded-clean-checkout.json. Native image/scroll and UI automation
@@ -68,3 +68,14 @@ while compilation is pending cannot install an obsolete preview. A publish repor
 submitted snapshot separately from preview. Apply sends malformed JSON to the JVM for
 consistent diagnostics; fetch failures preserve the last canvas. Named and ID logs share
 one 50-entry bound. Seven Node tests and expanded real browser workflow pass.
+
+## Native demonstration review (2026-11-03)
+
+DEMONSTRATION_REVIEW.md records the complete review, methods and limitations. The new
+standalone ios-player/UITests.xcodeproj drives the installed generic app with real XCTest
+Simulator input, not --smoke. Publish samples/demo-landing.json first: it has the fixed
+390×844 coordinates used by the UI test. Events42/99 and clearing are asserted; scroll
+and bitmap screenshots are visually reviewed. Raw iOS metadata is a DisclosureGroup so
+events remain reachable. Android real adb taps also produced 42/99. Both native apps kept
+identical hashes while publication changed to the 4,163-byte combined landing/custom doc.
+New native image/scroll evidence supersedes earlier pending notes. See readiness/results.

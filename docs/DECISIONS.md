@@ -137,3 +137,11 @@ primitive ordering/alignment, select the copy, fit the actual frame and show dra
 equality. Serialize compile/publish controls and discard previews for superseded source.
 Publication still uses its submitted snapshot; preview remains separate. Existing custom
 or older JSON is preserved, never upgraded by regenerating it from a changed template.
+
+## 016 — Real Simulator input and compact native debug evidence (2026-11-03)
+
+Add a standalone XCTest UI target against the installed generic viewer. This replaces
+engine-input-only interaction evidence with actual gesture/host-log assertions for the
+reviewed fixture. Keep scroll/bitmap visual verification separate from automated event
+assertions. Collapse raw iOS metadata to expose events; keep source/renderer/pins unchanged.
+No business widget, native animation or application-specific click behavior is introduced.

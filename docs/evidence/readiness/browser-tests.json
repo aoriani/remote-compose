@@ -1,0 +1,22 @@
+{
+  "templatesCompiled": 11,
+  "templatesExercisedThroughUI": 11,
+  "responsiveWidths": [
+    390,
+    768,
+    1100,
+    1500
+  ],
+  "zoomFrameResize": true,
+  "staleCompilationPreserved": true,
+  "malformedPreviewPreserved": true,
+  "offlinePreviewPreserved": true,
+  "jvmResponseDigestMatched": true,
+  "animationsObserved": 2,
+  "bitmapRendered": true,
+  "customCopiesPreserved": 2,
+  "publishedVersion": 1,
+  "hostEvent": 42,
+  "browser": "156.0.8078.80",
+  "errors": []
+}

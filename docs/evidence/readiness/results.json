@@ -1,0 +1,40 @@
+{
+  "date": "2026-11-03",
+  "baselineRevision": "7d2d3cc",
+  "editorFixCommit": "78fb077",
+  "sharedPublication": {
+    "version": 7,
+    "bytes": 4163,
+    "sha256": "7dd683f3de2b007b9b307799cf9128536b0de8b0da47c006819a15711b546d63",
+    "width": 390,
+    "height": 844,
+    "profiles": 512,
+    "compilerRevision": "8932b2c2b5043cc40c46a44cfd04a1671ec50fb7"
+  },
+  "fixture": "samples/demo-landing.json",
+  "methods": {
+    "browser": "Step-by-step headed Chrome controls with screenshot inspection; automated Playwright regression on isolated temporary server",
+    "android": "Actual adb taps/swipes, UI hierarchy metadata and screenshot inspection; AndroidX instrumentation",
+    "ios": "XCTest real Simulator taps/swipes through installed generic viewer; UI assertions for events42/99 and clearing log; screenshot inspection"
+  },
+  "results": {
+    "jvmTests": 79,
+    "nodeModelTests": 7,
+    "browser": "passed; see browser-tests.json",
+    "android": "assembleDebug, testDebugUnitTest, lintDebug and connectedDebugAndroidTest passed (1 unit, 1 connected test)",
+    "ios": "Simulator build and one XCTest UI test passed with zero failures",
+    "nativeAnimations": "Both exact paint-color areas change between captures; see native-animation.json",
+    "sourceInspection": "No authoring catalog or business component implementations in mobile source; generic official AndroidX and C++/Skia players only",
+    "samePublishedBinary": "Browser rcProof digest, Android native debug hierarchy and iOS native debug screenshot agree"
+  },
+  "applicationHashesUnchangedWhilePublishing": {
+    "androidApk": "99aa2660e79de0eb4677f6e1f0d644e0376a2aeb50b2ac400666edcd7e6902cc",
+    "iosExecutable": "a79c13c15d9845ae82d6a5999933c391541e47c2b652bd628558f04b41912c48"
+  },
+  "scope": [
+    "Chrome156/macOS arm64",
+    "Android17 API37 emulator",
+    "iPhone18Pro iOS27.2 arm64 Simulator",
+    "No physical-device certification or pixel-perfect cross-platform assertion"
+  ]
+}

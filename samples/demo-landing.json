@@ -1,0 +1,637 @@
+{
+  "header": {
+    "width": 390,
+    "height": 844,
+    "profiles": 512,
+    "fps": 60
+  },
+  "root": {
+    "type": "column",
+    "modifiers": [
+      {
+        "fillMaxSize": 1
+      },
+      {
+        "background": "#FFFFFF"
+      },
+      {
+        "verticalScroll": 0
+      }
+    ],
+    "children": [
+      {
+        "type": "box",
+        "modifiers": [
+          {
+            "fillMaxWidth": 1
+          },
+          {
+            "background": "#0067A0"
+          },
+          {
+            "padding": 20
+          }
+        ],
+        "children": [
+          {
+            "type": "text",
+            "value": "Scan & Go",
+            "fontSize": 28,
+            "color": "#FFFFFF"
+          }
+        ]
+      },
+      {
+        "type": "column",
+        "modifiers": [
+          {
+            "fillMaxWidth": 1
+          },
+          {
+            "background": "#DDF3F7"
+          },
+          {
+            "padding": 24
+          }
+        ],
+        "children": [
+          {
+            "type": "text",
+            "value": "Your club. Your way.",
+            "fontSize": 30,
+            "color": "#123047"
+          },
+          {
+            "type": "text",
+            "value": "Scan, pay, and go. Skip the checkout line.",
+            "fontSize": 18,
+            "color": "#123047"
+          }
+        ]
+      },
+      {
+        "type": "spacer",
+        "modifiers": [
+          {
+            "height": 16
+          }
+        ]
+      },
+      {
+        "type": "box",
+        "modifiers": [
+          {
+            "fillMaxWidth": 1
+          },
+          {
+            "background": "#FFF0C4"
+          },
+          {
+            "padding": 18
+          }
+        ],
+        "children": [
+          {
+            "type": "text",
+            "value": "Member savings \u2022 This week only",
+            "fontSize": 20,
+            "color": "#123047"
+          }
+        ]
+      },
+      {
+        "type": "spacer",
+        "modifiers": [
+          {
+            "height": 16
+          }
+        ]
+      },
+      {
+        "type": "box",
+        "modifiers": [
+          {
+            "fillMaxWidth": 1
+          },
+          {
+            "height": 56
+          },
+          {
+            "background": "#0067A0"
+          },
+          {
+            "onClick": {
+              "type": "HostAction",
+              "actionId": 42
+            }
+          }
+        ],
+        "children": [
+          {
+            "type": "text",
+            "value": "Start scanning",
+            "fontSize": 20,
+            "color": "#FFFFFF"
+          }
+        ],
+        "horizontalAlignment": "center",
+        "verticalAlignment": "center"
+      },
+      {
+        "type": "canvas",
+        "modifiers": [
+          {
+            "fillMaxWidth": 1
+          },
+          {
+            "height": 100
+          }
+        ],
+        "commands": [
+          {
+            "type": "paint",
+            "ops": [
+              {
+                "color": "#E94069"
+              },
+              {
+                "style": "fill"
+              }
+            ]
+          },
+          {
+            "type": "drawCircle",
+            "cx": 48,
+            "cy": 48,
+            "radius": "24 + 8 * sin(time * 3)"
+          },
+          {
+            "type": "paint",
+            "ops": [
+              {
+                "color": "#123047"
+              },
+              {
+                "style": "fill"
+              }
+            ]
+          },
+          {
+            "type": "drawTextAnchored",
+            "text": "MEMBER DEAL",
+            "x": 100,
+            "y": 48,
+            "panX": -1,
+            "panY": 0
+          }
+        ]
+      },
+      {
+        "type": "canvas",
+        "modifiers": [
+          {
+            "fillMaxWidth": 1
+          },
+          {
+            "height": 64
+          }
+        ],
+        "commands": [
+          {
+            "type": "paint",
+            "ops": [
+              {
+                "color": "#DDE6EC"
+              },
+              {
+                "style": "fill"
+              }
+            ]
+          },
+          {
+            "type": "drawRect",
+            "left": 20,
+            "top": 20,
+            "right": 360,
+            "bottom": 36
+          },
+          {
+            "type": "paint",
+            "ops": [
+              {
+                "color": "#007C83"
+              },
+              {
+                "style": "fill"
+              }
+            ]
+          },
+          {
+            "type": "drawRect",
+            "left": 20,
+            "top": 20,
+            "right": "20 + 165 * (1 + sin(time * 2))",
+            "bottom": 36
+          }
+        ]
+      },
+      {
+        "type": "row",
+        "modifiers": [
+          {
+            "fillMaxWidth": 1
+          },
+          {
+            "height": 212
+          },
+          {
+            "horizontalScroll": 0
+          }
+        ],
+        "children": [
+          {
+            "type": "column",
+            "modifiers": [
+              {
+                "width": 180
+              },
+              {
+                "padding": 8
+              }
+            ],
+            "children": [
+              {
+                "type": "canvas",
+                "modifiers": [
+                  {
+                    "fillMaxWidth": 1
+                  },
+                  {
+                    "height": 120
+                  }
+                ],
+                "commands": [
+                  {
+                    "type": "addBitmap",
+                    "image": "club-bag",
+                    "varName": "bagImage"
+                  },
+                  {
+                    "type": "drawBitmap",
+                    "image": "@bagImage",
+                    "left": 0,
+                    "top": 0,
+                    "right": 160,
+                    "bottom": 120
+                  }
+                ]
+              },
+              {
+                "type": "text",
+                "value": "Fresh finds",
+                "fontSize": 18,
+                "color": "#123047"
+              },
+              {
+                "type": "text",
+                "value": "$12.98",
+                "fontSize": 22,
+                "color": "#123047"
+              }
+            ]
+          },
+          {
+            "type": "column",
+            "modifiers": [
+              {
+                "width": 180
+              },
+              {
+                "padding": 8
+              }
+            ],
+            "children": [
+              {
+                "type": "canvas",
+                "modifiers": [
+                  {
+                    "fillMaxWidth": 1
+                  },
+                  {
+                    "height": 120
+                  }
+                ],
+                "commands": [
+                  {
+                    "type": "addBitmap",
+                    "image": "club-bag",
+                    "varName": "bagImage"
+                  },
+                  {
+                    "type": "drawBitmap",
+                    "image": "@bagImage",
+                    "left": 0,
+                    "top": 0,
+                    "right": 160,
+                    "bottom": 120
+                  }
+                ]
+              },
+              {
+                "type": "text",
+                "value": "Club favorites",
+                "fontSize": 18,
+                "color": "#123047"
+              },
+              {
+                "type": "text",
+                "value": "$18.98",
+                "fontSize": 22,
+                "color": "#123047"
+              }
+            ]
+          },
+          {
+            "type": "column",
+            "modifiers": [
+              {
+                "width": 180
+              },
+              {
+                "padding": 8
+              }
+            ],
+            "children": [
+              {
+                "type": "canvas",
+                "modifiers": [
+                  {
+                    "fillMaxWidth": 1
+                  },
+                  {
+                    "height": 120
+                  }
+                ],
+                "commands": [
+                  {
+                    "type": "addBitmap",
+                    "image": "club-bag",
+                    "varName": "bagImage"
+                  },
+                  {
+                    "type": "drawBitmap",
+                    "image": "@bagImage",
+                    "left": 0,
+                    "top": 0,
+                    "right": 160,
+                    "bottom": 120
+                  }
+                ]
+              },
+              {
+                "type": "text",
+                "value": "Pantry essentials",
+                "fontSize": 18,
+                "color": "#123047"
+              },
+              {
+                "type": "text",
+                "value": "$8.98",
+                "fontSize": 22,
+                "color": "#123047"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "row",
+        "modifiers": [
+          {
+            "fillMaxWidth": 1
+          },
+          {
+            "height": 110
+          },
+          {
+            "horizontalScroll": 0
+          }
+        ],
+        "children": [
+          {
+            "type": "box",
+            "modifiers": [
+              {
+                "width": 240
+              },
+              {
+                "height": 100
+              },
+              {
+                "background": "#E7EFFA"
+              },
+              {
+                "padding": 18
+              }
+            ],
+            "children": [
+              {
+                "type": "text",
+                "value": "Tips for your next club trip",
+                "fontSize": 20,
+                "color": "#123047"
+              }
+            ]
+          },
+          {
+            "type": "box",
+            "modifiers": [
+              {
+                "width": 240
+              },
+              {
+                "height": 100
+              },
+              {
+                "background": "#DDF3E9"
+              },
+              {
+                "padding": 18
+              }
+            ],
+            "children": [
+              {
+                "type": "text",
+                "value": "Explore member benefits",
+                "fontSize": 20,
+                "color": "#123047"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "canvas",
+        "modifiers": [
+          {
+            "fillMaxWidth": 1
+          },
+          {
+            "height": 240
+          }
+        ],
+        "commands": [
+          {
+            "type": "paint",
+            "ops": [
+              {
+                "linearGradient": {
+                  "x1": 0,
+                  "y1": 0,
+                  "x2": 390,
+                  "y2": 240,
+                  "colors": [
+                    "#00558D",
+                    "#00897C"
+                  ],
+                  "stops": [
+                    0,
+                    1
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            "type": "drawRect",
+            "left": 0,
+            "top": 0,
+            "right": 390,
+            "bottom": 240
+          },
+          {
+            "type": "paint",
+            "ops": [
+              {
+                "shader": 0
+              },
+              {
+                "color": "#FFE199"
+              }
+            ]
+          },
+          {
+            "type": "drawCircle",
+            "cx": 290,
+            "cy": 95,
+            "radius": 48
+          },
+          {
+            "type": "paint",
+            "ops": [
+              {
+                "color": "#FFFFFF"
+              },
+              {
+                "textSize": 24
+              }
+            ]
+          },
+          {
+            "type": "drawTextAnchored",
+            "text": "A NEW COMPOSITION",
+            "x": 24,
+            "y": 190,
+            "panX": -1,
+            "panY": 0
+          }
+        ]
+      },
+      {
+        "type": "row",
+        "modifiers": [
+          {
+            "fillMaxWidth": 1
+          },
+          {
+            "padding": 12
+          }
+        ],
+        "children": [
+          {
+            "type": "box",
+            "modifiers": [
+              {
+                "width": 180
+              },
+              {
+                "padding": 12
+              },
+              {
+                "background": "#D9ECF7"
+              }
+            ],
+            "children": [
+              {
+                "type": "text",
+                "value": "Server-authored",
+                "fontSize": 20,
+                "color": "#14354B"
+              }
+            ]
+          },
+          {
+            "type": "box",
+            "modifiers": [
+              {
+                "width": 180
+              },
+              {
+                "padding": 12
+              },
+              {
+                "background": "#D8F0E8"
+              }
+            ],
+            "children": [
+              {
+                "type": "text",
+                "value": "Unchanged apps",
+                "fontSize": 20,
+                "color": "#14354B"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "box",
+        "modifiers": [
+          {
+            "fillMaxWidth": 1
+          },
+          {
+            "height": 64
+          },
+          {
+            "background": "#703BAC"
+          },
+          {
+            "onClick": {
+              "type": "HostAction",
+              "actionId": 99
+            }
+          }
+        ],
+        "children": [
+          {
+            "type": "text",
+            "value": "New primitive composition \u2022 event 99",
+            "fontSize": 20,
+            "color": "#FFFFFF"
+          }
+        ]
+      }
+    ]
+  }
+}

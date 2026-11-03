@@ -39,3 +39,6 @@ See [setup and mobile CLI commands](docs/GETTING_STARTED.md),
 [future research](docs/FUTURE_ARCHITECTURE.md), [progress](docs/PROGRESS.md),
 [context](docs/CONTEXT.md), [decisions](docs/DECISIONS.md) and
 [third-party software](THIRD_PARTY.md). New sessions start with [AGENTS.md](AGENTS.md).
+
+The [demonstration-readiness review](docs/DEMONSTRATION_REVIEW.md) records the full editor
+walkthrough, native UI interactions, same-binary landing page, fixes and screenshots.

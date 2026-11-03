@@ -23,15 +23,16 @@ with measured compatibility limited to the fixtures below. No remote push perfor
 ## Verified tests and evidence
 
 - 79 JVM tests: 63 upstream parser tests plus 16 local compiler/backend tests.
-- Six Node editor-model tests.
+- Seven Node editor-model tests.
 - Browser end-to-end: eleven templates compile, real PNG draws, both protocol animations
   change, arbitrary custom copies survive, publish works, event 42 reaches host, invalid
   publication preserves previous document and preview. No unknown-opcode warnings.
 - Android assembleDebug, one unit test, lintDebug (zero errors; upstream warnings), one
   connected instrumentation test on Android 17/API-37 emulator. Instrumentation verifies
-  real network fetch/digest, actual player input/event42 and failed refresh preservation.
+  real network fetch/digest, actual player input/event 42 and failed refresh preservation.
 - iOS arm64 Simulator app built with CMake/Swift/Metal, installed and exercised on iPhone
-  18 Pro. Engine-input smoke verifies event42 and actual failing-fetch preservation.
+  18 Pro. Original engine-input smoke checks failed refresh preservation. New real XCTest
+  UI test verifies pointer events 42/99, native log clearing and captures both scroll axes.
 - Both native players rendered animation fixture; consecutive screenshots show different
   badge and progress pixel areas. Both then auto-fetched the corrected custom composition.
 - Corrected custom document: 932 bytes, SHA-256
@@ -52,8 +53,8 @@ with measured compatibility limited to the fixtures below. No remote push perfor
 - Physical devices, signed iOS device packaging, Intel iOS Simulator and broad protocol
   conformance remain unverified. Native gesture/UI automation coverage is partial.
 - Only selected API-7 primitives are enabled; source support does not imply player parity.
-  Images are verified in browser, not yet visually asserted in both native players.
-- Next: add durable native UI automation and full landing-page image/scroll fidelity
+  Images are verified in browser and visually checked in both native landing pages.
+- Next: broaden native UI automation and automated landing-page image/scroll fidelity
   checks; investigate path encoding separately. Repeat on another machine when available.
 - Reusable binary fragments/cache are research only; no optimization was implemented.
 
@@ -64,10 +65,14 @@ images/animations/host actions. `86e9595`: native viewers, cross-platform render
 The final source-guard/reproducibility handoff follows; use `git log -5` for its hash. No user files were discarded or history rewritten.
 See [setup](GETTING_STARTED.md) for working commands and [context](CONTEXT.md) to resume.
 
-## Demonstration-readiness review in progress
+## Demonstration-readiness review completed
 
 Editor fixes and regression checks are validated: all eleven templates exercised through
 add/property/move/duplicate/delete controls, custom resource-backed trees preserved,
 malformed/offline/stale compilation preservation, exact JVM/player digest equality and
-390/768/1100/1500px layout checks. Seven Node model tests pass. Native gesture/landing-page
-review evidence and the final review report are recorded in the next milestone.
+390/768/1100/1500px layout checks. Seven Node model tests pass. Native gestures, images, both animations and matching 4,163-byte publication 7 were
+verified. iOS raw metadata is collapsible; one actual XCTest UI test passes. See
+[review](DEMONSTRATION_REVIEW.md) and [results](evidence/readiness/results.json).
+Editor fixes commit `78fb077`; native test/evidence commit follows (git log identifies it).
+All requested review areas are covered on the documented emulator/Simulator setup.
+No physical-device or general protocol conformance claim is made.

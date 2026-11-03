@@ -6,7 +6,7 @@
 2. Switch to Primitive JSON. Edit a label or drawing value and Apply/Preview. Add the
    animated badge and progress templates. Both animate inside the player. Inspect `time`
    expressions in raw JSON; no JavaScript animation implements their appearance.
-3. Add a button and click its rendered area. Host event42 appears below the preview.
+3. Add a button and click its rendered area. Host event 42 appears below the preview.
 4. Publish. Launch Android and iOS as in GETTING_STARTED, enable auto-refresh in Debug.
    Compare version, byte count and SHA with the published metadata endpoint.
 5. Replace the full raw document with samples/custom-composition.json and Preview.
@@ -20,7 +20,23 @@
 8. Stop the backend or set an unreachable native URL. Debug remains accessible, errors
    are visible and the previous valid document stays displayed. Restore the URL/backend.
 
-For repeatable interaction smoke use samples/interaction.json (190 bytes, host event42).
+For repeatable interaction smoke use samples/interaction.json (190 bytes, host event 42).
 For native animation comparison publish samples/animations.json (556 bytes). The actual
 session records and screenshots are under docs/evidence; versions are local store state,
 so a fresh run need not use the same version numbers. No production readiness is claimed.
+
+## Reviewed live-demo fixture and preflight
+
+Use samples/demo-landing.json for the full thirteen-section demonstration. Paste it in
+Primitive JSON and Apply, or publish it with the curl command in GETTING_STARTED. Current
+verified output: 4,163 bytes, SHA-256 7dd683f3de2b007b9b307799cf9128536b0de8b0da47c006819a15711b546d63.
+Bring all players to the same publication and compare metadata. Drag vertically to the
+custom gradient section and purple event 99 button; drag product cards horizontally.
+Use a real pointer/touch drag rather than the mouse wheel inside the canvas.
+
+Before presenting: run verify-demo.sh, check adb reverse and native URLs, open native
+Debug and verify the digest, then close Debug and return to the top of the page. Download
+JSON before deliberately replacing a draft. Confirm “Preview matches draft” before
+presenting a preview; Publish and Preview are separate actions. Do not rebuild apps
+while demonstrating a new composition. Allow the configured refresh interval to elapse.
+The review and screenshots are in DEMONSTRATION_REVIEW.md.

@@ -100,7 +100,7 @@ struct PlayerScreen: View {
         }.sheet(isPresented:$debug) {
             NavigationStack { Form {
                 Section("Connection") { TextField("Backend URL",text:$model.backend).textInputAutocapitalization(.never).autocorrectionDisabled();Toggle("Auto-refresh",isOn:$model.auto);Stepper("Interval: \(Int(model.interval)) seconds",value:$model.interval,in:2...300);Button("Refresh now"){UserDefaults.standard.set(model.backend,forKey:"backend");Task{await model.refresh()}} }
-                Section("Document") { Text("Version \(model.version) • \(model.bytes) bytes");Text("SHA-256 \(model.digest)").font(.caption).textSelection(.enabled);Text(model.status);Text(model.metadata).font(.system(.caption,design:.monospaced)).textSelection(.enabled) }
+                Section("Document") { Text("Version \(model.version) • \(model.bytes) bytes");Text("SHA-256 \(model.digest)").font(.caption).textSelection(.enabled);Text(model.status);DisclosureGroup("Raw document metadata") { Text(model.metadata).font(.system(.caption,design:.monospaced)).textSelection(.enabled) } }
                 Section("Host events") { Button("Clear event log"){model.events=[]};ForEach(Array(model.events.enumerated()),id:\.offset){ _,event in Text(event) } }
             }.navigationTitle("Player debug").toolbar { Button("Done"){debug=false} } }.presentationDetents([.medium,.large])
         }.task { model.start() }.onChange(of:phase){ _,value in if value == .active {model.start()} else {model.stop()} }

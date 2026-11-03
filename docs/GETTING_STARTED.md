@@ -96,3 +96,20 @@ for backend/editor, Android assembly/unit/lint and iOS Simulator. It reproduced 
 verified CMake executable were reused as installed prerequisites; native runtime tests
 were exercised in the original checkout. See evidence/expanded-clean-checkout.json.
 Mobile build entry points now additionally enforce clean, pinned upstream sources.
+
+## Real iOS UI interaction test
+
+Build/install the generic app as above and start the backend. Publish the exact extended
+fixture (the test uses its authored390×844 coordinates), then run the standalone UI test
+project. It does not change the app architecture or use the internal --smoke click hook.
+
+```sh
+curl --fail -X POST -H 'Content-Type: application/json' --data-binary @samples/demo-landing.json http://localhost:8080/api/publish
+xcrun simctl install DEVICE_UUID ios-player/build/RemoteCompose.app
+xcodebuild test -project ios-player/UITests.xcodeproj -scheme DemoUITests -destination 'platform=iOS Simulator,id=DEVICE_UUID' -derivedDataPath ios-player/build/uitests -resultBundlePath ios-player/build/ui-results.xcresult CODE_SIGNING_ALLOWED=NO
+```
+
+Use a new resultBundlePath for subsequent runs (Xcode will not overwrite an existing
+result bundle). Assertions cover actual taps/events 42/99 and native log clearing;
+retained screenshot attachments cover the landing page, carousel and vertical drags.
+Scroll/bitmap fidelity is inspected visually, not inferred from test completion.
