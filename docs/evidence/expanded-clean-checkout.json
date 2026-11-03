@@ -1,0 +1,36 @@
+{
+  "date": "2026-11-03",
+  "revision": "86e9595",
+  "method": "Fresh local Git clone without project toolchains, upstream checkouts, dependency/build caches or outputs. Fetched both sources by pinned remote commit. Installed host prerequisites reused.",
+  "externalPrerequisites": [
+    "JBR25.0.4 via JAVA_HOME",
+    "Chrome156",
+    "Android SDK36 and build-tools36.0.0",
+    "Full Xcode27.2",
+    "Checksum-pinned CMake3.31.6 executable supplied with CMAKE_BIN"
+  ],
+  "commands": [
+    "python3 scripts/bootstrap-node.py",
+    "python3 scripts/fetch-upstreams.py",
+    "sh scripts/node.sh npm ci --prefix upstream/experiments/players/typescript",
+    "sh scripts/node.sh npm run bundle --prefix upstream/experiments/players/typescript",
+    "sh scripts/node.sh npm ci --prefix player-smoke",
+    "sh scripts/verify-demo.sh",
+    "sh scripts/gradle.sh -Pandroid :android-player:assembleDebug :android-player:testDebugUnitTest :android-player:lintDebug",
+    "sh scripts/build-ios.sh"
+  ],
+  "results": {
+    "jvmTests": 79,
+    "nodeModelTests": 6,
+    "browserEndToEnd": "passed; 11 templates, 2 animations, PNG, custom preservation, publication and event42",
+    "androidAssembly": "passed",
+    "androidUnitTests": 1,
+    "androidLint": "passed with upstream warnings",
+    "iosSimulatorBuild": "passed",
+    "projectGitClean": true,
+    "upstreamCheckoutsCleanAndPinned": true,
+    "customDocumentBytes": 932,
+    "customDocumentSha256": "3ea80866c330a6f27b827ec964b4d86909fa1b77cafc3926e241b9e047a7d871"
+  },
+  "scope": "Build/test reproducibility on same host, not a different-machine or physical-device certification. Native runtime evidence is recorded separately from the original workspace."
+}

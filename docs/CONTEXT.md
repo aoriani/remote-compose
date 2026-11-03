@@ -52,5 +52,6 @@ Current execution has network/Git access; old sandbox failures are historical, n
 
 79 JVM tests, six model tests, browser workflow, Android CLI/instrumentation and iOS
 engine-input smoke passed. See PROGRESS/evidence for precise scope. No physical devices
-were tested. Full expanded fresh-clone validation is next, along with native image/scroll
-and UI automation coverage. Never infer broad compatibility from a successful parse.
+were tested. Expanded fresh-clone validation at86e9595 passed backend/editor tests and both native
+builds; see evidence/expanded-clean-checkout.json. Native image/scroll and UI automation
+coverage remain next. Never infer broad compatibility from a successful parse.

@@ -2,6 +2,7 @@
 set -eu
 project_root=$(CDPATH= cd -- "$(dirname -- "$0")/.." && pwd)
 cd "$project_root"
+python3 scripts/fetch-upstreams.py --check
 export DEVELOPER_DIR="${DEVELOPER_DIR:-/Applications/Xcode.app/Contents/Developer}"
 cmake_bin="${CMAKE_BIN:-$project_root/.toolchains/cmake-3.31.6-macos-universal/CMake.app/Contents/bin/cmake}"
 "$cmake_bin" -S ios-player -B ios-player/build/native -DCMAKE_SYSTEM_NAME=iOS -DCMAKE_OSX_SYSROOT=iphonesimulator -DCMAKE_OSX_ARCHITECTURES=arm64 -DCMAKE_OSX_DEPLOYMENT_TARGET=18.5 -DCMAKE_BUILD_TYPE=Release

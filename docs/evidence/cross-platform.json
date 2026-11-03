@@ -31,8 +31,8 @@
   "excludedFailedExperiment": "Earlier SVG path fixture failed Android/iOS rendering; paths are now rejected by strict service. No success claim for that trial.",
   "limitations": [
     "Physical devices and signed iOS packaging untested",
-    "Expanded clean-clone reproduction pending",
     "Native images and full scroll fidelity not yet asserted",
     "iOS smoke uses engine input, not automated UI touch"
-  ]
+  ],
+  "cleanCloneBuildVerification": "expanded-clean-checkout.json"
 }

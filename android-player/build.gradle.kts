@@ -21,3 +21,9 @@ dependencies {
 }
 
 dependencyLocking { lockAllConfigurations() }
+
+val verifyMobileUpstreams by tasks.registering(Exec::class) {
+    workingDir(rootProject.projectDir)
+    commandLine("python3", "scripts/fetch-upstreams.py", "--check")
+}
+tasks.named("preBuild") { dependsOn(verifyMobileUpstreams) }

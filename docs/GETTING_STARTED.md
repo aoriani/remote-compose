@@ -87,3 +87,12 @@ last-good preservation and restores the URL. This is not a native UI tap automat
 Physical-device iOS packaging/signing is not implemented or tested. It requires the
 device Skia slice, an iPhoneOS build, a development team/certificate/provisioning profile,
 signing entitlements and a reachable backend URL. Linux cannot build this iOS target.
+
+## Reproduction evidence
+
+A fresh clone of86e9595 fetched both exact upstream revisions and rebuilt/tests passed
+for backend/editor, Android assembly/unit/lint and iOS Simulator. It reproduced the custom
+932-byte binary digest with clean project/upstream trees. Host JDK/Chrome/SDK/Xcode and a
+verified CMake executable were reused as installed prerequisites; native runtime tests
+were exercised in the original checkout. See evidence/expanded-clean-checkout.json.
+Mobile build entry points now additionally enforce clean, pinned upstream sources.

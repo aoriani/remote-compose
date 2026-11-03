@@ -37,8 +37,11 @@ with measured compatibility limited to the fixtures below. No remote push perfor
 - Corrected custom document: 932 bytes, SHA-256
   `3ea80866c330a6f27b827ec964b4d86909fa1b77cafc3926e241b9e047a7d871`.
   Screenshots and compact records are in [evidence](evidence/cross-platform.json).
-- Expanded clean-checkout reproduction has not yet been run. The original 69-test minimal
-  pipeline clean-checkout verification remains recorded separately.
+- Expanded clean-checkout reproduction at 86e9595 passed all 79 JVM tests, six model
+  tests, browser workflow, Android assembly/unit/lint and the iOS Simulator build. The
+  exact custom document digest reproduced with clean source trees. Installed host JDK,
+  Chrome, Android SDK, Xcode and CMake were external prerequisites. See
+  [reproduction evidence](evidence/expanded-clean-checkout.json).
 
 ## Important limitations and next work
 
@@ -50,13 +53,13 @@ with measured compatibility limited to the fixtures below. No remote push perfor
   conformance remain unverified. Native gesture/UI automation coverage is partial.
 - Only selected API-7 primitives are enabled; source support does not imply player parity.
   Images are verified in browser, not yet visually asserted in both native players.
-- Next: repeat the expanded workflow from a clean clone, add durable native UI automation
-  and full landing-page image/scroll fidelity checks; investigate path encoding separately.
+- Next: add durable native UI automation and full landing-page image/scroll fidelity
+  checks; investigate path encoding separately. Repeat on another machine when available.
 - Reusable binary fragments/cache are research only; no optimization was implemented.
 
 ## Git milestones
 
 `91f43a9`: strict validation and atomic backend. `cf1d42e`: JSON-preserving editor,
-images/animations/host actions. Native implementation and evidence are the next commits;
-use `git log -5` for exact final hashes. No user files were discarded or history rewritten.
+images/animations/host actions. `86e9595`: native viewers, cross-platform render proof and setup documentation.
+The final source-guard/reproducibility handoff follows; use `git log -5` for its hash. No user files were discarded or history rewritten.
 See [setup](GETTING_STARTED.md) for working commands and [context](CONTEXT.md) to resume.

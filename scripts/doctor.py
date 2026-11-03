@@ -54,6 +54,8 @@ def main():
         tool_env["PATH"] = str(local_node_bins[0]) + os.pathsep + tool_env.get("PATH", "")
     for name in ["git", "node", "npm", "cmake", "kotlinc", "gradle"]:
         candidates = [directory / name for directory in local_node_bins] if name in ("node", "npm") else []
+        if name == "cmake":
+            candidates += [ROOT / ".toolchains/cmake-3.31.6-macos-universal/CMake.app/Contents/bin/cmake"]
         executable = find_executable(name, candidates)
         tools[name] = {"path": executable}
         if executable:
@@ -67,6 +69,8 @@ def main():
                            ("sdkmanager", "cmdline-tools/latest/bin/sdkmanager"),
                            ("avdmanager", "cmdline-tools/latest/bin/avdmanager")]:
         candidates = [sdk / relative] if sdk else []
+        if name in ("sdkmanager", "avdmanager"):
+            candidates += [ROOT / ".toolchains/android-cli/cmdline-tools/bin" / name]
         tools[name] = {"path": find_executable(name, candidates)}
 
     xcode = {"requiredHost": "Darwin", "available": False}
