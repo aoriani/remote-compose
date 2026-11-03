@@ -71,3 +71,12 @@ Branch: `main`. Commits: `123b8b1` foundation, `05f8e48` prior diagnostics,
 committed separately; `git log -1 --oneline` identifies that documentation commit.
 No uncommitted implementation remains, and nothing was reset, rebased, force-pushed or
 pushed. The clean-checkout verification passed; remaining work is listed above.
+
+## Continuing implementation — backend milestone
+
+Strict validation and Kotlin HTTP preview/publishing are implemented. Seven new tests
+pass, including malformed-vs-unsupported diagnostics, exact nested locations, custom
+primitive preservation, real HTTP preview/publish separation, failed publish preservation,
+ETags, historical versions, restart recovery and concurrent unique versions. Total: 76
+passing JVM tests. The editor and mobile work continues next; prior pending statements
+above describe the previous handoff baseline.

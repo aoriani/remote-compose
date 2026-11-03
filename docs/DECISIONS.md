@@ -76,3 +76,21 @@ Alternatives: global installations or modifying the machine's Java/Xcode default
 Reasoning: portability and sandbox-friendly operation. Consequences: downloads are
 ignored and reproducible; macOS arm64 is tested, other bootstrap hosts are not yet tested.
 Git metadata writes and headless Chrome may still need explicit execution approval.
+
+## 009 — Explicit strict primitive capability subset (2026-11-03)
+
+Decision: validate strict RFC JSON with Jackson (duplicate/trailing-token detection), then
+validate a documented primitive subset with JSON Pointer diagnostics before upstream
+compilation. This validation never rewrites input and is independent of widget recognition.
+Alternatives: trust the permissive upstream parser/schema or invent widget JSON.
+Consequence: unsupported primitives are explicit 422 errors; arbitrary nested supported
+compositions remain legitimate. Broader upstream features require schema/tests before enablement.
+
+## 010 — Atomic immutable publication bundles (2026-11-03)
+
+Decision: each numeric version is a single atomic JSON file containing original source,
+base64 binary and metadata. Publication is serialized with a process monitor/file lock;
+latest is the highest committed numeric version. Alternatives: mutable latest plus
+separate files or a database. Consequence: no source/binary/metadata race, no pointer to
+half-written content; previews never write publication state. This is local prototype
+storage, not a multi-host CMS. Binary GET supplies version, SHA and conditional ETags.

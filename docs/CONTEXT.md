@@ -71,3 +71,12 @@ but lacks sdkmanager/avdmanager; no Android build occurred. No global settings c
 4. Implement the lightweight preview/publish backend with strict unknown-input validation,
    immutable versions, ETags and last-good preservation before the full visual editor.
 5. Add actual feature/player fixtures before expanding compatibility claims.
+
+## Backend milestone
+
+Strict service compilation now uses Validation.kt, separate from the original permissive
+research CLI. Jackson rejects malformed JSON/duplicates/trailing tokens; capability
+errors carry code/path/message. A nested primitive is not rejected because no editor
+template recognizes it. The enabled subset is intentionally narrower than all upstream.
+Backend.kt uses JDK HttpServer and atomic immutable version bundles. See API.md.
+76 JVM tests pass (the previous 69 plus seven validation/storage/real-HTTP tests).

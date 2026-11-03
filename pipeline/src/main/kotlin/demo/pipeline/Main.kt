@@ -14,6 +14,15 @@ import kotlin.system.exitProcess
 
 /** Small CLI proof; publishing and the visual editor intentionally come later. */
 fun main(args: Array<String>) {
+    if(args.firstOrNull() == "serve") {
+        val project = Path.of(System.getenv("RC_PROJECT_ROOT") ?: ".").toAbsolutePath().normalize()
+        val backend = Backend(args.getOrNull(1)?.toInt() ?: 8080,
+            Path.of(args.getOrNull(2) ?: "data/documents"), project, System.getenv("RC_BIND_HOST") ?: "127.0.0.1")
+        Runtime.getRuntime().addShutdownHook(Thread { backend.close() })
+        backend.start()
+        println("Remote Compose backend: http://127.0.0.1:${backend.port}")
+        return
+    }
     if (args.size != 2) {
         System.err.println("Usage: remote-compose-prototype INPUT.json OUTPUT.rc")
         exitProcess(2)

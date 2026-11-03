@@ -39,6 +39,7 @@ java {
 dependencies {
     implementation("org.json:json:20231013")
     implementation("org.jspecify:jspecify:1.0.0")
+    implementation("com.fasterxml.jackson.core:jackson-databind:2.18.3")
     implementation("androidx.annotation:annotation-jvm:1.9.1")
     testImplementation("junit:junit:4.13.2")
 }
