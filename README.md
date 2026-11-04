@@ -123,10 +123,12 @@ creation, build/install commands, networking, and tests.
 
 ## Validation
 
-Run the backend/editor regression suite after installing dependencies:
+After installing dependencies, choose the quick regression or the comprehensive editor check:
 
 ```sh
 sh scripts/verify-demo.sh
+# Comprehensive check (includes verify-demo), isolated publishing and screenshots:
+sh scripts/verify-editor.sh
 ```
 
 For the full-page browser → publish → Android/iOS acceptance workflow, start an isolated
@@ -178,6 +180,10 @@ for exact hashes, environment, fixes, initial failures, and the limits of this e
 | [GitHub setup](docs/GITHUB_SETUP.md) | Private repository, remote transport, push authorization, and pre-push checks |
 | [Primitive samples](samples/README.md) · [Validation fixtures](samples/validation/README.md) · [Android test assets](android-player/src/androidTest/assets/README.md) | Fixture purposes, generation, and validation scope |
 | [Full validation evidence](docs/evidence/full-validation/README.md) · [Native layout evidence](docs/evidence/native-layout/README.md) · [Interaction evidence](docs/evidence/interactive/README.md) | Earlier recorded screenshot and cross-platform test runs |
+
+Fresh editor evidence: [full acceptance screenshots and results](docs/evidence/editor-acceptance/README.md)
+cover all 12 templates, 76 property edits, custom JSON, lifecycle failures and interactions.
+This browser/backend run does not imply a fresh native rerun.
 
 Every tracked Markdown guide is linked from this README. `python3 scripts/check-project.py`
 checks that coverage along with local documentation links. Historical reports preserve the

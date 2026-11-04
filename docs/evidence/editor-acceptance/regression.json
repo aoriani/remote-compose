@@ -1,0 +1,19 @@
+{
+  "defect": "Load published overwrote a newer draft typed while source fetch was pending",
+  "before": "Real browser deep-equality assertion failed: published Lifecycle B replaced Typed while loading",
+  "after": "Newer draft and previous preview preserved; stale/malformed/offline cases and subsequent load recovery pass",
+  "rootCause": "Load handler had no source snapshot guard and assigned response before parsing",
+  "fix": "Validate response before replacing source; compare request serial and source snapshot; share busy controls with compile/publish",
+  "harnessCorrections": [
+    "Old property tests supplied invalid values for newly introduced carousel fields; now supply valid values and assert each target path",
+    "Forty nested layout boxes exceed parser JSON depth 64; twenty-level success plus over-limit failure are both tested",
+    "Chromium Playwright multiline fill emitted 9657 input events for 4828 lines and intermittently timed out; actual clipboard paste emitted one event in 2667ms. Tests now use paste and restore supported clipboard contents. No product timeout or highlighter workaround."
+  ],
+  "initialRuns": [
+    "2026-11-04T14-17-31.173Z",
+    "2026-11-04T14-24-25.234Z"
+  ],
+  "finalRun": "2026-11-04T14-41-39.965Z",
+  "finalResult": "All ten stages pass, including explicit selected-template deletion for all twelve templates",
+  "priorCompletePassingRun": "2026-11-04T14-33-08.952Z"
+}

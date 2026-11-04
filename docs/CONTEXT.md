@@ -306,3 +306,32 @@ Default SSH access fails host-key verification in this environment; command-scop
 rewriting with gh auth git-credential succeeds without changing origin or disabling SSH
 verification. See GITHUB_SETUP for the exact command and audit scope. Future pushes still
 require explicit authorization; no force pushes or history rewrites.
+
+
+## Editor acceptance harness and async source safety (2026-11-04)
+
+Use `sh scripts/verify-editor.sh` for the current real-UI editor acceptance, rather than
+assuming the fast verify-demo smoke covers every property. It includes 76 fields/12 templates,
+30 compiled gallery documents, lifecycle races, entire custom trees, full retail, carousel
+configuration, raw JSON and local-state stress. It starts its own random-port backend/store;
+never point these publishing suites at the user's active demonstration store. Restores the
+ignored full-retail-run binding and copies only freshly generated browser evidence.
+
+Load published must use the same source-snapshot discipline as compilation. Fetching metadata
+and immutable source can race with typing. Validate response before assigning source and
+keep the newer draft/old preview when it changed. Regression lives in editor-lifecycle.mjs.
+
+For large formatted JSON, use editor-input.mjs keyboard clipboard paste. Chromium's automated
+Input.insertText path used by fill emits thousands of input events across multiline source;
+this caused intermittent 30s harness failures despite actual paste completing in 2.667s with
+one input event. Helper preserves/restores supported clipboard formats. Do not raise timeouts
+or remove source/highlight safety to hide that automation artifact. No clipboard data is logged.
+
+Parser JSON depth64 counts arrays/objects, not just layout nesting: 20 nested boxes pass;
+40 exceed the limit and must preserve the last valid preview. ID-bearing interactive templates
+cannot be safely duplicated without namespace changes; tests assert the useful rejection.
+
+Browser golden manifest under evidence/editor-acceptance reuses historical PNGs. Five phase
+binary hashes changed earlier with responsive width expressions, while all nine reviewed PNGs
+remain pixel-identical. Keep original native baselines and strict thresholds. Final evidence
+and limits are in FULL_FEATURE_TEST_REPORT; this run does not renew native compatibility proof.

@@ -1,0 +1,20 @@
+{
+  "propertyEdits": true,
+  "slideOrdering": true,
+  "countsCompiled": [
+    2,
+    3,
+    4,
+    5
+  ],
+  "visibility": true,
+  "primitiveSerialization": true,
+  "editedCallbacksObserved": true,
+  "editedTwoSecondAutoAdvance": true,
+  "hiddenControlsDoNotReceiveTaps": true,
+  "deterministicFrames": [
+    4.55,
+    4.775,
+    5
+  ]
+}

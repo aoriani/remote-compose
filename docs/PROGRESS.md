@@ -1,7 +1,12 @@
 # Progress and handoff
 
 Updated 2026-11-04. Branch main. Current phase: usable cross-platform demonstration,
-with measured compatibility limited to the fixtures below. No remote push performed.
+with measured compatibility limited to the fixtures below. Prior main was pushed with
+explicit authorization; this editor-acceptance follow-up is local only.
+
+Latest editor acceptance: all ten stages of `sh scripts/verify-editor.sh` pass; one async
+published-load draft-loss defect fixed. See the final section and FULL_FEATURE_TEST_REPORT.
+Browser/backend evidence is fresh; native results below are historical.
 
 Latest full-page follow-up: the final section below supersedes the simplified default.
 The original full retail page now has per-product controls and an integrated carousel;
@@ -339,3 +344,29 @@ pass; git diff --check passes. Historical targeted secret/filename scan found on
 synthetic URL validation fixture and no real findings/oversize blobs. Runtime suites were
 not rerun for these documentation/checker changes; Android runtime results remain scoped
 to9853484. This milestone's publication is authorized; future pushes require authorization.
+
+
+## Full editor acceptance and draft-loss fix (2026-11-04)
+
+Started clean on main at aac2c0e. Updated stale property tests and added an isolated,
+random-port acceptance runner. All ten stages of `sh scripts/verify-editor.sh` pass:
+85 JVM tests (also forced fresh),16 model tests,12-template smoke,76 inspector edits,
+30 binary/gallery fixtures,18 complete custom-tree preservation cases,21 lifecycle checks,
+full-retail27 events, raw-JSON18 events and stress37 events with no interaction HTTP.
+Nine historical browser goldens are pixel-identical; screenshot hash rejection negative
+control passes. Actual rendered screenshots were inspected, including mid-slide and selected
+product states. See [report](FULL_FEATURE_TEST_REPORT.md#full-editor-acceptance--2026-11-04)
+and [portable evidence](evidence/editor-acceptance/README.md).
+
+Fixed the reproduced Load published race: a pending source response no longer replaces newer
+typing. Malformed responses preserve draft/preview and busy controls prevent concurrent load/
+publish requests. No backend, native app, primitive protocol or upstream pin changes.
+Current demo backend publications were not touched. Final local run:
+artifacts/editor-acceptance/2026-11-04T14-41-39.965Z. Initial failing runs are retained and
+explained; they are not counted as passes. The final suite also checks documentation.
+
+Known limits: wheel scrolling and canvas keyboard/screen-reader semantics, absent undo/redo,
+protected ID-bearing duplication, static full-page category pills, Chrome-only execution.
+No fresh native rerun. Next: broaden browser/native acceptance and improve inspector field
+organization separately. Commit this tested source/evidence milestone locally; no push is
+authorized for these new changes. Use git log to identify its final commit hash.

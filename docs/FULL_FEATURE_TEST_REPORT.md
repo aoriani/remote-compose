@@ -1,7 +1,8 @@
 # Full feature and rendering validation
 
-Latest: [interactive carousel/raw JSON acceptance](#interactive-carousel-and-raw-json-lifecycle--2026-11-04)
-and [screenshots/proof](evidence/interactive/README.md). Earlier results remain scoped to their recorded revisions.
+Latest: [full editor acceptance](#full-editor-acceptance--2026-11-04) and
+[screenshots/proof](evidence/editor-acceptance/README.md). Earlier browser/native results
+remain scoped to their recorded revisions.
 
 > Native viewport follow-up: the manually found margins exposed a gap in this review's
 > cropped-document screenshots. [NATIVE_LAYOUT_FIX](NATIVE_LAYOUT_FIX.md) records the
@@ -550,3 +551,78 @@ FullRetailTest additionally needs the8092 backend and `samples/full-retail-run.j
 by the existing full-retail browser flow. This is the same fixture prerequisite recorded in
 the full retail section above. Browser/iOS suites were not rerun for Android-only native UI.
 Dark mode, landscape, physical devices and TalkBack are not certified by this check.
+
+
+## Full editor acceptance — 2026-11-04
+
+**All ten stages of `sh scripts/verify-editor.sh` pass.** This reruns the actual Chrome
+interface, JVM compilation and genuine upstream binary player, not only the editor model.
+A real draft-loss race was found and fixed. Visual inspection of actual output includes the
+retail editor, selected product hearts/quantities, carousel inspector and mid-slide frame,
+raw JSON, graphics, bitmap and narrow-screen evidence. No new native compatibility claim:
+Android and iOS were not rerun for this browser-only source change.
+
+Environment: Apple Silicon macOS, JBR25.0.4/JVM target17, Node22.14.0, Chrome156.0.8078.80,
+Playwright1.56.1. Base `aac2c0e` plus changes in this evidence commit. Pins unchanged:
+AndroidX `8932b2c2b5043cc40c46a44cfd04a1671ec50fb7`, experiments
+`a7a76f1d9ecc5aff2af93d0de570a11532552ea3`. The final isolated run is
+`2026-11-04T14-41-39.965Z`; all logs remain locally in artifacts/editor-acceptance.
+
+| Area | Fresh result |
+| --- | --- |
+| Compiler/backend and model | 85 JVM tests (also forced fresh with cleanTest), 16 model tests; existing actual editor smoke passes |
+| Palette/inspector | All 12 templates, 76 exposed property edits; add/select, move up/down, safe duplicate/delete, unrelated source preservation |
+| Primitive output | 30 published/rendered widget and custom fixtures with binary hashes; 160-section large document; empty document; 20 nested boxes |
+| Custom preservation | 18 entire primitive trees unchanged after unrelated add/property/reorder/duplicate/delete operations |
+| Errors/lifecycle | 21 checks: malformed source, invalid properties, depth limit, offline and server errors, export/reload, recovery, version/ETag/history, draft isolation and async races |
+| Carousel | 2–5 slides, order, assets/text/colors, interval/duration, edited callback names/payloads, visibility; hidden controls have no hit targets; 2-second advancement and deterministic 4.55/4.775/5-second frames |
+| Full retail | 27 exact events, three products, independent hearts, pressed state, quantities, wraparound, raw round trip and publication |
+| Other interactive source | Raw JSON lifecycle 18 events; local-state stress 37 events, quantity 0–12, eight rapid carousel actions, zero interaction HTTP requests |
+| Responsive/navigation | 390/768/1100/1500px editor widths without document overflow; 65/85/100% zoom; pointer and touch scrolling; bounded/clearable event log; editor keyboard focus |
+| Static rendering | Nine reviewed browser goldens pass with zero changed pixels; fixture hash negative control rejected |
+
+Full retail bytes remain **1,980,638**, SHA-256
+`5f32c3221aa7ce717151c6f0adb8e591de968abe2b172f97bff511748d258bda`.
+[Proof](evidence/editor-acceptance/proof.json) records every gallery digest;
+[retail proof](evidence/editor-acceptance/retail-proof.json) records exact event payloads.
+The browser preview fetches and hashes actual JVM bytes; native applications and protocol
+sources were unchanged. Existing demo publications were preserved by using a private backend.
+
+### Defect and regression
+
+Load published previously fetched asynchronously and unconditionally assigned its response.
+Typing a newer draft during that request silently lost the new text. The real browser test
+reproduced this before the fix. Loading now shares compile/publish busy controls, parses the
+response before changing source, and compares its request/source snapshot before replacement.
+New typing and the previous valid preview survive a late response. Malformed source and
+network failures also preserve both. Recovery and exact version-specific loading are tested;
+loading published bytes performs no new compilation.
+
+Initial attempts also exposed stale tests, not additional product defects. New carousel
+fields required valid duration/visibility/action values. Forty nested boxes exceed the
+compiler's JSON depth 64; success at twenty and failure above the limit are now both asserted.
+Chromium's Playwright multiline fill emitted 9657 input events for 4828 lines, intermittently
+hitting 30 seconds. Actual clipboard paste emitted one input event in 2667ms. The two affected
+large-source workflows now use keyboard paste, restore supported clipboard contents, and pass
+without increasing timeouts or changing product rendering/highlighting. Initial failed runs
+and the final success are distinguished in [regression evidence](evidence/editor-acceptance/regression.json).
+
+### Visual findings and remaining scope
+
+Product art retains its proportions; selected hearts and quantities are visible. Carousel
+panels slide within their clip and controls remain separate. The raw JSON inspector preserves
+custom structures and syntax highlighting. The narrow editor stacks its panels without page
+width overflow, but is slower to navigate than desktop. The carousel inspector's numerous
+repeated color/text fields are functional; grouped slide properties would improve usability.
+
+Wheel scrolling of the Remote Compose canvas remains unsupported, while pointer drag and
+touch work. Physical trackpad input was not tested. Canvas keyboard navigation/screen-reader
+semantics remain absent. There is no undo/redo; unsafe duplication of variable/ID-bearing
+sections is explicitly rejected. Full retail category pills remain static. Chrome was the
+only browser tested; native reruns, physical devices and performance/accessibility certification
+remain separate work. Nine goldens use unchanged historical images, not relaxed thresholds;
+old cross-platform rasterization differences remain recorded above.
+
+[Rendered screenshots and results](evidence/editor-acceptance/README.md) are portable.
+Recommended next checks: Safari/Firefox and native refresh of the new editor's publications;
+then address canvas input/accessibility and inspector grouping as separate scoped changes.

@@ -1,0 +1,63 @@
+{
+  "source": "2026-11-04 browser acceptance; reviewed responsive-source updates at aac2c0e; all nine images are pixel-identical to the historical reviewed browser goldens",
+  "platforms": [
+    "browser"
+  ],
+  "imageDirectory": "../../full-validation/baseline",
+  "cases": [
+    {
+      "id": "graphics",
+      "sha256": "f34e50af4a2d450b61ea09036aca92c51259506a3ef336c4c7f3a868c8cfc772",
+      "bytes": 1119,
+      "historicalSha256": "f34e50af4a2d450b61ea09036aca92c51259506a3ef336c4c7f3a868c8cfc772"
+    },
+    {
+      "id": "bitmaps",
+      "sha256": "c0e5a465b336c6e2b5283c13286e1cd670e480a7f8aa899cacabe56eb19d2ed0",
+      "bytes": 1964089,
+      "historicalSha256": "c0e5a465b336c6e2b5283c13286e1cd670e480a7f8aa899cacabe56eb19d2ed0"
+    },
+    {
+      "id": "layouts",
+      "sha256": "8b2ce8c6b6fb5ff020038fa58312c87832dbf123589840ccf4d0c87c77e18a07",
+      "bytes": 1405,
+      "historicalSha256": "8b2ce8c6b6fb5ff020038fa58312c87832dbf123589840ccf4d0c87c77e18a07"
+    },
+    {
+      "id": "phase-0",
+      "sha256": "4714f587f5d567d6850d28575e87c20101297b63d35bac1ca5f46cc88b06cffc",
+      "bytes": 1334,
+      "historicalSha256": "be207ec10f7ce83adac950d1d79195baf8d343effe3cfe2f4d685121dada0faa"
+    },
+    {
+      "id": "phase-1",
+      "sha256": "8f4373a229d84710994ab4413f7a2501bbad0b4f596c209c8b84f2b15ec40fac",
+      "bytes": 1334,
+      "historicalSha256": "50b9b56521a205580184a12d21d2a486830e18f1455ff97ac39f48c4b2787cfd"
+    },
+    {
+      "id": "phase-2",
+      "sha256": "768cb63ce4d08e7573bda9be65444e4edaab9bf325ab186a1543d57f92789ca8",
+      "bytes": 1334,
+      "historicalSha256": "3a5037a52173aab7742a171ebdfa68c93ee921e2a828f825ebf4804b700a26ce"
+    },
+    {
+      "id": "phase-3",
+      "sha256": "53eee360662b6e37fe67c396bba9ba6e159fc69832388293168460eadd37a653",
+      "bytes": 1334,
+      "historicalSha256": "891a5b7d424d861fabab6426386e68cc11803911190befdc171fa856ded07af7"
+    },
+    {
+      "id": "phase-4",
+      "sha256": "11b9cdf999bac360ee469504130fbff8c6603a8da358d54cb3459d2601db4c82",
+      "bytes": 1334,
+      "historicalSha256": "7385537c3b41c0696028d8a43ade5d5233e197ae7324b9bb06ef4c60a72eba3a"
+    },
+    {
+      "id": "empty",
+      "sha256": "caeba2b99841bcc5764bba2827c6ebe9ba304d7cb8c6555596cbda9d4f9f4521",
+      "bytes": 151,
+      "historicalSha256": "caeba2b99841bcc5764bba2827c6ebe9ba304d7cb8c6555596cbda9d4f9f4521"
+    }
+  ]
+}

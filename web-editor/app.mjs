@@ -30,12 +30,12 @@ function properties(doc){const previousSlot=propertySection===selected?Number($(
   for(const [label,delta] of [['↑',-1],['↓',1]]){const b=document.createElement('button');b.textContent=label;b.setAttribute('aria-label',`Move banner ${i+1} ${delta<0?'up':'down'}`);b.disabled=i+delta<0||i+delta>=node.children[14].value;b.onclick=()=>change(d=>moveCarouselSlide(sections(d)[selected],i,delta));line.append(b);}container.append(line);
  }
  }const slots=assetSlots(node);if(slots.length){const h=document.createElement('h3');h.textContent='Image resources';h.style.cssText='font-size:10px;border-top:1px solid #e8ebef;padding-top:20px;margin-top:24px';container.append(h);const select=document.createElement('select');select.id='asset-target';select.setAttribute('aria-label','Image to replace');slots.forEach((slot,i)=>{const o=document.createElement('option');o.value=i;o.textContent=`${i+1}. ${library.find(x=>x.id===slot.value)?.label||slot.value}`;select.append(o);});select.value=String(Math.min(previousSlot,slots.length-1));const label=document.createElement('label');label.textContent='Replacement target';label.append(select);container.append(label);const im=document.createElement('img');im.className='asset-slot-preview';im.alt='Selected image resource';const update=()=>{const item=library.find(x=>x.id===slots[Number(select.value)].value);im.src=item?'/assets/'+item.file:'/assets/club-bag.png';};select.onchange=update;update();container.append(im);const help=document.createElement('p');help.className='asset-help';help.textContent='Choose an asset in the Library, then Replace selected. Only this bitmap reference changes.';container.append(help);}}
+function setBusy(value){busy=value;for(const id of ['preview','refresh','publish','apply','load-published'])$('#'+id).disabled=value;}
 async function preview(publish=false,publishedVersion=null){
  if(busy)return;
  const request=++serial, submitted=source.value;
  let candidate=null;
- busy=true;
- for(const id of ['preview','refresh','publish','apply'])$('#'+id).disabled=true;
+ setBusy(true);
  try{
   // Send even malformed JSON to the JVM for its consistent path/line diagnostics.
   message(publish?'Compiling and publishing…':'Validating and compiling…');
@@ -64,7 +64,7 @@ async function preview(publish=false,publishedVersion=null){
   $('#metadata').textContent=publishedVersion?`Published v${publishedVersion} • ${bytes.byteLength} bytes`:`Preview • ${bytes.byteLength} bytes`;window.rcProof.loadedVersion=publishedVersion;
   message(`Valid document • ${bytes.byteLength} bytes\nSHA-256 ${digest}`);outline();
  }catch(e){candidate?.stop();message(e?.errors?e:String(e),true);window.rcProof.lastError=e?.errors||String(e);}
- finally{busy=false;for(const id of ['preview','refresh','publish','apply'])$('#'+id).disabled=false;draftState();}
+ finally{setBusy(false);draftState();}
 }
 const glyphs={carousel:'M3 5h18v12H3z M8 21h1M12 21h1M16 21h1',header:'M4 5h16v14H4z M4 10h16',text:'M5 5h14M12 5v14M8 19h8',spacer:'M12 3v18M8 7l4-4 4 4M8 17l4 4 4-4',hero:'M3 4h18v16H3z M3 16l5-5 4 4 3-3 6 6',promo:'M4 6h16v12H4z M8 10h8M8 14h5',image:'M3 3h18v18H3z M4 17l6-7 4 4 3-3 4 6',button:'M3 7h18v10H3z M9 12h6',products:'M2 5h5v14H2z M10 5h5v14h-5z M18 5h4v14h-4z',news:'M3 4h8v16H3z M14 4h7v16h-7z',badge:'M12 3l3 6 6 3-6 3-3 6-3-6-6-3 6-3z',progress:'M3 8h18v8H3z M4 9h10v6H4z'};
 for(const item of catalog){const b=document.createElement('button');b.innerHTML='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="'+glyphs[item.id]+'"/></svg>';const name=document.createElement('span');name.textContent=item.label;b.append(name);b.dataset.template=item.id;b.onclick=()=>change(doc=>{const list=sections(doc).slice();const next=createWidget(item.id);if((item.id==='carousel'&&JSON.stringify(doc).includes('promo_interval'))||(item.id==='products'&&JSON.stringify(doc).includes('product_oat_milk_quantity')))throw Error('This interactive template already declares its variable namespace. Use raw JSON with explicitly renamed variables for another instance.');list.push(next);setSections(doc,list);selected=list.length-1;});$('#palette').append(b);}
@@ -72,7 +72,24 @@ for(const b of document.querySelectorAll('[data-op]'))b.onclick=()=>change(doc=>
 $('#preview').onclick=()=>preview();$('#refresh').onclick=()=>preview();$('#publish').onclick=()=>preview(true);$('#apply').onclick=()=>preview();
 $('#format').onclick=()=>{try{save(current());}catch(e){message(String(e),true);}};
 $('#reset').onclick=()=>{selected=0;save(initialDocument());preview();};
-$('#load-published').onclick=async()=>{try{const metadataResponse=await fetch('/api/documents/latest/metadata');if(!metadataResponse.ok)throw Error('No published document');const metadata=await metadataResponse.json();const r=await fetch(`/api/documents/${metadata.version}/source`);if(!r.ok)throw Error('Published source unavailable');source.value=await r.text();selected=0;save(current());await preview(false,metadata.version);}catch(e){message(String(e),true);}};
+$('#load-published').onclick=async()=>{
+ if(busy)return;
+ const request=++serial,submitted=source.value;
+ setBusy(true);message('Loading published document…');
+ try{
+  const metadataResponse=await fetch('/api/documents/latest/metadata');
+  if(!metadataResponse.ok)throw Error(metadataResponse.status===404?'No published document':`Published metadata unavailable (HTTP ${metadataResponse.status})`);
+  const metadata=await metadataResponse.json();
+  const response=await fetch(`/api/documents/${metadata.version}/source`);
+  if(!response.ok)throw Error(`Published source unavailable (HTTP ${response.status})`);
+  const document=JSON.parse(await response.text());
+  // Loading is asynchronous too: never overwrite edits made while its requests were pending.
+  if(request!==serial||source.value!==submitted){message('Draft changed while loading. Your edits were preserved; load published again to replace them.');return;}
+  selected=0;save(document);
+  setBusy(false);await preview(false,metadata.version);
+ }catch(e){message(String(e),true);}
+ finally{setBusy(false);draftState();}
+};
 $('#download').onclick=()=>{const url=URL.createObjectURL(new Blob([source.value],{type:'application/json'}));const a=document.createElement('a');a.href=url;a.download='remote-compose.json';a.click();URL.revokeObjectURL(url);};
 $('#clear-events').onclick=()=>{events=[];window.rcProof.events=events;$('#events').textContent='Events cleared';};
 function tab(json){$('#json-panel').style.display=json?'block':'none';$('#properties').style.display=json?'none':'block';$('#json-tab').setAttribute('aria-pressed',String(json));$('#properties-tab').setAttribute('aria-pressed',String(!json));$('#json-tab').classList.toggle('active',json);$('#properties-tab').classList.toggle('active',!json);}

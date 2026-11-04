@@ -64,3 +64,27 @@ and an upstream-player host callback; ViewerTest and ViewportTest protect refres
 Use UiAutomation on the API37 preview image because the pinned Espresso reflection path
 fails there. Inspect emulator screenshots with the keyboard open and larger text before
 accepting a layout change. Preserve existing dependency pins unless a separate change justifies it.
+
+
+## Full editor acceptance
+
+After installing the prerequisites and setting JAVA_HOME, run:
+
+```sh
+sh scripts/verify-editor.sh
+```
+
+This runs verify-demo (JVM/model/real-player smoke) and ten broader real-browser stages.
+It starts a private backend on an ephemeral port, preserves demo publications and the existing
+full-retail test binding, and shuts that backend down. No emulator/Simulator is required.
+`artifacts/editor-acceptance/latest.json` identifies the completed run; its run.json lists
+individual stage results, with logs and actual screenshots beside it. A stage failure fails
+the command, while independent stages continue to collect evidence. No native rerun is implied.
+
+Add real UI behavior to player-smoke/editor-lifecycle.mjs; add primitive fixtures to the
+existing gallery generator. Keep custom-tree equality and exact binary/hash assertions.
+Large multiline JSON tests should use editor-input.mjs, which exercises clipboard paste and
+restores supported clipboard formats, instead of Chromium's event-heavy multiline fill path.
+The reviewed browser baseline manifest reuses earlier images and enforces fixture identity;
+inspect source/hash changes before approving baseline revisions. See the
+[acceptance report](FULL_FEATURE_TEST_REPORT.md#full-editor-acceptance--2026-11-04).

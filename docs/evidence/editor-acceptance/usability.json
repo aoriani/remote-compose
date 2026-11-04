@@ -1,0 +1,305 @@
+{
+  "wheelScrollChanged": false,
+  "pointerScrollChanged": true,
+  "touchScrollChanged": true,
+  "responsive": [
+    {
+      "viewport": 390,
+      "document": 390,
+      "canvas": {
+        "width": 331.5000305175781,
+        "height": 717.3999633789062,
+        "x": 29.253124237060547,
+        "y": 611.8937377929688
+      }
+    },
+    {
+      "viewport": 768,
+      "document": 768,
+      "canvas": {
+        "width": 331.50006103515625,
+        "height": 717.4000244140625,
+        "x": 361.75311279296875,
+        "y": 162.3937530517578
+      }
+    },
+    {
+      "viewport": 1100,
+      "document": 1100,
+      "canvas": {
+        "width": 331.50006103515625,
+        "height": 717.4000244140625,
+        "x": 392.75311279296875,
+        "y": 162.3937530517578
+      }
+    },
+    {
+      "viewport": 1500,
+      "document": 1500,
+      "canvas": {
+        "width": 331.50006103515625,
+        "height": 717.4000244140625,
+        "x": 587.2531127929688,
+        "y": 162.3937530517578
+      }
+    }
+  ],
+  "keyboard": [
+    {
+      "tag": "BUTTON",
+      "id": "publish",
+      "text": "Publish ↗"
+    },
+    {
+      "tag": "BUTTON",
+      "id": "rail-library",
+      "text": "▦"
+    },
+    {
+      "tag": "BUTTON",
+      "id": "rail-json",
+      "text": "⌘"
+    },
+    {
+      "tag": "BUTTON",
+      "id": "rail-layers",
+      "text": "◈"
+    },
+    {
+      "tag": "INPUT",
+      "id": "asset-search",
+      "text": ""
+    },
+    {
+      "tag": "BUTTON",
+      "id": "",
+      "text": "Barista oat drinkField / Oat"
+    }
+  ],
+  "zoom": [
+    {
+      "value": "0.65",
+      "width": 253.49993896484375,
+      "height": 548.5999908447266
+    },
+    {
+      "value": "0.85",
+      "width": 331.50006103515625,
+      "height": 717.4000091552734
+    },
+    {
+      "value": "1",
+      "width": 390,
+      "height": 844
+    }
+  ],
+  "rapidEvents": [
+    {
+      "id": 501,
+      "metadata": ""
+    },
+    {
+      "id": 503,
+      "metadata": ""
+    },
+    {
+      "id": 502,
+      "metadata": ""
+    },
+    {
+      "id": 501,
+      "metadata": ""
+    },
+    {
+      "id": 503,
+      "metadata": ""
+    },
+    {
+      "id": 502,
+      "metadata": ""
+    },
+    {
+      "id": 501,
+      "metadata": ""
+    },
+    {
+      "id": 503,
+      "metadata": ""
+    },
+    {
+      "id": 502,
+      "metadata": ""
+    },
+    {
+      "id": 501,
+      "metadata": ""
+    },
+    {
+      "id": 503,
+      "metadata": ""
+    },
+    {
+      "id": 502,
+      "metadata": ""
+    },
+    {
+      "id": 501,
+      "metadata": ""
+    },
+    {
+      "id": 503,
+      "metadata": ""
+    },
+    {
+      "id": 502,
+      "metadata": ""
+    },
+    {
+      "id": 501,
+      "metadata": ""
+    },
+    {
+      "id": 503,
+      "metadata": ""
+    },
+    {
+      "id": 502,
+      "metadata": ""
+    },
+    {
+      "id": 501,
+      "metadata": ""
+    },
+    {
+      "id": 503,
+      "metadata": ""
+    },
+    {
+      "id": 502,
+      "metadata": ""
+    },
+    {
+      "id": 501,
+      "metadata": ""
+    },
+    {
+      "id": 503,
+      "metadata": ""
+    },
+    {
+      "id": 502,
+      "metadata": ""
+    },
+    {
+      "id": 501,
+      "metadata": ""
+    },
+    {
+      "id": 503,
+      "metadata": ""
+    },
+    {
+      "id": 502,
+      "metadata": ""
+    },
+    {
+      "id": 501,
+      "metadata": ""
+    },
+    {
+      "id": 503,
+      "metadata": ""
+    },
+    {
+      "id": 502,
+      "metadata": ""
+    },
+    {
+      "id": 501,
+      "metadata": ""
+    },
+    {
+      "id": 503,
+      "metadata": ""
+    },
+    {
+      "id": 502,
+      "metadata": ""
+    },
+    {
+      "id": 501,
+      "metadata": ""
+    },
+    {
+      "id": 503,
+      "metadata": ""
+    },
+    {
+      "id": 502,
+      "metadata": ""
+    },
+    {
+      "id": 501,
+      "metadata": ""
+    },
+    {
+      "id": 503,
+      "metadata": ""
+    },
+    {
+      "id": 502,
+      "metadata": ""
+    },
+    {
+      "id": 501,
+      "metadata": ""
+    },
+    {
+      "id": 503,
+      "metadata": ""
+    },
+    {
+      "id": 502,
+      "metadata": ""
+    },
+    {
+      "id": 501,
+      "metadata": ""
+    },
+    {
+      "id": 503,
+      "metadata": ""
+    },
+    {
+      "id": 502,
+      "metadata": ""
+    },
+    {
+      "id": 501,
+      "metadata": ""
+    },
+    {
+      "id": 503,
+      "metadata": ""
+    },
+    {
+      "id": 502,
+      "metadata": ""
+    },
+    {
+      "id": 501,
+      "metadata": ""
+    },
+    {
+      "id": 503,
+      "metadata": ""
+    }
+  ],
+  "semantics": {
+    "role": "img",
+    "label": "Remote Compose binary preview; pointer drag to scroll. Rendered document keyboard semantics are not exposed.",
+    "semanticChildren": 0
+  },
+  "renderedDocumentKeyboard": "Not exposed by canvas player",
+  "realTrackpad": "Not exercised; synthetic wheel events only"
+}

@@ -1,0 +1,90 @@
+{
+  "results": [
+    {
+      "name": "draft and preview do not publish",
+      "passed": true
+    },
+    {
+      "name": "publish offline retains document and recovers controls",
+      "passed": true
+    },
+    {
+      "name": "publish server error retains document and recovers controls",
+      "passed": true
+    },
+    {
+      "name": "publication recovery, immutable prior bytes and conditional fetch",
+      "passed": true
+    },
+    {
+      "name": "export exact primitive JSON",
+      "passed": true
+    },
+    {
+      "name": "valid custom draft survives reload",
+      "passed": true
+    },
+    {
+      "name": "malformed draft survives reload and stays unpublished",
+      "passed": true
+    },
+    {
+      "name": "load-published network failure preserves draft and preview",
+      "passed": true
+    },
+    {
+      "name": "load-published fetches exact immutable bytes without recompiling",
+      "passed": true
+    },
+    {
+      "name": "empty document and last-section deletion recover through palette",
+      "passed": true
+    },
+    {
+      "name": "invalid property values preserve source; corrected values compile",
+      "passed": true
+    },
+    {
+      "name": "editor rail actions and keyboard focus",
+      "passed": true
+    },
+    {
+      "name": "late published load preserves newer draft",
+      "passed": true
+    },
+    {
+      "name": "malformed published source retains draft and canvas",
+      "passed": true
+    },
+    {
+      "name": "published-load recovery after stale and malformed responses",
+      "passed": true
+    },
+    {
+      "name": "in-flight publish submits once and preserves newer draft",
+      "passed": true
+    },
+    {
+      "name": "asset search empty state and recovery",
+      "passed": true
+    },
+    {
+      "name": "rapid property edits compile the final value",
+      "passed": true
+    },
+    {
+      "name": "twenty-level uncatalogued primitive hierarchy compiles and renders",
+      "passed": true
+    },
+    {
+      "name": "over-limit nesting returns a useful diagnostic and retains preview",
+      "passed": true
+    },
+    {
+      "name": "editable JSON has visible syntax-highlight layers",
+      "passed": true
+    }
+  ],
+  "errors": [],
+  "browser": "156.0.8078.80"
+}

@@ -306,3 +306,20 @@ live fetch snapshots, but are discarded on dismissal; only Apply persists config
 Validate endpoints and refresh cadence before changing host state. Changing cadence replaces
 the pending refresh callback. The existing generic player, document bytes and viewport
 measurement are unchanged. This native-shell improvement requires installing the updated APK.
+
+
+## 030 — Guard published-source loading and isolate full editor acceptance (2026-11-04)
+
+Apply source snapshot/request checks to Load published as well as compile/publish. A real UI
+regression showed pending published source overwrote newer typing. Prefer preserving that
+new draft with an explanation over disabling typing or silently replacing it. Parse fetched
+source before replacing the current text. Shared busy controls prevent overlapping request
+entry points; immutable publication and player rendering remain unchanged.
+
+Extend the existing Playwright/JVM tests, using a random-port private publication store and
+retained screenshot/hash evidence. No additional automation framework or native workaround.
+Use actual clipboard paste for large formatted source because Chromium's synthetic fill
+emits an input event storm absent from the user paste path. Restore supported clipboard
+contents. Keep failed-run diagnoses and precise scope alongside the final passing result.
+Consequences: reproducible broad editor testing, longer runtime than smoke, and no claim that
+browser acceptance alone revalidates Android/iOS or accessibility.

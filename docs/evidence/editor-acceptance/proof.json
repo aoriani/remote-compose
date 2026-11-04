@@ -1,0 +1,966 @@
+{
+  "scope": "Actual editor/browser/backend acceptance; no native device rerun",
+  "stages": [
+    {
+      "name": "every template/property and primitive gallery",
+      "passed": true,
+      "seconds": 47.34
+    },
+    {
+      "name": "reviewed browser screenshot baselines",
+      "passed": true,
+      "seconds": 0.147
+    },
+    {
+      "name": "draft/export/errors/publication/races",
+      "passed": true,
+      "seconds": 4.319
+    },
+    {
+      "name": "custom subtree preservation",
+      "passed": true,
+      "seconds": 8.203
+    },
+    {
+      "name": "scroll/touch/zoom/responsive/keyboard",
+      "passed": true,
+      "seconds": 9.327
+    },
+    {
+      "name": "default/reset/migration",
+      "passed": true,
+      "seconds": 1.774
+    },
+    {
+      "name": "full retail interactions and publish",
+      "passed": true,
+      "seconds": 17.156
+    },
+    {
+      "name": "carousel configuration and deterministic frames",
+      "passed": true,
+      "seconds": 13.925
+    },
+    {
+      "name": "raw JSON interactive lifecycle",
+      "passed": true,
+      "seconds": 45.549
+    },
+    {
+      "name": "local state/rapid controls/no interaction HTTP",
+      "passed": true,
+      "seconds": 2.2
+    }
+  ],
+  "errors": [],
+  "cases": [
+    {
+      "id": "widget-carousel",
+      "version": 1,
+      "sha256": "e0d19caecf006e393636a1c6a14625899c0d616ba30ee9ed508072646e6a22d2",
+      "bytes": 809727,
+      "plan": {
+        "widget": "carousel",
+        "rois": []
+      }
+    },
+    {
+      "id": "widget-header",
+      "version": 2,
+      "sha256": "e0707f0adadea611d5e23cf251a08ceac94ad9a5150bf79e7aef134eaf981f5b",
+      "bytes": 1025,
+      "plan": {
+        "widget": "header",
+        "rois": []
+      }
+    },
+    {
+      "id": "widget-text",
+      "version": 3,
+      "sha256": "562f61bade8b993975fd19d9a1da6e2c5aa49457c98fdc67a0efa8005f8afabd",
+      "bytes": 452,
+      "plan": {
+        "widget": "text",
+        "rois": []
+      }
+    },
+    {
+      "id": "widget-spacer",
+      "version": 4,
+      "sha256": "6cf7826373f3671b8b3e10be1118d414cfe04613dfd37fcf3b1b699466eebfff",
+      "bytes": 412,
+      "plan": {
+        "widget": "spacer",
+        "rois": []
+      }
+    },
+    {
+      "id": "widget-hero",
+      "version": 5,
+      "sha256": "b5eb2b68c55569ee8918728d11ce9d6c942c1af46cfe2934a3f804645e06a5f5",
+      "bytes": 400678,
+      "plan": {
+        "widget": "hero",
+        "rois": []
+      }
+    },
+    {
+      "id": "widget-promo",
+      "version": 6,
+      "sha256": "7ff222923b8dc2009e1b118c1deb459c43bde28a29c2da2da2685c8c74f96f60",
+      "bytes": 762,
+      "plan": {
+        "widget": "promo",
+        "rois": []
+      }
+    },
+    {
+      "id": "widget-image",
+      "version": 7,
+      "sha256": "5d48ea7891c2601cba18e0e53cb10e17f34126578180ff4eb80f308b8ba4eaad",
+      "bytes": 405386,
+      "plan": {
+        "widget": "image",
+        "rois": []
+      }
+    },
+    {
+      "id": "widget-button",
+      "version": 8,
+      "sha256": "97fe7005b51779545df31ad74eca14906c3fdbc3c0951daf2309f27c175844c0",
+      "bytes": 768,
+      "plan": {
+        "widget": "button",
+        "rois": []
+      }
+    },
+    {
+      "id": "widget-products",
+      "version": 9,
+      "sha256": "0ec763cfdfb962ec4f5024a81ec9da871760ff24793407f1b33139f015213d35",
+      "bytes": 812388,
+      "plan": {
+        "widget": "products",
+        "rois": []
+      }
+    },
+    {
+      "id": "widget-news",
+      "version": 10,
+      "sha256": "74bd3d76c4c36b1bc14568f5ebdf7d72d012133cfbb2a3d7140e2bca23ecf464",
+      "bytes": 805768,
+      "plan": {
+        "widget": "news",
+        "rois": []
+      }
+    },
+    {
+      "id": "widget-badge",
+      "version": 11,
+      "sha256": "597871d9d4254020de22297615ae3cfbe2f0b688c4153eebe7fc648b73eb66d2",
+      "bytes": 1049,
+      "plan": {
+        "widget": "badge",
+        "rois": []
+      }
+    },
+    {
+      "id": "widget-progress",
+      "version": 12,
+      "sha256": "35ff626f820808792c7e2904af53d127a9355c5ca5670542cf2095b57a5a4e61",
+      "bytes": 899,
+      "plan": {
+        "widget": "progress",
+        "rois": []
+      }
+    },
+    {
+      "id": "graphics",
+      "version": 13,
+      "sha256": "f34e50af4a2d450b61ea09036aca92c51259506a3ef336c4c7f3a868c8cfc772",
+      "bytes": 1119,
+      "plan": {
+        "rois": [
+          [
+            35,
+            95,
+            50,
+            30
+          ],
+          [
+            150,
+            95,
+            60,
+            30
+          ],
+          [
+            270,
+            95,
+            60,
+            30
+          ],
+          [
+            60,
+            210,
+            30,
+            20
+          ],
+          [
+            30,
+            410,
+            70,
+            50
+          ],
+          [
+            245,
+            425,
+            25,
+            20
+          ],
+          [
+            190,
+            570,
+            90,
+            15
+          ],
+          [
+            24,
+            300,
+            340,
+            45
+          ]
+        ],
+        "samples": [
+          {
+            "x": 60,
+            "y": 110,
+            "rgb": [
+              48,
+              91,
+              239
+            ]
+          },
+          {
+            "x": 170,
+            "y": 110,
+            "rgb": [
+              129,
+              168,
+              132
+            ]
+          },
+          {
+            "x": 150,
+            "y": 440,
+            "rgb": [
+              255,
+              255,
+              255
+            ]
+          },
+          {
+            "x": 205,
+            "y": 580,
+            "rgb": [
+              247,
+              176,
+              123
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "bitmaps",
+      "version": 14,
+      "sha256": "c0e5a465b336c6e2b5283c13286e1cd670e480a7f8aa899cacabe56eb19d2ed0",
+      "bytes": 1964089,
+      "plan": {
+        "rois": [
+          [
+            25,
+            75,
+            140,
+            140
+          ],
+          [
+            215,
+            75,
+            140,
+            140
+          ],
+          [
+            25,
+            275,
+            140,
+            140
+          ],
+          [
+            215,
+            275,
+            140,
+            140
+          ],
+          [
+            20,
+            630,
+            120,
+            120
+          ]
+        ],
+        "legacyBag": {
+          "x": 20,
+          "y": 630,
+          "width": 120,
+          "height": 120
+        },
+        "deliberatelyDistorted": true
+      }
+    },
+    {
+      "id": "layouts",
+      "version": 15,
+      "sha256": "8b2ce8c6b6fb5ff020038fa58312c87832dbf123589840ccf4d0c87c77e18a07",
+      "bytes": 1405,
+      "plan": {
+        "typography": true,
+        "rois": [
+          [
+            32,
+            110,
+            80,
+            45
+          ],
+          [
+            215,
+            115,
+            90,
+            35
+          ]
+        ],
+        "samples": [
+          {
+            "x": 17,
+            "y": 205,
+            "rgb": [
+              255,
+              255,
+              255
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "interactions",
+      "version": 16,
+      "sha256": "a244b82485428ef5fc5ac97b6cc5f8524f49b27132939f308c0d1fbc2826e44b",
+      "bytes": 909,
+      "plan": {
+        "actions": [
+          {
+            "x": 150,
+            "y": 95,
+            "id": 501
+          },
+          {
+            "x": 150,
+            "y": 175,
+            "name": "validation.echo",
+            "payload": "hello-protocol"
+          }
+        ],
+        "stateRoi": [
+          20,
+          240,
+          200,
+          180
+        ],
+        "rois": []
+      }
+    },
+    {
+      "id": "nested-scroll",
+      "version": 17,
+      "sha256": "ec23a881aef0ca73c27bbb5a6794d16c268da19ad9116aa85343c7f8db83c409",
+      "bytes": 1248453,
+      "plan": {
+        "scroll": true,
+        "rois": []
+      }
+    },
+    {
+      "id": "phase-0",
+      "version": 18,
+      "sha256": "4714f587f5d567d6850d28575e87c20101297b63d35bac1ca5f46cc88b06cffc",
+      "bytes": 1334,
+      "plan": {
+        "phase": 0,
+        "rois": [
+          [
+            35,
+            35,
+            26,
+            26
+          ],
+          [
+            20,
+            159,
+            350,
+            9
+          ]
+        ],
+        "samples": []
+      }
+    },
+    {
+      "id": "phase-1",
+      "version": 19,
+      "sha256": "8f4373a229d84710994ab4413f7a2501bbad0b4f596c209c8b84f2b15ec40fac",
+      "bytes": 1334,
+      "plan": {
+        "phase": 0.7853981633974483,
+        "rois": [
+          [
+            35,
+            35,
+            26,
+            26
+          ],
+          [
+            20,
+            159,
+            350,
+            9
+          ]
+        ],
+        "samples": []
+      }
+    },
+    {
+      "id": "phase-2",
+      "version": 20,
+      "sha256": "768cb63ce4d08e7573bda9be65444e4edaab9bf325ab186a1543d57f92789ca8",
+      "bytes": 1334,
+      "plan": {
+        "phase": 1.5707963267948966,
+        "rois": [
+          [
+            35,
+            35,
+            26,
+            26
+          ],
+          [
+            20,
+            159,
+            350,
+            9
+          ]
+        ],
+        "samples": []
+      }
+    },
+    {
+      "id": "phase-3",
+      "version": 21,
+      "sha256": "53eee360662b6e37fe67c396bba9ba6e159fc69832388293168460eadd37a653",
+      "bytes": 1334,
+      "plan": {
+        "phase": 3.141592653589793,
+        "rois": [
+          [
+            35,
+            35,
+            26,
+            26
+          ],
+          [
+            20,
+            159,
+            350,
+            9
+          ]
+        ],
+        "samples": []
+      }
+    },
+    {
+      "id": "phase-4",
+      "version": 22,
+      "sha256": "11b9cdf999bac360ee469504130fbff8c6603a8da358d54cb3459d2601db4c82",
+      "bytes": 1334,
+      "plan": {
+        "phase": 6.283185307179586,
+        "rois": [
+          [
+            35,
+            35,
+            26,
+            26
+          ],
+          [
+            20,
+            159,
+            350,
+            9
+          ]
+        ],
+        "samples": []
+      }
+    },
+    {
+      "id": "live-animations",
+      "version": 23,
+      "sha256": "32a571baaab22657ccf54b593c8f28f475bb07ecb520e5ea21c894b9e2f777a4",
+      "bytes": 1333,
+      "plan": {
+        "live": true,
+        "rois": []
+      }
+    },
+    {
+      "id": "retail",
+      "version": 24,
+      "sha256": "5f32c3221aa7ce717151c6f0adb8e591de968abe2b172f97bff511748d258bda",
+      "bytes": 1980638,
+      "plan": {
+        "scroll": true,
+        "rois": []
+      }
+    },
+    {
+      "id": "empty",
+      "version": 25,
+      "sha256": "caeba2b99841bcc5764bba2827c6ebe9ba304d7cb8c6555596cbda9d4f9f4521",
+      "bytes": 151,
+      "plan": {
+        "rois": [
+          [
+            0,
+            0,
+            390,
+            844
+          ]
+        ]
+      }
+    },
+    {
+      "id": "graphics-edited",
+      "version": 26,
+      "sha256": "7105cac2138146b7eb6af05630b07ad1fc14cc34ed3d8105505fb80d704b10de",
+      "bytes": 1126,
+      "plan": {
+        "rois": [
+          [
+            35,
+            95,
+            50,
+            30
+          ],
+          [
+            150,
+            95,
+            60,
+            30
+          ],
+          [
+            270,
+            95,
+            60,
+            30
+          ],
+          [
+            60,
+            210,
+            30,
+            20
+          ],
+          [
+            30,
+            410,
+            70,
+            50
+          ],
+          [
+            245,
+            425,
+            25,
+            20
+          ],
+          [
+            190,
+            570,
+            90,
+            15
+          ],
+          [
+            24,
+            300,
+            340,
+            45
+          ]
+        ],
+        "samples": [
+          {
+            "x": 60,
+            "y": 110,
+            "rgb": [
+              48,
+              91,
+              239
+            ]
+          },
+          {
+            "x": 170,
+            "y": 110,
+            "rgb": [
+              129,
+              168,
+              132
+            ]
+          },
+          {
+            "x": 150,
+            "y": 440,
+            "rgb": [
+              255,
+              255,
+              255
+            ]
+          },
+          {
+            "x": 205,
+            "y": 580,
+            "rgb": [
+              247,
+              176,
+              123
+            ]
+          }
+        ],
+        "modifiedFrom": "graphics"
+      }
+    },
+    {
+      "id": "bitmaps-edited",
+      "version": 27,
+      "sha256": "469813eeeaa185ce299dbf9e1c42bc05ca6aa96ea7e244328224d4a8ed31f2de",
+      "bytes": 1964096,
+      "plan": {
+        "rois": [
+          [
+            25,
+            75,
+            140,
+            140
+          ],
+          [
+            215,
+            75,
+            140,
+            140
+          ],
+          [
+            25,
+            275,
+            140,
+            140
+          ],
+          [
+            215,
+            275,
+            140,
+            140
+          ],
+          [
+            20,
+            630,
+            120,
+            120
+          ]
+        ],
+        "legacyBag": {
+          "x": 20,
+          "y": 630,
+          "width": 120,
+          "height": 120
+        },
+        "deliberatelyDistorted": true,
+        "modifiedFrom": "bitmaps"
+      }
+    },
+    {
+      "id": "layouts-edited",
+      "version": 28,
+      "sha256": "36d3e3aadd9e7ee743336d9fa873f5c78cde033bfc37ca41a72e4718f67b6b66",
+      "bytes": 1412,
+      "plan": {
+        "typography": true,
+        "rois": [
+          [
+            32,
+            110,
+            80,
+            45
+          ],
+          [
+            215,
+            115,
+            90,
+            35
+          ]
+        ],
+        "samples": [
+          {
+            "x": 17,
+            "y": 205,
+            "rgb": [
+              255,
+              255,
+              255
+            ]
+          }
+        ],
+        "modifiedFrom": "layouts"
+      }
+    },
+    {
+      "id": "interactions-edited",
+      "version": 29,
+      "sha256": "f447a998ac20b034c5ecff9386b81c2b6a8b2f3920f5a2fc85da47f414fc6056",
+      "bytes": 916,
+      "plan": {
+        "actions": [
+          {
+            "x": 150,
+            "y": 95,
+            "id": 501
+          },
+          {
+            "x": 150,
+            "y": 175,
+            "name": "validation.echo",
+            "payload": "hello-protocol"
+          }
+        ],
+        "stateRoi": [
+          20,
+          240,
+          200,
+          180
+        ],
+        "rois": [],
+        "modifiedFrom": "interactions"
+      }
+    },
+    {
+      "id": "nested-scroll-edited",
+      "version": 30,
+      "sha256": "e22ccf3962fdbb3b8a1453c87271437656842f494ec8a8ad71cd41620e3aa7be",
+      "bytes": 1248468,
+      "plan": {
+        "scroll": true,
+        "rois": [],
+        "modifiedFrom": "nested-scroll"
+      }
+    }
+  ],
+  "lifecycle": [
+    {
+      "name": "draft and preview do not publish",
+      "passed": true
+    },
+    {
+      "name": "publish offline retains document and recovers controls",
+      "passed": true
+    },
+    {
+      "name": "publish server error retains document and recovers controls",
+      "passed": true
+    },
+    {
+      "name": "publication recovery, immutable prior bytes and conditional fetch",
+      "passed": true
+    },
+    {
+      "name": "export exact primitive JSON",
+      "passed": true
+    },
+    {
+      "name": "valid custom draft survives reload",
+      "passed": true
+    },
+    {
+      "name": "malformed draft survives reload and stays unpublished",
+      "passed": true
+    },
+    {
+      "name": "load-published network failure preserves draft and preview",
+      "passed": true
+    },
+    {
+      "name": "load-published fetches exact immutable bytes without recompiling",
+      "passed": true
+    },
+    {
+      "name": "empty document and last-section deletion recover through palette",
+      "passed": true
+    },
+    {
+      "name": "invalid property values preserve source; corrected values compile",
+      "passed": true
+    },
+    {
+      "name": "editor rail actions and keyboard focus",
+      "passed": true
+    },
+    {
+      "name": "late published load preserves newer draft",
+      "passed": true
+    },
+    {
+      "name": "malformed published source retains draft and canvas",
+      "passed": true
+    },
+    {
+      "name": "published-load recovery after stale and malformed responses",
+      "passed": true
+    },
+    {
+      "name": "in-flight publish submits once and preserves newer draft",
+      "passed": true
+    },
+    {
+      "name": "asset search empty state and recovery",
+      "passed": true
+    },
+    {
+      "name": "rapid property edits compile the final value",
+      "passed": true
+    },
+    {
+      "name": "twenty-level uncatalogued primitive hierarchy compiles and renders",
+      "passed": true
+    },
+    {
+      "name": "over-limit nesting returns a useful diagnostic and retains preview",
+      "passed": true
+    },
+    {
+      "name": "editable JSON has visible syntax-highlight layers",
+      "passed": true
+    }
+  ],
+  "baseRevision": "aac2c0e1a444e7fad8cb17b908040d6f591271f5",
+  "testedChanges": "baseRevision plus the editor draft-load fix and acceptance suite committed with this report",
+  "command": "sh scripts/verify-editor.sh",
+  "date": "2026-11-04",
+  "environment": {
+    "os": "macOS Apple Silicon",
+    "java": "JBR 25.0.4, JVM target 17",
+    "node": "22.14.0",
+    "chrome": "156.0.8078.80",
+    "playwright": "1.56.1"
+  },
+  "upstream": {
+    "schemaVersion": 1,
+    "status": "cross-platform-demonstration-verified-subset",
+    "androidx": {
+      "repository": "https://github.com/androidx/androidx.git",
+      "requestedBranch": "androidx-main",
+      "revision": "8932b2c2b5043cc40c46a44cfd04a1671ec50fb7",
+      "researchRevisions": [
+        "4d0b56080497b79e6ac3d1b3b87f1029edf9c3c7",
+        "62d36f9952c23fdd41095a4fd7ba968fade32eaf",
+        "fa07a37857e71e91427b7d68ec6b6f7f2931000a"
+      ]
+    },
+    "experiments": {
+      "repository": "https://github.com/camaelon/remotecompose-experiments.git",
+      "requestedBranch": "main",
+      "revision": "a7a76f1d9ecc5aff2af93d0de570a11532552ea3"
+    },
+    "dependencies": {
+      "org.json": {
+        "observedVersion": "20231013",
+        "selectedVersion": "20231013"
+      },
+      "androidx.annotation": {
+        "observedVersion": "1.9.1",
+        "selectedVersion": "1.9.1"
+      },
+      "kotlin": "2.2.20",
+      "gradle": "9.2.1",
+      "androidGradlePlugin": "9.0.0",
+      "jdk": "25.0.4 (tested JBR; JVM target 17)",
+      "node": "22.14.0",
+      "skia": "m144-e2e6623374-4",
+      "jspecify": "1.0.0",
+      "playwright": "1.56.1",
+      "esbuild": "0.27.7",
+      "typescript": "5.9.3",
+      "cmake": "3.31.6",
+      "jackson": "2.18.3",
+      "androidNativeChrome": {
+        "activityCompose": "1.10.1",
+        "material3": "1.3.2",
+        "composeUi": "1.7.8",
+        "composeCompiler": "2.2.20",
+        "builtInKotlin": true
+      }
+    },
+    "verification": {
+      "upstreamsCloned": true,
+      "jvmCompiled": true,
+      "browserRendered": true,
+      "androidRendered": true,
+      "iosRendered": true
+    },
+    "verificationScope": "Pinned API-7 subset: browser editor; Android emulator and arm64 iOS Simulator: interaction fixture, two animations and custom composition. Not protocol conformance or physical-device certification."
+  },
+  "unitTests": {
+    "jvm": 85,
+    "editorModel": 16,
+    "jvmFreshRun": "sh scripts/gradle.sh :pipeline:cleanTest :pipeline:test --console=plain"
+  },
+  "runId": "2026-11-04T14-41-39.965Z",
+  "screenshots": [
+    {
+      "file": "editor.png",
+      "sha256": "f1454e98bd44148a4ccc4987a2a18a6566fc86a9ca37ae7b93b6a37ea0540534"
+    },
+    {
+      "file": "editor-390.png",
+      "sha256": "6a750d5fd3b83f0f8ed7b4444989eb52a47c9f17ea3da061a95dc2094f72bc3d"
+    },
+    {
+      "file": "raw-json.png",
+      "sha256": "ef6f06e2880c8c924018f217d7a211e1fe808ce23e2ba90b75e23ae309931956"
+    },
+    {
+      "file": "carousel-inspector.png",
+      "sha256": "864997bcb3016ebba119d58a468d01fb3b20100b34d0d5854815d56d273a2290"
+    },
+    {
+      "file": "carousel-mid-slide.png",
+      "sha256": "04d3c419e7b8c3d0814ca98447e1816786f26444d077ff22a40739c7192e07fb"
+    },
+    {
+      "file": "products-selected.png",
+      "sha256": "3967b42c479e89db639190fa6a89dc47288f1994f2c3bd5ef38a87f3242742bb"
+    },
+    {
+      "file": "graphics.png",
+      "sha256": "d65d59f3808606404d501a78cd3c172af4ec831ab2dab90aafd68aea8e29cbf7"
+    },
+    {
+      "file": "bitmaps.png",
+      "sha256": "8ebd9bcb9704b403cecf9e4abb97821fff7e850e0bfed0624adbba608c329935"
+    },
+    {
+      "file": "lifecycle.png",
+      "sha256": "9b160e3d31d5a7f0340e5814f6b1e0a3b9958e1e727491133b36328d95c4bf74"
+    }
+  ]
+}

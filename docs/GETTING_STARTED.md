@@ -247,3 +247,20 @@ Set JAVA_HOME, ANDROID_HOME and DEVELOPER_DIR using the earlier setup instructio
 suite publishes test documents to the isolated service and writes artifacts/full-retail. Install both native viewers using the earlier instructions
 before running this suite. It tests the bundled full page, including all three products.
 It does not push the private GitHub remote; see [GitHub setup](GITHUB_SETUP.md).
+
+
+## Comprehensive editor check
+
+With the same JDK/Node/Chrome prerequisites configured:
+
+```sh
+sh scripts/verify-editor.sh
+```
+
+This includes the quick demo checks plus real UI tests for all twelve templates/properties,
+raw JSON, custom preservation, publication and failure recovery, responsive/scroll behavior,
+retail interactions and carousel settings. It launches a separate random-port backend and
+publication store; your running demo does not need to be stopped or republished. Read
+`artifacts/editor-acceptance/latest.json` for the completed report location. Inspect the PNGs
+as well as run.json. This command does not run native device tests. Current evidence and
+limits are in the [full test report](FULL_FEATURE_TEST_REPORT.md#full-editor-acceptance--2026-11-04).
