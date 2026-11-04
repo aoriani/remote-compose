@@ -267,3 +267,9 @@ Do not make FullRetailTest inherit a class with @Test methods: that duplicates o
 in unfiltered instrumentation. Gradle test inputs now include tracked sample JSON so a
 sample-only edit reruns the compiler tests. Native motion capture uses ordinary screenshots,
 not an injected clock; captured timestamps are per-platform and cannot prove phase parity.
+
+The root README is the current newcomer entry point. Its embedded editor/native screenshots
+reference docs/evidence/full-retail directly, with relative paths and preserved aspect ratio;
+do not substitute mockups or copy stale images into a second asset set. Its test totals are
+a dated record tied to implementation1b4ef0f, not a claim that documentation edits rerun
+platform suites. Current setup examples select test classes/methods with matching prerequisites.

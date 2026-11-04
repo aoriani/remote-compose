@@ -111,8 +111,8 @@ still uses the default upstream platform; service compilation uses JvmAssets. Wr
 padding arrays can clip card content: use [start,top,end,bottom]. PNG destination bounds
 must match source aspect ratio unless deliberate stretching is intended. Avoid emoji
 arrow glyphs for cross-platform icon consistency; use supported line/path operations.
-Existing browser drafts do not automatically become the new example—Load designed page
-explicitly. Large JSON syntax highlighting renders only visible lines to prevent freezes.
+Modified browser drafts are preserved. Use **Reset to full retail design** explicitly to
+restore the bundled page; unchanged historical defaults may migrate with a local backup. Large JSON syntax highlighting renders only visible lines to prevent freezes.
 
 ### Gallery capture and rendering diagnostics
 

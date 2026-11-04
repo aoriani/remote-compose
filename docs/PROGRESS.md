@@ -280,3 +280,17 @@ Demo handoff: normal backend8080 now has immutable publication20, identical veri
 bytes/hash. Both native apps are running against8080/latest (no version pin), so subsequent
 editor publications can be fetched normally. The old8080 publication19 remains in history.
 Historical raw-JSON and stress browser regressions additionally pass on isolated8094.
+
+## Root documentation refreshed (2026-11-04)
+
+The root README now introduces the full retail prototype with embedded actual editor,
+Android and iOS screenshots from the committed full-page evidence. It includes current
+features, architecture, first-run commands, native setup links, validation scope, repository
+map and limitations, tied to implementation1b4ef0f. Removed obsolete eleven-template and
+Load designed page instructions from current entry-point guides; historical reports remain.
+GETTING_STARTED now selects the standalone Android ViewerTest and iOS landing method
+explicitly, avoiding accidental execution of suites that require other manifests.
+
+Documentation-only validation: doctor prerequisites pass; project Markdown/link/JSON checks,
+README image existence/dimensions/evidence-hash checks and git diff --check pass. Existing
+rendered screenshots were inspected. Runtime suites were not rerun for documentation edits.

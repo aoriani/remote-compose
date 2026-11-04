@@ -41,11 +41,12 @@ adb reverse tcp:8080 tcp:8080
 adb install -r android-player/build/outputs/apk/debug/android-player-debug.apk
 adb shell am start -n demo.remotecompose/.MainActivity
 adb logcat -s RC_DOCUMENT RC_HOST_EVENT
-sh scripts/gradle.sh -Pandroid :android-player:connectedDebugAndroidTest
+sh scripts/gradle.sh -Pandroid :android-player:connectedDebugAndroidTest -Pandroid.testInstrumentationRunnerArguments.class=demo.remotecompose.ViewerTest
 ```
 
-Instrumentation uses an in-device test HTTP server and a genuine compiled fixture;
-it need not publish or alter your backend. It can uninstall the application afterward:
+The selected ViewerTest cases use an in-device test HTTP server and genuine compiled
+fixtures; they need not publish or alter your backend. Other instrumentation classes
+require their own published manifests; use the focused suite scripts below for those. It can uninstall the application afterward:
 reinstall the APK for a demo. Debug opens a native bottom dialog with URL, interval,
 auto-refresh, status, metadata and bounded event log. Default URL uses localhost and adb
 reverse. Emulator 10.0.2.2 reaches the host as an alternative. A physical device can use
@@ -106,7 +107,7 @@ project. It does not change the app architecture or use the internal --smoke cli
 ```sh
 curl --fail -X POST -H 'Content-Type: application/json' --data-binary @samples/demo-landing.json http://localhost:8080/api/publish
 xcrun simctl install DEVICE_UUID ios-player/build/RemoteCompose.app
-xcodebuild test -project ios-player/UITests.xcodeproj -scheme DemoUITests -destination 'platform=iOS Simulator,id=DEVICE_UUID' -derivedDataPath ios-player/build/uitests -resultBundlePath ios-player/build/ui-results.xcresult CODE_SIGNING_ALLOWED=NO
+xcodebuild test -project ios-player/UITests.xcodeproj -scheme DemoUITests -only-testing:DemoUITests/DemoUITests/testLandingInteractionAndNativeDebug -destination 'platform=iOS Simulator,id=DEVICE_UUID' -derivedDataPath ios-player/build/uitests -resultBundlePath ios-player/build/ui-results.xcresult CODE_SIGNING_ALLOWED=NO
 ```
 
 Use a new resultBundlePath for subsequent runs (Xcode will not overwrite an existing
@@ -117,7 +118,7 @@ Scroll/bitmap fidelity is inspected visually, not inferred from test completion.
 ## Current designed example
 
 The default fresh draft is now Common Market. Existing local drafts are deliberately
-preserved; click **Load designed page** to see the redesign. Alternatively paste
+preserved; click **Reset to full retail design** to restore the bundled full page. Alternatively paste
 samples/retail-home.json into Primitive JSON and Apply. Its gallery uses four checked-in
 PNG originals; rebuilding JVM resources includes them automatically.
 
@@ -129,7 +130,9 @@ The same iOS UI-test command works with retail-home.json; it checks 42, clearing
 prefix and swipes, and tests 99 only when present in the publication's primitive source.
 To analyze retained native screenshots:
 `sh scripts/node.sh node scripts/analyze-animation.mjs docs/evidence/redesign`.
-Review VISUAL_REDESIGN.md for current screenshots and limitations before presenting.
+Use the current [full-page interaction presentation](DEMO_GUIDE.md#current-full-retail-interaction-presentation)
+and [full-page evidence](evidence/full-retail/README.md) before presenting.
+VISUAL_REDESIGN.md records the earlier design iteration and its limitations.
 
 ## Full feature and rendered-output validation
 

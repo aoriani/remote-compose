@@ -27,7 +27,7 @@ can still require client releases.
 - `docs/DESIGN_SYSTEM.md` / `docs/VISUAL_REDESIGN.md`: visual conventions and actual render evidence.
 - `android-player/`: Java generic viewer, Kotlin Material3 chrome and official AndroidX renderer.
 - `ios-player/`: Swift debug shell, Objective-C++ bridge and C++/Skia Metal renderer.
-- Backend HTTP service and immutable version store are in `pipeline/Backend.kt`.
+- Backend HTTP service and immutable version store are in `pipeline/src/main/kotlin/demo/pipeline/Backend.kt`.
 - Run `sh scripts/verify-demo.sh` for backend/editor checks; mobile commands are in GETTING_STARTED.
 
 ## Development rules
@@ -73,7 +73,7 @@ legacy390×844 goldens must reject incompatible viewports, not stretch the image
 
 Read docs/INTERACTIVE_DEMO.md. The default is the full Common Market retail page, not the
 former two-section test fixture. Run scripts/verify-full-retail.sh for full-page acceptance. Carousel/product
-state is protocol-local; do not add platform timers/business widgets. Preserve the generic
-explicit products_scroll variable and browser nested-TextData shim and minimal repro. Run scripts/verify-interactive.sh with an
+state is protocol-local; do not add platform timers/business widgets. Preserve the
+explicit products_scroll variable, generic browser nested-TextData shim, and minimal repro. Run scripts/verify-interactive.sh with an
 isolated backend8092, idle emulator and IOS_SIMULATOR; see its prerequisites. origin is a
 private GitHub repository; no push is authorized.

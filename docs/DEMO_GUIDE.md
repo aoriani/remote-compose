@@ -1,11 +1,34 @@
 # Demonstration
 
-Current visual demo: use **Load designed page** or samples/retail-home.json. Browse the
+Current visual demo: use **Reset to full retail design** or samples/retail-home.json. Browse the
 asset gallery, insert an illustration, select Product collection, choose its replacement
 target, select another asset and Replace selected. Preview, then Publish. Existing drafts
 are preserved until explicitly replaced. The older fixture/runbook below remains useful
-for custom-event99 regression; see VISUAL_REDESIGN.md for the current presentation.
+for custom-event99 regression; see the full-page walkthrough immediately below for the current presentation.
 
+
+## Current full retail interaction presentation
+
+Open the editor and choose **Reset to full retail design** if a saved draft is present.
+Preview, then Publish. This is the original complete Common Market page. On both native
+players use the same backend URL and Refresh; verify the version/hash in Debug.
+
+1. Scroll slightly to the promotional area. Select a dot, use both arrows, tap its CTA,
+   and wait five seconds for the next offer. Navigation resets the automatic interval.
+2. Scroll to The good stuff. Toggle FIELD/OAT and SOL hearts separately; deselecting one
+   leaves the other selected. Tap Add, then plus/minus. The count changes immediately.
+3. Swipe the product row horizontally to MORN. Its heart/quantity are independent. Decrement
+   to zero to restore Add. Native notices/logs report product asset ID and numeric value.
+4. Keep scrolling to the preserved member perk, editorial stories and reward animation.
+5. In the editor select Product collection, edit a product name/price or replace its asset.
+   Inspect the primitive JSON actions/variables, Preview and Publish. Refresh both unchanged
+   apps to show the updated complete page. New document decoding resets session-local state.
+
+Run `sh scripts/verify-full-retail.sh` with the documented environment for automated full-page
+acceptance; use `python3 scripts/capture-full-retail-motion.py` for live native frame captures.
+The latter reinstalls the existing APK if instrumentation removed it; it does not build apps.
+
+## Primitive authoring and failure scenarios
 
 1. Start the backend/editor using README. Open localhost:8080. Load the demo, change a
    header property, add a template and Preview. This compiles raw primitive JSON on JVM;
@@ -32,9 +55,10 @@ For native animation comparison publish samples/animations.json (556 bytes). The
 session records and screenshots are under docs/evidence; versions are local store state,
 so a fresh run need not use the same version numbers. No production readiness is claimed.
 
-## Reviewed live-demo fixture and preflight
+## Historical combined fixture and preflight
 
-Use samples/demo-landing.json for the full thirteen-section demonstration. Paste it in
+Use samples/demo-landing.json for the historical thirteen-section regression demonstration.
+The current bundled full retail page is samples/retail-home.json. Paste it in
 Primitive JSON and Apply, or publish it with the curl command in GETTING_STARTED. Current
 verified output: 4,163 bytes, SHA-256 7dd683f3de2b007b9b307799cf9128536b0de8b0da47c006819a15711b546d63.
 Bring all players to the same publication and compare metadata. Drag vertically to the
@@ -47,24 +71,3 @@ JSON before deliberately replacing a draft. Confirm “Preview matches draft” 
 presenting a preview; Publish and Preview are separate actions. Do not rebuild apps
 while demonstrating a new composition. Allow the configured refresh interval to elapse.
 The review and screenshots are in DEMONSTRATION_REVIEW.md.
-
-## Current full retail interaction presentation
-
-Open the editor and choose **Reset to full retail design** if a saved draft is present.
-Preview, then Publish. This is the original complete Common Market page. On both native
-players use the same backend URL and Refresh; verify the version/hash in Debug.
-
-1. Scroll slightly to the promotional area. Select a dot, use both arrows, tap its CTA,
-   and wait five seconds for the next offer. Navigation resets the automatic interval.
-2. Scroll to The good stuff. Toggle FIELD/OAT and SOL hearts separately; deselecting one
-   leaves the other selected. Tap Add, then plus/minus. The count changes immediately.
-3. Swipe the product row horizontally to MORN. Its heart/quantity are independent. Decrement
-   to zero to restore Add. Native notices/logs report product asset ID and numeric value.
-4. Keep scrolling to the preserved member perk, editorial stories and reward animation.
-5. In the editor select Product collection, edit a product name/price or replace its asset.
-   Inspect the primitive JSON actions/variables, Preview and Publish. Refresh both unchanged
-   apps to show the updated complete page. New document decoding resets session-local state.
-
-Run `sh scripts/verify-full-retail.sh` with the documented environment for automated full-page
-acceptance; use `python3 scripts/capture-full-retail-motion.py` for live native frame captures.
-The latter reinstalls the existing APK if instrumentation removed it; it does not build apps.
