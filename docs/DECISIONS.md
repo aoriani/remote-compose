@@ -348,3 +348,18 @@ A pinned browser zIndex defect was observed during overlap testing: LayoutCompon
 mValue while ZIndexModifier exposes mCurrentValue/getValue. Selection follows the actual
 painted order. Record a minimal reproduction, leave the renderer unchanged in this scoped
 change, and investigate cross-platform z-order separately.
+
+
+## 032 — Complete editorial fields without regenerating compositions (2026-11-04)
+
+The Editorial stories inspector exposed only one text line and one image in its first tile.
+Expand authoring field descriptors to all visible text, image, color and font-size values in
+both existing tiles. Group the31 controls by story, with shortcuts to each group. Keep the
+factory's primitive output, geometry, bitmap references and horizontal scrolling unchanged.
+Custom command/geometry changes still fall back to JSON; do not normalize user compositions
+into a template. Structural duplication/reordering remain existing generic operations.
+
+The previous property suite iterated the exposed descriptor list, so it could not detect
+missing descriptors. Add independent coverage over actual tile drawing operations and a real
+browser workflow covering both tiles, saved default recognition and raw JSON round trips.
+No new protocol or client-side story component is needed.

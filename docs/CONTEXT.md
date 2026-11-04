@@ -363,3 +363,19 @@ which is absent; modifier exposes mCurrentValue/getValue instead. A red zIndex2 
 covered by later blue zIndex0. Picking must agree with actual painter ordering. Minimal
 reproduction is in evidence/component-selection; native parity for it is unverified. No fix
 was introduced into pinned upstreams during this editor-only feature.
+
+
+## Editorial stories inspector completeness (2026-11-04)
+
+Editorial stories (`news`) remains the same two-canvas horizontal row. editorialFields()
+now exposes31 values:9 text lines,9 font sizes,11 colors including backgrounds, and2 bitmap
+assets. Each descriptor has editor-only options.group for Story1/Story2; app.mjs renders
+heading/shortcut controls. Recognition masks every editable field but still compares all
+other structure, preserving custom command and geometry fallbacks. Factory/default JSON is
+unchanged. Do not regenerate tiles to apply a property change.
+
+Important testing gap: iterating recognize().fields proves existing controls work, not that
+all intended controls exist. model.test independently walks all story text/paint/bitmap
+operations and requires corresponding fields. editorial-stories.mjs exercises every control
+through the real inspector, preserving other sections, raw edits, source and duplicate/move
+behavior, then verifies the second tile's pixels after a genuine horizontal drag.

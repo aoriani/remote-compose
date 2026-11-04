@@ -24,3 +24,20 @@ test('untouched old default migrates while custom and malformed saved drafts sur
 
 test('full retail default preserves original sections except promotion and product controls',()=>{const old=legacyDesignedDocument(),full=initialDocument();assert.equal(full.root.children.length,old.root.children.length);for(let i=0;i<old.root.children.length;i++)if(![4,6].includes(i))assert.deepEqual(full.root.children[i],old.root.children[i]);assert.equal(recognize(full.root.children[4]).id,'carousel');assert.equal(recognize(full.root.children[6]).id,'products');});
 test('product property edits preserve every independent state/action definition',()=>{const products=initialDocument().root.children[6],before=structuredClone(products);const fields=recognize(products).fields;assert.equal(fields.length,9);for(const f of fields)if(f.type!=='asset')updateField(products,f,'Edited '+f.value);for(let i=0;i<3;i++){assert.deepEqual(products.children[1].children[i].children.slice(0,4),before.children[1].children[i].children.slice(0,4));assert.deepEqual(products.children[1].children[i].children[5],before.children[1].children[i].children[5]);}assert.equal(recognize(products).id,'products');assert.throws(()=>operate({root:[products]},0,'duplicate'),/IDs/);});
+
+test('both editorial tiles expose every visible text, style and image without rewriting other primitives',()=>{
+ const node=createWidget('news'),before=structuredClone(node),fields=recognize(node).fields;
+ assert.equal(fields.length,31);assert.deepEqual([...new Set(fields.map(f=>f.options.group))],['Story 1','Story 2']);
+ const expected=structuredClone(before);
+ for(const f of fields){const value=f.type==='asset'?'market-harvest':f.type==='number'?Number(f.value)+1:f.label.includes('color')?'#305BEF':'Edited '+f.value;updateField(node,f,value);patch(expected,f.path,value);assert.equal(recognize(node).id,'news');}
+ assert.deepEqual(node,expected);
+ const exposed=path=>assert.ok(fields.some(f=>JSON.stringify(f.path)===JSON.stringify(path)),`Missing editorial field: ${path.join('.')}`);
+ for(const [i,tile] of before.children.entries())for(const [j,c] of tile.commands.entries()){
+  const base=['children',i,'commands',j];
+  if(c.type==='drawTextAnchored')exposed([...base,'text']);
+  if(c.type==='addBitmap')exposed([...base,'image']);
+  if(c.type==='paint')for(const [k,op] of c.ops.entries())for(const key of ['color','textSize'])if(key in op)exposed([...base,'ops',k,key]);
+ }
+ assert.deepEqual(node.modifiers,before.modifiers);assert.deepEqual(node.children.map(t=>t.modifiers),before.children.map(t=>t.modifiers));
+ const custom=structuredClone(node);custom.children[1].commands.push({type:'drawCircle',cx:10,cy:10,radius:2});assert.equal(recognize(custom).id,null);
+});

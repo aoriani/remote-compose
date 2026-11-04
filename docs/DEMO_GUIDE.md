@@ -89,3 +89,12 @@ Layers can also select components when they are offscreen or do not draw anythin
 full draft has changed since compilation, canvas selection asks for a fresh preview rather
 than guessing a source location. Pending component edits survive reload; Apply or Discard
 before switching selections. Discard affects only the uncommitted component buffer.
+
+
+## Edit both editorial stories
+
+Select Editorial stories in Layers and open Design. Use the **Story 1** and **Story 2**
+shortcuts to reach each tile's properties. Every text line, its font size/color, illustration
+and background color can be edited. Preview to compile the draft. In Interact mode, drag the
+story row horizontally to inspect the second tile. Geometry or additional custom commands
+remain editable through Component JSON or Document JSON.

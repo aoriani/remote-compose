@@ -74,7 +74,7 @@ After installing the prerequisites and setting JAVA_HOME, run:
 sh scripts/verify-editor.sh
 ```
 
-This runs verify-demo (JVM/model/real-player smoke) and eleven broader real-browser stages.
+This runs verify-demo (JVM/model/real-player smoke) and twelve broader real-browser stages.
 It starts a private backend on an ephemeral port, preserves demo publications and the existing
 full-retail test binding, and shuts that backend down. No emulator/Simulator is required.
 `artifacts/editor-acceptance/latest.json` identifies the completed run; its run.json lists
@@ -129,3 +129,18 @@ Preserve any prior samples/full-retail-run.json before publishing this test chan
 restore it after both native suites finish. Do not publish other test documents or run a
 second suite against the same native devices during this handoff. Restore the viewers'
 normal backend URLs afterward; these commands do not change the live8080 publication.
+
+
+## Template property coverage
+
+When expanding a template inspector, preserve its emitted primitive JSON. Editorial stories
+uses field options.group to organize all values for Story1 and Story2; the UI shortcuts scroll
+to each group. Property updates still patch one path. Images and text styles remain primitive
+commands, not an editor-specific runtime format. Structural customization must still fall
+back to JSON rather than regenerating a partially recognized template.
+
+Do not derive all completeness assertions from the descriptor list being tested. Independently
+walk the template's visible drawing operations and verify expected text/image/style fields
+exist. The editorial model regression does this, while player-smoke/editorial-stories.mjs
+exercises the actual controls in both the bundled document and palette-created section.
+`sh scripts/verify-editor.sh` includes that browser case plus the existing full suite.

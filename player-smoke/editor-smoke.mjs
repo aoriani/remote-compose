@@ -49,7 +49,7 @@ try{
   const before=JSON.parse(await page.locator('#source').inputValue());
   await page.locator(`[data-template="${id}"]`).click();await page.locator('#properties-tab').click();
   const field=page.locator('#properties input').first();const old=await field.inputValue();
-  const edited=(await field.getAttribute('type'))==='number'?String(Number(old)+(id==='image'?-8:1)):old+(id==='badge'||id==='progress'?' + 0':' reviewed');
+  const edited=(await field.getAttribute('type'))==='number'?String(Number(old)+(id==='image'?-8:1)):/^#[0-9a-f]{6,8}$/i.test(old)?'#305BEF':old+(id==='badge'||id==='progress'?' + 0':' reviewed');
   await field.fill(edited);await field.press('Tab');
   const added=JSON.parse(await page.locator('#source').inputValue());
   assert.equal(sections(added).length,sections(before).length+1,id);

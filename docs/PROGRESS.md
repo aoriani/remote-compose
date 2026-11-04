@@ -4,7 +4,10 @@ Updated 2026-11-04. Branch main. Current phase: usable cross-platform demonstrat
 with measured compatibility limited to the fixtures below. Prior main was pushed with
 explicit authorization; this editor-acceptance follow-up is local only.
 
-Latest feature: canvas selection and Component JSON are implemented and verified; see the
+Latest fix: Editorial stories now exposes the complete content/style fields for both tiles;
+see the final section for regression evidence and scope.
+
+Previous feature: canvas selection and Component JSON are implemented and verified; see the
 final section and component-selection evidence. Native full-page regression is fresh.
 
 Previous editor acceptance: all ten stages of `sh scripts/verify-editor.sh` pass; one async
@@ -400,3 +403,23 @@ changes or cross-platform zIndex claim. Human novice-usability sessions remain r
 Native apps returned to8080; its publication and prior ignored native test binding preserved.
 Changes are committed locally on main; identify the milestone with git log. Do not push
 without new authorization. Next: novice usability observation, then separate zIndex research.
+
+
+## Editorial stories property completeness — 2026-11-04
+
+Fixed the user-reported missing controls: both existing story tiles now expose all visible
+text, images, colors and font sizes (31 fields), grouped with Story 1 / Story 2 shortcuts.
+The default primitive output is unchanged; property edits update only the selected leaf.
+Custom compositions remain preserved.
+
+Validated `sh scripts/verify-editor.sh`: 20 Node tests, 12 browser stages, 105 property edits,
+30 compiled/rendered fixtures and nine pixel-identical goldens. Dedicated real-UI coverage
+edits every story field, checks JSON round trips, palette insertion and section operations,
+and renders tile two through horizontal drag. Both final screenshots were visually inspected.
+JVM tests were UP-TO-DATE; native clients were not rerun for this editor-only fix. See
+[evidence](evidence/editorial-stories/README.md) and FULL_FEATURE_TEST_REPORT for scope.
+
+Changes are committed locally on main in the editorial-properties fix milestone following
+35aef64; no push requested for this fix. Demo backend/publication and native apps unchanged.
+Next: user review of the two story groups; longer text still requires manual geometry
+adjustments in JSON. Existing player zIndex/font/accessibility limitations remain open.

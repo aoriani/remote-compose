@@ -50,6 +50,20 @@ const products=()=>column([{type:'variable',name:'products_scroll',value:0,expor
 const news=()=>row([canvas(182,[paint('#DCE7DE'),rect(8,0,250,170,20),...photo('granola',142,26,254,138),...label('THE SLOW',27,34,10,'#4E6654'),...label('MORNING EDIT',27,50,10,'#4E6654'),...label('Make room',27,91,22),...label('for better.',27,117,22),...label('Discover more  →',27,149,11)],[]),canvas(182,[paint('#F2E1D0'),rect(8,0,250,170,20),...photo('citrus-soda',148,31,255,138),...label('BRIGHTER DAYS',27,35,10,'#805635'),...label('A fresh take',27,88,22),...label('on the usual.',27,114,22),...label('Explore the edit  →',27,149,11)])].map(c=>({...c,modifiers:[{width:266},{height:182}]})),[{fillMaxWidth:1},{height:182},{padding:[12,0,12,0]},{horizontalScroll:0}]);
 const badge=()=>canvas(94,[paint('#E8EDDD'),rect(20,8,350,74,18),paint('#305BEF'),circle(48,48,'4 + 1.2 * sin(time * 3)'),...label('Good to be a member.',64,36,15),...label('A fresh little perk, every week.',64,58,11,colors.muted),...line(332,52,343,41,colors.ink),...line(336,41,343,41,colors.ink),...line(343,41,343,48,colors.ink)]);
 const progress=()=>canvas(104,[...label('A little closer to your next reward',24,23,14),...label('Your membership keeps giving.',24,45,11,colors.muted),paint('#E0E5DC'),rect(20,67,350,5,2.5),paint(colors.blue),{type:'drawRect',left:20,top:67,right:'20 + (windowWidth() - 40) * (185 + 24 * sin(time * 2)) / 350',bottom:72},...label('MEMBER MILESTONES',24,91,9,colors.muted)]);
+// Explicit authoring fields for every visible story line. Geometry and custom commands
+// remain untouched; recognition still checks every non-editable part of the primitive tree.
+function editorialFields(){
+ const roles=[['Eyebrow line 1','Eyebrow line 2','Headline line 1','Headline line 2','Call to action'],['Eyebrow','Headline line 1','Headline line 2','Call to action']];
+ return news().children.flatMap((tile,index)=>{
+  const group=`Story ${index+1}`,base=['children',index,'commands'];
+  const field=(label,path,type='text')=>[`${group} · ${label}`,path,type,{group}];
+  const fields=[];
+  let line=0;
+  tile.commands.forEach((command,i)=>{if(command.type!=='drawTextAnchored')return;const label=roles[index][line++];fields.push(field(label,[...base,i,'text']),field(`${label} color`,[...base,i-1,'ops',2,'color']),field(`${label} font size`,[...base,i-1,'ops',3,'textSize'],'number'));});
+  fields.push(field('Illustration',[...base,2,'image'],'asset'),field('Background color',[...base,0,'ops',2,'color']));
+  return fields;
+ });
+}
 const definitions={
  carousel:['Promotional carousel',promotionalCarousel,[]],
  header:['Brand header',header,[['Brand name',['commands',7,'text']]]],
@@ -60,7 +74,7 @@ const definitions={
  image:['Product spotlight',image,[['Image size',['commands',3,'right'],'number',{kind:'image-size',left:['commands',3,'left'],top:['commands',3,'top'],bottom:['commands',3,'bottom'],min:16,max:188}],['Illustration',['commands',2,'image'],'asset']]],
  button:['Scan action',button,[['Label',['commands',3,'text']],['Host event ID',['modifiers',2,'onClick','actionId'],'number']]],
  products:['Product collection',products,Array.from({length:3},(_,i)=>[[`Product ${i+1} name`,['children',1,'children',i,'children',4,'commands',9,'text']],[`Product ${i+1} price`,['children',1,'children',i,'children',4,'commands',13,'text']],[`Product ${i+1} illustration`,['children',1,'children',i,'children',4,'commands',4,'image'],'asset']]).flat()],
- news:['Editorial stories',news,[['First story',['children',0,'commands',9,'text']],['First illustration',['children',0,'commands',2,'image'],'asset']]],
+ news:['Editorial stories',news,editorialFields()],
  badge:['Member perk · pulse',badge,[['Pulse expression',['commands',3,'radius']]]],
  progress:['Reward progress · animated',progress,[['Progress expression',['commands',7,'right']]]],
 };

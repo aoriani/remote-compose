@@ -196,6 +196,8 @@ This browser/backend run does not imply a fresh native rerun.
 
 Latest feature evidence: [component selection, scoped JSON and native regression](docs/evidence/component-selection/README.md).
 
+Inspector completeness: [Editorial stories fix and evidence](docs/evidence/editorial-stories/README.md).
+
 Every tracked Markdown guide is linked from this README. `python3 scripts/check-project.py`
 checks that coverage along with local documentation links. Historical reports preserve the
 results of their recorded revision; [Progress](docs/PROGRESS.md) identifies the current state.

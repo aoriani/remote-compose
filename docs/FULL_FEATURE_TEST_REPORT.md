@@ -1,6 +1,9 @@
 # Full feature and rendering validation
 
-Latest: [component selection and native regression](#component-selection-and-native-regression--2026-11-04)
+Latest: [Editorial stories inspector fix](#editorial-stories-inspector-fix--2026-11-04)
+and [before/after evidence](evidence/editorial-stories/README.md).
+
+Previous: [component selection and native regression](#component-selection-and-native-regression--2026-11-04)
 and [screenshots/proof](evidence/component-selection/README.md). Earlier browser/native results
 remain scoped to their recorded revisions.
 
@@ -699,3 +702,41 @@ operation. Fonts/rasterization remain platform-specific. Automated task completi
 inspection do not establish novice usability: next have an unfamiliar engineer select a
 banner, find its source, change a headline, replace an image and publish without guidance;
 record hesitation, errors and task completion before calling the workflow intuitive.
+
+
+## Editorial stories inspector fix — 2026-11-04
+
+The reported defect was reproduced through the real editor: its `news` template exposed
+only one headline line and one illustration from the first tile. The second tile and
+remaining visible text/style values existed in primitive JSON but had no property controls.
+Both tiles now expose 31 fields: nine text lines, nine font sizes, eleven colors and two
+illustrations. Story 1 / Story 2 shortcuts navigate the inspector. Each edit patches only
+its primitive leaf; no story regeneration or protocol change occurs.
+
+Validation on macOS with Chrome/Playwright and the pinned JVM/browser implementation:
+
+- `sh scripts/verify-editor.sh`: all 12 browser acceptance stages pass; 20 Node tests pass.
+- All 105 exposed template properties edited and compiled; 30 fixtures compiled/rendered.
+- Dedicated actual-UI test edits all 31 story fields in the bundled full page, compiles,
+  round-trips a second-tile headline through raw JSON, and verifies palette-created stories.
+- Exact source assertions preserve unrelated sections through edits, movement, duplication
+  and deletion. An independent drawing-command coverage test detects missing descriptors.
+- Both rendered tiles inspected in screenshots; genuine pointer dragging reveals tile two.
+- Nine reviewed browser screenshot goldens pass with zero pixel differences.
+- Gradle compilation/test tasks were UP-TO-DATE, reusing the existing 85-test result.
+  Android/iOS were not rerun: their code, compiler, protocol pins and default bytes are unchanged.
+
+The default full-retail binary remains 1,980,638 bytes, SHA-256
+`5f32c3221aa7ce717151c6f0adb8e591de968abe2b172f97bff511748d258bda`.
+Tests used an isolated publication store and did not replace the demo's publication.
+[Before/after screenshots, field results and suite proof](evidence/editorial-stories/README.md).
+
+The earlier tests only iterated existing descriptors, so they could not detect omitted
+controls. New independent coverage closes that gap. During validation, two test assumptions
+were corrected: color inputs require valid colors, and smooth-scroll navigation must wait
+for the target heading rather than a fixed 350 ms. The final complete run passed.
+
+Scope: existing two story tiles; custom commands and layout geometry remain editable in
+JSON. Structural changes safely fall back to Custom composition. Fixed drawing text does
+not automatically wrap; long copy/font-size changes can require geometry adjustments.
+Historical native rendering evidence remains scoped to its original revisions.

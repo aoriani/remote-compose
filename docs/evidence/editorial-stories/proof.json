@@ -1,0 +1,2511 @@
+{
+  "baseRevision": "35aef64acab6cf4a6786c5997bf17cf4536bc30c",
+  "changes": "Editorial stories fix in this commit",
+  "command": "sh scripts/verify-editor.sh",
+  "scope": "Actual editor/browser/backend acceptance; no native device rerun",
+  "nodeTests": {
+    "passed": 20,
+    "failed": 0
+  },
+  "jvmTests": "Gradle test UP-TO-DATE; existing 85-test result reused, not freshly executed",
+  "stages": [
+    {
+      "name": "every template/property and primitive gallery",
+      "passed": true,
+      "seconds": 45
+    },
+    {
+      "name": "reviewed browser screenshot baselines",
+      "passed": true,
+      "seconds": 0.127
+    },
+    {
+      "name": "draft/export/errors/publication/races",
+      "passed": true,
+      "seconds": 4.319
+    },
+    {
+      "name": "all editorial story fields",
+      "passed": true,
+      "seconds": 5.136
+    },
+    {
+      "name": "canvas selection and scoped JSON",
+      "passed": true,
+      "seconds": 4.7
+    },
+    {
+      "name": "custom subtree preservation",
+      "passed": true,
+      "seconds": 8.147
+    },
+    {
+      "name": "scroll/touch/zoom/responsive/keyboard",
+      "passed": true,
+      "seconds": 8.847
+    },
+    {
+      "name": "default/reset/migration",
+      "passed": true,
+      "seconds": 1.331
+    },
+    {
+      "name": "full retail interactions and publish",
+      "passed": true,
+      "seconds": 17.043
+    },
+    {
+      "name": "carousel configuration and deterministic frames",
+      "passed": true,
+      "seconds": 13.137
+    },
+    {
+      "name": "raw JSON interactive lifecycle",
+      "passed": true,
+      "seconds": 44.75
+    },
+    {
+      "name": "local state/rapid controls/no interaction HTTP",
+      "passed": true,
+      "seconds": 2.111
+    }
+  ],
+  "errors": [],
+  "cases": [
+    {
+      "id": "widget-carousel",
+      "sha256": "e0d19caecf006e393636a1c6a14625899c0d616ba30ee9ed508072646e6a22d2",
+      "bytes": 809727
+    },
+    {
+      "id": "widget-header",
+      "sha256": "e0707f0adadea611d5e23cf251a08ceac94ad9a5150bf79e7aef134eaf981f5b",
+      "bytes": 1025
+    },
+    {
+      "id": "widget-text",
+      "sha256": "562f61bade8b993975fd19d9a1da6e2c5aa49457c98fdc67a0efa8005f8afabd",
+      "bytes": 452
+    },
+    {
+      "id": "widget-spacer",
+      "sha256": "6cf7826373f3671b8b3e10be1118d414cfe04613dfd37fcf3b1b699466eebfff",
+      "bytes": 412
+    },
+    {
+      "id": "widget-hero",
+      "sha256": "b5eb2b68c55569ee8918728d11ce9d6c942c1af46cfe2934a3f804645e06a5f5",
+      "bytes": 400678
+    },
+    {
+      "id": "widget-promo",
+      "sha256": "7ff222923b8dc2009e1b118c1deb459c43bde28a29c2da2da2685c8c74f96f60",
+      "bytes": 762
+    },
+    {
+      "id": "widget-image",
+      "sha256": "5d48ea7891c2601cba18e0e53cb10e17f34126578180ff4eb80f308b8ba4eaad",
+      "bytes": 405386
+    },
+    {
+      "id": "widget-button",
+      "sha256": "97fe7005b51779545df31ad74eca14906c3fdbc3c0951daf2309f27c175844c0",
+      "bytes": 768
+    },
+    {
+      "id": "widget-products",
+      "sha256": "0ec763cfdfb962ec4f5024a81ec9da871760ff24793407f1b33139f015213d35",
+      "bytes": 812388
+    },
+    {
+      "id": "widget-news",
+      "sha256": "574b47226d375ff99f1a7016ddf70da1145e4bf2ad3941e6dd8ae7b5e9e7e87d",
+      "bytes": 400715
+    },
+    {
+      "id": "widget-badge",
+      "sha256": "597871d9d4254020de22297615ae3cfbe2f0b688c4153eebe7fc648b73eb66d2",
+      "bytes": 1049
+    },
+    {
+      "id": "widget-progress",
+      "sha256": "35ff626f820808792c7e2904af53d127a9355c5ca5670542cf2095b57a5a4e61",
+      "bytes": 899
+    },
+    {
+      "id": "graphics",
+      "sha256": "f34e50af4a2d450b61ea09036aca92c51259506a3ef336c4c7f3a868c8cfc772",
+      "bytes": 1119
+    },
+    {
+      "id": "bitmaps",
+      "sha256": "c0e5a465b336c6e2b5283c13286e1cd670e480a7f8aa899cacabe56eb19d2ed0",
+      "bytes": 1964089
+    },
+    {
+      "id": "layouts",
+      "sha256": "8b2ce8c6b6fb5ff020038fa58312c87832dbf123589840ccf4d0c87c77e18a07",
+      "bytes": 1405
+    },
+    {
+      "id": "interactions",
+      "sha256": "a244b82485428ef5fc5ac97b6cc5f8524f49b27132939f308c0d1fbc2826e44b",
+      "bytes": 909
+    },
+    {
+      "id": "nested-scroll",
+      "sha256": "ec23a881aef0ca73c27bbb5a6794d16c268da19ad9116aa85343c7f8db83c409",
+      "bytes": 1248453
+    },
+    {
+      "id": "phase-0",
+      "sha256": "4714f587f5d567d6850d28575e87c20101297b63d35bac1ca5f46cc88b06cffc",
+      "bytes": 1334
+    },
+    {
+      "id": "phase-1",
+      "sha256": "8f4373a229d84710994ab4413f7a2501bbad0b4f596c209c8b84f2b15ec40fac",
+      "bytes": 1334
+    },
+    {
+      "id": "phase-2",
+      "sha256": "768cb63ce4d08e7573bda9be65444e4edaab9bf325ab186a1543d57f92789ca8",
+      "bytes": 1334
+    },
+    {
+      "id": "phase-3",
+      "sha256": "53eee360662b6e37fe67c396bba9ba6e159fc69832388293168460eadd37a653",
+      "bytes": 1334
+    },
+    {
+      "id": "phase-4",
+      "sha256": "11b9cdf999bac360ee469504130fbff8c6603a8da358d54cb3459d2601db4c82",
+      "bytes": 1334
+    },
+    {
+      "id": "live-animations",
+      "sha256": "32a571baaab22657ccf54b593c8f28f475bb07ecb520e5ea21c894b9e2f777a4",
+      "bytes": 1333
+    },
+    {
+      "id": "retail",
+      "sha256": "5f32c3221aa7ce717151c6f0adb8e591de968abe2b172f97bff511748d258bda",
+      "bytes": 1980638
+    },
+    {
+      "id": "empty",
+      "sha256": "caeba2b99841bcc5764bba2827c6ebe9ba304d7cb8c6555596cbda9d4f9f4521",
+      "bytes": 151
+    },
+    {
+      "id": "graphics-edited",
+      "sha256": "7105cac2138146b7eb6af05630b07ad1fc14cc34ed3d8105505fb80d704b10de",
+      "bytes": 1126
+    },
+    {
+      "id": "bitmaps-edited",
+      "sha256": "469813eeeaa185ce299dbf9e1c42bc05ca6aa96ea7e244328224d4a8ed31f2de",
+      "bytes": 1964096
+    },
+    {
+      "id": "layouts-edited",
+      "sha256": "36d3e3aadd9e7ee743336d9fa873f5c78cde033bfc37ca41a72e4718f67b6b66",
+      "bytes": 1412
+    },
+    {
+      "id": "interactions-edited",
+      "sha256": "f447a998ac20b034c5ecff9386b81c2b6a8b2f3920f5a2fc85da47f414fc6056",
+      "bytes": 916
+    },
+    {
+      "id": "nested-scroll-edited",
+      "sha256": "e22ccf3962fdbb3b8a1453c87271437656842f494ec8a8ad71cd41620e3aa7be",
+      "bytes": 1248468
+    }
+  ],
+  "editor": {
+    "properties": [
+      {
+        "widget": "carousel",
+        "field": "Rotation interval (seconds)",
+        "path": [
+          "children",
+          0,
+          "value"
+        ],
+        "value": 7,
+        "passed": true
+      },
+      {
+        "widget": "carousel",
+        "field": "Slide duration (seconds)",
+        "path": [
+          "children",
+          1,
+          "value"
+        ],
+        "value": 0.3,
+        "passed": true
+      },
+      {
+        "widget": "carousel",
+        "field": "Show position indicators (0 or 1)",
+        "path": [
+          "children",
+          12,
+          "value"
+        ],
+        "value": 0,
+        "passed": true
+      },
+      {
+        "widget": "carousel",
+        "field": "Show arrow controls (0 or 1)",
+        "path": [
+          "children",
+          13,
+          "value"
+        ],
+        "value": 0,
+        "passed": true
+      },
+      {
+        "widget": "carousel",
+        "field": "Number of slides (2\u20135)",
+        "path": [
+          "children",
+          14,
+          "value"
+        ],
+        "value": 4,
+        "passed": true
+      },
+      {
+        "widget": "carousel",
+        "field": "Slide 1 \u00b7 color",
+        "path": [
+          "children",
+          15,
+          "commands",
+          4,
+          "ops",
+          2,
+          "color"
+        ],
+        "value": "#305BEF",
+        "passed": true
+      },
+      {
+        "widget": "carousel",
+        "field": "Slide 1 \u00b7 color",
+        "path": [
+          "children",
+          15,
+          "commands",
+          6,
+          "ops",
+          2,
+          "color"
+        ],
+        "value": "#305BEF",
+        "passed": true
+      },
+      {
+        "widget": "carousel",
+        "field": "Slide 1 \u00b7 text",
+        "path": [
+          "children",
+          15,
+          "commands",
+          7,
+          "text"
+        ],
+        "value": "Fresh finds.",
+        "passed": true
+      },
+      {
+        "widget": "carousel",
+        "field": "Slide 1 \u00b7 color",
+        "path": [
+          "children",
+          15,
+          "commands",
+          8,
+          "ops",
+          2,
+          "color"
+        ],
+        "value": "#305BEF",
+        "passed": true
+      },
+      {
+        "widget": "carousel",
+        "field": "Slide 1 \u00b7 text",
+        "path": [
+          "children",
+          15,
+          "commands",
+          9,
+          "text"
+        ],
+        "value": "Fresh finds.",
+        "passed": true
+      },
+      {
+        "widget": "carousel",
+        "field": "Slide 1 \u00b7 color",
+        "path": [
+          "children",
+          15,
+          "commands",
+          10,
+          "ops",
+          2,
+          "color"
+        ],
+        "value": "#305BEF",
+        "passed": true
+      },
+      {
+        "widget": "carousel",
+        "field": "Slide 1 \u00b7 text",
+        "path": [
+          "children",
+          15,
+          "commands",
+          11,
+          "text"
+        ],
+        "value": "Fresh finds.",
+        "passed": true
+      },
+      {
+        "widget": "carousel",
+        "field": "Slide 1 \u00b7 color",
+        "path": [
+          "children",
+          15,
+          "commands",
+          12,
+          "ops",
+          2,
+          "color"
+        ],
+        "value": "#305BEF",
+        "passed": true
+      },
+      {
+        "widget": "carousel",
+        "field": "Slide 1 \u00b7 text",
+        "path": [
+          "children",
+          15,
+          "commands",
+          13,
+          "text"
+        ],
+        "value": "Fresh finds.",
+        "passed": true
+      },
+      {
+        "widget": "carousel",
+        "field": "Banner illustration",
+        "path": [
+          "children",
+          15,
+          "commands",
+          14,
+          "image"
+        ],
+        "value": "citrus-soda",
+        "passed": true
+      },
+      {
+        "widget": "carousel",
+        "field": "Slide 1 \u00b7 color",
+        "path": [
+          "children",
+          15,
+          "commands",
+          16,
+          "ops",
+          2,
+          "color"
+        ],
+        "value": "#305BEF",
+        "passed": true
+      },
+      {
+        "widget": "carousel",
+        "field": "Slide 1 \u00b7 color",
+        "path": [
+          "children",
+          15,
+          "commands",
+          18,
+          "ops",
+          2,
+          "color"
+        ],
+        "value": "#305BEF",
+        "passed": true
+      },
+      {
+        "widget": "carousel",
+        "field": "Slide 1 \u00b7 text",
+        "path": [
+          "children",
+          15,
+          "commands",
+          19,
+          "text"
+        ],
+        "value": "Fresh finds.",
+        "passed": true
+      },
+      {
+        "widget": "carousel",
+        "field": "Slide 2 \u00b7 color",
+        "path": [
+          "children",
+          15,
+          "commands",
+          23,
+          "ops",
+          2,
+          "color"
+        ],
+        "value": "#305BEF",
+        "passed": true
+      },
+      {
+        "widget": "carousel",
+        "field": "Slide 2 \u00b7 color",
+        "path": [
+          "children",
+          15,
+          "commands",
+          25,
+          "ops",
+          2,
+          "color"
+        ],
+        "value": "#305BEF",
+        "passed": true
+      },
+      {
+        "widget": "carousel",
+        "field": "Slide 2 \u00b7 text",
+        "path": [
+          "children",
+          15,
+          "commands",
+          26,
+          "text"
+        ],
+        "value": "Fresh finds.",
+        "passed": true
+      },
+      {
+        "widget": "carousel",
+        "field": "Slide 2 \u00b7 color",
+        "path": [
+          "children",
+          15,
+          "commands",
+          27,
+          "ops",
+          2,
+          "color"
+        ],
+        "value": "#305BEF",
+        "passed": true
+      },
+      {
+        "widget": "carousel",
+        "field": "Slide 2 \u00b7 text",
+        "path": [
+          "children",
+          15,
+          "commands",
+          28,
+          "text"
+        ],
+        "value": "Fresh finds.",
+        "passed": true
+      },
+      {
+        "widget": "carousel",
+        "field": "Slide 2 \u00b7 color",
+        "path": [
+          "children",
+          15,
+          "commands",
+          29,
+          "ops",
+          2,
+          "color"
+        ],
+        "value": "#305BEF",
+        "passed": true
+      },
+      {
+        "widget": "carousel",
+        "field": "Slide 2 \u00b7 text",
+        "path": [
+          "children",
+          15,
+          "commands",
+          30,
+          "text"
+        ],
+        "value": "Fresh finds.",
+        "passed": true
+      },
+      {
+        "widget": "carousel",
+        "field": "Slide 2 \u00b7 color",
+        "path": [
+          "children",
+          15,
+          "commands",
+          31,
+          "ops",
+          2,
+          "color"
+        ],
+        "value": "#305BEF",
+        "passed": true
+      },
+      {
+        "widget": "carousel",
+        "field": "Slide 2 \u00b7 text",
+        "path": [
+          "children",
+          15,
+          "commands",
+          32,
+          "text"
+        ],
+        "value": "Fresh finds.",
+        "passed": true
+      },
+      {
+        "widget": "carousel",
+        "field": "Banner illustration",
+        "path": [
+          "children",
+          15,
+          "commands",
+          33,
+          "image"
+        ],
+        "value": "oat-milk",
+        "passed": true
+      },
+      {
+        "widget": "carousel",
+        "field": "Slide 2 \u00b7 color",
+        "path": [
+          "children",
+          15,
+          "commands",
+          35,
+          "ops",
+          2,
+          "color"
+        ],
+        "value": "#305BEF",
+        "passed": true
+      },
+      {
+        "widget": "carousel",
+        "field": "Slide 2 \u00b7 color",
+        "path": [
+          "children",
+          15,
+          "commands",
+          37,
+          "ops",
+          2,
+          "color"
+        ],
+        "value": "#305BEF",
+        "passed": true
+      },
+      {
+        "widget": "carousel",
+        "field": "Slide 2 \u00b7 text",
+        "path": [
+          "children",
+          15,
+          "commands",
+          38,
+          "text"
+        ],
+        "value": "Fresh finds.",
+        "passed": true
+      },
+      {
+        "widget": "carousel",
+        "field": "Slide 3 \u00b7 color",
+        "path": [
+          "children",
+          15,
+          "commands",
+          42,
+          "ops",
+          2,
+          "color"
+        ],
+        "value": "#305BEF",
+        "passed": true
+      },
+      {
+        "widget": "carousel",
+        "field": "Slide 3 \u00b7 color",
+        "path": [
+          "children",
+          15,
+          "commands",
+          44,
+          "ops",
+          2,
+          "color"
+        ],
+        "value": "#305BEF",
+        "passed": true
+      },
+      {
+        "widget": "carousel",
+        "field": "Slide 3 \u00b7 text",
+        "path": [
+          "children",
+          15,
+          "commands",
+          45,
+          "text"
+        ],
+        "value": "Fresh finds.",
+        "passed": true
+      },
+      {
+        "widget": "carousel",
+        "field": "Slide 3 \u00b7 color",
+        "path": [
+          "children",
+          15,
+          "commands",
+          46,
+          "ops",
+          2,
+          "color"
+        ],
+        "value": "#305BEF",
+        "passed": true
+      },
+      {
+        "widget": "carousel",
+        "field": "Slide 3 \u00b7 text",
+        "path": [
+          "children",
+          15,
+          "commands",
+          47,
+          "text"
+        ],
+        "value": "Fresh finds.",
+        "passed": true
+      },
+      {
+        "widget": "carousel",
+        "field": "Slide 3 \u00b7 color",
+        "path": [
+          "children",
+          15,
+          "commands",
+          48,
+          "ops",
+          2,
+          "color"
+        ],
+        "value": "#305BEF",
+        "passed": true
+      },
+      {
+        "widget": "carousel",
+        "field": "Slide 3 \u00b7 text",
+        "path": [
+          "children",
+          15,
+          "commands",
+          49,
+          "text"
+        ],
+        "value": "Fresh finds.",
+        "passed": true
+      },
+      {
+        "widget": "carousel",
+        "field": "Slide 3 \u00b7 color",
+        "path": [
+          "children",
+          15,
+          "commands",
+          50,
+          "ops",
+          2,
+          "color"
+        ],
+        "value": "#305BEF",
+        "passed": true
+      },
+      {
+        "widget": "carousel",
+        "field": "Slide 3 \u00b7 text",
+        "path": [
+          "children",
+          15,
+          "commands",
+          51,
+          "text"
+        ],
+        "value": "Fresh finds.",
+        "passed": true
+      },
+      {
+        "widget": "carousel",
+        "field": "Banner illustration",
+        "path": [
+          "children",
+          15,
+          "commands",
+          52,
+          "image"
+        ],
+        "value": "oat-milk",
+        "passed": true
+      },
+      {
+        "widget": "carousel",
+        "field": "Slide 3 \u00b7 color",
+        "path": [
+          "children",
+          15,
+          "commands",
+          54,
+          "ops",
+          2,
+          "color"
+        ],
+        "value": "#305BEF",
+        "passed": true
+      },
+      {
+        "widget": "carousel",
+        "field": "Slide 3 \u00b7 color",
+        "path": [
+          "children",
+          15,
+          "commands",
+          56,
+          "ops",
+          2,
+          "color"
+        ],
+        "value": "#305BEF",
+        "passed": true
+      },
+      {
+        "widget": "carousel",
+        "field": "Slide 3 \u00b7 text",
+        "path": [
+          "children",
+          15,
+          "commands",
+          57,
+          "text"
+        ],
+        "value": "Fresh finds.",
+        "passed": true
+      },
+      {
+        "widget": "carousel",
+        "field": "Promotion action identifier",
+        "path": [
+          "children",
+          15,
+          "modifiers",
+          2,
+          "onClick",
+          "name"
+        ],
+        "value": "validation.action44",
+        "passed": true
+      },
+      {
+        "widget": "carousel",
+        "field": "Control action identifier",
+        "path": [
+          "children",
+          16,
+          "children",
+          0,
+          "modifiers",
+          2,
+          "onClick",
+          3,
+          "name"
+        ],
+        "value": "validation.action45",
+        "passed": true
+      },
+      {
+        "widget": "carousel",
+        "field": "Control action identifier",
+        "path": [
+          "children",
+          16,
+          "children",
+          2,
+          "modifiers",
+          2,
+          "onClick",
+          3,
+          "name"
+        ],
+        "value": "validation.action46",
+        "passed": true
+      },
+      {
+        "widget": "carousel",
+        "field": "Control action identifier",
+        "path": [
+          "children",
+          16,
+          "children",
+          3,
+          "modifiers",
+          2,
+          "onClick",
+          3,
+          "name"
+        ],
+        "value": "validation.action47",
+        "passed": true
+      },
+      {
+        "widget": "carousel",
+        "field": "Control action identifier",
+        "path": [
+          "children",
+          16,
+          "children",
+          4,
+          "modifiers",
+          2,
+          "onClick",
+          3,
+          "name"
+        ],
+        "value": "validation.action48",
+        "passed": true
+      },
+      {
+        "widget": "carousel",
+        "field": "Control action identifier",
+        "path": [
+          "children",
+          16,
+          "children",
+          6,
+          "modifiers",
+          2,
+          "onClick",
+          3,
+          "name"
+        ],
+        "value": "validation.action49",
+        "passed": true
+      },
+      {
+        "widget": "header",
+        "field": "Brand name",
+        "path": [
+          "commands",
+          7,
+          "text"
+        ],
+        "value": "Fresh finds.",
+        "passed": true
+      },
+      {
+        "widget": "text",
+        "field": "Text",
+        "path": [
+          "value"
+        ],
+        "value": "Fresh finds.",
+        "passed": true
+      },
+      {
+        "widget": "text",
+        "field": "Font size",
+        "path": [
+          "fontSize"
+        ],
+        "value": 26,
+        "passed": true
+      },
+      {
+        "widget": "text",
+        "field": "Color",
+        "path": [
+          "color"
+        ],
+        "value": "#305BEF",
+        "passed": true
+      },
+      {
+        "widget": "spacer",
+        "field": "Height",
+        "path": [
+          "modifiers",
+          0,
+          "height"
+        ],
+        "value": 18,
+        "passed": true
+      },
+      {
+        "widget": "hero",
+        "field": "Headline",
+        "path": [
+          "commands",
+          7,
+          "text"
+        ],
+        "value": "Fresh finds.",
+        "passed": true
+      },
+      {
+        "widget": "hero",
+        "field": "Supporting line",
+        "path": [
+          "commands",
+          11,
+          "text"
+        ],
+        "value": "Fresh finds.",
+        "passed": true
+      },
+      {
+        "widget": "hero",
+        "field": "Hero illustration",
+        "path": [
+          "commands",
+          2,
+          "image"
+        ],
+        "value": "oat-milk",
+        "passed": true
+      },
+      {
+        "widget": "promo",
+        "field": "Message",
+        "path": [
+          "commands",
+          3,
+          "text"
+        ],
+        "value": "Fresh finds.",
+        "passed": true
+      },
+      {
+        "widget": "image",
+        "field": "Image size",
+        "path": [
+          "commands",
+          3,
+          "right"
+        ],
+        "value": 160,
+        "passed": true
+      },
+      {
+        "widget": "image",
+        "field": "Illustration",
+        "path": [
+          "commands",
+          2,
+          "image"
+        ],
+        "value": "citrus-soda",
+        "passed": true
+      },
+      {
+        "widget": "button",
+        "field": "Label",
+        "path": [
+          "commands",
+          3,
+          "text"
+        ],
+        "value": "Fresh finds.",
+        "passed": true
+      },
+      {
+        "widget": "button",
+        "field": "Host event ID",
+        "path": [
+          "modifiers",
+          2,
+          "onClick",
+          "actionId"
+        ],
+        "value": 44,
+        "passed": true
+      },
+      {
+        "widget": "products",
+        "field": "Product 1 name",
+        "path": [
+          "children",
+          1,
+          "children",
+          0,
+          "children",
+          4,
+          "commands",
+          9,
+          "text"
+        ],
+        "value": "Fresh finds.",
+        "passed": true
+      },
+      {
+        "widget": "products",
+        "field": "Product 1 price",
+        "path": [
+          "children",
+          1,
+          "children",
+          0,
+          "children",
+          4,
+          "commands",
+          13,
+          "text"
+        ],
+        "value": "$4.75",
+        "passed": true
+      },
+      {
+        "widget": "products",
+        "field": "Product 1 illustration",
+        "path": [
+          "children",
+          1,
+          "children",
+          0,
+          "children",
+          4,
+          "commands",
+          4,
+          "image"
+        ],
+        "value": "citrus-soda",
+        "passed": true
+      },
+      {
+        "widget": "products",
+        "field": "Product 2 name",
+        "path": [
+          "children",
+          1,
+          "children",
+          1,
+          "children",
+          4,
+          "commands",
+          9,
+          "text"
+        ],
+        "value": "Fresh finds.",
+        "passed": true
+      },
+      {
+        "widget": "products",
+        "field": "Product 2 price",
+        "path": [
+          "children",
+          1,
+          "children",
+          1,
+          "children",
+          4,
+          "commands",
+          13,
+          "text"
+        ],
+        "value": "$4.75",
+        "passed": true
+      },
+      {
+        "widget": "products",
+        "field": "Product 2 illustration",
+        "path": [
+          "children",
+          1,
+          "children",
+          1,
+          "children",
+          4,
+          "commands",
+          4,
+          "image"
+        ],
+        "value": "oat-milk",
+        "passed": true
+      },
+      {
+        "widget": "products",
+        "field": "Product 3 name",
+        "path": [
+          "children",
+          1,
+          "children",
+          2,
+          "children",
+          4,
+          "commands",
+          9,
+          "text"
+        ],
+        "value": "Fresh finds.",
+        "passed": true
+      },
+      {
+        "widget": "products",
+        "field": "Product 3 price",
+        "path": [
+          "children",
+          1,
+          "children",
+          2,
+          "children",
+          4,
+          "commands",
+          13,
+          "text"
+        ],
+        "value": "$4.75",
+        "passed": true
+      },
+      {
+        "widget": "products",
+        "field": "Product 3 illustration",
+        "path": [
+          "children",
+          1,
+          "children",
+          2,
+          "children",
+          4,
+          "commands",
+          4,
+          "image"
+        ],
+        "value": "oat-milk",
+        "passed": true
+      },
+      {
+        "widget": "news",
+        "field": "Story 1 \u00b7 Eyebrow line 1",
+        "path": [
+          "children",
+          0,
+          "commands",
+          5,
+          "text"
+        ],
+        "value": "Fresh finds.",
+        "passed": true
+      },
+      {
+        "widget": "news",
+        "field": "Story 1 \u00b7 Eyebrow line 1 color",
+        "path": [
+          "children",
+          0,
+          "commands",
+          4,
+          "ops",
+          2,
+          "color"
+        ],
+        "value": "#305BEF",
+        "passed": true
+      },
+      {
+        "widget": "news",
+        "field": "Story 1 \u00b7 Eyebrow line 1 font size",
+        "path": [
+          "children",
+          0,
+          "commands",
+          4,
+          "ops",
+          3,
+          "textSize"
+        ],
+        "value": 12,
+        "passed": true
+      },
+      {
+        "widget": "news",
+        "field": "Story 1 \u00b7 Eyebrow line 2",
+        "path": [
+          "children",
+          0,
+          "commands",
+          7,
+          "text"
+        ],
+        "value": "Fresh finds.",
+        "passed": true
+      },
+      {
+        "widget": "news",
+        "field": "Story 1 \u00b7 Eyebrow line 2 color",
+        "path": [
+          "children",
+          0,
+          "commands",
+          6,
+          "ops",
+          2,
+          "color"
+        ],
+        "value": "#305BEF",
+        "passed": true
+      },
+      {
+        "widget": "news",
+        "field": "Story 1 \u00b7 Eyebrow line 2 font size",
+        "path": [
+          "children",
+          0,
+          "commands",
+          6,
+          "ops",
+          3,
+          "textSize"
+        ],
+        "value": 12,
+        "passed": true
+      },
+      {
+        "widget": "news",
+        "field": "Story 1 \u00b7 Headline line 1",
+        "path": [
+          "children",
+          0,
+          "commands",
+          9,
+          "text"
+        ],
+        "value": "Fresh finds.",
+        "passed": true
+      },
+      {
+        "widget": "news",
+        "field": "Story 1 \u00b7 Headline line 1 color",
+        "path": [
+          "children",
+          0,
+          "commands",
+          8,
+          "ops",
+          2,
+          "color"
+        ],
+        "value": "#305BEF",
+        "passed": true
+      },
+      {
+        "widget": "news",
+        "field": "Story 1 \u00b7 Headline line 1 font size",
+        "path": [
+          "children",
+          0,
+          "commands",
+          8,
+          "ops",
+          3,
+          "textSize"
+        ],
+        "value": 24,
+        "passed": true
+      },
+      {
+        "widget": "news",
+        "field": "Story 1 \u00b7 Headline line 2",
+        "path": [
+          "children",
+          0,
+          "commands",
+          11,
+          "text"
+        ],
+        "value": "Fresh finds.",
+        "passed": true
+      },
+      {
+        "widget": "news",
+        "field": "Story 1 \u00b7 Headline line 2 color",
+        "path": [
+          "children",
+          0,
+          "commands",
+          10,
+          "ops",
+          2,
+          "color"
+        ],
+        "value": "#305BEF",
+        "passed": true
+      },
+      {
+        "widget": "news",
+        "field": "Story 1 \u00b7 Headline line 2 font size",
+        "path": [
+          "children",
+          0,
+          "commands",
+          10,
+          "ops",
+          3,
+          "textSize"
+        ],
+        "value": 24,
+        "passed": true
+      },
+      {
+        "widget": "news",
+        "field": "Story 1 \u00b7 Call to action",
+        "path": [
+          "children",
+          0,
+          "commands",
+          13,
+          "text"
+        ],
+        "value": "Fresh finds.",
+        "passed": true
+      },
+      {
+        "widget": "news",
+        "field": "Story 1 \u00b7 Call to action color",
+        "path": [
+          "children",
+          0,
+          "commands",
+          12,
+          "ops",
+          2,
+          "color"
+        ],
+        "value": "#305BEF",
+        "passed": true
+      },
+      {
+        "widget": "news",
+        "field": "Story 1 \u00b7 Call to action font size",
+        "path": [
+          "children",
+          0,
+          "commands",
+          12,
+          "ops",
+          3,
+          "textSize"
+        ],
+        "value": 13,
+        "passed": true
+      },
+      {
+        "widget": "news",
+        "field": "Story 1 \u00b7 Illustration",
+        "path": [
+          "children",
+          0,
+          "commands",
+          2,
+          "image"
+        ],
+        "value": "oat-milk",
+        "passed": true
+      },
+      {
+        "widget": "news",
+        "field": "Story 1 \u00b7 Background color",
+        "path": [
+          "children",
+          0,
+          "commands",
+          0,
+          "ops",
+          2,
+          "color"
+        ],
+        "value": "#305BEF",
+        "passed": true
+      },
+      {
+        "widget": "news",
+        "field": "Story 2 \u00b7 Eyebrow",
+        "path": [
+          "children",
+          1,
+          "commands",
+          5,
+          "text"
+        ],
+        "value": "Fresh finds.",
+        "passed": true
+      },
+      {
+        "widget": "news",
+        "field": "Story 2 \u00b7 Eyebrow color",
+        "path": [
+          "children",
+          1,
+          "commands",
+          4,
+          "ops",
+          2,
+          "color"
+        ],
+        "value": "#305BEF",
+        "passed": true
+      },
+      {
+        "widget": "news",
+        "field": "Story 2 \u00b7 Eyebrow font size",
+        "path": [
+          "children",
+          1,
+          "commands",
+          4,
+          "ops",
+          3,
+          "textSize"
+        ],
+        "value": 12,
+        "passed": true
+      },
+      {
+        "widget": "news",
+        "field": "Story 2 \u00b7 Headline line 1",
+        "path": [
+          "children",
+          1,
+          "commands",
+          7,
+          "text"
+        ],
+        "value": "Fresh finds.",
+        "passed": true
+      },
+      {
+        "widget": "news",
+        "field": "Story 2 \u00b7 Headline line 1 color",
+        "path": [
+          "children",
+          1,
+          "commands",
+          6,
+          "ops",
+          2,
+          "color"
+        ],
+        "value": "#305BEF",
+        "passed": true
+      },
+      {
+        "widget": "news",
+        "field": "Story 2 \u00b7 Headline line 1 font size",
+        "path": [
+          "children",
+          1,
+          "commands",
+          6,
+          "ops",
+          3,
+          "textSize"
+        ],
+        "value": 24,
+        "passed": true
+      },
+      {
+        "widget": "news",
+        "field": "Story 2 \u00b7 Headline line 2",
+        "path": [
+          "children",
+          1,
+          "commands",
+          9,
+          "text"
+        ],
+        "value": "Fresh finds.",
+        "passed": true
+      },
+      {
+        "widget": "news",
+        "field": "Story 2 \u00b7 Headline line 2 color",
+        "path": [
+          "children",
+          1,
+          "commands",
+          8,
+          "ops",
+          2,
+          "color"
+        ],
+        "value": "#305BEF",
+        "passed": true
+      },
+      {
+        "widget": "news",
+        "field": "Story 2 \u00b7 Headline line 2 font size",
+        "path": [
+          "children",
+          1,
+          "commands",
+          8,
+          "ops",
+          3,
+          "textSize"
+        ],
+        "value": 24,
+        "passed": true
+      },
+      {
+        "widget": "news",
+        "field": "Story 2 \u00b7 Call to action",
+        "path": [
+          "children",
+          1,
+          "commands",
+          11,
+          "text"
+        ],
+        "value": "Fresh finds.",
+        "passed": true
+      },
+      {
+        "widget": "news",
+        "field": "Story 2 \u00b7 Call to action color",
+        "path": [
+          "children",
+          1,
+          "commands",
+          10,
+          "ops",
+          2,
+          "color"
+        ],
+        "value": "#305BEF",
+        "passed": true
+      },
+      {
+        "widget": "news",
+        "field": "Story 2 \u00b7 Call to action font size",
+        "path": [
+          "children",
+          1,
+          "commands",
+          10,
+          "ops",
+          3,
+          "textSize"
+        ],
+        "value": 13,
+        "passed": true
+      },
+      {
+        "widget": "news",
+        "field": "Story 2 \u00b7 Illustration",
+        "path": [
+          "children",
+          1,
+          "commands",
+          2,
+          "image"
+        ],
+        "value": "oat-milk",
+        "passed": true
+      },
+      {
+        "widget": "news",
+        "field": "Story 2 \u00b7 Background color",
+        "path": [
+          "children",
+          1,
+          "commands",
+          0,
+          "ops",
+          2,
+          "color"
+        ],
+        "value": "#305BEF",
+        "passed": true
+      },
+      {
+        "widget": "badge",
+        "field": "Pulse expression",
+        "path": [
+          "commands",
+          3,
+          "radius"
+        ],
+        "value": "4 + 1.2 * sin(time * 3) + 0.25",
+        "passed": true
+      },
+      {
+        "widget": "progress",
+        "field": "Progress expression",
+        "path": [
+          "commands",
+          7,
+          "right"
+        ],
+        "value": "20 + (windowWidth() - 40) * (185 + 24 * sin(time * 2)) / 350 + 0.25",
+        "passed": true
+      }
+    ],
+    "coverage": {
+      "deletedTemplates": [
+        "carousel",
+        "header",
+        "text",
+        "spacer",
+        "hero",
+        "promo",
+        "image",
+        "button",
+        "products",
+        "news",
+        "badge",
+        "progress"
+      ],
+      "interactionEvents": [
+        {
+          "id": 502,
+          "metadata": ""
+        },
+        {
+          "id": 501,
+          "metadata": ""
+        },
+        {
+          "id": 503,
+          "metadata": ""
+        },
+        {
+          "name": "validation.echo",
+          "value": "hello-protocol"
+        }
+      ],
+      "largeSections": 160,
+      "undoRedo": "Not implemented; no undo/redo controls",
+      "errors": []
+    },
+    "cases": [
+      {
+        "id": "widget-carousel",
+        "version": 1,
+        "sha256": "e0d19caecf006e393636a1c6a14625899c0d616ba30ee9ed508072646e6a22d2",
+        "bytes": 809727,
+        "plan": {
+          "widget": "carousel",
+          "rois": []
+        }
+      },
+      {
+        "id": "widget-header",
+        "version": 2,
+        "sha256": "e0707f0adadea611d5e23cf251a08ceac94ad9a5150bf79e7aef134eaf981f5b",
+        "bytes": 1025,
+        "plan": {
+          "widget": "header",
+          "rois": []
+        }
+      },
+      {
+        "id": "widget-text",
+        "version": 3,
+        "sha256": "562f61bade8b993975fd19d9a1da6e2c5aa49457c98fdc67a0efa8005f8afabd",
+        "bytes": 452,
+        "plan": {
+          "widget": "text",
+          "rois": []
+        }
+      },
+      {
+        "id": "widget-spacer",
+        "version": 4,
+        "sha256": "6cf7826373f3671b8b3e10be1118d414cfe04613dfd37fcf3b1b699466eebfff",
+        "bytes": 412,
+        "plan": {
+          "widget": "spacer",
+          "rois": []
+        }
+      },
+      {
+        "id": "widget-hero",
+        "version": 5,
+        "sha256": "b5eb2b68c55569ee8918728d11ce9d6c942c1af46cfe2934a3f804645e06a5f5",
+        "bytes": 400678,
+        "plan": {
+          "widget": "hero",
+          "rois": []
+        }
+      },
+      {
+        "id": "widget-promo",
+        "version": 6,
+        "sha256": "7ff222923b8dc2009e1b118c1deb459c43bde28a29c2da2da2685c8c74f96f60",
+        "bytes": 762,
+        "plan": {
+          "widget": "promo",
+          "rois": []
+        }
+      },
+      {
+        "id": "widget-image",
+        "version": 7,
+        "sha256": "5d48ea7891c2601cba18e0e53cb10e17f34126578180ff4eb80f308b8ba4eaad",
+        "bytes": 405386,
+        "plan": {
+          "widget": "image",
+          "rois": []
+        }
+      },
+      {
+        "id": "widget-button",
+        "version": 8,
+        "sha256": "97fe7005b51779545df31ad74eca14906c3fdbc3c0951daf2309f27c175844c0",
+        "bytes": 768,
+        "plan": {
+          "widget": "button",
+          "rois": []
+        }
+      },
+      {
+        "id": "widget-products",
+        "version": 9,
+        "sha256": "0ec763cfdfb962ec4f5024a81ec9da871760ff24793407f1b33139f015213d35",
+        "bytes": 812388,
+        "plan": {
+          "widget": "products",
+          "rois": []
+        }
+      },
+      {
+        "id": "widget-news",
+        "version": 10,
+        "sha256": "574b47226d375ff99f1a7016ddf70da1145e4bf2ad3941e6dd8ae7b5e9e7e87d",
+        "bytes": 400715,
+        "plan": {
+          "widget": "news",
+          "rois": []
+        }
+      },
+      {
+        "id": "widget-badge",
+        "version": 11,
+        "sha256": "597871d9d4254020de22297615ae3cfbe2f0b688c4153eebe7fc648b73eb66d2",
+        "bytes": 1049,
+        "plan": {
+          "widget": "badge",
+          "rois": []
+        }
+      },
+      {
+        "id": "widget-progress",
+        "version": 12,
+        "sha256": "35ff626f820808792c7e2904af53d127a9355c5ca5670542cf2095b57a5a4e61",
+        "bytes": 899,
+        "plan": {
+          "widget": "progress",
+          "rois": []
+        }
+      },
+      {
+        "id": "graphics",
+        "version": 13,
+        "sha256": "f34e50af4a2d450b61ea09036aca92c51259506a3ef336c4c7f3a868c8cfc772",
+        "bytes": 1119,
+        "plan": {
+          "rois": [
+            [
+              35,
+              95,
+              50,
+              30
+            ],
+            [
+              150,
+              95,
+              60,
+              30
+            ],
+            [
+              270,
+              95,
+              60,
+              30
+            ],
+            [
+              60,
+              210,
+              30,
+              20
+            ],
+            [
+              30,
+              410,
+              70,
+              50
+            ],
+            [
+              245,
+              425,
+              25,
+              20
+            ],
+            [
+              190,
+              570,
+              90,
+              15
+            ],
+            [
+              24,
+              300,
+              340,
+              45
+            ]
+          ],
+          "samples": [
+            {
+              "x": 60,
+              "y": 110,
+              "rgb": [
+                48,
+                91,
+                239
+              ]
+            },
+            {
+              "x": 170,
+              "y": 110,
+              "rgb": [
+                129,
+                168,
+                132
+              ]
+            },
+            {
+              "x": 150,
+              "y": 440,
+              "rgb": [
+                255,
+                255,
+                255
+              ]
+            },
+            {
+              "x": 205,
+              "y": 580,
+              "rgb": [
+                247,
+                176,
+                123
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "id": "bitmaps",
+        "version": 14,
+        "sha256": "c0e5a465b336c6e2b5283c13286e1cd670e480a7f8aa899cacabe56eb19d2ed0",
+        "bytes": 1964089,
+        "plan": {
+          "rois": [
+            [
+              25,
+              75,
+              140,
+              140
+            ],
+            [
+              215,
+              75,
+              140,
+              140
+            ],
+            [
+              25,
+              275,
+              140,
+              140
+            ],
+            [
+              215,
+              275,
+              140,
+              140
+            ],
+            [
+              20,
+              630,
+              120,
+              120
+            ]
+          ],
+          "legacyBag": {
+            "x": 20,
+            "y": 630,
+            "width": 120,
+            "height": 120
+          },
+          "deliberatelyDistorted": true
+        }
+      },
+      {
+        "id": "layouts",
+        "version": 15,
+        "sha256": "8b2ce8c6b6fb5ff020038fa58312c87832dbf123589840ccf4d0c87c77e18a07",
+        "bytes": 1405,
+        "plan": {
+          "typography": true,
+          "rois": [
+            [
+              32,
+              110,
+              80,
+              45
+            ],
+            [
+              215,
+              115,
+              90,
+              35
+            ]
+          ],
+          "samples": [
+            {
+              "x": 17,
+              "y": 205,
+              "rgb": [
+                255,
+                255,
+                255
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "id": "interactions",
+        "version": 16,
+        "sha256": "a244b82485428ef5fc5ac97b6cc5f8524f49b27132939f308c0d1fbc2826e44b",
+        "bytes": 909,
+        "plan": {
+          "actions": [
+            {
+              "x": 150,
+              "y": 95,
+              "id": 501
+            },
+            {
+              "x": 150,
+              "y": 175,
+              "name": "validation.echo",
+              "payload": "hello-protocol"
+            }
+          ],
+          "stateRoi": [
+            20,
+            240,
+            200,
+            180
+          ],
+          "rois": []
+        }
+      },
+      {
+        "id": "nested-scroll",
+        "version": 17,
+        "sha256": "ec23a881aef0ca73c27bbb5a6794d16c268da19ad9116aa85343c7f8db83c409",
+        "bytes": 1248453,
+        "plan": {
+          "scroll": true,
+          "rois": []
+        }
+      },
+      {
+        "id": "phase-0",
+        "version": 18,
+        "sha256": "4714f587f5d567d6850d28575e87c20101297b63d35bac1ca5f46cc88b06cffc",
+        "bytes": 1334,
+        "plan": {
+          "phase": 0,
+          "rois": [
+            [
+              35,
+              35,
+              26,
+              26
+            ],
+            [
+              20,
+              159,
+              350,
+              9
+            ]
+          ],
+          "samples": []
+        }
+      },
+      {
+        "id": "phase-1",
+        "version": 19,
+        "sha256": "8f4373a229d84710994ab4413f7a2501bbad0b4f596c209c8b84f2b15ec40fac",
+        "bytes": 1334,
+        "plan": {
+          "phase": 0.7853981633974483,
+          "rois": [
+            [
+              35,
+              35,
+              26,
+              26
+            ],
+            [
+              20,
+              159,
+              350,
+              9
+            ]
+          ],
+          "samples": []
+        }
+      },
+      {
+        "id": "phase-2",
+        "version": 20,
+        "sha256": "768cb63ce4d08e7573bda9be65444e4edaab9bf325ab186a1543d57f92789ca8",
+        "bytes": 1334,
+        "plan": {
+          "phase": 1.5707963267948966,
+          "rois": [
+            [
+              35,
+              35,
+              26,
+              26
+            ],
+            [
+              20,
+              159,
+              350,
+              9
+            ]
+          ],
+          "samples": []
+        }
+      },
+      {
+        "id": "phase-3",
+        "version": 21,
+        "sha256": "53eee360662b6e37fe67c396bba9ba6e159fc69832388293168460eadd37a653",
+        "bytes": 1334,
+        "plan": {
+          "phase": 3.141592653589793,
+          "rois": [
+            [
+              35,
+              35,
+              26,
+              26
+            ],
+            [
+              20,
+              159,
+              350,
+              9
+            ]
+          ],
+          "samples": []
+        }
+      },
+      {
+        "id": "phase-4",
+        "version": 22,
+        "sha256": "11b9cdf999bac360ee469504130fbff8c6603a8da358d54cb3459d2601db4c82",
+        "bytes": 1334,
+        "plan": {
+          "phase": 6.283185307179586,
+          "rois": [
+            [
+              35,
+              35,
+              26,
+              26
+            ],
+            [
+              20,
+              159,
+              350,
+              9
+            ]
+          ],
+          "samples": []
+        }
+      },
+      {
+        "id": "live-animations",
+        "version": 23,
+        "sha256": "32a571baaab22657ccf54b593c8f28f475bb07ecb520e5ea21c894b9e2f777a4",
+        "bytes": 1333,
+        "plan": {
+          "live": true,
+          "rois": []
+        }
+      },
+      {
+        "id": "retail",
+        "version": 24,
+        "sha256": "5f32c3221aa7ce717151c6f0adb8e591de968abe2b172f97bff511748d258bda",
+        "bytes": 1980638,
+        "plan": {
+          "scroll": true,
+          "rois": []
+        }
+      },
+      {
+        "id": "empty",
+        "version": 25,
+        "sha256": "caeba2b99841bcc5764bba2827c6ebe9ba304d7cb8c6555596cbda9d4f9f4521",
+        "bytes": 151,
+        "plan": {
+          "rois": [
+            [
+              0,
+              0,
+              390,
+              844
+            ]
+          ]
+        }
+      },
+      {
+        "id": "graphics-edited",
+        "version": 26,
+        "sha256": "7105cac2138146b7eb6af05630b07ad1fc14cc34ed3d8105505fb80d704b10de",
+        "bytes": 1126,
+        "plan": {
+          "rois": [
+            [
+              35,
+              95,
+              50,
+              30
+            ],
+            [
+              150,
+              95,
+              60,
+              30
+            ],
+            [
+              270,
+              95,
+              60,
+              30
+            ],
+            [
+              60,
+              210,
+              30,
+              20
+            ],
+            [
+              30,
+              410,
+              70,
+              50
+            ],
+            [
+              245,
+              425,
+              25,
+              20
+            ],
+            [
+              190,
+              570,
+              90,
+              15
+            ],
+            [
+              24,
+              300,
+              340,
+              45
+            ]
+          ],
+          "samples": [
+            {
+              "x": 60,
+              "y": 110,
+              "rgb": [
+                48,
+                91,
+                239
+              ]
+            },
+            {
+              "x": 170,
+              "y": 110,
+              "rgb": [
+                129,
+                168,
+                132
+              ]
+            },
+            {
+              "x": 150,
+              "y": 440,
+              "rgb": [
+                255,
+                255,
+                255
+              ]
+            },
+            {
+              "x": 205,
+              "y": 580,
+              "rgb": [
+                247,
+                176,
+                123
+              ]
+            }
+          ],
+          "modifiedFrom": "graphics"
+        }
+      },
+      {
+        "id": "bitmaps-edited",
+        "version": 27,
+        "sha256": "469813eeeaa185ce299dbf9e1c42bc05ca6aa96ea7e244328224d4a8ed31f2de",
+        "bytes": 1964096,
+        "plan": {
+          "rois": [
+            [
+              25,
+              75,
+              140,
+              140
+            ],
+            [
+              215,
+              75,
+              140,
+              140
+            ],
+            [
+              25,
+              275,
+              140,
+              140
+            ],
+            [
+              215,
+              275,
+              140,
+              140
+            ],
+            [
+              20,
+              630,
+              120,
+              120
+            ]
+          ],
+          "legacyBag": {
+            "x": 20,
+            "y": 630,
+            "width": 120,
+            "height": 120
+          },
+          "deliberatelyDistorted": true,
+          "modifiedFrom": "bitmaps"
+        }
+      },
+      {
+        "id": "layouts-edited",
+        "version": 28,
+        "sha256": "36d3e3aadd9e7ee743336d9fa873f5c78cde033bfc37ca41a72e4718f67b6b66",
+        "bytes": 1412,
+        "plan": {
+          "typography": true,
+          "rois": [
+            [
+              32,
+              110,
+              80,
+              45
+            ],
+            [
+              215,
+              115,
+              90,
+              35
+            ]
+          ],
+          "samples": [
+            {
+              "x": 17,
+              "y": 205,
+              "rgb": [
+                255,
+                255,
+                255
+              ]
+            }
+          ],
+          "modifiedFrom": "layouts"
+        }
+      },
+      {
+        "id": "interactions-edited",
+        "version": 29,
+        "sha256": "f447a998ac20b034c5ecff9386b81c2b6a8b2f3920f5a2fc85da47f414fc6056",
+        "bytes": 916,
+        "plan": {
+          "actions": [
+            {
+              "x": 150,
+              "y": 95,
+              "id": 501
+            },
+            {
+              "x": 150,
+              "y": 175,
+              "name": "validation.echo",
+              "payload": "hello-protocol"
+            }
+          ],
+          "stateRoi": [
+            20,
+            240,
+            200,
+            180
+          ],
+          "rois": [],
+          "modifiedFrom": "interactions"
+        }
+      },
+      {
+        "id": "nested-scroll-edited",
+        "version": 30,
+        "sha256": "e22ccf3962fdbb3b8a1453c87271437656842f494ec8a8ad71cd41620e3aa7be",
+        "bytes": 1248468,
+        "plan": {
+          "scroll": true,
+          "rois": [],
+          "modifiedFrom": "nested-scroll"
+        }
+      }
+    ]
+  },
+  "baselines": {
+    "thresholds": {
+      "mae": 1,
+      "fractionOver12": 0.01
+    },
+    "baseline": "2026-11-04 browser acceptance; reviewed responsive-source updates at aac2c0e; all nine images are pixel-identical to the historical reviewed browser goldens",
+    "results": [
+      {
+        "id": "graphics",
+        "platform": "browser",
+        "passed": true,
+        "mae": 0,
+        "badFraction": 0
+      },
+      {
+        "id": "bitmaps",
+        "platform": "browser",
+        "passed": true,
+        "mae": 0,
+        "badFraction": 0
+      },
+      {
+        "id": "layouts",
+        "platform": "browser",
+        "passed": true,
+        "mae": 0,
+        "badFraction": 0
+      },
+      {
+        "id": "phase-0",
+        "platform": "browser",
+        "passed": true,
+        "mae": 0,
+        "badFraction": 0
+      },
+      {
+        "id": "phase-1",
+        "platform": "browser",
+        "passed": true,
+        "mae": 0,
+        "badFraction": 0
+      },
+      {
+        "id": "phase-2",
+        "platform": "browser",
+        "passed": true,
+        "mae": 0,
+        "badFraction": 0
+      },
+      {
+        "id": "phase-3",
+        "platform": "browser",
+        "passed": true,
+        "mae": 0,
+        "badFraction": 0
+      },
+      {
+        "id": "phase-4",
+        "platform": "browser",
+        "passed": true,
+        "mae": 0,
+        "badFraction": 0
+      },
+      {
+        "id": "empty",
+        "platform": "browser",
+        "passed": true,
+        "mae": 0,
+        "badFraction": 0
+      }
+    ]
+  }
+}

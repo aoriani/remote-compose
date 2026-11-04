@@ -1,0 +1,392 @@
+{
+  "edits": [
+    {
+      "label": "Story 1 · Eyebrow line 1",
+      "path": [
+        "children",
+        0,
+        "commands",
+        5,
+        "text"
+      ],
+      "value": "SLOW DAYS"
+    },
+    {
+      "label": "Story 1 · Eyebrow line 1 color",
+      "path": [
+        "children",
+        0,
+        "commands",
+        4,
+        "ops",
+        2,
+        "color"
+      ],
+      "value": "#483267"
+    },
+    {
+      "label": "Story 1 · Eyebrow line 1 font size",
+      "path": [
+        "children",
+        0,
+        "commands",
+        4,
+        "ops",
+        3,
+        "textSize"
+      ],
+      "value": 11
+    },
+    {
+      "label": "Story 1 · Eyebrow line 2",
+      "path": [
+        "children",
+        0,
+        "commands",
+        7,
+        "text"
+      ],
+      "value": "SLOW DAYS"
+    },
+    {
+      "label": "Story 1 · Eyebrow line 2 color",
+      "path": [
+        "children",
+        0,
+        "commands",
+        6,
+        "ops",
+        2,
+        "color"
+      ],
+      "value": "#483267"
+    },
+    {
+      "label": "Story 1 · Eyebrow line 2 font size",
+      "path": [
+        "children",
+        0,
+        "commands",
+        6,
+        "ops",
+        3,
+        "textSize"
+      ],
+      "value": 11
+    },
+    {
+      "label": "Story 1 · Headline line 1",
+      "path": [
+        "children",
+        0,
+        "commands",
+        9,
+        "text"
+      ],
+      "value": "A softer"
+    },
+    {
+      "label": "Story 1 · Headline line 1 color",
+      "path": [
+        "children",
+        0,
+        "commands",
+        8,
+        "ops",
+        2,
+        "color"
+      ],
+      "value": "#483267"
+    },
+    {
+      "label": "Story 1 · Headline line 1 font size",
+      "path": [
+        "children",
+        0,
+        "commands",
+        8,
+        "ops",
+        3,
+        "textSize"
+      ],
+      "value": 23
+    },
+    {
+      "label": "Story 1 · Headline line 2",
+      "path": [
+        "children",
+        0,
+        "commands",
+        11,
+        "text"
+      ],
+      "value": "start."
+    },
+    {
+      "label": "Story 1 · Headline line 2 color",
+      "path": [
+        "children",
+        0,
+        "commands",
+        10,
+        "ops",
+        2,
+        "color"
+      ],
+      "value": "#483267"
+    },
+    {
+      "label": "Story 1 · Headline line 2 font size",
+      "path": [
+        "children",
+        0,
+        "commands",
+        10,
+        "ops",
+        3,
+        "textSize"
+      ],
+      "value": 23
+    },
+    {
+      "label": "Story 1 · Call to action",
+      "path": [
+        "children",
+        0,
+        "commands",
+        13,
+        "text"
+      ],
+      "value": "Read the story →"
+    },
+    {
+      "label": "Story 1 · Call to action color",
+      "path": [
+        "children",
+        0,
+        "commands",
+        12,
+        "ops",
+        2,
+        "color"
+      ],
+      "value": "#483267"
+    },
+    {
+      "label": "Story 1 · Call to action font size",
+      "path": [
+        "children",
+        0,
+        "commands",
+        12,
+        "ops",
+        3,
+        "textSize"
+      ],
+      "value": 12
+    },
+    {
+      "label": "Story 1 · Illustration",
+      "path": [
+        "children",
+        0,
+        "commands",
+        2,
+        "image"
+      ],
+      "value": "oat-milk"
+    },
+    {
+      "label": "Story 1 · Background color",
+      "path": [
+        "children",
+        0,
+        "commands",
+        0,
+        "ops",
+        2,
+        "color"
+      ],
+      "value": "#E7DFF2"
+    },
+    {
+      "label": "Story 2 · Eyebrow",
+      "path": [
+        "children",
+        1,
+        "commands",
+        5,
+        "text"
+      ],
+      "value": "FRESH IDEAS"
+    },
+    {
+      "label": "Story 2 · Eyebrow color",
+      "path": [
+        "children",
+        1,
+        "commands",
+        4,
+        "ops",
+        2,
+        "color"
+      ],
+      "value": "#483267"
+    },
+    {
+      "label": "Story 2 · Eyebrow font size",
+      "path": [
+        "children",
+        1,
+        "commands",
+        4,
+        "ops",
+        3,
+        "textSize"
+      ],
+      "value": 11
+    },
+    {
+      "label": "Story 2 · Headline line 1",
+      "path": [
+        "children",
+        1,
+        "commands",
+        7,
+        "text"
+      ],
+      "value": "Better"
+    },
+    {
+      "label": "Story 2 · Headline line 1 color",
+      "path": [
+        "children",
+        1,
+        "commands",
+        6,
+        "ops",
+        2,
+        "color"
+      ],
+      "value": "#483267"
+    },
+    {
+      "label": "Story 2 · Headline line 1 font size",
+      "path": [
+        "children",
+        1,
+        "commands",
+        6,
+        "ops",
+        3,
+        "textSize"
+      ],
+      "value": 23
+    },
+    {
+      "label": "Story 2 · Headline line 2",
+      "path": [
+        "children",
+        1,
+        "commands",
+        9,
+        "text"
+      ],
+      "value": "mornings."
+    },
+    {
+      "label": "Story 2 · Headline line 2 color",
+      "path": [
+        "children",
+        1,
+        "commands",
+        8,
+        "ops",
+        2,
+        "color"
+      ],
+      "value": "#483267"
+    },
+    {
+      "label": "Story 2 · Headline line 2 font size",
+      "path": [
+        "children",
+        1,
+        "commands",
+        8,
+        "ops",
+        3,
+        "textSize"
+      ],
+      "value": 23
+    },
+    {
+      "label": "Story 2 · Call to action",
+      "path": [
+        "children",
+        1,
+        "commands",
+        11,
+        "text"
+      ],
+      "value": "Read the story →"
+    },
+    {
+      "label": "Story 2 · Call to action color",
+      "path": [
+        "children",
+        1,
+        "commands",
+        10,
+        "ops",
+        2,
+        "color"
+      ],
+      "value": "#483267"
+    },
+    {
+      "label": "Story 2 · Call to action font size",
+      "path": [
+        "children",
+        1,
+        "commands",
+        10,
+        "ops",
+        3,
+        "textSize"
+      ],
+      "value": 12
+    },
+    {
+      "label": "Story 2 · Illustration",
+      "path": [
+        "children",
+        1,
+        "commands",
+        2,
+        "image"
+      ],
+      "value": "granola"
+    },
+    {
+      "label": "Story 2 · Background color",
+      "path": [
+        "children",
+        1,
+        "commands",
+        0,
+        "ops",
+        2,
+        "color"
+      ],
+      "value": "#E0E9D5"
+    }
+  ],
+  "defaultBinaryUnchanged": "5f32c3221aa7ce717151c6f0adb8e591de968abe2b172f97bff511748d258bda",
+  "bundledDesign": true,
+  "palette": true,
+  "rawJsonRoundTrip": true,
+  "unrelatedSectionsPreserved": true,
+  "secondTileRendered": true,
+  "errors": []
+}

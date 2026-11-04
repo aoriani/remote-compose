@@ -3,6 +3,7 @@ import {mkdir,mkdtemp,writeFile,readFile,cp,rm,stat,readdir} from 'node:fs/promi
 import {resolve} from 'node:path';
 import {runEditor} from './full-editor.mjs';
 import {runLifecycle} from './editor-lifecycle.mjs';
+import {runEditorial} from './editorial-stories.mjs';
 
 const root=resolve(import.meta.dirname,'..');
 const folder=resolve(process.env.EDITOR_REPORT_DIR||'artifacts/editor-acceptance',new Date().toISOString().replaceAll(':','-'));
@@ -33,6 +34,7 @@ try{
  await stage('every template/property and primitive gallery',async()=>{report.cases=await runEditor(base,resolve(folder,'gallery'));await writeFile(resolve(folder,'gallery/run.json'),JSON.stringify({cases:report.cases},null,2));});
  await stage('reviewed browser screenshot baselines',async()=>{await subprocess('scripts/check-visual-baseline.mjs',{BASELINE_PLATFORMS:'browser'},[resolve(folder,'gallery'),'docs/evidence/editor-acceptance/baseline']);});
  await stage('draft/export/errors/publication/races',async()=>{report.lifecycle=await runLifecycle(base,resolve(folder,'lifecycle'));});
+ await stage('all editorial story fields',async()=>{await runEditorial(base,resolve(folder,'editorial'));});
  await stage('canvas selection and scoped JSON',async()=>{await subprocess('player-smoke/selection-smoke.mjs',{SELECTION_REPORT_DIR:resolve(folder,'selection')});});
  await stage('custom subtree preservation',async()=>{await subprocess('player-smoke/custom-preservation.mjs',{FULL_REPORT_DIR:resolve(folder,'custom-preservation')});});
  await stage('scroll/touch/zoom/responsive/keyboard',async()=>{await subprocess('player-smoke/validation-usability.mjs');});
