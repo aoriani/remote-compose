@@ -19,3 +19,7 @@ SDK configuration, environment files, signing keys/profiles and Xcode user data.
 Added PEM/KEY/P8/user-state exclusions. Filename audit found no tracked credential or
 signing files. This is not a full historical secret audit: repeat content/history
 scanning and review before any authorized push. Do not print tokens in reports.
+
+2026-11-04 follow-up: a tracked-content pattern audit for private keys, GitHub tokens and
+AWS access key IDs passed without printing values. GitHub API still reports private=true,
+size=0/default_branch=main. This limited scan does not certify full historical secrets.

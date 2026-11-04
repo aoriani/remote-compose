@@ -1,5 +1,8 @@
 # Full feature and rendering validation
 
+Latest: [interactive carousel/raw JSON acceptance](#interactive-carousel-and-raw-json-lifecycle--2026-11-04)
+and [screenshots/proof](evidence/interactive/README.md). Earlier results remain scoped to their recorded revisions.
+
 > Native viewport follow-up: the manually found margins exposed a gap in this review's
 > cropped-document screenshots. [NATIVE_LAYOUT_FIX](NATIVE_LAYOUT_FIX.md) records the
 > corrected dp/point sizing, Android Material3 app bar, full-screen evidence and passing
@@ -236,3 +239,126 @@ logs/xcresult and heatmaps under artifacts/full-validation. Selected portable ev
 same-platform baselines are tracked under docs/evidence/full-validation. Baselines must
 be reviewed explicitly when fixture hashes change. No generated local SDK/config/signing
 files, credentials or large runtime publication stores are tracked.
+
+## Interactive carousel and raw JSON lifecycle — 2026-11-04
+
+Executive result: the interactive retail document works through the actual editor,
+JVM compiler, genuine browser player and both generic native players. Automatic rotation,
+manual navigation, local shopping feedback and explicit host actions are protocol-driven.
+A browser-authored new nested composition was published while both applications were
+running, then refreshed at the identical hash without changing either installed binary.
+See [interactive guide](INTERACTIVE_DEMO.md) and [18 actual screenshots/proof](evidence/interactive/README.md).
+Implementation milestone: `bbdf2fc`; GitHub setup: `fdb1854`. Evidence/harness follow-up
+is the subsequent local commit. No remote push.
+
+### Environment and exact scope
+
+Unchanged AndroidX8932b2c2b5043cc40c46a44cfd04a1671ec50fb7 and experiments
+a7a76f1d9ecc5aff2af93d0de570a11532552ea3, API7/protocol1.1.0. JDK25.0.4,
+Gradle9.2.1/AGP9.0.0/Kotlin2.2.20, Node22.14.0/Playwright1.56.1,
+Chrome156.0.8078.80, Xcode27.2/arm64 iOS27.2. See upstream-lock.json for UI/Skia pins.
+Android1080×2400, density2.625, measured stage1080×2042 at y295; logical root412×778
+with ordinary outward dp rounding. iOS1206×2622 at3×, safe surface402×707.7pt.
+The earlier four-size viewport validation is separate; this new interaction suite does
+not claim exhaustive small-device/physical-device/fps/accessibility conformance.
+
+### Executed validation
+
+| Check | Result | Evidence / meaning |
+| --- | --- | --- |
+| JVM compiler/backend/parser | PASS85 tests | Added deterministic interactive encoding, strict textFromFloat and invalid expression-ID tests |
+| Editor model | PASS12 tests | Count/order retain banners and customized event IDs; unknown trees remain custom |
+| Existing real browser editor regression | PASS12 templates | Add/property/reorder/delete and safe-duplicate rejection; original image/animation/error checks retained |
+| Interactive browser lifecycle | PASS | Text/color/dimension/layout/vector source edits; preview/publish exact digest;18 expected named events |
+| Custom raw structures | PASS18 complete fixtures | Real Apply, tab switching, unrelated property/reorder/duplicate/delete preserve whole trees/resources |
+| Invalid JSON/operation/value | PASS | Diagnostics; previous valid preview/publication retained; drafts stay unpublished |
+| Carousel inspector | PASS | Text/assets/colors/order, intervals, visibility,2/3/4/5-slide compilation and JSON round trips |
+| Local-state/rapid-input browser test | PASS37 events | Heart/category/count pixels change; quantity floor0/peak12;8 rapid carousel clicks;0 backend requests |
+| Animation clock gallery | PASS + visually inspected | Genuine player frames at4.55/4.775/5s show smooth translated/clipped neighboring offers |
+| Nested action-resource minimal reproduction | PASS | Unadapted null name reproduced; generic data-only shim restores exact name/payload |
+| Original minimal binary proof | PASS |109 bytes, unchanged3 browser pixel checks |
+| Android CLI build/unit/lint | PASS | Material3/native shell and official renderer retained |
+| Android instrumentation | PASS5 cases | Actual pointer input, one event per click, local state/pixels, auto wrap, resume, existing refresh/failure and viewport checks |
+| iOS combined UI tests | PASS2 methods | Immutable binary digests, all17 interaction events without duplication, exact local payloads, resume quantity, selected-heart pixels |
+| Live JSON publication | PASS1 additional iOS method + Android/browser driver | Running clients6→7; manual toolbar refresh; exact digest; generic promotion event; installed executable hashes unchanged |
+| Single-command focused suite | PASS | scripts/verify-interactive.sh end to end, artifacts/interactive-suite-final.log; summary report.json |
+
+Browser tests operate the visible source textarea, Apply, properties, outline, Preview,
+Publish and Load published controls. They are not model-only tests. The new custom source
+contains nested layouts, vector circles/hearts, embedded bitmap artwork, text, actions,
+float variables and time expressions. There is no compiler widget registration. The
+editable carousel remains recognized after safe changes; structurally altered sections
+fall back to a preserved custom representation. Application-level undo/redo is unavailable.
+
+### Exact shared documents and running-client proof
+
+The main combined suite published each source once and selected that immutable version
+in all three players. No platform-specific recompilation occurred:
+
+| Local version | Document | Bytes | SHA-256 |
+| --- | --- | --- | --- |
+|4 /6 | Interactive original / final |1,246,432 | `33a179579d073f31fd3cf281072efcf2dce99bb558dc6f991085d7b3c5709c77` |
+|5 | Raw-JSON edited nested composition |1,246,670 | `a574d9eb8dced9052bf29bfeadcfc2bf0de412730ab7936d6e1281bab45ec518` |
+|7 | Live browser-authored section, native refresh |1,246,676 | `a91ef946aee361fb1af714d4f98790c5f87f719c221ed69e8d161bd8ebe9e3b0` |
+
+In the additional live test, both apps were already running at6. Through the real browser,
+a new row/text/vector section was authored, compiled and previewed while6 remained published.
+Publishing7 updated Android and iOS through native Refresh, with generic promotion.open
+callbacks from the new composition. Installed binary hashes before and after:
+
+- AndroidAPK: `a10143b723ed39c72497c788b199b1e30f9ed78c16ebbe6d97e513b7148b30b4`.
+- iOS executable: `22ade2cb0ec06ac7f577cf538640eb1f26a52b45828320314ba19254ece8a425`.
+
+Both hashes were read from the installed applications, not merely assumed from build paths.
+The full raw source, operation IDs and exact downloaded bytes remain separate from test
+manifest metadata. Publication numbers are local run state and can differ on another machine.
+
+### Interactions and rendering observations
+
+All arrows/dots/banner CTAs, favorite, categories, quantity controls, product illustration/
+title, Scan & Go and membership links have explicit behavior in this fixture. Favorite,
+category and quantity changes are immediate local opcode227 writes, with numeric text
+formatted in the protocol. Generic hosts show/log the action name and float/string payload.
+Automatic rotation is one continuous expression phase; no carousel timer exists in JS,
+Android or Swift. Manual changes reset the phase epoch and retarget from the current
+fractional position. Three dots highlight the nearest active slide; wrap3→1 is verified.
+
+Native callback number strings differ (`1`, `1.0`, `1.000000`) while numeric values match.
+The visible heart fill, category selection and quantity were inspected on actual native
+screens. Native time is live; browser pinned frames establish deterministic transition
+geometry without pretending that unsynchronized native screenshots share a phase. Remote
+font metrics differ, as recorded in the previous report. Newly added source can extend the
+page below the viewport; ordinary vertical scrolling is intentional, not a side margin.
+
+### Bugs found and fixed
+
+| Defect / layer | Cause and correction |
+| --- | --- |
+| Browser indicator host name null | Interned DATA_TEXT nested under a different unclicked action list; generic recursive text-only initialization, matching existing C++ shim. Minimal reproduction retained. |
+| All dots appeared similarly translucent | Opaque paint color was applied after alpha; apply color before expression alpha. Rendered initial/mid/final indicators inspected. |
+| Android feedback displayed stale actions | Toast queue accumulated during rapid clicks; cancel previous Toast and clean up on destroy. Latest generic feedback remains current. |
+| Count edits reset configured control action names | Inspector rebuilt recognized controls without copying names; copy existing arrow/dot identifiers and add regression test. |
+| Literal expression action could encode invalid ID | Pinned writer expects NaN expression reference; strict validation now rejects literals with property path and suggests ValueFloatChange. |
+| Timing test assumed zero decode cost | Native bitmap decode can consume first interval; explicitly select a known slide/reset timestamp before assertions. No runtime capability was disabled. |
+| iOS resume test tapped outside surface | XCTest briefly reported transition-sized geometry; wait for stable full-width frame before normalized input. Screenshot/state established retained quantity, and strengthened rerun passed. |
+
+Early failed test runs are retained in ignored local artifacts. Final main runner and live
+workflow passed; no thresholds were loosened or host widgets substituted to obtain success.
+
+### Remaining limitations and next actions
+
+- State lasts only for the decoded document session; persistence across new publications,
+  business navigation, checkout and user accounts are deliberately absent.
+- Inspector supports2–5 slides and one default variable namespace. Additional independent
+  carousels need explicit raw-JSON namespace renaming. Long-copy editing can overflow fixed
+  authored frames. Grouping the many inspector fields would improve usability.
+- The first interval includes decoding; resume catches up to elapsed phase. Native frame-rate,
+  energy use and synchronized animation clock comparisons remain unmeasured.
+- The old static designed-page sample still has decorative controls; choose **Load interactive
+  demo** for the fully behavioral acceptance fixture. It was preserved for regression history.
+- General functions/conditional operation blocks exist in broader pinned source but remain
+  outside this service capability subset. No newer Summit capability was assumed supported.
+- Physical-device, signing, remote accessibility and strict cross-player typography differences
+  remain as previously documented. The new suite does not erase earlier strict pixel flags.
+- GitHub is private with origin configured; no commits pushed. Limited tracked-file key/token
+  pattern checks passed. Renew content/history secret review before any authorized future push.

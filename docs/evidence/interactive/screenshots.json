@@ -1,0 +1,110 @@
+[
+  {
+    "path": "android/favorite-selected.png",
+    "width": 1080,
+    "height": 2400,
+    "sha256": "9811822d6189a0d7c60213fe48df3ae1da44f68792c1f569b8ead20433015f2f"
+  },
+  {
+    "path": "android/live-refreshed.png",
+    "width": 1080,
+    "height": 2400,
+    "sha256": "3fbc68c0b6d42366e1ce6ea094a1d692af4c33ba2bd031f24a6d1103c9009207"
+  },
+  {
+    "path": "android/local-state.png",
+    "width": 1080,
+    "height": 2400,
+    "sha256": "e459f1aeb9fd60d27fac67066241fe3c53f94efd2907ba0b87ee699813580b8a"
+  },
+  {
+    "path": "android/raw-edited.png",
+    "width": 1080,
+    "height": 2400,
+    "sha256": "184d4649c02309a6d2b02cb0f9a331f9ea27527d487dd4f3bcd602f19272cca6"
+  },
+  {
+    "path": "animation/phase-4.55.png",
+    "width": 390,
+    "height": 844,
+    "sha256": "976d083f6f68be44ba081533a65faa05f98a0581ae2b75a4f8c365e3775c5b00"
+  },
+  {
+    "path": "animation/phase-4.775.png",
+    "width": 390,
+    "height": 844,
+    "sha256": "b106e60e9e2c5262dd31f4cc4485b88fe7ae40521afc4a9006842f96ef6afc9d"
+  },
+  {
+    "path": "animation/phase-5.png",
+    "width": 390,
+    "height": 844,
+    "sha256": "a5469d6e7a419f1bfd84d825e49f01de397bf4804e7eae8e5bb74ccb6cdbee59"
+  },
+  {
+    "path": "browser/favorite-selected.png",
+    "width": 332,
+    "height": 718,
+    "sha256": "caac589b655a85d03289276da59e96ef13f24f776ef543f3e43503afcd1f7ee5"
+  },
+  {
+    "path": "browser/initial.png",
+    "width": 332,
+    "height": 718,
+    "sha256": "a1e3c7715fb1a8b1378644e387d24aec9f502667cf238a20e664a2a945e67896"
+  },
+  {
+    "path": "browser/inspector.png",
+    "width": 1500,
+    "height": 1100,
+    "sha256": "50948912ce26c4a05981b7e54fe6db3c4daed8d339707c6f15e5c9cfe788b1cd"
+  },
+  {
+    "path": "browser/live-source-editor.png",
+    "width": 1500,
+    "height": 1100,
+    "sha256": "4dfdcb534af85501a24066e63f0624a3d21ff576f8330a47d35abecc8533909a"
+  },
+  {
+    "path": "browser/raw-edited.png",
+    "width": 332,
+    "height": 718,
+    "sha256": "c0cb0e3765105ac9a0841ae5b6becace6d758b0f4d3ba76ec8eb10c42565d6ad"
+  },
+  {
+    "path": "browser/third-banner.png",
+    "width": 332,
+    "height": 718,
+    "sha256": "351c0e5ebd09ab958138e481b1c73d7d9d562bda3aaf1d6ee521f4ba6b308b68"
+  },
+  {
+    "path": "ios/favorite-selected.png",
+    "width": 1206,
+    "height": 2622,
+    "sha256": "3a42b54723e10088b9503887c4aa9e9bbbd3b862bd18ab49f7322b796a20ed9b"
+  },
+  {
+    "path": "ios/live-refreshed.png",
+    "width": 1206,
+    "height": 2622,
+    "sha256": "9af680131c46e074c6861cb9890865e1d033b12078a40d487588cd6811c7f6a9"
+  },
+  {
+    "path": "ios/local-state.png",
+    "width": 1206,
+    "height": 2622,
+    "sha256": "4b6dd675f2740134066b2741c8511f78f70fecb49bf569ec833f43766c79368a"
+  },
+  {
+    "path": "ios/raw-edited.png",
+    "width": 1206,
+    "height": 2622,
+    "sha256": "7618846d0e9fcba738d0f3ae19dfb47966bde9073f1e693a8c510910515b7dec"
+  },
+  {
+    "path": "ios/resume.png",
+    "width": 1206,
+    "height": 2622,
+    "sha256": "7cccd402127cb0ae357fedde1bf196acfbcd00d9d1e24101f16b86487cff37c1"
+  }
+]

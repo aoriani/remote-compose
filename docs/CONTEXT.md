@@ -219,3 +219,13 @@ clicks queue obsolete feedback. The exact first/last binary and session state ar
 GitHub origin is git@github.com:aoriani/remote-compose.git, private and empty at setup.
 Never push without explicit authorization. A limited tracked-file private-key/GitHub-token/
 AWS-key pattern audit passed; this does not replace a full history review before a future push.
+
+Combined interactive suite passed with5 Android cases and2 iOS UI methods; report-interactive.mjs
+checks actual XML/XCTest outcomes and exact saved bytes. verify-live-json.py additionally
+coordinates a browser publication while both clients are already running, uses actual
+Android accessibility toolbar bounds for Refresh, and compares installed APK/executable
+hashes before/after. Its native action assertion was also exercised on live publication7.
+The iOS live test supplies a readiness log marker; do not publish before it reaches the
+initial version. It then checks new version/digest and real banner event after Refresh.
+All18 retained screenshots keep their actual dimensions. Final report files are tracked;
+raw logs, xcresult and runtime publication manifests stay ignored. Read latest PROGRESS.

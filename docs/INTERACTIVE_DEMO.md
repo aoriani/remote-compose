@@ -127,3 +127,18 @@ sh scripts/node.sh node player-smoke/action-resource-repro.mjs
 ```
 
 See FULL_FEATURE_TEST_REPORT.md and evidence/interactive for executed scope and limitations.
+
+### Running-client raw JSON refresh test
+
+After the focused suite, with the same SDK/Simulator environment and backend8092 running:
+
+```sh
+python3 scripts/verify-live-json.py
+```
+
+This launches the installed native players at latest, waits for iOS readiness, edits and
+publishes new nested primitives through the real browser, uses native Refresh, asserts
+identical document hashes/events and compares installed APK/iOS executable bytes before/
+after. It publishes a new immutable version and leaves the apps displaying it. The test
+runner target may rebuild; neither mobile application is rebuilt during publication.
+`artifacts/interactive/live-proof.json` and native screenshots record the result.

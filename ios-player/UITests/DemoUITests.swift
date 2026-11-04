@@ -222,4 +222,23 @@ final class DemoUITests: XCTestCase {
         app.terminate()
     }
 
+    func testLiveJsonRefresh() throws {
+        let base="http://127.0.0.1:8092"
+        func metadata()->[String:Any]{let done=expectation(description:"latest metadata");var result:[String:Any]=[:];URLSession.shared.dataTask(with:URL(string:base+"/api/documents/latest/metadata")!){data,_,_ in if let data{result=(try? JSONSerialization.jsonObject(with:data) as? [String:Any]) ?? [:]};done.fulfill()}.resume();wait(for:[done],timeout:10);return result}
+        let before=metadata(),initialVersion=before["version"] as! Int
+        let app=XCUIApplication(bundleIdentifier:"demo.remotecompose.ios");app.launchArguments=["--backend",base,"--no-auto"];app.launch()
+        let surface=app.otherElements["remote-document"].firstMatch;XCTAssertTrue(surface.waitForExistence(timeout:15))
+        let ready=XCTNSPredicateExpectation(predicate:NSPredicate(format:"label CONTAINS %@","v\(initialVersion) •"),object:app.staticTexts["fetch-status"]);XCTAssertEqual(XCTWaiter.wait(for:[ready],timeout:20),.completed)
+        FileHandle.standardOutput.write(Data("JSON_LIVE_READY version=\(initialVersion)\n".utf8))
+        var after=before;let deadline=Date().addingTimeInterval(60)
+        while (after["version"] as? Int)==initialVersion && Date()<deadline{Thread.sleep(forTimeInterval:1);after=metadata()}
+        let version=after["version"] as! Int;XCTAssertGreaterThan(version,initialVersion,"Publish through the browser while this test waits")
+        app.buttons["Refresh"].tap()
+        let updated=XCTNSPredicateExpectation(predicate:NSPredicate(format:"label CONTAINS %@","v\(version) •"),object:app.staticTexts["fetch-status"]);XCTAssertEqual(XCTWaiter.wait(for:[updated],timeout:20),.completed)
+        let shot=XCTAttachment(screenshot:app.screenshot());shot.name="live-json__refreshed";shot.lifetime = .keepAlways;add(shot)
+        surface.coordinate(withNormalizedOffset:CGVector(dx:100/surface.frame.width,dy:128/surface.frame.height)).tap();let notice=app.buttons.matching(NSPredicate(format:"label BEGINSWITH 'Host action:'")).firstMatch;XCTAssertTrue(notice.waitForExistence(timeout:3));XCTAssertTrue(notice.label.contains("promotion.open"));notice.tap()
+        app.buttons["Debug"].tap();let hash=app.staticTexts["document-digest"];for _ in 0..<6{if hash.exists{break};app.swipeUp()};XCTAssertEqual(hash.value as? String,after["sha256"] as? String)
+        FileHandle.standardOutput.write(Data("JSON_LIVE_PASS version=\(version) sha256=\(after["sha256"]!)\n".utf8));app.buttons["Done"].tap()
+    }
+
 }

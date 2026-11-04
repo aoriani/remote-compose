@@ -1,7 +1,11 @@
 # Progress and handoff
 
-Updated 2026-11-03. Branch main. Current phase: usable cross-platform demonstration,
+Updated 2026-11-04. Branch main. Current phase: usable cross-platform demonstration,
 with measured compatibility limited to the fixtures below. No remote push performed.
+
+Latest interactive follow-up: see INTERACTIVE_DEMO.md and the final acceptance section
+for carousel/local state, raw JSON publication, exact shared bytes and unchanged installed
+client hashes. No remote push.
 
 Latest native follow-up: see NATIVE_LAYOUT_FIX.md for corrected full-width dp/point
 layout, Android Material3 chrome and passing four-configuration native checks. Earlier
@@ -207,3 +211,22 @@ remote accessibility and strict cross-player font equivalence remain unverified/
 Private GitHub repo https://github.com/aoriani/remote-compose was created at fdb1854;
 origin SSH is configured, GitHub repository size0 confirms no push. No history rewritten.
 See INTERACTIVE_DEMO.md and GITHUB_SETUP.md. Final screenshot/report commit follows.
+
+### Interactive final acceptance evidence
+
+The combined scripts/verify-interactive.sh passed end to end on source milestonebbdf2fc:
+85 JVM/12 model tests, real browser workflows,5 Android instrumented cases and2 iOS UI
+methods. Original109-byte proof remains intact. A separate live browser→native refresh
+run passed: already running apps6→7, new nested text/vector/row source, exact shared
+SHAa91ef946… and unchanged **installed** executable hashes. Both platforms emit the new
+composition's promotion callback. Another iOS live-refresh UI method passed.
+
+See FULL_FEATURE_TEST_REPORT, INTERACTIVE_DEMO and evidence/interactive/proof.json plus
+18 actual screenshots. Main suite versions4/5/6 prove primitive original/edited rendering;
+live7 proves a publication update without app rebuild. Backend8092 holds this isolated
+interactive demo; original8080 publication19 is preserved. Native apps are left running
+against8092/latest. No push. Follow-up report/evidence commit followsbbdf2fc.
+
+Next: presentation review, optional inspector grouping/long-copy handling, namespace-safe
+multi-carousel authoring, physical-device/accessibility/performance validation. General
+protocol functions and strict cross-player typography parity are still not certified.

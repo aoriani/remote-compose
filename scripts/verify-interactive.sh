@@ -23,5 +23,6 @@ sh scripts/build-ios.sh
 xcrun simctl install "$IOS_SIMULATOR" ios-player/build/RemoteCompose.app
 result="artifacts/interactive/ios-$(date +%Y%m%d-%H%M%S).xcresult"
 xcodebuild test -project ios-player/UITests.xcodeproj -scheme DemoUITests -only-testing:DemoUITests/DemoUITests/testInteractiveRetail -only-testing:DemoUITests/DemoUITests/testInteractiveVisualState -destination "platform=iOS Simulator,id=$IOS_SIMULATOR" -derivedDataPath ios-player/build/uitests -resultBundlePath "$result" CODE_SIGNING_ALLOWED=NO
+sh scripts/node.sh node scripts/report-interactive.mjs "$result"
 python3 scripts/check-project.py
 printf '%s\n' "Interactive evidence: artifacts/interactive; iOS result: $result"

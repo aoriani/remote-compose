@@ -1,0 +1,221 @@
+{
+  "createdAt": "2026-11-04T05:28:54.427Z",
+  "revision": "bbdf2fc0458e532f18ca063efc44c1b4aeaca52b",
+  "upstreams": {
+    "androidx": "8932b2c2b5043cc40c46a44cfd04a1671ec50fb7",
+    "experiments": "a7a76f1d9ecc5aff2af93d0de570a11532552ea3"
+  },
+  "records": [
+    {
+      "id": "interactive-original",
+      "version": 4,
+      "sha256": "33a179579d073f31fd3cf281072efcf2dce99bb558dc6f991085d7b3c5709c77",
+      "bytes": 1246432
+    },
+    {
+      "id": "interactive-json-edited",
+      "version": 5,
+      "sha256": "a574d9eb8dced9052bf29bfeadcfc2bf0de412730ab7936d6e1281bab45ec518",
+      "bytes": 1246670
+    },
+    {
+      "id": "interactive-final",
+      "version": 6,
+      "sha256": "33a179579d073f31fd3cf281072efcf2dce99bb558dc6f991085d7b3c5709c77",
+      "bytes": 1246432
+    }
+  ],
+  "browser": {
+    "errors": [],
+    "events": [
+      {
+        "name": "carousel.next",
+        "value": 1
+      },
+      {
+        "name": "promotion.open",
+        "value": 1
+      },
+      {
+        "name": "carousel.previous",
+        "value": 0
+      },
+      {
+        "name": "promotion.open",
+        "value": 0
+      },
+      {
+        "name": "carousel.select",
+        "value": 2
+      },
+      {
+        "name": "promotion.open",
+        "value": 2
+      },
+      {
+        "name": "promotion.open",
+        "value": 2
+      },
+      {
+        "name": "promotion.open",
+        "value": 0
+      },
+      {
+        "name": "favorite.change",
+        "value": 1
+      },
+      {
+        "name": "favorite.change",
+        "value": 0
+      },
+      {
+        "name": "category.select",
+        "value": "Breakfast"
+      },
+      {
+        "name": "category.select",
+        "value": "Pantry"
+      },
+      {
+        "name": "cart.add",
+        "value": 1
+      },
+      {
+        "name": "cart.add",
+        "value": 2
+      },
+      {
+        "name": "cart.quantity",
+        "value": 1
+      },
+      {
+        "name": "product.open",
+        "value": "field-oat"
+      },
+      {
+        "name": "scan.open",
+        "value": "scan-and-go"
+      },
+      {
+        "name": "membership.open",
+        "value": "common-market"
+      }
+    ],
+    "rawLifecycle": {
+      "text": true,
+      "color": true,
+      "dimension": true,
+      "nestedLayouts": true,
+      "graphics": true,
+      "customPreserved": true,
+      "draftIsolation": true,
+      "failedPublishRetained": true,
+      "undoRedo": "not implemented"
+    }
+  },
+  "editor": {
+    "propertyEdits": true,
+    "slideOrdering": true,
+    "countsCompiled": [
+      2,
+      3,
+      4,
+      5
+    ],
+    "visibility": true,
+    "primitiveSerialization": true,
+    "deterministicFrames": [
+      4.55,
+      4.775,
+      5
+    ]
+  },
+  "stress": {
+    "favoritePixelsChanged": true,
+    "categoryPixelsChanged": true,
+    "quantityPixelsChanged": true,
+    "quantityPeak": 12,
+    "quantityFloor": 0,
+    "rapidCarouselClicks": 8,
+    "events": 37,
+    "backendRequests": 0
+  },
+  "nestedActionName": {
+    "unadapted": {
+      "name": null,
+      "value": "second"
+    },
+    "adapted": {
+      "name": "repro.echo",
+      "value": "second"
+    },
+    "bytes": 315
+  },
+  "native": {
+    "androidTests": 5,
+    "iosPassedTests": 2,
+    "iosFailedTests": 0,
+    "resultBundle": "artifacts/interactive/ios-20261104-002714.xcresult",
+    "appHashes": {
+      "android": "a10143b723ed39c72497c788b199b1e30f9ed78c16ebbe6d97e513b7148b30b4",
+      "ios": "22ade2cb0ec06ac7f577cf538640eb1f26a52b45828320314ba19254ece8a425"
+    },
+    "installation": "One installed app per platform consumes all three versions; no per-document client build"
+  },
+  "limitations": [
+    "session-only state",
+    "2\u20135 inspector slides; explicit namespaces for additional carousels",
+    "different native font metrics",
+    "no general function/conditional conformance claim",
+    "no physical-device or accessibility certification",
+    "browser deterministic frames; native live clocks not synchronized"
+  ],
+  "livePublication": {
+    "before": {
+      "version": 6,
+      "sha256": "33a179579d073f31fd3cf281072efcf2dce99bb558dc6f991085d7b3c5709c77"
+    },
+    "after": {
+      "version": 7,
+      "sha256": "a91ef946aee361fb1af714d4f98790c5f87f719c221ed69e8d161bd8ebe9e3b0",
+      "bytes": 1246676
+    },
+    "draftIsolated": true,
+    "browserPreviewMatchesPublished": true,
+    "androidLatestDecodedHash": "a91ef946aee361fb1af714d4f98790c5f87f719c221ed69e8d161bd8ebe9e3b0",
+    "iosDigestAssertedByXCTest": "a91ef946aee361fb1af714d4f98790c5f87f719c221ed69e8d161bd8ebe9e3b0",
+    "installedClientHashesBefore": {
+      "android": "a10143b723ed39c72497c788b199b1e30f9ed78c16ebbe6d97e513b7148b30b4",
+      "ios": "22ade2cb0ec06ac7f577cf538640eb1f26a52b45828320314ba19254ece8a425"
+    },
+    "installedClientHashesAfter": {
+      "android": "a10143b723ed39c72497c788b199b1e30f9ed78c16ebbe6d97e513b7148b30b4",
+      "ios": "22ade2cb0ec06ac7f577cf538640eb1f26a52b45828320314ba19254ece8a425"
+    },
+    "clientBinariesUnchanged": true,
+    "iosResult": "artifacts/interactive/ios-live-20261104-002916.xcresult",
+    "manualAndroidRefreshTarget": "[849,116][912,179]",
+    "androidHostEvent": "name=promotion.open value=1.0"
+  },
+  "tests": {
+    "jvm": 85,
+    "model": 12,
+    "browserTemplates": 12,
+    "completeCustomTreesPreserved": 18,
+    "androidInstrumentation": 5,
+    "iosCombinedMethods": 2,
+    "iosLiveRefreshMethods": 1,
+    "original109ByteProof": "passed"
+  },
+  "validationCommands": [
+    "sh scripts/verify-interactive.sh",
+    "python3 scripts/verify-live-json.py",
+    "sh scripts/verify-pipeline.sh",
+    "FULL_BASE=http://127.0.0.1:8092 sh scripts/node.sh node player-smoke/custom-preservation.mjs"
+  ],
+  "sourceHashes": {
+    "samples/interactive-retail.json": "30cf4472cc70e62c4ad4a60ea7569df01f2e394915aba4c93099a06c4647e8a5",
+    "web-editor/interactive.mjs": "f1b5476df39f056ff0e5476ff536a1f378483178735a491c90a8fe9a04b24adc",
+    "web-editor/player-adapter.mjs": "8830890df58c2f538c75becafe8ee1d3870ba4b8da9c09c317f3611ff6445d6f"
+  }
+}

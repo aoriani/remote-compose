@@ -1,0 +1,11 @@
+{
+  "unadapted": {
+    "name": null,
+    "value": "second"
+  },
+  "adapted": {
+    "name": "repro.echo",
+    "value": "second"
+  },
+  "bytes": 315
+}
