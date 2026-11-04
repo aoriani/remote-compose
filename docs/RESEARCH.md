@@ -152,3 +152,15 @@ from strict service. Persistent gradient paint requires shader0 reset. The iOS b
 engine host callbacks and onClick are wired explicitly; the original sample touch-up
 alone was insufficient. These verified findings supersede earlier unbuilt/untested notes
 in this historical research narrative. No broad protocol or physical-device claim follows.
+
+## SVG failure resolution and visual-resource findings (2026-11-03)
+
+Source inspection established that RemotePathBase.getPath exposes backing capacity while
+getSize returns populated length. The default JVM platform forwarded the entire array,
+including invalid zero command tails. The prototype adapter now trims to populated length;
+a decoded-wire CLOSE assertion and actual curved-heart renders on all three players
+verify the repair. This supersedes the earlier blanket path restriction; the enabled
+service subset is finite inline absolute M/L/C/Z only. Source pins/upstreams are unchanged.
+ImageIO preserves alpha and proportionally bounds the new embedded originals to 640px.
+Actual screenshots exposed Remote Compose's start/top/end/bottom padding order and a
+colored-emoji icon mismatch; both were corrected in source primitives. See VISUAL_REDESIGN.

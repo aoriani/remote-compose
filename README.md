@@ -27,7 +27,8 @@ sh scripts/gradle.sh :pipeline:installDist
 sh scripts/start-backend.sh
 ```
 
-Open http://localhost:8080. Use Preview before Publish. Native viewers fetch the latest
+Open http://localhost:8080. Existing drafts are preserved; click **Load designed page**
+to see Common Market. Use Preview before Publish. Native viewers fetch the latest
 published binary; unpublished previews never change it. Runtime versions live in ignored
 `data/documents`. Test backend/editor with `sh scripts/verify-demo.sh`.
 
@@ -42,3 +43,7 @@ See [setup and mobile CLI commands](docs/GETTING_STARTED.md),
 
 The [demonstration-readiness review](docs/DEMONSTRATION_REVIEW.md) records the full editor
 walkthrough, native UI interactions, same-binary landing page, fixes and screenshots.
+
+The [visual redesign](docs/VISUAL_REDESIGN.md) and [design system](docs/DESIGN_SYSTEM.md)
+show the current illustrated retail page, asset gallery and rendered before/after review.
+[Original artwork and prompts](assets/PROVENANCE.md) are tracked with the source.

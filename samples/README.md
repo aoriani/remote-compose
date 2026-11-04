@@ -13,3 +13,9 @@ demo-landing.json combines the corrected landing with uncatalogued custom sectio
 exercise vertical scrolling and event 99. All three players rendered its 4,163-byte binary,
 SHA-256 7dd683f3de2b007b9b307799cf9128536b0de8b0da47c006819a15711b546d63.
 Use this exact fixture for the iOS XCTest UI target; see GETTING_STARTED.
+
+Current visual example: retail-home.json (Common Market) includes four embedded original
+illustrations, real vector hearts, two animations and nested scrolling collections. Use
+it for the redesigned demo. Legacy landing/demo-landing files are intentionally preserved
+for regression evidence. vector-heart.json is the 304-byte cross-player serialization
+regression fixture; see docs/VISUAL_REDESIGN.md.

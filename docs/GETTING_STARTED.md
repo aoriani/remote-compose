@@ -100,7 +100,7 @@ Mobile build entry points now additionally enforce clean, pinned upstream source
 ## Real iOS UI interaction test
 
 Build/install the generic app as above and start the backend. Publish the exact extended
-fixture (the test uses its authored390×844 coordinates), then run the standalone UI test
+fixture (the test uses its authored 390×844 coordinates), then run the standalone UI test
 project. It does not change the app architecture or use the internal --smoke click hook.
 
 ```sh
@@ -113,3 +113,20 @@ Use a new resultBundlePath for subsequent runs (Xcode will not overwrite an exis
 result bundle). Assertions cover actual taps/events 42/99 and native log clearing;
 retained screenshot attachments cover the landing page, carousel and vertical drags.
 Scroll/bitmap fidelity is inspected visually, not inferred from test completion.
+
+## Current designed example
+
+The default fresh draft is now Common Market. Existing local drafts are deliberately
+preserved; click **Load designed page** to see the redesign. Alternatively paste
+samples/retail-home.json into Primitive JSON and Apply. Its gallery uses four checked-in
+PNG originals; rebuilding JVM resources includes them automatically.
+
+```sh
+curl --fail -X POST -H 'Content-Type: application/json' --data-binary @samples/retail-home.json http://localhost:8080/api/publish
+```
+
+The same iOS UI-test command works with retail-home.json; it checks 42, clearing, digest
+prefix and swipes, and tests 99 only when present in the publication's primitive source.
+To analyze retained native screenshots:
+`sh scripts/node.sh node scripts/analyze-animation.mjs docs/evidence/redesign`.
+Review VISUAL_REDESIGN.md for current screenshots and limitations before presenting.

@@ -20,9 +20,10 @@ See samples/landing.json, animations.json, interaction.json and custom-compositi
 Real PNG resources use upstream addBitmap/drawBitmap and a separate classpath catalog.
 Both continuous animations use `time` expressions; they were observed in all three
 players. HostAction42 is observable in all three engines (iOS smoke uses engine input).
-Gradient paint persists: `{"paint":{"shader":0}}` resets it. SVG paths are disabled in
-the strict service after a real Android/iOS rendering failure; the research CLI is
-permissive and must not be mistaken for supported service capability validation.
+Gradient paint persists: `{"paint":{"shader":0}}` resets it. Inline finite absolute M/L/C/Z SVG paths are now enabled after repairing populated path
+length serialization; see VISUAL_REDESIGN.md. General SVG import/named path resources
+remain unsupported. The permissive research CLI still uses the upstream default platform;
+use the service for corrected bitmap/path compilation.
 
 ## Verified compilable example
 
@@ -114,3 +115,13 @@ Upstream ships `Documentation/parts/remote_compose_schema.json`, but runtime par
 remain authoritative. A separate remote-core test file contains an entirely commented-out
 alternative dialect; no functioning second parser was found at this revision. This corrects
 the initial indexed-source inference.
+
+## Designed retail fixture and resource catalog
+
+samples/retail-home.json is a full primitive composition with bitmap products, inline
+cubic vector hearts, text/layout, scrolling and time expressions. assets/catalog.json
+is an external JVM resource lookup; assets/library.json is editor-only presentation
+metadata. Neither introduces a runtime business-widget dialect. New image names are
+validated against the loaded catalog, then actual alpha-preserving640px PNGs are embedded.
+Four-value padding arrays mean start/top/end/bottom. drawBitmap maps the supplied rectangle
+exactly; the default new templates preserve source aspect ratio with square destinations.

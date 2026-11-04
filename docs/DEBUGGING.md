@@ -102,3 +102,14 @@ engines identifies disagreement, not which one is correct.
   localhost. Debug URL/refresh controls remain native when the remote document fails.
 - Service errors identify JSON pointers. The original permissive research CLI does not
   enforce the strict service subset. A parser success never proves renderer support.
+
+## Visual iteration corrections
+
+The older path-rejection warning above is historical: populated-length serialization is
+fixed, and bounded absolute M/L/C/Z paths now render across all three. Legacy research CLI
+still uses the default upstream platform; service compilation uses JvmAssets. Wrong
+padding arrays can clip card content: use [start,top,end,bottom]. PNG destination bounds
+must match source aspect ratio unless deliberate stretching is intended. Avoid emoji
+arrow glyphs for cross-platform icon consistency; use supported line/path operations.
+Existing browser drafts do not automatically become the new example—Load designed page
+explicitly. Large JSON syntax highlighting renders only visible lines to prevent freezes.

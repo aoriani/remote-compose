@@ -153,12 +153,23 @@ which exposes allocated capacity rather than populated length. The JVM platform 
 copies only getSize() elements. A decoded-binary regression asserts the final CLOSE
 opcode, preventing trailing zero commands. Curved heart paths rendered on browser,
 Android and iOS. Strict service enables bounded finite inline absolute M/L/C/Z paths;
-other path dialects/resources remain outside the enabled subset. This supersedes014's
+other path dialects/resources remain outside the enabled subset. This supersedes 014's
 blanket path restriction, without changing protocol pins or modifying upstream.
 
 Original transparent product artwork is checked in. Classpath catalog IDs are resolved
-dynamically, assets are proportionally bounded to640px for binary embedding, and the
+dynamically, assets are proportionally bounded to 640px for binary embedding, and the
 editor gets a separate browse/insert/replace gallery. Source JSON still contains only
 upstream addBitmap/drawBitmap/path operations. New artwork/compositions need no mobile
 business widgets or client rebuild. Bitmap documents are larger; compression and fragment
 caching remain deferred.
+
+## 018 — Editorial composition and source-preserving asset authoring (2026-11-03)
+
+Reconsider hierarchy and imagery together: original product silhouettes, typographic scale,
+compact Scan & Go hero, horizontal collections and quiet member content. The editor is a
+visual workbench with real image targets, not a flattened product mockup. All mobile text,
+layout, icons and cards stay protocol primitives; only illustrations are raster resources.
+Existing drafts/custom JSON are not migrated or regenerated. Lower-page animations are
+measured in a visible fixture and native captures. Adopt visible-line highlighting to
+retain raw-JSON editing performance with larger primitive documents. No protocol pin or
+native business renderer changes; record remaining fixed-frame and payload-size limits.

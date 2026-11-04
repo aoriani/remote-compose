@@ -1,5 +1,12 @@
 # Demonstration
 
+Current visual demo: use **Load designed page** or samples/retail-home.json. Browse the
+asset gallery, insert an illustration, select Product collection, choose its replacement
+target, select another asset and Replace selected. Preview, then Publish. Existing drafts
+are preserved until explicitly replaced. The older fixture/runbook below remains useful
+for custom-event99 regression; see VISUAL_REDESIGN.md for the current presentation.
+
+
 1. Start the backend/editor using README. Open localhost:8080. Load the demo, change a
    header property, add a template and Preview. This compiles raw primitive JSON on JVM;
    the real browser player consumes its binary, not HTML business components.

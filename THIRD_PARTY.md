@@ -24,3 +24,7 @@ m144-e2e6623374-4 prebuilt Simulator/device archives are checksum-pinned in
 `ios-player/CMakeLists.txt`; preserve Skia and its third-party library notices when
 redistributing. Android dependency versions are in android-player/gradle.lockfile.
 The checked-in catalog PNG is an original simple prototype illustration.
+
+The four new Common Market PNGs are original fictional artwork generated with the built-in
+imagegen tool; their exact prompts and runtime handling are in assets/PROVENANCE.md.
+No third-party retailer logo or externally hosted product image is required to run.

@@ -21,7 +21,10 @@ can still require client releases.
 - `upstream-lock.json`: exact sources verified for the minimal JVM/browser fixture.
 - `pipeline/`: standalone Kotlin/JVM compiler CLI, unchanged upstream sources and tests.
 - `player-smoke/`: real binary browser player harness and automated pixel checks.
-- `web-editor/`: primitive JSON authoring and genuine browser preview.
+- `web-editor/`: designed authoring workbench, asset gallery and genuine browser preview.
+- `assets/`: original transparent artwork, prompts and separate JVM/editor catalogs.
+- `samples/retail-home.json`: current designed example; preserve older regression fixtures.
+- `docs/DESIGN_SYSTEM.md` / `docs/VISUAL_REDESIGN.md`: visual conventions and actual render evidence.
 - `android-player/`: Java native debug shell and official AndroidX renderer.
 - `ios-player/`: Swift debug shell, Objective-C++ bridge and C++/Skia Metal renderer.
 - Backend HTTP service and immutable version store are in `pipeline/Backend.kt`.

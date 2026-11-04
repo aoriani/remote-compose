@@ -1,0 +1,71 @@
+{
+  "date": "2026-11-03 America/New_York",
+  "baseline": "8897774",
+  "assetCompilerCommit": "5fb7132",
+  "visualReview": "Actual screenshot inspection of initial, second and final compositions on browser, Android emulator and iOS Simulator; not inferred from passing tests",
+  "sharedPublication": {
+    "version": 12,
+    "bytes": 1970167,
+    "sha256": "d6009a1f2e7d5a53d08cc9c6c42665d94e8d05e4f964dd36c4fec8684ae1eb3c",
+    "width": 390,
+    "height": 844,
+    "profiles": 512
+  },
+  "binaryOperations": {
+    "BitmapData": 4,
+    "DrawBitmap": 6,
+    "PathData": 3,
+    "DrawPath": 3,
+    "FloatExpression": 2,
+    "CoreText": 2
+  },
+  "jvmTests": 80,
+  "modelTests": 8,
+  "browserRegression": "browser-tests.json",
+  "original109ByteProof": {
+    "sha256": "58eeeb0c27c70bfac67e8a1f1c94b8f456c4c0b4c252b09d5bb8949d04db4903",
+    "pixels": 3,
+    "passed": true
+  },
+  "android": {
+    "assemble": true,
+    "unitTests": 1,
+    "lintErrors": 0,
+    "connectedTests": 1,
+    "retailPointerEvents": [
+      42,
+      201
+    ],
+    "installedApkSha256": "99aa2660e79de0eb4677f6e1f0d644e0376a2aeb50b2ac400666edcd7e6902cc"
+  },
+  "ios": {
+    "actualUITests": 1,
+    "failures": 0,
+    "event": 42,
+    "publishedDigestPrefixAssertion": true,
+    "installedExecutableSha256": "a79c13c15d9845ae82d6a5999933c391541e47c2b652bd628558f04b41912c48"
+  },
+  "mobileClientsUnchanged": true,
+  "vectorFixture": {
+    "bytes": 304,
+    "sha256": "fea3c60da4dd22392c8a342db798183fa2bc523c7835ca6103dc53efbf1097bc",
+    "browserCenterRgba": [
+      48,
+      91,
+      239,
+      255
+    ],
+    "nativeScreenshotsVisuallyVerified": true
+  },
+  "nativeAnimation": "native-animation.json",
+  "assetChecks": "Four originals have alpha; actual encoded BitmapData is 640x640; gallery replacement changes real player pixels",
+  "limitations": [
+    "No physical device validation",
+    "Native debug chrome remains utilitarian",
+    "Fixed drawing frames need adjustments for long copy",
+    "Around 1.97MB binary with embedded artwork; no shared-fragment cache",
+    "Absolute inline M/L/C/Z path subset, not general SVG import",
+    "No production cart/checkout implementation",
+    "Expanded fresh-clone validation has not been repeated for this visual revision"
+  ]
+}

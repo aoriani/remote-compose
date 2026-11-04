@@ -50,7 +50,7 @@ Android17 emulator; full Xcode27.2/iPhone18Pro arm64 Simulator. No IDE GUI requi
 Tools, upstreams, outputs and publication data are ignored and reacquired from scripts.
 Current execution has network/Git access; old sandbox failures are historical, not current.
 
-79 JVM tests, seven model tests, browser workflow, Android CLI/instrumentation and iOS
+80 JVM tests, eight model tests, browser workflow, Android CLI/instrumentation and iOS
 engine-input smoke passed. See PROGRESS/evidence for precise scope. No physical devices
 were tested. Expanded fresh-clone validation at86e9595 passed backend/editor tests and both native
 builds; see evidence/expanded-clean-checkout.json. Native image/scroll and UI automation
@@ -83,10 +83,33 @@ New native image/scroll evidence supersedes earlier pending notes. See readiness
 ## Visual iteration: asset and path foundation
 
 Four new generated transparent originals and prompts live in assets/. JvmAssets now
-accepts catalog IDs dynamically and bounds embedded images proportionally to640px.
+accepts catalog IDs dynamically and bounds embedded images proportionally to 640px.
 PNG alpha/dimensions, MIME routes and catalog validation are tested. The path bug was
 unused backing-array capacity: copy getSize() of RemotePathBase.getPath(), not the full
 array. The service supports finite inline absolute M/L/C/Z paths; a curved heart and
 product outline hearts rendered in all three unchanged players. Older claims that all
 paths are disabled are superseded. Legacy CLI compile still uses the default upstream
 platform; use service compile for the corrected asset/path adapter.
+
+## Current visual implementation
+
+Default initialDocument is Common Market; samples/retail-home.json is its tracked output.
+Old landing/demo-landing fixtures remain unchanged as regression artifacts. Existing
+browser drafts are preserved: use Load designed page explicitly to replace one. Gallery
+metadata is editor-only; catalog IDs resolve to classpath bitmaps embedded in the binary.
+Replacement patches only selected addBitmap.image, including custom subtrees; multi-image
+target selection persists. Source JSON remains authoritative.
+
+Array padding is [start,top,end,bottom], not CSS order. Wrong ordering introduced vertical
+carousel padding and price clipping; corrected arrays were inspected on all players.
+Keep image destinations square for the square transparent originals. Hero typography/art
+positions were iterated from real screenshots. Emoji arrows were replaced with line ops.
+The highlighter now virtualizes visible lines: full-span rendering froze large JSON pastes.
+Two time-expression animations remain actual engine operations; scripts/analyze-animation.mjs
+checks connected blue dot/bar regions in native capture pairs. Native app binaries stayed
+unchanged; one published 1,970,167-byte document renders on all three platforms.
+
+The iOS UI test now reads immutable publication source/metadata to determine whether the
+legacy fixture has event 99; it still asserts42, clearing, digest prefix and captures real
+swipes for the new retail fixture. Use retail-home.json for the visual demo and legacy
+sample for optional99 coverage. See VISUAL_REDESIGN for explicit limitations/evidence.

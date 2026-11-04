@@ -12,7 +12,7 @@ compression disabled. Full versions are in upstream-lock.json and dependency loc
 | PNG catalog bitmap | Real ImageIO encoding | Decoded drawImage verified | Visually verified landing | Visually verified landing |
 | HostAction42 | Compiled | Actual pointer callback | Actual player input callback | Actual Simulator tap callback |
 | Refresh failure preservation | API tests | Failed publish/preview preserved | Instrumentation verified | Real failing-fetch smoke verified |
-| SVG drawPath | Strict service rejects | Not enabled | Failed trial: Odd command 0 | Trial omitted geometry |
+| Inline SVG M/L/C/Z | Populated-length fix, CLOSE opcode regression | Curved heart and product icons verified | Curves/icons verified | Curves/icons verified |
 | Patterns/binary fragment caching | Research only | Not tested | Not tested | Not tested |
 
 [Evidence](evidence/cross-platform.json) records exact fixture digests and fixed native
@@ -22,7 +22,8 @@ This is measured fixture compatibility, not conformance across all protocol oper
 
 Important limitations: experimental TypeScript typecheck has pre-existing failures;
 esbuild/runtime tests pass. Browser unknown-opcode warnings are rejected by smoke tests.
-SVG paths are excluded after a genuine cross-platform failure. Shader paint state persists;
+The previous SVG capacity bug is fixed in the JVM adapter; inline absolute M/L/C/Z paths
+are enabled. Arbitrary SVG import/resources remain excluded. Shader paint state persists;
 reset with shader=0 for solid geometry. API8 density/compression are not enabled. iOS
 physical-device signing/build, Intel Simulator are not verified; native landing PNG/scroll behavior was visually inspected. Android lint passes with existing upstream warnings. A real iOS UI test now asserts 42/99 callbacks and log clearing; Android instrumentation
 and adb gestures cover its debug/player workflow. See DEMONSTRATION_REVIEW for scope.
@@ -31,3 +32,7 @@ Source-level support is broader than the service subset. Consult Validation.kt f
 is enabled, JSON_FORMAT for upstream syntax and RESEARCH for source references. The
 [historical foundation report](COMPATIBILITY_FOUNDATION.md) preserves prior findings;
 its unbuilt/untested statements describe the earlier milestone only.
+
+The current visual fixture is samples/retail-home.json (~1.97MB). Four genuine PNGs,
+vector hearts and two time expressions were rendered in unchanged native apps. See
+VISUAL_REDESIGN.md and evidence/redesign/results.json for measured checks and visual scope.

@@ -22,8 +22,8 @@ with measured compatibility limited to the fixtures below. No remote push perfor
 
 ## Verified tests and evidence
 
-- 79 JVM tests: 63 upstream parser tests plus 16 local compiler/backend tests.
-- Seven Node editor-model tests.
+- 80 JVM tests: 63 upstream parser tests plus 17 local compiler/backend tests.
+- Eight Node editor-model tests.
 - Browser end-to-end: eleven templates compile, real PNG draws, both protocol animations
   change, arbitrary custom copies survive, publish works, event 42 reaches host, invalid
   publication preserves previous document and preview. No unknown-opcode warnings.
@@ -46,9 +46,9 @@ with measured compatibility limited to the fixtures below. No remote push perfor
 
 ## Important limitations and next work
 
-- SVG drawPath generated an Android error and missing C++ geometry in a real trial.
-  Strict service now rejects paths; the corrected fixture uses verified circle primitives.
-  Shader paint state persists: reset with paint shader=0 before solid drawing.
+- The earlier SVG failure is fixed: the adapter now emits only populated path elements.
+  Inline finite absolute M/L/C/Z paths are verified in all three players; general SVG
+  import/named path resources remain unsupported. Shader paint state persists: reset0.
 - Experimental browser typecheck still fails upstream; bundle/runtime tests pass.
 - Physical devices, signed iOS device packaging, Intel iOS Simulator and broad protocol
   conformance remain unverified. Native gesture/UI automation coverage is partial.
@@ -80,6 +80,31 @@ No physical-device or general protocol conformance claim is made.
 ## Visual redesign — validated asset/compiler foundation
 
 Four distinct original assets, dynamic catalog validation, actual alpha-preserving PNG
-embedding and populated-length vector serialization are implemented.80 JVM tests pass.
+embedding and populated-length vector serialization are implemented. 80 JVM tests pass.
 The curved SVG heart is visually verified on all three players. Original109-byte browser
 pixel proof still passes. Editor and retail design/evidence follow in the next milestone.
+
+## Visual redesign — current handoff
+
+The default editor and page are redesigned as Common Market. Searchable original asset
+gallery, insert/replace (including multiple targets and custom subtrees), distinct palette
+glyphs, structured inspector, polished responsive canvas and source diagnostics work.
+The retail composition uses real product illustrations, revised typographic hierarchy,
+coherent spacing and authentic vectors. No business components or new mobile builds.
+
+Actual browser/Android/iOS screenshots informed hero positioning, bitmap aspect ratio,
+icon consistency and a padding-order fix that removed price clipping. JSON highlighting
+now mounts only visible lines, preventing large-source editing timeouts. 80 JVM tests,
+eight model tests, expanded browser regression, original 109-byte pixel baseline, Android
+CLI/unit/lint/instrumentation and real iOS UI test pass. Native animation captures show
+separate dot/bar changes. The shared final binary is 1,970,167bytes, SHA
+`d6009a1f2e7d5a53d08cc9c6c42665d94e8d05e4f964dd36c4fec8684ae1eb3c` (local v12).
+
+See [visual review](VISUAL_REDESIGN.md), [design system](DESIGN_SYSTEM.md),
+[asset prompts](../assets/PROVENANCE.md) and [evidence](evidence/redesign/results.json).
+Backend/assets/vector repair commit `5fb7132`; the editor/design/evidence commit follows.
+Current limitations: fixed-frame long-copy behavior, roughly 1.97MB embedded-image payload,
+small four-asset gallery, basic JSON editor, utilitarian native debug chrome and untested
+physical-device/signing/accessibility coverage. Latest visual revision has not had a new
+fresh-clone build; earlier reproduction evidence remains scoped to its recorded commit.
+Next: presentation-machine visual review, accessibility/long-copy checks and more artwork.

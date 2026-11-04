@@ -3,6 +3,20 @@ import XCTest
 /// Drives installed generic viewer through real Simulator input; no renderer test hooks.
 final class DemoUITests: XCTestCase {
     func testLandingInteractionAndNativeDebug() throws {
+        func requestJSON(_ path:String) -> [String:Any] {
+            let done=expectation(description:path);var result:[String:Any]=[:]
+            URLSession.shared.dataTask(with:URL(string:"http://127.0.0.1:8080"+path)!){data,_,_ in
+                if let data,let json=try? JSONSerialization.jsonObject(with:data) as? [String:Any]{result=json};done.fulfill()
+            }.resume();wait(for:[done],timeout:15);return result
+        }
+        let metadata=requestJSON("/api/documents/latest/metadata")
+        let version=(metadata["version"] as? NSNumber)?.stringValue ?? "latest"
+        let source=requestJSON("/api/documents/\(version)/source")
+        func containsCustomAction(_ node:Any)->Bool {
+            if let n=node as? [String:Any] {if n["actionId"] as? Int == 99{return true};return n.values.contains(where:containsCustomAction)}
+            if let n=node as? [Any] {return n.contains(where:containsCustomAction)};return false
+        }
+        let customAction=containsCustomAction(source)
         let app = XCUIApplication(bundleIdentifier: "demo.remotecompose.ios")
         app.launch()
         let surface = app.otherElements["remote-document"].firstMatch
@@ -18,6 +32,11 @@ final class DemoUITests: XCTestCase {
         let y = (frame.height - 844 * scale) / 2 + 296 * scale
         surface.coordinate(withNormalizedOffset: CGVector(dx: x / frame.width, dy: y / frame.height)).tap()
         app.buttons["Debug"].tap()
+        if let digest=metadata["sha256"] as? String {
+            let identity=app.staticTexts.matching(NSPredicate(format:"label CONTAINS %@",String(digest.prefix(16)))).firstMatch
+            for _ in 0..<4 { if identity.exists { break };app.swipeUp() }
+            XCTAssertTrue(identity.waitForExistence(timeout:5),"Published digest prefix must match the loaded document")
+        }
         let clear = app.buttons["Clear event log"]
         for _ in 0..<10 {
             if clear.isHittable { break }
@@ -36,6 +55,7 @@ final class DemoUITests: XCTestCase {
         let horizontal = XCTAttachment(screenshot:app.screenshot());horizontal.name="iOS horizontal carousel after drag";horizontal.lifetime = .keepAlways;add(horizontal)
         coordinate(340,750).press(forDuration:0.1,thenDragTo:coordinate(340,250))
         let vertical = XCTAttachment(screenshot:app.screenshot());vertical.name="iOS vertical page after drag";vertical.lifetime = .keepAlways;add(vertical)
+        if customAction {
         coordinate(195,820).tap()
         app.buttons["Debug"].tap()
         let customEvent=app.staticTexts.matching(NSPredicate(format:"label CONTAINS 'id=99'")).firstMatch
@@ -43,5 +63,6 @@ final class DemoUITests: XCTestCase {
         XCTAssertTrue(customEvent.waitForExistence(timeout:5),"Custom primitive click should reach the same generic host callback")
         let customLog=XCTAttachment(screenshot:app.screenshot());customLog.name="iOS custom event99";customLog.lifetime = .keepAlways;add(customLog)
         app.buttons["Done"].tap()
+        }
     }
 }

@@ -54,7 +54,7 @@ grounded shadow. Genuinely transparent background, square image.
 
 catalog.json maps server IDs to PNG files; library.json supplies editor-only display
 labels/colors/categories. JvmAssets loads catalog entries, resamples proportionally to
-at most640px with alpha preserved, and embeds actual PNGs through upstream BitmapData.
+at most 640px with alpha preserved, and embeds actual PNGs through upstream BitmapData.
 DrawBitmap destination rectangles in the new templates are square to preserve the square
 source aspect ratio. No client-side asset catalog or business component is required.
 
