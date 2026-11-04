@@ -6,3 +6,6 @@
 button.rail-item{border:0;padding:0;background:transparent}button.rail-item.active{background:#edf0ff}.rail-item:hover{background:#f3f5fb}
 
 .compile-summary[data-state="stale"],.compile-summary[data-state="busy"]{color:#a47931}.compile-summary[data-state="stale"] .event-dot,.compile-summary[data-state="busy"] .event-dot{background:#d09a3b}.compile-summary[data-state="error"]{color:#b6414d}.compile-summary[data-state="error"] .event-dot{background:#c24450}
+
+/* Operational labels meet 4.5:1 on their light panels; disabled controls are exempt. */
+:root{--muted:#657080}#properties label,#properties>p,.asset-help,#outline button,.canvas-caption,.section-heading>span,.pill,.draft-badge,.canvas-note,#metadata,.artboard-label,.protocol-note small,.breadcrumb,.brand-light{color:#657080}.search input::placeholder{color:#657080;opacity:1}.key{color:#49628F}.string{color:#3E7056}.literal{color:#8751A0}

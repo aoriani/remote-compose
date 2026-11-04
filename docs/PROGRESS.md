@@ -108,3 +108,14 @@ small four-asset gallery, basic JSON editor, utilitarian native debug chrome and
 physical-device/signing/accessibility coverage. Latest visual revision has not had a new
 fresh-clone build; earlier reproduction evidence remains scoped to its recorded commit.
 Next: presentation-machine visual review, accessibility/long-copy checks and more artwork.
+
+## Comprehensive validation — first fixes verified
+
+This review is in progress; do not read earlier scoped demonstration checks as exhaustive
+conformance. All 11 widgets and 20 property controls were exercised through actual browser
+UI, including source-preserving section operations. Fixed published-preview recompilation,
+aspect-distorting image size edits, insufficient muted-text contrast, and acceptance of
+silently dropped CircleShape clipping. 81 JVM tests, nine model tests, existing browser
+regression and browser responsive/pointer/touch/keyboard checks pass. Wheel scrolling is
+an observed player limitation. The expanded cross-platform corpus, native lifecycle tests,
+strict screenshot differences and final report are being collected separately.

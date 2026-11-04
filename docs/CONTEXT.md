@@ -113,3 +113,17 @@ The iOS UI test now reads immutable publication source/metadata to determine whe
 legacy fixture has event 99; it still asserts42, clearing, digest prefix and captures real
 swipes for the new retail fixture. Use retail-home.json for the visual demo and legacy
 sample for optional99 coverage. See VISUAL_REDESIGN for explicit limitations/evidence.
+
+## Full validation discoveries (2026-11-03, in progress)
+
+Load published now downloads /api/documents/{version}, avoiding recompilation; the
+browser suite checks that no compile POST occurred and checks its exact binary hash.
+Image-size property edits four bitmap bounds together, preserving center/aspect; 16..188
+is the safe art-frame range. Original edge-only edits distorted illustrations.
+Pinned creation/modifiers/ClipModifier.write silently ignores CircleShape even though
+parseShape accepts it. Backend now returns UNSUPPORTED_OPERATION at the clip type;
+use roundRect radius half a square frame side. All 81 JVM and nine model tests pass.
+Muted text colors were darkened after contrast measurements (paper 4.81:1, editor white
+5.02:1 for the corrected tokens). Browser pointer and synthetic touch scroll work;
+wheel events do not scroll the pinned player. Real trackpad hardware remains untested.
+Further native gallery/lifecycle evidence and final verdict follow in FULL_FEATURE_TEST_REPORT.

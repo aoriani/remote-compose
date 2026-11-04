@@ -47,11 +47,11 @@ try{
   const before=JSON.parse(await page.locator('#source').inputValue());
   await page.locator(`[data-template="${id}"]`).click();await page.locator('#properties-tab').click();
   const field=page.locator('#properties input').first();const old=await field.inputValue();
-  const edited=(await field.getAttribute('type'))==='number'?String(Number(old)+1):old+(id==='badge'||id==='progress'?' + 0':' reviewed');
+  const edited=(await field.getAttribute('type'))==='number'?String(Number(old)+(id==='image'?-8:1)):old+(id==='badge'||id==='progress'?' + 0':' reviewed');
   await field.fill(edited);await field.press('Tab');
   const added=JSON.parse(await page.locator('#source').inputValue());
   assert.equal(sections(added).length,sections(before).length+1,id);
-  assert.ok(JSON.stringify(added).includes(edited),id+' property edit');
+  if(id==='image')assert.equal(sections(added).at(-1).commands[3].right-sections(added).at(-1).commands[3].left,Number(edited));else assert.ok(JSON.stringify(added).includes(edited),id+' property edit');
   await page.locator('[data-op="up"]').click();await page.locator('[data-op="down"]').click();
   await page.locator('[data-op="duplicate"]').click();
   assert.equal(await page.locator('#outline .selected').textContent(),`${sections(added).length+1}. ${catalog.find(x=>x.id===id).label}`);

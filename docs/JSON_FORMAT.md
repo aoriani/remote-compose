@@ -125,3 +125,11 @@ metadata. Neither introduces a runtime business-widget dialect. New image names 
 validated against the loaded catalog, then actual alpha-preserving640px PNGs are embedded.
 Four-value padding arrays mean start/top/end/bottom. drawBitmap maps the supplied rectangle
 exactly; the default new templates preserve source aspect ratio with square destinations.
+
+### Validated clipping limitation
+
+The pinned parser accepts `{ "clip": { "type": "circle" } }`, but upstream creation
+`modifiers/ClipModifier.write` only emits RectShape/RoundedRectShape. The backend now
+rejects CircleShape with UNSUPPORTED_OPERATION instead of silently losing clipping.
+For a 100×100 frame, `{ "clip": { "type": "roundRect", "radius": 50 } }` emits a
+supported circular rounded clip. Canvas clipRect and ordinary rounded clips remain supported.

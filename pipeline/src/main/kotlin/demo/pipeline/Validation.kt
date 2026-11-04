@@ -153,6 +153,7 @@ object Validation {
             "clip" -> {
                 keys(value, setOf("type", "radius"), "$p/$key"); required(value, "type", "$p/$key")
                 enum(value.get("type"), "circle rect roundRect", "$p/$key/type")
+                if(value.get("type").asText() == "circle") fail("$p/$key/type", "Pinned upstream writer silently omits CircleShape clipping; use roundRect with radius half the square side", "UNSUPPORTED_OPERATION")
                 if(value.has("radius") && value.get("type").asText() != "roundRect") fail("$p/$key/radius", "radius applies only to roundRect")
                 value.get("radius")?.let { number(it, "$p/$key/radius") }
             }

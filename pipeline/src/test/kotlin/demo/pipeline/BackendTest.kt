@@ -29,6 +29,12 @@ class BackendTest {
         invalid(sample.replace("\"width\": 390 }", "\"unknown\": 390 }"), "UNSUPPORTED_OPERATION", "/root/modifiers/0/unknown")
         invalid(sample.replace("drawCircle", "drawUnicorn"), "UNSUPPORTED_OPERATION", "/root/commands/1/type")
     }
+    @Test fun refusesCircleClipThatUpstreamWriterSilentlyDrops() {
+        val source="""{"root":{"type":"canvas","modifiers":[{"clip":{"type":"circle"}}],"commands":[]}}"""
+        invalid(source,"UNSUPPORTED_OPERATION","/root/modifiers/0/clip/type")
+        val supported=source.replace("\"circle\"","\"roundRect\",\"radius\":50")
+        assertFalse(compileValidated(supported).contentEquals(compileValidated(source.replace("{\"clip\":{\"type\":\"circle\"}}", "{\"height\":100}"))))
+    }
     @Test fun nestedCustomPrimitiveCompositionIsUnchanged() {
         val original = JSONObject(sample).getJSONObject("root")
         val source = JSONObject().put("root", JSONObject().put("type","box").put("children", listOf(original))).toString()
