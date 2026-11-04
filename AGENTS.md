@@ -25,7 +25,7 @@ can still require client releases.
 - `assets/`: original transparent artwork, prompts and separate JVM/editor catalogs.
 - `samples/retail-home.json`: current designed example; preserve older regression fixtures.
 - `docs/DESIGN_SYSTEM.md` / `docs/VISUAL_REDESIGN.md`: visual conventions and actual render evidence.
-- `android-player/`: Java native debug shell and official AndroidX renderer.
+- `android-player/`: Java generic viewer, Kotlin Material3 chrome and official AndroidX renderer.
 - `ios-player/`: Swift debug shell, Objective-C++ bridge and C++/Skia Metal renderer.
 - Backend HTTP service and immutable version store are in `pipeline/Backend.kt`.
 - Run `sh scripts/verify-demo.sh` for backend/editor checks; mobile commands are in GETTING_STARTED.
@@ -60,3 +60,11 @@ Run `sh scripts/validate-all.sh` on a free emulator/Simulator (isolated backend8
 Strict cross-platform pixel discrepancies are retained separately from functional and
 same-platform golden checks. Never approve baselines solely because tests pass. Keep
 plans.json/run.json test bindings separate from primitive documents. Preserve pins.
+
+## Native viewport contract
+
+Read docs/NATIVE_LAYOUT_FIX.md. Native players measure available dp/points; header390×844
+is not an aspect-ratio constraint. Keep only device pixel conversion. Preserve actual
+native screenshot dimensions and full-screen evidence: cropping a fitted rectangle can
+hide container defects. Use scripts/verify-native-layout.sh for four-device checks;
+legacy390×844 goldens must reject incompatible viewports, not stretch the image.

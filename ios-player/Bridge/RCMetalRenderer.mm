@@ -45,6 +45,7 @@ static void loadNestedText(rccore::RemoteContext& context,
     rccore::TimeVariables _timeVars;
     std::vector<uint8_t> _fileData;
 
+    CGSize _authoredSize;
     CGSize _lastSurfaceSize;  // tracks when RemoteContext needs re-sizing
 }
 
@@ -78,6 +79,7 @@ static void loadNestedText(rccore::RemoteContext& context,
         if (!candidate->initFromBuffer(buffer)) return NO;
         _paintCtx = nullptr;
         _context = nullptr;
+        _authoredSize = CGSizeMake(candidate->getWidth(), candidate->getHeight());
         _doc = std::move(candidate);
         _fileData = std::move(bytes);
         _lastSurfaceSize = CGSizeZero;
@@ -95,10 +97,14 @@ static void loadNestedText(rccore::RemoteContext& context,
 
 - (void)setupContextForSize:(CGSize)size {
     if (!_doc) return;
-    float dw = _doc->getWidth();
-    float dh = _doc->getHeight();
-    if (dw <= 0 || dh <= 0) { dw = (float)size.width; dh = (float)size.height; }
-
+    // API7 protocol coordinates are logical points here. Re-measure the available
+    // viewport, never the header's design-time aspect ratio. Preserve local state on resize.
+    if (_context) {
+        _context->mWidth = size.width;
+        _context->mHeight = size.height;
+        _lastSurfaceSize = size;
+        return;
+    }
     _context = std::make_unique<rccore::RemoteContext>();
     _paintCtx = std::make_unique<rcskia::SkiaPaintContext>(*_context, nullptr);
     _context->setPaintContext(_paintCtx.get());
@@ -113,12 +119,9 @@ static void loadNestedText(rccore::RemoteContext& context,
         if (owner.eventHandler) owner.eventHandler([NSString stringWithFormat:@"name=%s type=%d value=%s", name.c_str(), type, value.c_str()]);
     };
 
-    // Document coordinate space — a canvas transform in drawInView handles
-    // scaling to the drawable. Keeping these consistent across setup and
-    // paint is what the particle engine (and other WINDOW_WIDTH listeners)
-    // relies on.
-    _context->mWidth = dw;
-    _context->mHeight = dh;
+    // Layout in the actual available point viewport; Retina conversion happens at draw.
+    _context->mWidth = size.width;
+    _context->mHeight = size.height;
 
     _doc->registerListeners(*_context);
     _doc->applyDataOperations(*_context);
@@ -139,19 +142,16 @@ static void loadNestedText(rccore::RemoteContext& context,
 
     CGSize drawableSize = CGSizeMake(texture.width, texture.height);
 
-    if (!_context || !CGSizeEqualToSize(drawableSize, _lastSurfaceSize)) {
-        [self setupContextForSize:drawableSize];
-    }
-
-    float dw = _doc->getWidth();
-    float dh = _doc->getHeight();
-    if (dw <= 0 || dh <= 0) { dw = (float)drawableSize.width; dh = (float)drawableSize.height; }
-    float scale = std::min((float)drawableSize.width / dw,
-                           (float)drawableSize.height / dh);
-    float fitW = dw * scale;
-    float fitH = dh * scale;
-    float ox = ((float)drawableSize.width  - fitW) * 0.5f;
-    float oy = ((float)drawableSize.height - fitH) * 0.5f;
+    CGSize viewport = view.bounds.size;
+    if (viewport.width <= 0 || viewport.height <= 0) return;
+    BOOL resized = !_context || !CGSizeEqualToSize(viewport, _lastSurfaceSize);
+    if (resized) [self setupContextForSize:viewport];
+    // This is only the device point-to-pixel conversion, not a document fit or stretch.
+    float pixelRatioX = drawableSize.width / viewport.width;
+    float pixelRatioY = drawableSize.height / viewport.height;
+    if (resized) NSLog(@"RC_VIEWPORT physical=%.0fx%.0f logical=%.3fx%.3f density=%.3fx%.3f root=%.3fx%.3f authored=%.0fx%.0f render=0,0,%.0f,%.0f headerFit=false",
+        drawableSize.width,drawableSize.height,viewport.width,viewport.height,pixelRatioX,pixelRatioY,
+        _context->mWidth,_context->mHeight,_authoredSize.width,_authoredSize.height,drawableSize.width,drawableSize.height);
 
     try {
         // Wrap the drawable's texture as a Skia render target so we can draw
@@ -178,13 +178,10 @@ static void loadNestedText(rccore::RemoteContext& context,
         SkCanvas *canvas = surface->getCanvas();
         canvas->clear(SK_ColorBLACK);
         canvas->save();
-        canvas->translate(ox, oy);
-        canvas->scale(scale, scale);
+        canvas->scale(pixelRatioX, pixelRatioY);
 
         _paintCtx->setCanvas(canvas);
-        // mWidth/mHeight stay as the document's native dims (set in
-        // setupContextForSize). The SkCanvas scale above handles the mapping
-        // to drawable pixels.
+        // Root layout and window variables see the actual point viewport.
         _timeVars.updateTime(*_context, animTime, deltaTime);
         _doc->paint(*_context);
 

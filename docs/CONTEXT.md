@@ -150,3 +150,39 @@ retained, not accepted by larger tolerances. Phase-variable fixtures are determi
 states, not live clock injection. Android font-scale150% does not enlarge authored text;
 virtual accessibility child bounds also fail to follow host scaling. iOS Metal semantics
 are absent. These are open limitations, not successful accessibility tests.
+
+## Native viewport correction after6340599
+
+The old header-aspect-fit adapter was wrong for native UI. Android left a114.7px white
+strip on1080px width; iOS centered98px black margins on a1206px screen. Prior validation
+cropped that document rectangle and normalized it, excluding the defective containers.
+Read NATIVE_LAYOUT_FIX.md; actual full-screen/edge/circle checks now establish the claim.
+
+Native layout now uses the available logical dp/point viewport. ProtocolViewport wraps
+unchanged official AndroidX player sources, with only standard dp→px conversion and<1dp
+outward rounding. iOS context dimensions are UIView points and input is direct; Metal
+performs point→drawable conversion. Neither host fits the390×844 header. Do not restore
+height-dependent fit or image stretching. Explicit fixed raw JSON remains fixed.
+
+Android has Java fetch/debug plus Kotlin Material3 chrome (TopAppBar/Scaffold/AndroidView).
+AGP9 built-in Kotlin is now enabled; the earlier Java-only opt-out is superseded. Root
+apply-false plugin declarations keep AGP/Kotlin visible in the same classloader. The
+pipeline remains JVM-only and its checks passed with no Android SDK variable required.
+Native status is one line; long failures previously shifted the viewport under input and
+screen sampling. Debug dialog cleanup prevents multiple/orphan developer windows.
+
+Use scripts/verify-native-layout.sh and its documented device variables. Two read-only
+Android instances require all instances sharing that AVD to be read-only. Framebuffer
+-skin sizes work, but this API37 image requires explicit wm density overrides. Early
+large-device test failures were a System UI ANR overlay, not a protocol renderer failure.
+Recover the emulator before testing; never loosen colors/geometry to accept a dimmed shot.
+
+Retail templates now use actual windowWidth expressions, including bounded square hero
+art for360dp. Old/custom JSON is not regenerated. Server-only publication updates are
+verified on the same installed apps. Legacy native golden tools reject wrong dimensions;
+new cross-player parity references need matching measured viewports, not390×844 resizing.
+
+Final responsive retail publication19 is1,970,617bytes, SHA b737dd53ebe96186ebbd807b10d6b70a5fdef759a12acdd24fd6ac4a5e39fb0e. The square hero min-expression
+clears the headline at360dp. Server-only recaptures use unchanged app binaries. Android
+capture checks the latest decoded identity before/after the screenshot, not historical
+log membership; installation/configuration transitions can restore an older task briefly.

@@ -1,7 +1,7 @@
 import{createRequire}from'node:module';import{readFile,writeFile}from'node:fs/promises';import{resolve}from'node:path';
 const require=createRequire(import.meta.url),{createCanvas,loadImage}=require('../upstream/experiments/players/typescript/node_modules/canvas');
 const folder=resolve(process.argv[2]),report=JSON.parse(await readFile(process.argv[3]||resolve(folder,'run.json'),'utf8')),results=[];
-async function pixels(file){const im=await loadImage(file),c=createCanvas(390,844),x=c.getContext('2d');x.drawImage(im,0,0,390,844);return x.getImageData(0,0,390,844).data;}
+async function pixels(file){const im=await loadImage(file);if(im.width!==390||im.height!==844)throw Error('Legacy390x844 baseline incompatible with actual responsive viewport; no image stretching permitted');const c=createCanvas(390,844),x=c.getContext('2d');x.drawImage(im,0,0,390,844);return x.getImageData(0,0,390,844).data;}
 function difference(a,b,roi=[0,0,390,844]){let total=0,bad=0,n=0;const[x,y,w,h]=roi;for(let yy=y;yy<y+h;yy++)for(let xx=x;xx<x+w;xx++){const i=(yy*390+xx)*4;let max=0;for(let k=0;k<3;k++){const d=Math.abs(a[i+k]-b[i+k]);total+=d;max=Math.max(max,d);}if(max>12)bad++;n++;}return{mae:total/n/3,badFraction:bad/n};}
 // Diagnostic only: a one-document-pixel neighborhood distinguishes edge rasterization
 // from missing geometry. It never replaces or relaxes the strict pixel result.

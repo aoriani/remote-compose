@@ -87,6 +87,12 @@ class BackendTest {
         invalid(sample.replace("\"radius\": 64", "\"radius\": 1e300"), "INVALID_PROPERTY", "/root/commands/1/radius")
         invalid(sample.replace("\"radius\": 64", "\"radius\": \"NaN\""), "INVALID_PROPERTY", "/root/commands/1/radius")
     }
+    @Test fun responsiveViewportFixtureMatchesTheNativeGoldenBytes() {
+        val source=Files.readString(Path.of("../samples/viewport-layout.json"))
+        val expected=Files.readAllBytes(Path.of("../android-player/src/androidTest/assets/viewport.rc"))
+        assertArrayEquals("All platforms must consume the same JVM bytes",expected,compileValidated(source))
+        compileValidated(Files.readString(Path.of("../samples/retail-home.json")))
+    }
     @Test fun previewPublishAndFailurePreservationThroughHttp() {
         val data = Files.createTempDirectory("rc-http-test")
         val project = Path.of("..").toAbsolutePath().normalize()

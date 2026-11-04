@@ -133,3 +133,17 @@ The pinned parser accepts `{ "clip": { "type": "circle" } }`, but upstream creat
 rejects CircleShape with UNSUPPORTED_OPERATION instead of silently losing clipping.
 For a 100×100 frame, `{ "clip": { "type": "roundRect", "radius": 50 } }` emits a
 supported circular rounded clip. Canvas clipRect and ordinary rounded clips remain supported.
+
+### Native viewport coordinates
+
+For this API7 prototype, one drawing/layout unit maps to one native logical dp/point;
+the host performs the device pixel-ratio conversion. Header390×844 is a design-time size,
+not a native aspect-ratio constraint. Use root fillMaxSize/fillMaxWidth and supported
+expressions such as `windowWidth() - 20` for full-width trailing edges. Move both bitmap
+bounds together, or derive equal width/height, to preserve aspect ratio. `windowWidth()`
+is global viewport width; a fixed-width nested card still needs its own local constraints.
+
+Retail hero artwork uses `min(157, windowWidth() - 232)` for its square size and keeps its
+right/bottom inset. This avoids headline overlap on a360dp viewport without scaling text
+or the whole document. Explicit fixed widths remain explicit: clients do not rewrite raw
+custom trees to force responsiveness. Existing published documents remain immutable.

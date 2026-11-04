@@ -89,7 +89,8 @@ struct ProtocolSurface: UIViewRepresentable {
         init(_ model: Viewer) { self.model = model }
         func mtkView(_ view: MTKView, drawableSizeWillChange size: CGSize) {}
         func draw(in view: MTKView) { let now=CACurrentMediaTime();let dt=now-last;last=now;elapsed+=dt;model.renderer?.draw(in:view,animTime:elapsed,deltaTime:dt) }
-        func point(_ g: UIGestureRecognizer) -> CGPoint { guard let view=g.view else{return .zero};let size=model.renderer?.documentSize() ?? CGSize(width:390,height:844);let p=g.location(in:view);let scale=min(view.bounds.width/max(1,size.width),view.bounds.height/max(1,size.height));return CGPoint(x:(p.x-(view.bounds.width-size.width*scale)/2)/scale,y:(p.y-(view.bounds.height-size.height*scale)/2)/scale) }
+        func point(_ g: UIGestureRecognizer) -> CGPoint { g.location(in:g.view) }
+
         @objc func tap(_ g: UITapGestureRecognizer) { let p=point(g);model.renderer?.sendTouchDownX(Float(p.x),y:Float(p.y));model.renderer?.sendClickX(Float(p.x),y:Float(p.y));model.renderer?.sendTouchUpX(Float(p.x),y:Float(p.y),velX:0,velY:0) }
         @objc func pan(_ g: UIPanGestureRecognizer) { let p=point(g);let r=model.renderer;switch g.state {case .began:r?.sendTouchDownX(Float(p.x),y:Float(p.y));case .changed:r?.sendTouchDragX(Float(p.x),y:Float(p.y));case .ended,.cancelled:r?.sendTouchUpX(Float(p.x),y:Float(p.y),velX:0,velY:0);default:break} }
     }
@@ -99,10 +100,10 @@ struct PlayerScreen: View {
     @State var debug=false
     @Environment(\.scenePhase) var phase
     var body: some View {
-        VStack(spacing:8) {
-            HStack { Text("Remote Compose").font(.headline);Spacer();Button("Refresh"){Task{await model.refresh()}};Button("Debug"){debug=true} }.padding(.horizontal)
-            Text("\(model.status) • v\(model.version) • \(model.bytes) bytes").font(.caption).accessibilityIdentifier("fetch-status")
-            ProtocolSurface(model:model).accessibilityIdentifier("remote-document")
+        VStack(spacing:0) {
+            HStack { Text("Remote Compose").font(.headline);Spacer();Button("Refresh"){Task{await model.refresh()}};Button("Debug"){debug=true} }.padding(.horizontal,16).frame(height:48)
+            Text("\(model.status) • v\(model.version) • \(model.bytes) bytes").font(.caption).lineLimit(1).padding(.horizontal,16).padding(.vertical,4).frame(maxWidth:.infinity,alignment:.leading).accessibilityIdentifier("fetch-status")
+            ProtocolSurface(model:model).frame(maxWidth:.infinity,maxHeight:.infinity).clipped().accessibilityIdentifier("remote-document")
         }.sheet(isPresented:$debug) {
             NavigationStack { Form {
                 Section("Connection") { TextField("Backend URL",text:$model.backend).textInputAutocapitalization(.never).autocorrectionDisabled();Toggle("Auto-refresh",isOn:$model.auto);Stepper("Interval: \(Int(model.interval)) seconds",value:$model.interval,in:2...300);Button("Refresh now"){UserDefaults.standard.set(model.backend,forKey:"backend");Task{await model.refresh()}} }

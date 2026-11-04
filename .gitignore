@@ -41,3 +41,5 @@ xcuserdata/
 
 # Generated validation run bindings (immutable versions are local runtime state)
 samples/validation/run.json
+
+samples/native-layout-run.json

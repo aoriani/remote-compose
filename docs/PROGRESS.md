@@ -3,7 +3,11 @@
 Updated 2026-11-03. Branch main. Current phase: usable cross-platform demonstration,
 with measured compatibility limited to the fixtures below. No remote push performed.
 
-Latest handoff:31 shared binary documents validated;81 JVM/9 model tests, native GUI
+Latest native follow-up: see NATIVE_LAYOUT_FIX.md for corrected full-width dp/point
+layout, Android Material3 chrome and passing four-configuration native checks. Earlier
+cropped native evidence did not catch container margins; its390×844 baselines are historical.
+
+Previous handoff:31 shared binary documents validated;81 JVM/9 model tests, native GUI
 and lifecycle checks pass within recorded scope.15 strict pixel comparison flags and
 font/accessibility gaps remain. Read FULL_FEATURE_TEST_REPORT and the final sections
 below before historical milestones.6c66fb6 contains the first fixes; the following
@@ -145,3 +149,29 @@ both live effects change in all players.27 reviewed initial golden checks and24 
 repeat captures pass; the golden tool rejects two earlier bad Android capture frames.
 Browser-only single-command validation ran successfully. Full native stages were executed
 individually; do not imply a fresh clean-checkout one-shot native run was performed.
+
+
+## Native viewport/app bar correction — current milestone
+
+Both header aspect-fit adapters are removed. Android now has a native Compose Material3
+TopAppBar/Scaffold and official-player AndroidView, logical viewport measurement and proper
+safe insets. iOS lays out at the actual safe-area point viewport and maps input directly.
+Responsive primitive right edges and bounded square hero artwork are server-authored;
+no business-specific renderer was added and upstream pins are unchanged.
+
+The focused scripts/verify-native-layout.sh passed end to end on two Android emulator
+sizes and iPhoneSE3/iPhone18ProMax:82 JVM tests, unit/lint/build checks,3 instrumented tests
+per emulator, two real XCTest executions and native full-screen/edge/circle/scroll checks.
+Android150% native text and fractional-density coverage are additionally captured. Source
+and test fixes address status-caption layout jumps and native debug-dialog lifecycle.
+
+Old cropped390×844 native goldens hid the margins; capture tools now preserve real native
+pixels and reject incompatible baseline sizes. See NATIVE_LAYOUT_FIX and evidence/native-layout
+for root causes, before/after screenshots, actual physical/logical dimensions and hashes.
+Next: matching-viewport cross-player parity references, native remote accessibility and
+physical-device verification. This milestone does not certify general protocol parity.
+
+Server-only hero-clearance publication19 was additionally rendered on the same installed
+apps at both sizes, with identical client binary hashes and iOS test-without-building.
+Native evidence/report and source changes are committed in the following local milestones;
+use git log to identify their hashes. No remote push.

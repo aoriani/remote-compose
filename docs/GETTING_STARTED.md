@@ -169,3 +169,54 @@ xcrun simctl launch booted demo.remotecompose.ios --backend http://127.0.0.1:809
 Use an existing version number from that backend. iOS `--no-auto --interval 2` sets
 transient refresh options for lifecycle automation. These options select documents,
 not business widgets.
+
+## Native viewport / app bar regression suite
+
+The current native contract measures the available dp/point viewport, not a390×844
+aspect-fit rectangle. See [native layout review](NATIVE_LAYOUT_FIX.md). The focused suite is:
+
+```sh
+export SMALL_IOS_SIMULATOR=<booted-small-phone-UDID>
+export LARGE_IOS_SIMULATOR=<booted-large-phone-UDID>
+export SMALL_ANDROID_SERIAL=emulator-5556
+export LARGE_ANDROID_SERIAL=emulator-5558
+sh scripts/verify-native-layout.sh
+```
+
+Use the JDK/SDK/Xcode environment above, run the normal backend on8080, and boot only the
+two Android test instances while instrumentation runs. The script publishes immutable
+fixtures, records new versions in ignored samples/native-layout-run.json, then runs all
+checks and saves actual native screenshots/geometry under artifacts/native-layout/suite-*.
+It does not overwrite existing publication versions. End-to-end execution passed on the
+recorded two emulator and two Simulator configurations.
+
+For the recorded Android sizes, reuse an installed AVD and start two read-only instances
+(all instances sharing that AVD must use read-only; close its ordinary instance first):
+
+```sh
+emulator -avd Medium_Phone_API_37.0 -port 5556 -read-only -no-snapshot -no-window -no-audio -skin 720x1600
+emulator -avd Medium_Phone_API_37.0 -port 5558 -read-only -no-snapshot -no-window -no-audio -skin 1440x3120
+# Run the emulator commands in separate terminals; after each finishes booting:
+adb -s emulator-5556 shell wm density 320
+adb -s emulator-5558 shell wm density 480
+```
+
+`-skin WIDTHxHEIGHT` sets the actual framebuffer. The density override is explicit because
+this API37 image retains physical density420. Inspect both wm size and wm density before
+running. Read-only instances leave the base AVD data intact. No Android Studio is needed.
+
+On the tested iOS27.2 runtime, the small phone was created and booted through CLI:
+
+```sh
+xcrun simctl create 'Remote Compose Small SE' com.apple.CoreSimulator.SimDeviceType.iPhone-SE-3rd-generation com.apple.CoreSimulator.SimRuntime.iOS-27-2
+# Use the returned UDID, or an existing suitable device from simctl list devices:
+xcrun simctl boot <small-UDID>
+xcrun simctl bootstatus <small-UDID> -b
+xcrun simctl boot <large-UDID>
+xcrun simctl bootstatus <large-UDID> -b
+```
+
+Select an available large device, such as iPhone18ProMax, from your installed runtime.
+Old390×844 native pixel goldens are historical. Their comparison helpers now reject
+incompatible actual viewport dimensions; use the focused suite for container correctness.
+They must not be made green by stretching a screenshot into the old frame.

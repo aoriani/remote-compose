@@ -209,3 +209,27 @@ compare arbitrary live phases, raise thresholds until all screenshots pass, or a
 model tests/decoding as rendering evidence. Consequences:15 strict ROI comparison flags
 remain visible;24 independent unchanged golden captures pass, and two known bad earlier
 Android captures are rejected. Test coordinates/ROIs never become a business UI protocol.
+
+## 022 — Measure native logical viewports; retire header aspect-fit (2026-11-03)
+
+Decision: layout receives available dp/point width and height. Device pixel ratio is the
+only host-level uniform conversion. The Android API7 context stays160dpi to avoid double
+density adjustment; its ViewGroup remeasures logical bounds and rounds outward by<1dp.
+iOS uses UIView points and direct point input, then Skia drawable pixels. Alternatives:
+fit the390×844 header, stretch a bitmap, match backgrounds to hide gaps, or enable a newer
+untested density protocol. Reasoning: measured full-screen captures showed114.7px Android
+and98px-per-side iOS gaps caused by aspect-fit, not native constraints. Consequences:
+responsive primitive expressions are required for fixed canvas right edges; old native
+390×844 goldens are incompatible and capture tools must preserve actual pixels. Full-width
+edge colors and circle geometry are tested, along with raw full-screen screenshots.
+
+## 023 — Material3 developer chrome stays native (2026-11-03)
+
+Decision: Android ComponentActivity hosts a Compose Material3 TopAppBar/Scaffold and an
+AndroidView containing the official player. Native title, refresh/debug icons,48dp targets
+and safe insets replace the old LinearLayout buttons. Generic HTTP/debug logic remains in
+Java; no business widget moves to Compose. AGP9 built-in Kotlin is enabled, Kotlin/compiler
+stays2.2.20, and AGP/Compose plugins share the root classloader. Alternatives: keep generic
+buttons or add another toolbar toolkit. Consequences: UI dependencies are locked; plain
+JVM compilation still works without an Android runtime. One-line native status prevents
+error/refresh layout jumps; full errors remain in debug. Upstream revisions are unchanged.

@@ -26,12 +26,14 @@ public class ViewerTest {
     private byte[] asset(String name) throws Exception {
         try(InputStream in=getInstrumentation().getContext().getAssets().open(name);ByteArrayOutputStream out=new ByteArrayOutputStream()){byte[] b=new byte[1024];int n;while((n=in.read(b))!=-1)out.write(b,0,n);return out.toByteArray();}
     }
-    private android.widget.Button button(View v,String text){
-        if(v instanceof android.widget.Button && text.contentEquals(((android.widget.Button)v).getText()))return (android.widget.Button)v;
-        if(v instanceof android.view.ViewGroup){android.view.ViewGroup g=(android.view.ViewGroup)v;for(int i=0;i<g.getChildCount();i++){android.widget.Button b=button(g.getChildAt(i),text);if(b!=null)return b;}}return null;
+    private void nativeClick(String label){
+        android.view.accessibility.AccessibilityNodeInfo target=null;
+        for(int i=0;i<50&&target==null;i++){android.view.accessibility.AccessibilityNodeInfo root=getInstrumentation().getUiAutomation().getRootInActiveWindow();target=NativeControls.find(root,label);if(target==null)SystemClock.sleep(100);}
+        assertNotNull("Native toolbar control "+label,target);android.graphics.Rect bounds=new android.graphics.Rect();target.getBoundsInScreen(bounds);long t=SystemClock.uptimeMillis();getInstrumentation().getUiAutomation().injectInputEvent(MotionEvent.obtain(t,t,MotionEvent.ACTION_DOWN,bounds.centerX(),bounds.centerY(),0),true);getInstrumentation().getUiAutomation().injectInputEvent(MotionEvent.obtain(t,t+80,MotionEvent.ACTION_UP,bounds.centerX(),bounds.centerY(),0),true);getInstrumentation().waitForIdleSync();SystemClock.sleep(500);
     }
     private void waitSha(MainActivity a,String sha){long end=SystemClock.uptimeMillis()+20000;while(!sha.equals(a.renderedSha())&&SystemClock.uptimeMillis()<end)SystemClock.sleep(100);assertEquals(sha,a.renderedSha());}
     private int screenPixel(MainActivity a,int x,int y){
+        getInstrumentation().waitForIdleSync();SystemClock.sleep(700);
         int[] point=new int[2];getInstrumentation().runOnMainSync(()->{View v=a.findViewById(R.id.protocol_player);v.getLocationOnScreen(point);point[0]+=Math.round(x*v.getScaleX());point[1]+=Math.round(y*v.getScaleY());});android.graphics.Bitmap screenshot=getInstrumentation().getUiAutomation().takeScreenshot();assertNotNull(screenshot);int color=screenshot.getPixel(point[0],point[1]);screenshot.recycle();return color;
     }
     @Test public void testManualAutoAndCorruptRefreshRecovery() throws Exception {
@@ -48,13 +50,13 @@ public class ViewerTest {
         try{java.util.concurrent.atomic.AtomicReference<MainActivity> ref=new java.util.concurrent.atomic.AtomicReference<>();rule.getScenario().onActivity(ref::set);MainActivity activity=ref.get();SystemClock.sleep(500);
             getInstrumentation().runOnMainSync(()->activity.testBackend("http://127.0.0.1:"+server.getLocalPort()));waitSha(activity,hashA);
             current.set(b);SystemClock.sleep(700);assertEquals("Manual mode must retain A before refresh",hashA,activity.renderedSha());
-            getInstrumentation().runOnMainSync(()->button(activity.getWindow().getDecorView(),"Refresh").performClick());waitSha(activity,hashB);
+            nativeClick("Refresh");waitSha(activity,hashB);
             // Enable the actual native debug controls, not an alternate timer implementation.
-            getInstrumentation().runOnMainSync(()->button(activity.getWindow().getDecorView(),"Debug").performClick());
+            nativeClick("Debug and logs");
             android.app.Instrumentation instrumentation=getInstrumentation();android.view.accessibility.AccessibilityNodeInfo root=null;for(int i=0;i<50&&root==null;i++){SystemClock.sleep(100);root=instrumentation.getUiAutomation().getRootInActiveWindow();}assertNotNull("Native debug sheet must be accessible",root);
-            java.util.List<android.view.accessibility.AccessibilityNodeInfo> toggles=root.findAccessibilityNodeInfosByText("Auto-refresh");assertFalse(toggles.isEmpty());if(!toggles.get(0).isChecked())toggles.get(0).performAction(android.view.accessibility.AccessibilityNodeInfo.ACTION_CLICK);
+            java.util.List<android.view.accessibility.AccessibilityNodeInfo> toggles=root.findAccessibilityNodeInfosByText("Auto-refresh");for(int i=0;i<40&&toggles.isEmpty();i++){SystemClock.sleep(100);root=instrumentation.getUiAutomation().getRootInActiveWindow();if(root!=null)toggles=root.findAccessibilityNodeInfosByText("Auto-refresh");}assertFalse("Actual debug dialog must appear",toggles.isEmpty());if(!toggles.get(0).isChecked())toggles.get(0).performAction(android.view.accessibility.AccessibilityNodeInfo.ACTION_CLICK);
             java.util.List<android.view.accessibility.AccessibilityNodeInfo> apply=root.findAccessibilityNodeInfosByText("Apply and refresh now");assertFalse(apply.isEmpty());apply.get(0).performAction(android.view.accessibility.AccessibilityNodeInfo.ACTION_CLICK);
-            getInstrumentation().sendKeyDownUpSync(android.view.KeyEvent.KEYCODE_BACK);SystemClock.sleep(1000);current.set(a);waitSha(activity,hashA);SystemClock.sleep(500);int retainedPixel=screenPixel(activity,100,25);
+            getInstrumentation().sendKeyDownUpSync(android.view.KeyEvent.KEYCODE_BACK);getInstrumentation().waitForIdleSync();SystemClock.sleep(1000);current.set(a);waitSha(activity,hashA);SystemClock.sleep(500);int retainedPixel=screenPixel(activity,100,25);
             mode.set(2);long end=SystemClock.uptimeMillis()+15000;while(!activity.fetchStatus().contains("failed")&&SystemClock.uptimeMillis()<end)SystemClock.sleep(100);assertTrue(activity.fetchStatus().contains("failed"));assertEquals(hashA,activity.renderedSha());assertEquals("Corrupt refresh must retain the actual visible document pixel",retainedPixel,screenPixel(activity,100,25));
             mode.set(0);current.set(b);waitSha(activity,hashB);SystemClock.sleep(500);assertEquals("Recovered binary must visibly paint its circle",0xFF0067A0,screenPixel(activity,195,160));
         }finally{server.close();responder.join(1000);android.content.SharedPreferences.Editor restore=prefs.edit();for(String key:new String[]{"backend","auto","interval"}){Object value=originalPreferences.get(key);if(value==null)restore.remove(key);else if(value instanceof String)restore.putString(key,(String)value);else if(value instanceof Boolean)restore.putBoolean(key,(Boolean)value);else if(value instanceof Integer)restore.putInt(key,(Integer)value);}restore.commit();}

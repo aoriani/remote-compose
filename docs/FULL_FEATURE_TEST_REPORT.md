@@ -1,5 +1,12 @@
 # Full feature and rendering validation
 
+> Native viewport follow-up: the manually found margins exposed a gap in this review's
+> cropped-document screenshots. [NATIVE_LAYOUT_FIX](NATIVE_LAYOUT_FIX.md) records the
+> corrected dp/point sizing, Android Material3 app bar, full-screen evidence and passing
+> four-configuration regression suite. The older native390×844 pixel results below are
+> historical and do not establish full native-container correctness.
+
+
 Review date: 2026-11-03 (America/New_York). Baseline: `ed5ad06`; first fixes:
 `6c66fb6`. The final evidence combines a successful29-document gallery with a targeted, corrected
 lifecycle rerun; failed attempts remain in the evidence transcripts.

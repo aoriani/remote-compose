@@ -170,7 +170,7 @@
           },
           {
             "type": "drawCircle",
-            "cx": 337,
+            "cx": "windowWidth() - 53",
             "cy": 34,
             "radius": 19
           },
@@ -196,9 +196,9 @@
           },
           {
             "type": "drawLine",
-            "x1": 331,
+            "x1": "windowWidth() - 59",
             "y1": 32,
-            "x2": 340,
+            "x2": "windowWidth() - 50",
             "y2": 41
           },
           {
@@ -217,7 +217,7 @@
           },
           {
             "type": "drawCircle",
-            "cx": 332,
+            "cx": "windowWidth() - 58",
             "cy": 31,
             "radius": 5
           },
@@ -346,7 +346,7 @@
             "type": "drawRoundRect",
             "left": 20,
             "top": 4,
-            "right": 370,
+            "right": "windowWidth() - 20",
             "bottom": 220,
             "rx": 22,
             "ry": 22
@@ -359,9 +359,9 @@
           {
             "type": "drawBitmap",
             "image": "@photo_market_harvest",
-            "left": 211,
-            "top": 58,
-            "right": 368,
+            "left": "windowWidth() - 22 - min(157, windowWidth() - 232)",
+            "top": "215 - min(157, windowWidth() - 232)",
+            "right": "windowWidth() - 22",
             "bottom": 215
           },
           {
@@ -758,7 +758,7 @@
             "type": "drawRoundRect",
             "left": 20,
             "top": 4,
-            "right": 370,
+            "right": "windowWidth() - 20",
             "bottom": 66,
             "rx": 16,
             "ry": 16
@@ -833,7 +833,7 @@
           {
             "type": "drawTextAnchored",
             "text": "20%",
-            "x": 315,
+            "x": "windowWidth() - 75",
             "y": 37,
             "panX": -1,
             "panY": 0
@@ -1780,7 +1780,7 @@
             "type": "drawRoundRect",
             "left": 20,
             "top": 8,
-            "right": 370,
+            "right": "windowWidth() - 20",
             "bottom": 82,
             "rx": 18,
             "ry": 18
@@ -1877,9 +1877,9 @@
           },
           {
             "type": "drawLine",
-            "x1": 332,
+            "x1": "windowWidth() - 58",
             "y1": 52,
-            "x2": 343,
+            "x2": "windowWidth() - 47",
             "y2": 41
           },
           {
@@ -1904,9 +1904,9 @@
           },
           {
             "type": "drawLine",
-            "x1": 336,
+            "x1": "windowWidth() - 54",
             "y1": 41,
-            "x2": 343,
+            "x2": "windowWidth() - 47",
             "y2": 41
           },
           {
@@ -1931,9 +1931,9 @@
           },
           {
             "type": "drawLine",
-            "x1": 343,
+            "x1": "windowWidth() - 47",
             "y1": 41,
-            "x2": 343,
+            "x2": "windowWidth() - 47",
             "y2": 48
           }
         ]
@@ -2381,7 +2381,7 @@
             "type": "drawRoundRect",
             "left": 20,
             "top": 67,
-            "right": 370,
+            "right": "windowWidth() - 20",
             "bottom": 72,
             "rx": 2.5,
             "ry": 2.5
@@ -2404,7 +2404,7 @@
             "type": "drawRect",
             "left": 20,
             "top": 67,
-            "right": "205 + 24 * sin(time * 2)",
+            "right": "20 + (windowWidth() - 40) * (185 + 24 * sin(time * 2)) / 350",
             "bottom": 72
           },
           {
