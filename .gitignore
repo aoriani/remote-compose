@@ -43,3 +43,10 @@ xcuserdata/
 samples/validation/run.json
 
 samples/native-layout-run.json
+
+# Private keys and additional native signing/local state
+*.pem
+*.key
+*.p8
+*.xcuserstate
+.simulators/
