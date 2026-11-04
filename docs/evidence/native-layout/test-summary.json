@@ -1,0 +1,44 @@
+{
+  "revision": "77e7d17",
+  "date": "2026-11-03",
+  "jvm": {
+    "tests": 82,
+    "failures": 0
+  },
+  "editorModel": {
+    "tests": 9,
+    "failures": 0
+  },
+  "combinedNativeSuite": {
+    "command": "sh scripts/verify-native-layout.sh",
+    "result": "passed",
+    "artifactDirectory": "artifacts/native-layout/suite-20261103-220151",
+    "androidInstrumentation": {
+      "testsPerDevice": 3,
+      "devices": 2,
+      "failures": 0
+    },
+    "androidBuildUnitLint": "passed",
+    "iosBuild": "passed",
+    "iosUI": {
+      "testMethodsPerDevice": 1,
+      "documentsPerMethod": 3,
+      "devices": 2,
+      "failures": 0
+    },
+    "actualPixelAndScrollChecks": "passed on all four configurations"
+  },
+  "serverOnlyUpdate": {
+    "publication": 19,
+    "sha256": "b737dd53ebe96186ebbd807b10d6b70a5fdef759a12acdd24fd6ac4a5e39fb0e",
+    "iosCommand": "xcodebuild test-without-building",
+    "smallAndLargeAndroidCapture": "passed",
+    "smallAndLargeIosUIAndCapture": "passed",
+    "clientBinaryHashesUnchanged": true
+  },
+  "limitations": [
+    "Physical devices not tested",
+    "Historical390x844 native golden dimensions are incompatible with corrected responsive viewports",
+    "Font metrics and remote accessibility limitations remain"
+  ]
+}

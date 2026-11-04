@@ -16,3 +16,7 @@ scripts/verify-native-layout.sh after the documented tool/device/backend setup.
 
 Old390×844 native pixel goldens do not establish container correctness. The updated
 capture tools retain actual native pixels and reject incompatible dimensions.
+
+The compact test-summary.json is tracked. Full console logs and xcresult remain ignored
+local artifacts; the source and focused script reproduce them. The implementation/evidence
+milestone is77e7d17, followed by this final summary.

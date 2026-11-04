@@ -175,3 +175,6 @@ Server-only hero-clearance publication19 was additionally rendered on the same i
 apps at both sizes, with identical client binary hashes and iOS test-without-building.
 Native evidence/report and source changes are committed in the following local milestones;
 use git log to identify their hashes. No remote push.
+
+Native implementation, responsive source, tests and full-screen evidence commit:77e7d17.
+The following evidence-summary commit records the final test totals. Branch main; no push.
