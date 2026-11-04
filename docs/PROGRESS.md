@@ -3,7 +3,11 @@
 Updated 2026-11-04. Branch main. Current phase: usable cross-platform demonstration,
 with measured compatibility limited to the fixtures below. No remote push performed.
 
-Latest interactive follow-up: see INTERACTIVE_DEMO.md and the final acceptance section
+Latest full-page follow-up: the final section below supersedes the simplified default.
+The original full retail page now has per-product controls and an integrated carousel;
+see evidence/full-retail and run verify-full-retail.sh.
+
+Historical interactive follow-up: see INTERACTIVE_DEMO.md and the final acceptance section
 for carousel/local state, raw JSON publication, exact shared bytes and unchanged installed
 client hashes. No remote push.
 
@@ -244,3 +248,35 @@ browser startup/reset/legacy/migration/custom-draft/player-event test. Screensho
 results are in evidence/default-design. Restarted the stale8080 JVM service with the
 already validated current compiler; its existing publication19 was preserved. No native
 changes or remote push. This milestone's commit is identified by git log.
+
+## Full bundled retail design corrected and verified (2026-11-04)
+
+The earlier60482fa two-section default is superseded. The **original full retail page**
+now contains the rotating three-banner carousel and independent outlined/filled hearts,
+pressed Add feedback and functional minus/quantity/plus on all three existing products.
+Header, hero, category pills, imagery, stories and rewards are preserved. Both bundled
+JSON filenames represent the same full source factory; the alternate design button is gone.
+Inspector/raw editing preserves state/actions; existing modified drafts remain intact.
+
+Verified: combined scripts/verify-full-retail.sh;85 JVM tests (fresh run),16 model tests,
+12-template real editor regression, startup/reset/migration, full-page browser/native tests
+with27 exact events per platform, full-page carousel configuration/deterministic browser
+frames and native live motion screenshots. Android unit/lint/CLI checks pass; iOS real
+XCTest passes. Actual full-page product screenshots were inspected on both platforms.
+Publication12/8092 is1,980,638bytes SHA5f32c3221aa7ce717151c6f0adb8e591de968abe2b172f97bff511748d258bda.
+Both native executables are unchanged from the previous milestone. No production native
+code or upstream pins changed. No push. Evidence: docs/evidence/full-retail and the final
+section of FULL_FEATURE_TEST_REPORT. The following local implementation commit identifies
+this milestone; inspect git log for its hash.
+
+Found/fixed implicit horizontal-scroll constant repaint resets by using an exported named
+scroll variable; added sample files as Gradle test inputs; rejected duplicate collection
+namespaces. Earlier failed harness timing/viewport assumptions are recorded in the report.
+Next: review the full design on the presentation machine, optional larger quantity touch
+targets/namespace-safe collection duplication, then physical-device/accessibility checks.
+State remains session-local; native fonts/ripples and unsynchronized animation clocks differ.
+
+Demo handoff: normal backend8080 now has immutable publication20, identical verified full-page
+bytes/hash. Both native apps are running against8080/latest (no version pin), so subsequent
+editor publications can be fetched normally. The old8080 publication19 remains in history.
+Historical raw-JSON and stress browser regressions additionally pass on isolated8094.

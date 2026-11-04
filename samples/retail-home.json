@@ -730,113 +730,1251 @@
         ]
       },
       {
-        "type": "canvas",
+        "type": "column",
         "modifiers": [
           {
             "fillMaxWidth": 1
-          },
-          {
-            "height": 76
           }
         ],
-        "commands": [
+        "children": [
           {
-            "type": "paint",
-            "ops": [
+            "type": "variable",
+            "name": "promo_interval",
+            "value": 5,
+            "export": true
+          },
+          {
+            "type": "variable",
+            "name": "promo_duration",
+            "value": 0.45,
+            "export": true
+          },
+          {
+            "type": "variable",
+            "name": "promo_base",
+            "value": 0,
+            "export": true
+          },
+          {
+            "type": "variable",
+            "name": "promo_from",
+            "value": 0,
+            "export": true
+          },
+          {
+            "type": "variable",
+            "name": "promo_epoch",
+            "value": 0,
+            "export": true
+          },
+          {
+            "type": "variable",
+            "name": "promo_clock",
+            "value": "animationTime() + time * 0",
+            "export": true
+          },
+          {
+            "type": "variable",
+            "name": "promo_elapsed",
+            "value": "max(0, @promo_clock - @promo_epoch)",
+            "export": true
+          },
+          {
+            "type": "variable",
+            "name": "promo_step",
+            "value": "floor(@promo_elapsed / @promo_interval)",
+            "export": true
+          },
+          {
+            "type": "variable",
+            "name": "promo_auto_t",
+            "value": "min(1, max(0, (@promo_elapsed % @promo_interval - @promo_interval + @promo_duration) / @promo_duration))",
+            "export": true
+          },
+          {
+            "type": "variable",
+            "name": "promo_manual_t",
+            "value": "min(1, @promo_elapsed / @promo_duration)",
+            "export": true
+          },
+          {
+            "type": "variable",
+            "name": "promo_position",
+            "value": "@promo_base + @promo_step + @promo_auto_t * @promo_auto_t * (3 - 2 * @promo_auto_t) + (@promo_from - @promo_base) * (1 - @promo_manual_t * @promo_manual_t * (3 - 2 * @promo_manual_t))",
+            "export": true
+          },
+          {
+            "type": "variable",
+            "name": "promo_active",
+            "value": "(floor(@promo_position + 0.5) % @promo_count + @promo_count) % @promo_count",
+            "export": true
+          },
+          {
+            "type": "variable",
+            "name": "promo_dots",
+            "value": 1,
+            "export": true
+          },
+          {
+            "type": "variable",
+            "name": "promo_arrows",
+            "value": 1,
+            "export": true
+          },
+          {
+            "type": "variable",
+            "name": "promo_count",
+            "value": 3,
+            "export": true
+          },
+          {
+            "type": "canvas",
+            "modifiers": [
               {
-                "shader": 0
+                "fillMaxWidth": 1
               },
               {
-                "style": "fill"
+                "height": 258
               },
               {
-                "color": "#F7E4D6"
+                "onClick": {
+                  "type": "HostAction",
+                  "name": "promotion.open",
+                  "value": "@promo_active",
+                  "actionType": 0
+                }
+              }
+            ],
+            "commands": [
+              {
+                "type": "save"
+              },
+              {
+                "type": "clipRect",
+                "left": 20,
+                "top": 0,
+                "right": "windowWidth() - 20",
+                "bottom": 258
+              },
+              {
+                "type": "save"
+              },
+              {
+                "type": "translate",
+                "dx": "(((0 - @promo_position + @promo_count * 1.5) % @promo_count + @promo_count) % @promo_count - @promo_count * 0.5) * (windowWidth() - 40)",
+                "dy": 0
+              },
+              {
+                "type": "paint",
+                "ops": [
+                  {
+                    "shader": 0
+                  },
+                  {
+                    "style": "fill"
+                  },
+                  {
+                    "color": "#E7EDDF"
+                  },
+                  {
+                    "alpha": 1
+                  }
+                ]
+              },
+              {
+                "type": "drawRoundRect",
+                "left": 20,
+                "top": 0,
+                "right": "windowWidth() - 20",
+                "bottom": 258,
+                "rx": 20,
+                "ry": 20
+              },
+              {
+                "type": "paint",
+                "ops": [
+                  {
+                    "shader": 0
+                  },
+                  {
+                    "style": "fill"
+                  },
+                  {
+                    "color": "#263D2F"
+                  },
+                  {
+                    "alpha": 1
+                  },
+                  {
+                    "textSize": 9
+                  }
+                ]
+              },
+              {
+                "type": "drawTextAnchored",
+                "text": "BETTER EVERY MORNING",
+                "x": 40,
+                "y": 28,
+                "panX": -1,
+                "panY": 0
+              },
+              {
+                "type": "paint",
+                "ops": [
+                  {
+                    "shader": 0
+                  },
+                  {
+                    "style": "fill"
+                  },
+                  {
+                    "color": "#263D2F"
+                  },
+                  {
+                    "alpha": 1
+                  },
+                  {
+                    "textSize": 25
+                  }
+                ]
+              },
+              {
+                "type": "drawTextAnchored",
+                "text": "Your daily ritual,",
+                "x": 40,
+                "y": 67,
+                "panX": -1,
+                "panY": 0
+              },
+              {
+                "type": "paint",
+                "ops": [
+                  {
+                    "shader": 0
+                  },
+                  {
+                    "style": "fill"
+                  },
+                  {
+                    "color": "#263D2F"
+                  },
+                  {
+                    "alpha": 1
+                  },
+                  {
+                    "textSize": 25
+                  }
+                ]
+              },
+              {
+                "type": "drawTextAnchored",
+                "text": "made delicious.",
+                "x": 40,
+                "y": 98,
+                "panX": -1,
+                "panY": 0
+              },
+              {
+                "type": "paint",
+                "ops": [
+                  {
+                    "shader": 0
+                  },
+                  {
+                    "style": "fill"
+                  },
+                  {
+                    "color": "#263D2F"
+                  },
+                  {
+                    "alpha": 1
+                  },
+                  {
+                    "textSize": 10
+                  }
+                ]
+              },
+              {
+                "type": "drawTextAnchored",
+                "text": "Plant-based favorites. Member prices.",
+                "x": 40,
+                "y": 126,
+                "panX": -1,
+                "panY": 0
+              },
+              {
+                "type": "addBitmap",
+                "image": "oat-milk",
+                "varName": "promo_art_0"
+              },
+              {
+                "type": "drawBitmap",
+                "image": "@promo_art_0",
+                "left": "windowWidth() - 160",
+                "top": 118,
+                "right": "windowWidth() - 28",
+                "bottom": 250
+              },
+              {
+                "type": "paint",
+                "ops": [
+                  {
+                    "shader": 0
+                  },
+                  {
+                    "style": "fill"
+                  },
+                  {
+                    "color": "#263D2F"
+                  },
+                  {
+                    "alpha": 1
+                  }
+                ]
+              },
+              {
+                "type": "drawRoundRect",
+                "left": 40,
+                "top": 166,
+                "right": 205,
+                "bottom": 210,
+                "rx": 22,
+                "ry": 22
+              },
+              {
+                "type": "paint",
+                "ops": [
+                  {
+                    "shader": 0
+                  },
+                  {
+                    "style": "fill"
+                  },
+                  {
+                    "color": "#FFFFFF"
+                  },
+                  {
+                    "alpha": 1
+                  },
+                  {
+                    "textSize": 12
+                  }
+                ]
+              },
+              {
+                "type": "drawTextAnchored",
+                "text": "Explore breakfast",
+                "x": 55,
+                "y": 189,
+                "panX": -1,
+                "panY": 0
+              },
+              {
+                "type": "restore"
+              },
+              {
+                "type": "save"
+              },
+              {
+                "type": "translate",
+                "dx": "(((1 - @promo_position + @promo_count * 1.5) % @promo_count + @promo_count) % @promo_count - @promo_count * 0.5) * (windowWidth() - 40)",
+                "dy": 0
+              },
+              {
+                "type": "paint",
+                "ops": [
+                  {
+                    "shader": 0
+                  },
+                  {
+                    "style": "fill"
+                  },
+                  {
+                    "color": "#F8E1CA"
+                  },
+                  {
+                    "alpha": 1
+                  }
+                ]
+              },
+              {
+                "type": "drawRoundRect",
+                "left": 20,
+                "top": 0,
+                "right": "windowWidth() - 20",
+                "bottom": 258,
+                "rx": 20,
+                "ry": 20
+              },
+              {
+                "type": "paint",
+                "ops": [
+                  {
+                    "shader": 0
+                  },
+                  {
+                    "style": "fill"
+                  },
+                  {
+                    "color": "#68391F"
+                  },
+                  {
+                    "alpha": 1
+                  },
+                  {
+                    "textSize": 9
+                  }
+                ]
+              },
+              {
+                "type": "drawTextAnchored",
+                "text": "A LITTLE MORE SUNSHINE",
+                "x": 40,
+                "y": 28,
+                "panX": -1,
+                "panY": 0
+              },
+              {
+                "type": "paint",
+                "ops": [
+                  {
+                    "shader": 0
+                  },
+                  {
+                    "style": "fill"
+                  },
+                  {
+                    "color": "#68391F"
+                  },
+                  {
+                    "alpha": 1
+                  },
+                  {
+                    "textSize": 25
+                  }
+                ]
+              },
+              {
+                "type": "drawTextAnchored",
+                "text": "Bring home",
+                "x": 40,
+                "y": 67,
+                "panX": -1,
+                "panY": 0
+              },
+              {
+                "type": "paint",
+                "ops": [
+                  {
+                    "shader": 0
+                  },
+                  {
+                    "style": "fill"
+                  },
+                  {
+                    "color": "#68391F"
+                  },
+                  {
+                    "alpha": 1
+                  },
+                  {
+                    "textSize": 25
+                  }
+                ]
+              },
+              {
+                "type": "drawTextAnchored",
+                "text": "the bright side.",
+                "x": 40,
+                "y": 98,
+                "panX": -1,
+                "panY": 0
+              },
+              {
+                "type": "paint",
+                "ops": [
+                  {
+                    "shader": 0
+                  },
+                  {
+                    "style": "fill"
+                  },
+                  {
+                    "color": "#68391F"
+                  },
+                  {
+                    "alpha": 1
+                  },
+                  {
+                    "textSize": 10
+                  }
+                ]
+              },
+              {
+                "type": "drawTextAnchored",
+                "text": "Small-batch fizz. Big citrus energy.",
+                "x": 40,
+                "y": 126,
+                "panX": -1,
+                "panY": 0
+              },
+              {
+                "type": "addBitmap",
+                "image": "citrus-soda",
+                "varName": "promo_art_1"
+              },
+              {
+                "type": "drawBitmap",
+                "image": "@promo_art_1",
+                "left": "windowWidth() - 160",
+                "top": 118,
+                "right": "windowWidth() - 28",
+                "bottom": 250
+              },
+              {
+                "type": "paint",
+                "ops": [
+                  {
+                    "shader": 0
+                  },
+                  {
+                    "style": "fill"
+                  },
+                  {
+                    "color": "#68391F"
+                  },
+                  {
+                    "alpha": 1
+                  }
+                ]
+              },
+              {
+                "type": "drawRoundRect",
+                "left": 40,
+                "top": 166,
+                "right": 205,
+                "bottom": 210,
+                "rx": 22,
+                "ry": 22
+              },
+              {
+                "type": "paint",
+                "ops": [
+                  {
+                    "shader": 0
+                  },
+                  {
+                    "style": "fill"
+                  },
+                  {
+                    "color": "#FFFFFF"
+                  },
+                  {
+                    "alpha": 1
+                  },
+                  {
+                    "textSize": 12
+                  }
+                ]
+              },
+              {
+                "type": "drawTextAnchored",
+                "text": "Discover Sol",
+                "x": 55,
+                "y": 189,
+                "panX": -1,
+                "panY": 0
+              },
+              {
+                "type": "restore"
+              },
+              {
+                "type": "save"
+              },
+              {
+                "type": "translate",
+                "dx": "(((2 - @promo_position + @promo_count * 1.5) % @promo_count + @promo_count) % @promo_count - @promo_count * 0.5) * (windowWidth() - 40)",
+                "dy": 0
+              },
+              {
+                "type": "paint",
+                "ops": [
+                  {
+                    "shader": 0
+                  },
+                  {
+                    "style": "fill"
+                  },
+                  {
+                    "color": "#EAE0F0"
+                  },
+                  {
+                    "alpha": 1
+                  }
+                ]
+              },
+              {
+                "type": "drawRoundRect",
+                "left": 20,
+                "top": 0,
+                "right": "windowWidth() - 20",
+                "bottom": 258,
+                "rx": 20,
+                "ry": 20
+              },
+              {
+                "type": "paint",
+                "ops": [
+                  {
+                    "shader": 0
+                  },
+                  {
+                    "style": "fill"
+                  },
+                  {
+                    "color": "#503264"
+                  },
+                  {
+                    "alpha": 1
+                  },
+                  {
+                    "textSize": 9
+                  }
+                ]
+              },
+              {
+                "type": "drawTextAnchored",
+                "text": "GOOD THINGS IN STORE",
+                "x": 40,
+                "y": 28,
+                "panX": -1,
+                "panY": 0
+              },
+              {
+                "type": "paint",
+                "ops": [
+                  {
+                    "shader": 0
+                  },
+                  {
+                    "style": "fill"
+                  },
+                  {
+                    "color": "#503264"
+                  },
+                  {
+                    "alpha": 1
+                  },
+                  {
+                    "textSize": 25
+                  }
+                ]
+              },
+              {
+                "type": "drawTextAnchored",
+                "text": "Slow mornings.",
+                "x": 40,
+                "y": 67,
+                "panX": -1,
+                "panY": 0
+              },
+              {
+                "type": "paint",
+                "ops": [
+                  {
+                    "shader": 0
+                  },
+                  {
+                    "style": "fill"
+                  },
+                  {
+                    "color": "#503264"
+                  },
+                  {
+                    "alpha": 1
+                  },
+                  {
+                    "textSize": 25
+                  }
+                ]
+              },
+              {
+                "type": "drawTextAnchored",
+                "text": "Golden moments.",
+                "x": 40,
+                "y": 98,
+                "panX": -1,
+                "panY": 0
+              },
+              {
+                "type": "paint",
+                "ops": [
+                  {
+                    "shader": 0
+                  },
+                  {
+                    "style": "fill"
+                  },
+                  {
+                    "color": "#503264"
+                  },
+                  {
+                    "alpha": 1
+                  },
+                  {
+                    "textSize": 10
+                  }
+                ]
+              },
+              {
+                "type": "drawTextAnchored",
+                "text": "Meet your new pantry essentials.",
+                "x": 40,
+                "y": 126,
+                "panX": -1,
+                "panY": 0
+              },
+              {
+                "type": "addBitmap",
+                "image": "granola",
+                "varName": "promo_art_2"
+              },
+              {
+                "type": "drawBitmap",
+                "image": "@promo_art_2",
+                "left": "windowWidth() - 160",
+                "top": 118,
+                "right": "windowWidth() - 28",
+                "bottom": 250
+              },
+              {
+                "type": "paint",
+                "ops": [
+                  {
+                    "shader": 0
+                  },
+                  {
+                    "style": "fill"
+                  },
+                  {
+                    "color": "#503264"
+                  },
+                  {
+                    "alpha": 1
+                  }
+                ]
+              },
+              {
+                "type": "drawRoundRect",
+                "left": 40,
+                "top": 166,
+                "right": 205,
+                "bottom": 210,
+                "rx": 22,
+                "ry": 22
+              },
+              {
+                "type": "paint",
+                "ops": [
+                  {
+                    "shader": 0
+                  },
+                  {
+                    "style": "fill"
+                  },
+                  {
+                    "color": "#FFFFFF"
+                  },
+                  {
+                    "alpha": 1
+                  },
+                  {
+                    "textSize": 12
+                  }
+                ]
+              },
+              {
+                "type": "drawTextAnchored",
+                "text": "Shop the pantry",
+                "x": 55,
+                "y": 189,
+                "panX": -1,
+                "panY": 0
+              },
+              {
+                "type": "restore"
+              },
+              {
+                "type": "restore"
               }
             ]
           },
           {
-            "type": "drawRoundRect",
-            "left": 20,
-            "top": 4,
-            "right": "windowWidth() - 20",
-            "bottom": 66,
-            "rx": 16,
-            "ry": 16
-          },
-          {
-            "type": "paint",
-            "ops": [
+            "type": "row",
+            "modifiers": [
               {
-                "shader": 0
+                "fillMaxWidth": 1
               },
               {
-                "style": "fill"
+                "height": 56
               },
               {
-                "color": "#182C38"
+                "padding": [
+                  20,
+                  4,
+                  20,
+                  4
+                ]
+              }
+            ],
+            "children": [
+              {
+                "type": "canvas",
+                "modifiers": [
+                  {
+                    "width": "48 * @promo_arrows"
+                  },
+                  {
+                    "height": 48
+                  },
+                  {
+                    "onClick": [
+                      {
+                        "type": "ValueFloatExpressionChange",
+                        "targetId": "@promo_from",
+                        "value": "@promo_position"
+                      },
+                      {
+                        "type": "ValueFloatExpressionChange",
+                        "targetId": "@promo_base",
+                        "value": "floor(@promo_position + 0.5) - 1"
+                      },
+                      {
+                        "type": "ValueFloatExpressionChange",
+                        "targetId": "@promo_epoch",
+                        "value": "@promo_clock"
+                      },
+                      {
+                        "type": "HostAction",
+                        "name": "carousel.previous",
+                        "value": "@promo_base",
+                        "actionType": 0
+                      }
+                    ]
+                  }
+                ],
+                "commands": [
+                  {
+                    "type": "paint",
+                    "ops": [
+                      {
+                        "shader": 0
+                      },
+                      {
+                        "style": "fill"
+                      },
+                      {
+                        "color": "#203B73"
+                      },
+                      {
+                        "alpha": "@promo_arrows"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "drawCircle",
+                    "cx": 24,
+                    "cy": 24,
+                    "radius": 20
+                  },
+                  {
+                    "type": "paint",
+                    "ops": [
+                      {
+                        "shader": 0
+                      },
+                      {
+                        "style": "fill"
+                      },
+                      {
+                        "color": "#FFFFFF"
+                      },
+                      {
+                        "alpha": "@promo_arrows"
+                      },
+                      {
+                        "textSize": 20
+                      }
+                    ]
+                  },
+                  {
+                    "type": "drawTextAnchored",
+                    "text": "‹",
+                    "x": 24,
+                    "y": 23,
+                    "panX": 0,
+                    "panY": 0
+                  }
+                ]
               },
               {
-                "textSize": 15
+                "type": "spacer",
+                "modifiers": [
+                  {
+                    "horizontalWeight": 1
+                  }
+                ]
+              },
+              {
+                "type": "canvas",
+                "modifiers": [
+                  {
+                    "width": "min(44, (windowWidth() - 136) / @promo_count) * @promo_dots"
+                  },
+                  {
+                    "height": 48
+                  },
+                  {
+                    "onClick": [
+                      {
+                        "type": "ValueFloatExpressionChange",
+                        "targetId": "@promo_from",
+                        "value": "@promo_position"
+                      },
+                      {
+                        "type": "ValueFloatExpressionChange",
+                        "targetId": "@promo_base",
+                        "value": "floor(@promo_position + 0.5) + ((0 - @promo_active + @promo_count) % @promo_count)"
+                      },
+                      {
+                        "type": "ValueFloatExpressionChange",
+                        "targetId": "@promo_epoch",
+                        "value": "@promo_clock"
+                      },
+                      {
+                        "type": "HostAction",
+                        "name": "carousel.select",
+                        "value": "@promo_base",
+                        "actionType": 0
+                      }
+                    ]
+                  }
+                ],
+                "commands": [
+                  {
+                    "type": "paint",
+                    "ops": [
+                      {
+                        "shader": 0
+                      },
+                      {
+                        "style": "fill"
+                      },
+                      {
+                        "color": "#305BEF"
+                      },
+                      {
+                        "alpha": "@promo_dots * (1 - min(1, abs(@promo_active - 0)))"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "drawCircle",
+                    "cx": "min(44, (windowWidth() - 136) / @promo_count) / 2",
+                    "cy": 24,
+                    "radius": 5
+                  },
+                  {
+                    "type": "paint",
+                    "ops": [
+                      {
+                        "shader": 0
+                      },
+                      {
+                        "style": "fill"
+                      },
+                      {
+                        "color": "#AEB9BC"
+                      },
+                      {
+                        "alpha": "@promo_dots * min(1, abs(@promo_active - 0))"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "drawCircle",
+                    "cx": "min(44, (windowWidth() - 136) / @promo_count) / 2",
+                    "cy": 24,
+                    "radius": 4
+                  }
+                ]
+              },
+              {
+                "type": "canvas",
+                "modifiers": [
+                  {
+                    "width": "min(44, (windowWidth() - 136) / @promo_count) * @promo_dots"
+                  },
+                  {
+                    "height": 48
+                  },
+                  {
+                    "onClick": [
+                      {
+                        "type": "ValueFloatExpressionChange",
+                        "targetId": "@promo_from",
+                        "value": "@promo_position"
+                      },
+                      {
+                        "type": "ValueFloatExpressionChange",
+                        "targetId": "@promo_base",
+                        "value": "floor(@promo_position + 0.5) + ((1 - @promo_active + @promo_count) % @promo_count)"
+                      },
+                      {
+                        "type": "ValueFloatExpressionChange",
+                        "targetId": "@promo_epoch",
+                        "value": "@promo_clock"
+                      },
+                      {
+                        "type": "HostAction",
+                        "name": "carousel.select",
+                        "value": "@promo_base",
+                        "actionType": 0
+                      }
+                    ]
+                  }
+                ],
+                "commands": [
+                  {
+                    "type": "paint",
+                    "ops": [
+                      {
+                        "shader": 0
+                      },
+                      {
+                        "style": "fill"
+                      },
+                      {
+                        "color": "#305BEF"
+                      },
+                      {
+                        "alpha": "@promo_dots * (1 - min(1, abs(@promo_active - 1)))"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "drawCircle",
+                    "cx": "min(44, (windowWidth() - 136) / @promo_count) / 2",
+                    "cy": 24,
+                    "radius": 5
+                  },
+                  {
+                    "type": "paint",
+                    "ops": [
+                      {
+                        "shader": 0
+                      },
+                      {
+                        "style": "fill"
+                      },
+                      {
+                        "color": "#AEB9BC"
+                      },
+                      {
+                        "alpha": "@promo_dots * min(1, abs(@promo_active - 1))"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "drawCircle",
+                    "cx": "min(44, (windowWidth() - 136) / @promo_count) / 2",
+                    "cy": 24,
+                    "radius": 4
+                  }
+                ]
+              },
+              {
+                "type": "canvas",
+                "modifiers": [
+                  {
+                    "width": "min(44, (windowWidth() - 136) / @promo_count) * @promo_dots"
+                  },
+                  {
+                    "height": 48
+                  },
+                  {
+                    "onClick": [
+                      {
+                        "type": "ValueFloatExpressionChange",
+                        "targetId": "@promo_from",
+                        "value": "@promo_position"
+                      },
+                      {
+                        "type": "ValueFloatExpressionChange",
+                        "targetId": "@promo_base",
+                        "value": "floor(@promo_position + 0.5) + ((2 - @promo_active + @promo_count) % @promo_count)"
+                      },
+                      {
+                        "type": "ValueFloatExpressionChange",
+                        "targetId": "@promo_epoch",
+                        "value": "@promo_clock"
+                      },
+                      {
+                        "type": "HostAction",
+                        "name": "carousel.select",
+                        "value": "@promo_base",
+                        "actionType": 0
+                      }
+                    ]
+                  }
+                ],
+                "commands": [
+                  {
+                    "type": "paint",
+                    "ops": [
+                      {
+                        "shader": 0
+                      },
+                      {
+                        "style": "fill"
+                      },
+                      {
+                        "color": "#305BEF"
+                      },
+                      {
+                        "alpha": "@promo_dots * (1 - min(1, abs(@promo_active - 2)))"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "drawCircle",
+                    "cx": "min(44, (windowWidth() - 136) / @promo_count) / 2",
+                    "cy": 24,
+                    "radius": 5
+                  },
+                  {
+                    "type": "paint",
+                    "ops": [
+                      {
+                        "shader": 0
+                      },
+                      {
+                        "style": "fill"
+                      },
+                      {
+                        "color": "#AEB9BC"
+                      },
+                      {
+                        "alpha": "@promo_dots * min(1, abs(@promo_active - 2))"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "drawCircle",
+                    "cx": "min(44, (windowWidth() - 136) / @promo_count) / 2",
+                    "cy": 24,
+                    "radius": 4
+                  }
+                ]
+              },
+              {
+                "type": "spacer",
+                "modifiers": [
+                  {
+                    "horizontalWeight": 1
+                  }
+                ]
+              },
+              {
+                "type": "canvas",
+                "modifiers": [
+                  {
+                    "width": "48 * @promo_arrows"
+                  },
+                  {
+                    "height": 48
+                  },
+                  {
+                    "onClick": [
+                      {
+                        "type": "ValueFloatExpressionChange",
+                        "targetId": "@promo_from",
+                        "value": "@promo_position"
+                      },
+                      {
+                        "type": "ValueFloatExpressionChange",
+                        "targetId": "@promo_base",
+                        "value": "floor(@promo_position + 0.5) + 1"
+                      },
+                      {
+                        "type": "ValueFloatExpressionChange",
+                        "targetId": "@promo_epoch",
+                        "value": "@promo_clock"
+                      },
+                      {
+                        "type": "HostAction",
+                        "name": "carousel.next",
+                        "value": "@promo_base",
+                        "actionType": 0
+                      }
+                    ]
+                  }
+                ],
+                "commands": [
+                  {
+                    "type": "paint",
+                    "ops": [
+                      {
+                        "shader": 0
+                      },
+                      {
+                        "style": "fill"
+                      },
+                      {
+                        "color": "#203B73"
+                      },
+                      {
+                        "alpha": "@promo_arrows"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "drawCircle",
+                    "cx": 24,
+                    "cy": 24,
+                    "radius": 20
+                  },
+                  {
+                    "type": "paint",
+                    "ops": [
+                      {
+                        "shader": 0
+                      },
+                      {
+                        "style": "fill"
+                      },
+                      {
+                        "color": "#FFFFFF"
+                      },
+                      {
+                        "alpha": "@promo_arrows"
+                      },
+                      {
+                        "textSize": 20
+                      }
+                    ]
+                  },
+                  {
+                    "type": "drawTextAnchored",
+                    "text": "›",
+                    "x": 24,
+                    "y": 23,
+                    "panX": 0,
+                    "panY": 0
+                  }
+                ]
               }
             ]
-          },
-          {
-            "type": "drawTextAnchored",
-            "text": "A little extra, just for you.",
-            "x": 39,
-            "y": 28,
-            "panX": -1,
-            "panY": 0
-          },
-          {
-            "type": "paint",
-            "ops": [
-              {
-                "shader": 0
-              },
-              {
-                "style": "fill"
-              },
-              {
-                "color": "#875E46"
-              },
-              {
-                "textSize": 11
-              }
-            ]
-          },
-          {
-            "type": "drawTextAnchored",
-            "text": "Members save 20% on pantry favorites.",
-            "x": 39,
-            "y": 48,
-            "panX": -1,
-            "panY": 0
-          },
-          {
-            "type": "paint",
-            "ops": [
-              {
-                "shader": 0
-              },
-              {
-                "style": "fill"
-              },
-              {
-                "color": "#985032"
-              },
-              {
-                "textSize": 18
-              }
-            ]
-          },
-          {
-            "type": "drawTextAnchored",
-            "text": "20%",
-            "x": "windowWidth() - 75",
-            "y": 37,
-            "panX": -1,
-            "panY": 0
           }
         ]
       },
@@ -858,894 +1996,2137 @@
         ]
       },
       {
-        "type": "row",
+        "type": "column",
         "modifiers": [
           {
             "fillMaxWidth": 1
-          },
-          {
-            "height": 274
-          },
-          {
-            "padding": [
-              12,
-              0,
-              12,
-              0
-            ]
-          },
-          {
-            "horizontalScroll": 0
           }
         ],
         "children": [
           {
-            "type": "canvas",
-            "modifiers": [
-              {
-                "width": 180
-              },
-              {
-                "height": 270
-              },
-              {
-                "onClick": {
-                  "type": "HostAction",
-                  "actionId": 201
-                }
-              }
-            ],
-            "commands": [
-              {
-                "type": "paint",
-                "ops": [
-                  {
-                    "shader": 0
-                  },
-                  {
-                    "style": "fill"
-                  },
-                  {
-                    "color": "#FFFFFF"
-                  }
-                ]
-              },
-              {
-                "type": "drawRoundRect",
-                "left": 8,
-                "top": 2,
-                "right": 172,
-                "bottom": 260,
-                "rx": 16,
-                "ry": 16
-              },
-              {
-                "type": "paint",
-                "ops": [
-                  {
-                    "shader": 0
-                  },
-                  {
-                    "style": "fill"
-                  },
-                  {
-                    "color": "#E8EDDD"
-                  }
-                ]
-              },
-              {
-                "type": "drawRoundRect",
-                "left": 8,
-                "top": 2,
-                "right": 172,
-                "bottom": 155,
-                "rx": 16,
-                "ry": 16
-              },
-              {
-                "type": "addBitmap",
-                "image": "oat-milk",
-                "varName": "photo_oat_milk"
-              },
-              {
-                "type": "drawBitmap",
-                "image": "@photo_oat_milk",
-                "left": 24,
-                "top": 11,
-                "right": 156,
-                "bottom": 143
-              },
-              {
-                "type": "paint",
-                "ops": [
-                  {
-                    "shader": 0
-                  },
-                  {
-                    "style": "fill"
-                  },
-                  {
-                    "color": "#616D77"
-                  },
-                  {
-                    "textSize": 9
-                  }
-                ]
-              },
-              {
-                "type": "drawTextAnchored",
-                "text": "FIELD / OAT",
-                "x": 20,
-                "y": 171,
-                "panX": -1,
-                "panY": 0
-              },
-              {
-                "type": "paint",
-                "ops": [
-                  {
-                    "shader": 0
-                  },
-                  {
-                    "style": "fill"
-                  },
-                  {
-                    "color": "#182C38"
-                  },
-                  {
-                    "textSize": 14
-                  }
-                ]
-              },
-              {
-                "type": "drawTextAnchored",
-                "text": "Barista oat drink",
-                "x": 20,
-                "y": 191,
-                "panX": -1,
-                "panY": 0
-              },
-              {
-                "type": "paint",
-                "ops": [
-                  {
-                    "shader": 0
-                  },
-                  {
-                    "style": "fill"
-                  },
-                  {
-                    "color": "#616D77"
-                  },
-                  {
-                    "textSize": 10
-                  }
-                ]
-              },
-              {
-                "type": "drawTextAnchored",
-                "text": "1 L · Plant based",
-                "x": 20,
-                "y": 212,
-                "panX": -1,
-                "panY": 0
-              },
-              {
-                "type": "paint",
-                "ops": [
-                  {
-                    "shader": 0
-                  },
-                  {
-                    "style": "fill"
-                  },
-                  {
-                    "color": "#182C38"
-                  },
-                  {
-                    "textSize": 21
-                  }
-                ]
-              },
-              {
-                "type": "drawTextAnchored",
-                "text": "$3.49",
-                "x": 20,
-                "y": 241,
-                "panX": -1,
-                "panY": 0
-              },
-              {
-                "type": "paint",
-                "ops": [
-                  {
-                    "shader": 0
-                  },
-                  {
-                    "style": "fill"
-                  },
-                  {
-                    "color": "#EAF0FF"
-                  }
-                ]
-              },
-              {
-                "type": "drawCircle",
-                "cx": 149,
-                "cy": 239,
-                "radius": 13
-              },
-              {
-                "type": "paint",
-                "ops": [
-                  {
-                    "shader": 0
-                  },
-                  {
-                    "color": "#305BEF"
-                  },
-                  {
-                    "style": "stroke"
-                  },
-                  {
-                    "strokeWidth": 1.7
-                  },
-                  {
-                    "strokeCap": "round"
-                  }
-                ]
-              },
-              {
-                "type": "drawLine",
-                "x1": 144,
-                "y1": 239,
-                "x2": 154,
-                "y2": 239
-              },
-              {
-                "type": "paint",
-                "ops": [
-                  {
-                    "shader": 0
-                  },
-                  {
-                    "color": "#305BEF"
-                  },
-                  {
-                    "style": "stroke"
-                  },
-                  {
-                    "strokeWidth": 1.7
-                  },
-                  {
-                    "strokeCap": "round"
-                  }
-                ]
-              },
-              {
-                "type": "drawLine",
-                "x1": 149,
-                "y1": 234,
-                "x2": 149,
-                "y2": 244
-              },
-              {
-                "type": "paint",
-                "ops": [
-                  {
-                    "shader": 0
-                  },
-                  {
-                    "style": "fill"
-                  },
-                  {
-                    "color": "#FFFFFF"
-                  }
-                ]
-              },
-              {
-                "type": "drawCircle",
-                "cx": 145,
-                "cy": 24,
-                "radius": 13
-              },
-              {
-                "type": "paint",
-                "ops": [
-                  {
-                    "color": "#616D77"
-                  },
-                  {
-                    "style": "stroke"
-                  },
-                  {
-                    "strokeWidth": 1.3
-                  }
-                ]
-              },
-              {
-                "type": "drawPath",
-                "path": "M 145 31 C 144 30 136 25 136 21 C 136 16 142 15 145 19 C 148 15 154 16 154 21 C 154 25 146 30 145 31 Z"
-              }
-            ]
+            "type": "variable",
+            "name": "products_scroll",
+            "value": 0,
+            "export": true
           },
           {
-            "type": "canvas",
+            "type": "row",
             "modifiers": [
               {
-                "width": 180
+                "fillMaxWidth": 1
               },
               {
-                "height": 270
+                "height": 274
               },
               {
-                "onClick": {
-                  "type": "HostAction",
-                  "actionId": 202
-                }
+                "padding": [
+                  12,
+                  0,
+                  12,
+                  0
+                ]
+              },
+              {
+                "horizontalScroll": "@products_scroll"
               }
             ],
-            "commands": [
+            "children": [
               {
-                "type": "paint",
-                "ops": [
+                "type": "box",
+                "modifiers": [
                   {
-                    "shader": 0
+                    "width": 180
                   },
                   {
-                    "style": "fill"
+                    "height": 270
+                  }
+                ],
+                "children": [
+                  {
+                    "type": "variable",
+                    "name": "product_oat_milk_favorite",
+                    "value": 0,
+                    "export": true
                   },
                   {
-                    "color": "#FFFFFF"
+                    "type": "variable",
+                    "name": "product_oat_milk_quantity",
+                    "value": 0,
+                    "export": true
+                  },
+                  {
+                    "type": "variable",
+                    "name": "product_oat_milk_pressed",
+                    "value": 0,
+                    "export": true
+                  },
+                  {
+                    "type": "variable",
+                    "name": "product_oat_milk_count",
+                    "value": {
+                      "type": "textFromFloat",
+                      "value": "@product_oat_milk_quantity",
+                      "decimal": 0,
+                      "whole": 1,
+                      "flags": 0
+                    },
+                    "export": true
+                  },
+                  {
+                    "type": "canvas",
+                    "modifiers": [
+                      {
+                        "width": 180
+                      },
+                      {
+                        "height": 270
+                      }
+                    ],
+                    "commands": [
+                      {
+                        "type": "paint",
+                        "ops": [
+                          {
+                            "shader": 0
+                          },
+                          {
+                            "style": "fill"
+                          },
+                          {
+                            "color": "#FFFFFF"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "drawRoundRect",
+                        "left": 8,
+                        "top": 2,
+                        "right": 172,
+                        "bottom": 260,
+                        "rx": 16,
+                        "ry": 16
+                      },
+                      {
+                        "type": "paint",
+                        "ops": [
+                          {
+                            "shader": 0
+                          },
+                          {
+                            "style": "fill"
+                          },
+                          {
+                            "color": "#E8EDDD"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "drawRoundRect",
+                        "left": 8,
+                        "top": 2,
+                        "right": 172,
+                        "bottom": 155,
+                        "rx": 16,
+                        "ry": 16
+                      },
+                      {
+                        "type": "addBitmap",
+                        "image": "oat-milk",
+                        "varName": "photo_oat_milk"
+                      },
+                      {
+                        "type": "drawBitmap",
+                        "image": "@photo_oat_milk",
+                        "left": 24,
+                        "top": 11,
+                        "right": 156,
+                        "bottom": 143
+                      },
+                      {
+                        "type": "paint",
+                        "ops": [
+                          {
+                            "shader": 0
+                          },
+                          {
+                            "style": "fill"
+                          },
+                          {
+                            "color": "#616D77"
+                          },
+                          {
+                            "textSize": 9
+                          }
+                        ]
+                      },
+                      {
+                        "type": "drawTextAnchored",
+                        "text": "FIELD / OAT",
+                        "x": 20,
+                        "y": 171,
+                        "panX": -1,
+                        "panY": 0
+                      },
+                      {
+                        "type": "paint",
+                        "ops": [
+                          {
+                            "shader": 0
+                          },
+                          {
+                            "style": "fill"
+                          },
+                          {
+                            "color": "#182C38"
+                          },
+                          {
+                            "textSize": 14
+                          }
+                        ]
+                      },
+                      {
+                        "type": "drawTextAnchored",
+                        "text": "Barista oat drink",
+                        "x": 20,
+                        "y": 191,
+                        "panX": -1,
+                        "panY": 0
+                      },
+                      {
+                        "type": "paint",
+                        "ops": [
+                          {
+                            "shader": 0
+                          },
+                          {
+                            "style": "fill"
+                          },
+                          {
+                            "color": "#616D77"
+                          },
+                          {
+                            "textSize": 10
+                          }
+                        ]
+                      },
+                      {
+                        "type": "drawTextAnchored",
+                        "text": "1 L · Plant based",
+                        "x": 20,
+                        "y": 212,
+                        "panX": -1,
+                        "panY": 0
+                      },
+                      {
+                        "type": "paint",
+                        "ops": [
+                          {
+                            "shader": 0
+                          },
+                          {
+                            "style": "fill"
+                          },
+                          {
+                            "color": "#182C38"
+                          },
+                          {
+                            "textSize": 21
+                          }
+                        ]
+                      },
+                      {
+                        "type": "drawTextAnchored",
+                        "text": "$3.49",
+                        "x": 20,
+                        "y": 241,
+                        "panX": -1,
+                        "panY": 0
+                      }
+                    ]
+                  },
+                  {
+                    "type": "column",
+                    "children": [
+                      {
+                        "type": "row",
+                        "modifiers": [
+                          {
+                            "height": 153
+                          }
+                        ],
+                        "children": [
+                          {
+                            "type": "canvas",
+                            "modifiers": [
+                              {
+                                "width": 123
+                              },
+                              {
+                                "height": 153
+                              },
+                              {
+                                "onClick": {
+                                  "type": "HostAction",
+                                  "name": "product.open",
+                                  "value": "oat-milk",
+                                  "actionType": 2
+                                }
+                              }
+                            ],
+                            "commands": []
+                          },
+                          {
+                            "type": "canvas",
+                            "modifiers": [
+                              {
+                                "width": 44
+                              },
+                              {
+                                "height": 44
+                              },
+                              {
+                                "onClick": [
+                                  {
+                                    "type": "ValueFloatExpressionChange",
+                                    "targetId": "@product_oat_milk_favorite",
+                                    "value": "1 - @product_oat_milk_favorite"
+                                  },
+                                  {
+                                    "type": "HostAction",
+                                    "name": "product.oat-milk.favorite",
+                                    "value": "@product_oat_milk_favorite",
+                                    "actionType": 0
+                                  }
+                                ]
+                              }
+                            ],
+                            "commands": [
+                              {
+                                "type": "paint",
+                                "ops": [
+                                  {
+                                    "shader": 0
+                                  },
+                                  {
+                                    "style": "fill"
+                                  },
+                                  {
+                                    "color": "#FFFFFF"
+                                  }
+                                ]
+                              },
+                              {
+                                "type": "drawCircle",
+                                "cx": 22,
+                                "cy": 24,
+                                "radius": 13
+                              },
+                              {
+                                "type": "paint",
+                                "ops": [
+                                  {
+                                    "shader": 0
+                                  },
+                                  {
+                                    "color": "#616D77"
+                                  },
+                                  {
+                                    "style": "stroke"
+                                  },
+                                  {
+                                    "strokeWidth": 1.3
+                                  }
+                                ]
+                              },
+                              {
+                                "type": "drawPath",
+                                "path": "M 22 31 C 21 30 13 25 13 21 C 13 16 19 15 22 19 C 25 15 31 16 31 21 C 31 25 23 30 22 31 Z"
+                              },
+                              {
+                                "type": "paint",
+                                "ops": [
+                                  {
+                                    "shader": 0
+                                  },
+                                  {
+                                    "style": "fill"
+                                  },
+                                  {
+                                    "color": "#A7286D"
+                                  },
+                                  {
+                                    "alpha": "@product_oat_milk_favorite"
+                                  }
+                                ]
+                              },
+                              {
+                                "type": "drawPath",
+                                "path": "M 22 31 C 21 30 13 25 13 21 C 13 16 19 15 22 19 C 25 15 31 16 31 21 C 31 25 23 30 22 31 Z"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "type": "spacer",
+                        "modifiers": [
+                          {
+                            "height": 64
+                          }
+                        ]
+                      },
+                      {
+                        "type": "row",
+                        "children": [
+                          {
+                            "type": "spacer",
+                            "modifiers": [
+                              {
+                                "width": 76
+                              }
+                            ]
+                          },
+                          {
+                            "type": "box",
+                            "modifiers": [
+                              {
+                                "width": 96
+                              },
+                              {
+                                "height": 44
+                              }
+                            ],
+                            "children": [
+                              {
+                                "type": "canvas",
+                                "modifiers": [
+                                  {
+                                    "width": 96
+                                  },
+                                  {
+                                    "height": 44
+                                  }
+                                ],
+                                "commands": [
+                                  {
+                                    "type": "paint",
+                                    "ops": [
+                                      {
+                                        "shader": 0
+                                      },
+                                      {
+                                        "style": "fill"
+                                      },
+                                      {
+                                        "color": "#EAF0FF"
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "type": "drawRoundRect",
+                                    "left": 0,
+                                    "top": 3,
+                                    "right": 96,
+                                    "bottom": 41,
+                                    "rx": 19,
+                                    "ry": 19
+                                  },
+                                  {
+                                    "type": "paint",
+                                    "ops": [
+                                      {
+                                        "shader": 0
+                                      },
+                                      {
+                                        "style": "fill"
+                                      },
+                                      {
+                                        "color": "#C3D3FF"
+                                      },
+                                      {
+                                        "alpha": "@product_oat_milk_pressed"
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "type": "drawRoundRect",
+                                    "left": 0,
+                                    "top": 3,
+                                    "right": 96,
+                                    "bottom": 41,
+                                    "rx": 19,
+                                    "ry": 19
+                                  },
+                                  {
+                                    "type": "paint",
+                                    "ops": [
+                                      {
+                                        "shader": 0
+                                      },
+                                      {
+                                        "style": "fill"
+                                      },
+                                      {
+                                        "color": "#305BEF"
+                                      },
+                                      {
+                                        "alpha": "1 - min(1, @product_oat_milk_quantity)"
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "type": "paint",
+                                    "ops": [
+                                      {
+                                        "textSize": 13
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "type": "drawTextAnchored",
+                                    "text": "Add",
+                                    "x": 48,
+                                    "y": 22,
+                                    "panX": 0,
+                                    "panY": 0
+                                  }
+                                ]
+                              },
+                              {
+                                "type": "row",
+                                "children": [
+                                  {
+                                    "type": "canvas",
+                                    "modifiers": [
+                                      {
+                                        "width": 32
+                                      },
+                                      {
+                                        "height": 44
+                                      },
+                                      {
+                                        "onTouchDown": {
+                                          "type": "ValueFloatChange",
+                                          "targetId": "@product_oat_milk_pressed",
+                                          "value": 1
+                                        }
+                                      },
+                                      {
+                                        "onTouchUp": {
+                                          "type": "ValueFloatChange",
+                                          "targetId": "@product_oat_milk_pressed",
+                                          "value": 0
+                                        }
+                                      },
+                                      {
+                                        "onClick": [
+                                          {
+                                            "type": "ValueFloatExpressionChange",
+                                            "targetId": "@product_oat_milk_quantity",
+                                            "value": "max(0, @product_oat_milk_quantity + 1 - 2 * min(1, @product_oat_milk_quantity))"
+                                          },
+                                          {
+                                            "type": "HostAction",
+                                            "name": "product.oat-milk.quantity",
+                                            "value": "@product_oat_milk_quantity",
+                                            "actionType": 0
+                                          }
+                                        ]
+                                      }
+                                    ],
+                                    "commands": [
+                                      {
+                                        "type": "paint",
+                                        "ops": [
+                                          {
+                                            "shader": 0
+                                          },
+                                          {
+                                            "style": "fill"
+                                          },
+                                          {
+                                            "color": "#305BEF"
+                                          },
+                                          {
+                                            "alpha": "min(1, @product_oat_milk_quantity)"
+                                          }
+                                        ]
+                                      },
+                                      {
+                                        "type": "paint",
+                                        "ops": [
+                                          {
+                                            "textSize": 16
+                                          }
+                                        ]
+                                      },
+                                      {
+                                        "type": "drawTextAnchored",
+                                        "text": "−",
+                                        "x": 16,
+                                        "y": 22,
+                                        "panX": 0,
+                                        "panY": 0
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "type": "canvas",
+                                    "modifiers": [
+                                      {
+                                        "width": 32
+                                      },
+                                      {
+                                        "height": 44
+                                      },
+                                      {
+                                        "onTouchDown": {
+                                          "type": "ValueFloatChange",
+                                          "targetId": "@product_oat_milk_pressed",
+                                          "value": 1
+                                        }
+                                      },
+                                      {
+                                        "onTouchUp": {
+                                          "type": "ValueFloatChange",
+                                          "targetId": "@product_oat_milk_pressed",
+                                          "value": 0
+                                        }
+                                      },
+                                      {
+                                        "onClick": [
+                                          {
+                                            "type": "ValueFloatExpressionChange",
+                                            "targetId": "@product_oat_milk_quantity",
+                                            "value": "max(1, @product_oat_milk_quantity)"
+                                          },
+                                          {
+                                            "type": "HostAction",
+                                            "name": "product.oat-milk.quantity",
+                                            "value": "@product_oat_milk_quantity",
+                                            "actionType": 0
+                                          }
+                                        ]
+                                      }
+                                    ],
+                                    "commands": [
+                                      {
+                                        "type": "paint",
+                                        "ops": [
+                                          {
+                                            "shader": 0
+                                          },
+                                          {
+                                            "style": "fill"
+                                          },
+                                          {
+                                            "color": "#305BEF"
+                                          },
+                                          {
+                                            "alpha": "min(1, @product_oat_milk_quantity)"
+                                          }
+                                        ]
+                                      },
+                                      {
+                                        "type": "paint",
+                                        "ops": [
+                                          {
+                                            "textSize": 16
+                                          }
+                                        ]
+                                      },
+                                      {
+                                        "type": "drawTextAnchored",
+                                        "text": "@product_oat_milk_count",
+                                        "x": 16,
+                                        "y": 22,
+                                        "panX": 0,
+                                        "panY": 0
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "type": "canvas",
+                                    "modifiers": [
+                                      {
+                                        "width": 32
+                                      },
+                                      {
+                                        "height": 44
+                                      },
+                                      {
+                                        "onTouchDown": {
+                                          "type": "ValueFloatChange",
+                                          "targetId": "@product_oat_milk_pressed",
+                                          "value": 1
+                                        }
+                                      },
+                                      {
+                                        "onTouchUp": {
+                                          "type": "ValueFloatChange",
+                                          "targetId": "@product_oat_milk_pressed",
+                                          "value": 0
+                                        }
+                                      },
+                                      {
+                                        "onClick": [
+                                          {
+                                            "type": "ValueFloatExpressionChange",
+                                            "targetId": "@product_oat_milk_quantity",
+                                            "value": "min(99, @product_oat_milk_quantity + 1)"
+                                          },
+                                          {
+                                            "type": "HostAction",
+                                            "name": "product.oat-milk.quantity",
+                                            "value": "@product_oat_milk_quantity",
+                                            "actionType": 0
+                                          }
+                                        ]
+                                      }
+                                    ],
+                                    "commands": [
+                                      {
+                                        "type": "paint",
+                                        "ops": [
+                                          {
+                                            "shader": 0
+                                          },
+                                          {
+                                            "style": "fill"
+                                          },
+                                          {
+                                            "color": "#305BEF"
+                                          },
+                                          {
+                                            "alpha": "min(1, @product_oat_milk_quantity)"
+                                          }
+                                        ]
+                                      },
+                                      {
+                                        "type": "paint",
+                                        "ops": [
+                                          {
+                                            "textSize": 16
+                                          }
+                                        ]
+                                      },
+                                      {
+                                        "type": "drawTextAnchored",
+                                        "text": "+",
+                                        "x": 16,
+                                        "y": 22,
+                                        "panX": 0,
+                                        "panY": 0
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
                   }
                 ]
               },
               {
-                "type": "drawRoundRect",
-                "left": 8,
-                "top": 2,
-                "right": 172,
-                "bottom": 260,
-                "rx": 16,
-                "ry": 16
-              },
-              {
-                "type": "paint",
-                "ops": [
+                "type": "box",
+                "modifiers": [
                   {
-                    "shader": 0
+                    "width": 180
                   },
                   {
-                    "style": "fill"
+                    "height": 270
+                  }
+                ],
+                "children": [
+                  {
+                    "type": "variable",
+                    "name": "product_citrus_soda_favorite",
+                    "value": 0,
+                    "export": true
                   },
                   {
-                    "color": "#F9E5D4"
+                    "type": "variable",
+                    "name": "product_citrus_soda_quantity",
+                    "value": 0,
+                    "export": true
+                  },
+                  {
+                    "type": "variable",
+                    "name": "product_citrus_soda_pressed",
+                    "value": 0,
+                    "export": true
+                  },
+                  {
+                    "type": "variable",
+                    "name": "product_citrus_soda_count",
+                    "value": {
+                      "type": "textFromFloat",
+                      "value": "@product_citrus_soda_quantity",
+                      "decimal": 0,
+                      "whole": 1,
+                      "flags": 0
+                    },
+                    "export": true
+                  },
+                  {
+                    "type": "canvas",
+                    "modifiers": [
+                      {
+                        "width": 180
+                      },
+                      {
+                        "height": 270
+                      }
+                    ],
+                    "commands": [
+                      {
+                        "type": "paint",
+                        "ops": [
+                          {
+                            "shader": 0
+                          },
+                          {
+                            "style": "fill"
+                          },
+                          {
+                            "color": "#FFFFFF"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "drawRoundRect",
+                        "left": 8,
+                        "top": 2,
+                        "right": 172,
+                        "bottom": 260,
+                        "rx": 16,
+                        "ry": 16
+                      },
+                      {
+                        "type": "paint",
+                        "ops": [
+                          {
+                            "shader": 0
+                          },
+                          {
+                            "style": "fill"
+                          },
+                          {
+                            "color": "#F9E5D4"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "drawRoundRect",
+                        "left": 8,
+                        "top": 2,
+                        "right": 172,
+                        "bottom": 155,
+                        "rx": 16,
+                        "ry": 16
+                      },
+                      {
+                        "type": "addBitmap",
+                        "image": "citrus-soda",
+                        "varName": "photo_citrus_soda"
+                      },
+                      {
+                        "type": "drawBitmap",
+                        "image": "@photo_citrus_soda",
+                        "left": 24,
+                        "top": 11,
+                        "right": 156,
+                        "bottom": 143
+                      },
+                      {
+                        "type": "paint",
+                        "ops": [
+                          {
+                            "shader": 0
+                          },
+                          {
+                            "style": "fill"
+                          },
+                          {
+                            "color": "#616D77"
+                          },
+                          {
+                            "textSize": 9
+                          }
+                        ]
+                      },
+                      {
+                        "type": "drawTextAnchored",
+                        "text": "SOL",
+                        "x": 20,
+                        "y": 171,
+                        "panX": -1,
+                        "panY": 0
+                      },
+                      {
+                        "type": "paint",
+                        "ops": [
+                          {
+                            "shader": 0
+                          },
+                          {
+                            "style": "fill"
+                          },
+                          {
+                            "color": "#182C38"
+                          },
+                          {
+                            "textSize": 14
+                          }
+                        ]
+                      },
+                      {
+                        "type": "drawTextAnchored",
+                        "text": "Sparkling citrus",
+                        "x": 20,
+                        "y": 191,
+                        "panX": -1,
+                        "panY": 0
+                      },
+                      {
+                        "type": "paint",
+                        "ops": [
+                          {
+                            "shader": 0
+                          },
+                          {
+                            "style": "fill"
+                          },
+                          {
+                            "color": "#616D77"
+                          },
+                          {
+                            "textSize": 10
+                          }
+                        ]
+                      },
+                      {
+                        "type": "drawTextAnchored",
+                        "text": "330 mL · Real fruit",
+                        "x": 20,
+                        "y": 212,
+                        "panX": -1,
+                        "panY": 0
+                      },
+                      {
+                        "type": "paint",
+                        "ops": [
+                          {
+                            "shader": 0
+                          },
+                          {
+                            "style": "fill"
+                          },
+                          {
+                            "color": "#182C38"
+                          },
+                          {
+                            "textSize": 21
+                          }
+                        ]
+                      },
+                      {
+                        "type": "drawTextAnchored",
+                        "text": "$1.99",
+                        "x": 20,
+                        "y": 241,
+                        "panX": -1,
+                        "panY": 0
+                      }
+                    ]
+                  },
+                  {
+                    "type": "column",
+                    "children": [
+                      {
+                        "type": "row",
+                        "modifiers": [
+                          {
+                            "height": 153
+                          }
+                        ],
+                        "children": [
+                          {
+                            "type": "canvas",
+                            "modifiers": [
+                              {
+                                "width": 123
+                              },
+                              {
+                                "height": 153
+                              },
+                              {
+                                "onClick": {
+                                  "type": "HostAction",
+                                  "name": "product.open",
+                                  "value": "citrus-soda",
+                                  "actionType": 2
+                                }
+                              }
+                            ],
+                            "commands": []
+                          },
+                          {
+                            "type": "canvas",
+                            "modifiers": [
+                              {
+                                "width": 44
+                              },
+                              {
+                                "height": 44
+                              },
+                              {
+                                "onClick": [
+                                  {
+                                    "type": "ValueFloatExpressionChange",
+                                    "targetId": "@product_citrus_soda_favorite",
+                                    "value": "1 - @product_citrus_soda_favorite"
+                                  },
+                                  {
+                                    "type": "HostAction",
+                                    "name": "product.citrus-soda.favorite",
+                                    "value": "@product_citrus_soda_favorite",
+                                    "actionType": 0
+                                  }
+                                ]
+                              }
+                            ],
+                            "commands": [
+                              {
+                                "type": "paint",
+                                "ops": [
+                                  {
+                                    "shader": 0
+                                  },
+                                  {
+                                    "style": "fill"
+                                  },
+                                  {
+                                    "color": "#FFFFFF"
+                                  }
+                                ]
+                              },
+                              {
+                                "type": "drawCircle",
+                                "cx": 22,
+                                "cy": 24,
+                                "radius": 13
+                              },
+                              {
+                                "type": "paint",
+                                "ops": [
+                                  {
+                                    "shader": 0
+                                  },
+                                  {
+                                    "color": "#616D77"
+                                  },
+                                  {
+                                    "style": "stroke"
+                                  },
+                                  {
+                                    "strokeWidth": 1.3
+                                  }
+                                ]
+                              },
+                              {
+                                "type": "drawPath",
+                                "path": "M 22 31 C 21 30 13 25 13 21 C 13 16 19 15 22 19 C 25 15 31 16 31 21 C 31 25 23 30 22 31 Z"
+                              },
+                              {
+                                "type": "paint",
+                                "ops": [
+                                  {
+                                    "shader": 0
+                                  },
+                                  {
+                                    "style": "fill"
+                                  },
+                                  {
+                                    "color": "#A7286D"
+                                  },
+                                  {
+                                    "alpha": "@product_citrus_soda_favorite"
+                                  }
+                                ]
+                              },
+                              {
+                                "type": "drawPath",
+                                "path": "M 22 31 C 21 30 13 25 13 21 C 13 16 19 15 22 19 C 25 15 31 16 31 21 C 31 25 23 30 22 31 Z"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "type": "spacer",
+                        "modifiers": [
+                          {
+                            "height": 64
+                          }
+                        ]
+                      },
+                      {
+                        "type": "row",
+                        "children": [
+                          {
+                            "type": "spacer",
+                            "modifiers": [
+                              {
+                                "width": 76
+                              }
+                            ]
+                          },
+                          {
+                            "type": "box",
+                            "modifiers": [
+                              {
+                                "width": 96
+                              },
+                              {
+                                "height": 44
+                              }
+                            ],
+                            "children": [
+                              {
+                                "type": "canvas",
+                                "modifiers": [
+                                  {
+                                    "width": 96
+                                  },
+                                  {
+                                    "height": 44
+                                  }
+                                ],
+                                "commands": [
+                                  {
+                                    "type": "paint",
+                                    "ops": [
+                                      {
+                                        "shader": 0
+                                      },
+                                      {
+                                        "style": "fill"
+                                      },
+                                      {
+                                        "color": "#EAF0FF"
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "type": "drawRoundRect",
+                                    "left": 0,
+                                    "top": 3,
+                                    "right": 96,
+                                    "bottom": 41,
+                                    "rx": 19,
+                                    "ry": 19
+                                  },
+                                  {
+                                    "type": "paint",
+                                    "ops": [
+                                      {
+                                        "shader": 0
+                                      },
+                                      {
+                                        "style": "fill"
+                                      },
+                                      {
+                                        "color": "#C3D3FF"
+                                      },
+                                      {
+                                        "alpha": "@product_citrus_soda_pressed"
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "type": "drawRoundRect",
+                                    "left": 0,
+                                    "top": 3,
+                                    "right": 96,
+                                    "bottom": 41,
+                                    "rx": 19,
+                                    "ry": 19
+                                  },
+                                  {
+                                    "type": "paint",
+                                    "ops": [
+                                      {
+                                        "shader": 0
+                                      },
+                                      {
+                                        "style": "fill"
+                                      },
+                                      {
+                                        "color": "#305BEF"
+                                      },
+                                      {
+                                        "alpha": "1 - min(1, @product_citrus_soda_quantity)"
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "type": "paint",
+                                    "ops": [
+                                      {
+                                        "textSize": 13
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "type": "drawTextAnchored",
+                                    "text": "Add",
+                                    "x": 48,
+                                    "y": 22,
+                                    "panX": 0,
+                                    "panY": 0
+                                  }
+                                ]
+                              },
+                              {
+                                "type": "row",
+                                "children": [
+                                  {
+                                    "type": "canvas",
+                                    "modifiers": [
+                                      {
+                                        "width": 32
+                                      },
+                                      {
+                                        "height": 44
+                                      },
+                                      {
+                                        "onTouchDown": {
+                                          "type": "ValueFloatChange",
+                                          "targetId": "@product_citrus_soda_pressed",
+                                          "value": 1
+                                        }
+                                      },
+                                      {
+                                        "onTouchUp": {
+                                          "type": "ValueFloatChange",
+                                          "targetId": "@product_citrus_soda_pressed",
+                                          "value": 0
+                                        }
+                                      },
+                                      {
+                                        "onClick": [
+                                          {
+                                            "type": "ValueFloatExpressionChange",
+                                            "targetId": "@product_citrus_soda_quantity",
+                                            "value": "max(0, @product_citrus_soda_quantity + 1 - 2 * min(1, @product_citrus_soda_quantity))"
+                                          },
+                                          {
+                                            "type": "HostAction",
+                                            "name": "product.citrus-soda.quantity",
+                                            "value": "@product_citrus_soda_quantity",
+                                            "actionType": 0
+                                          }
+                                        ]
+                                      }
+                                    ],
+                                    "commands": [
+                                      {
+                                        "type": "paint",
+                                        "ops": [
+                                          {
+                                            "shader": 0
+                                          },
+                                          {
+                                            "style": "fill"
+                                          },
+                                          {
+                                            "color": "#305BEF"
+                                          },
+                                          {
+                                            "alpha": "min(1, @product_citrus_soda_quantity)"
+                                          }
+                                        ]
+                                      },
+                                      {
+                                        "type": "paint",
+                                        "ops": [
+                                          {
+                                            "textSize": 16
+                                          }
+                                        ]
+                                      },
+                                      {
+                                        "type": "drawTextAnchored",
+                                        "text": "−",
+                                        "x": 16,
+                                        "y": 22,
+                                        "panX": 0,
+                                        "panY": 0
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "type": "canvas",
+                                    "modifiers": [
+                                      {
+                                        "width": 32
+                                      },
+                                      {
+                                        "height": 44
+                                      },
+                                      {
+                                        "onTouchDown": {
+                                          "type": "ValueFloatChange",
+                                          "targetId": "@product_citrus_soda_pressed",
+                                          "value": 1
+                                        }
+                                      },
+                                      {
+                                        "onTouchUp": {
+                                          "type": "ValueFloatChange",
+                                          "targetId": "@product_citrus_soda_pressed",
+                                          "value": 0
+                                        }
+                                      },
+                                      {
+                                        "onClick": [
+                                          {
+                                            "type": "ValueFloatExpressionChange",
+                                            "targetId": "@product_citrus_soda_quantity",
+                                            "value": "max(1, @product_citrus_soda_quantity)"
+                                          },
+                                          {
+                                            "type": "HostAction",
+                                            "name": "product.citrus-soda.quantity",
+                                            "value": "@product_citrus_soda_quantity",
+                                            "actionType": 0
+                                          }
+                                        ]
+                                      }
+                                    ],
+                                    "commands": [
+                                      {
+                                        "type": "paint",
+                                        "ops": [
+                                          {
+                                            "shader": 0
+                                          },
+                                          {
+                                            "style": "fill"
+                                          },
+                                          {
+                                            "color": "#305BEF"
+                                          },
+                                          {
+                                            "alpha": "min(1, @product_citrus_soda_quantity)"
+                                          }
+                                        ]
+                                      },
+                                      {
+                                        "type": "paint",
+                                        "ops": [
+                                          {
+                                            "textSize": 16
+                                          }
+                                        ]
+                                      },
+                                      {
+                                        "type": "drawTextAnchored",
+                                        "text": "@product_citrus_soda_count",
+                                        "x": 16,
+                                        "y": 22,
+                                        "panX": 0,
+                                        "panY": 0
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "type": "canvas",
+                                    "modifiers": [
+                                      {
+                                        "width": 32
+                                      },
+                                      {
+                                        "height": 44
+                                      },
+                                      {
+                                        "onTouchDown": {
+                                          "type": "ValueFloatChange",
+                                          "targetId": "@product_citrus_soda_pressed",
+                                          "value": 1
+                                        }
+                                      },
+                                      {
+                                        "onTouchUp": {
+                                          "type": "ValueFloatChange",
+                                          "targetId": "@product_citrus_soda_pressed",
+                                          "value": 0
+                                        }
+                                      },
+                                      {
+                                        "onClick": [
+                                          {
+                                            "type": "ValueFloatExpressionChange",
+                                            "targetId": "@product_citrus_soda_quantity",
+                                            "value": "min(99, @product_citrus_soda_quantity + 1)"
+                                          },
+                                          {
+                                            "type": "HostAction",
+                                            "name": "product.citrus-soda.quantity",
+                                            "value": "@product_citrus_soda_quantity",
+                                            "actionType": 0
+                                          }
+                                        ]
+                                      }
+                                    ],
+                                    "commands": [
+                                      {
+                                        "type": "paint",
+                                        "ops": [
+                                          {
+                                            "shader": 0
+                                          },
+                                          {
+                                            "style": "fill"
+                                          },
+                                          {
+                                            "color": "#305BEF"
+                                          },
+                                          {
+                                            "alpha": "min(1, @product_citrus_soda_quantity)"
+                                          }
+                                        ]
+                                      },
+                                      {
+                                        "type": "paint",
+                                        "ops": [
+                                          {
+                                            "textSize": 16
+                                          }
+                                        ]
+                                      },
+                                      {
+                                        "type": "drawTextAnchored",
+                                        "text": "+",
+                                        "x": 16,
+                                        "y": 22,
+                                        "panX": 0,
+                                        "panY": 0
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
                   }
                 ]
               },
               {
-                "type": "drawRoundRect",
-                "left": 8,
-                "top": 2,
-                "right": 172,
-                "bottom": 155,
-                "rx": 16,
-                "ry": 16
-              },
-              {
-                "type": "addBitmap",
-                "image": "citrus-soda",
-                "varName": "photo_citrus_soda"
-              },
-              {
-                "type": "drawBitmap",
-                "image": "@photo_citrus_soda",
-                "left": 24,
-                "top": 11,
-                "right": 156,
-                "bottom": 143
-              },
-              {
-                "type": "paint",
-                "ops": [
+                "type": "box",
+                "modifiers": [
                   {
-                    "shader": 0
+                    "width": 180
                   },
                   {
-                    "style": "fill"
+                    "height": 270
+                  }
+                ],
+                "children": [
+                  {
+                    "type": "variable",
+                    "name": "product_granola_favorite",
+                    "value": 0,
+                    "export": true
                   },
                   {
-                    "color": "#616D77"
+                    "type": "variable",
+                    "name": "product_granola_quantity",
+                    "value": 0,
+                    "export": true
                   },
                   {
-                    "textSize": 9
+                    "type": "variable",
+                    "name": "product_granola_pressed",
+                    "value": 0,
+                    "export": true
+                  },
+                  {
+                    "type": "variable",
+                    "name": "product_granola_count",
+                    "value": {
+                      "type": "textFromFloat",
+                      "value": "@product_granola_quantity",
+                      "decimal": 0,
+                      "whole": 1,
+                      "flags": 0
+                    },
+                    "export": true
+                  },
+                  {
+                    "type": "canvas",
+                    "modifiers": [
+                      {
+                        "width": 180
+                      },
+                      {
+                        "height": 270
+                      }
+                    ],
+                    "commands": [
+                      {
+                        "type": "paint",
+                        "ops": [
+                          {
+                            "shader": 0
+                          },
+                          {
+                            "style": "fill"
+                          },
+                          {
+                            "color": "#FFFFFF"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "drawRoundRect",
+                        "left": 8,
+                        "top": 2,
+                        "right": 172,
+                        "bottom": 260,
+                        "rx": 16,
+                        "ry": 16
+                      },
+                      {
+                        "type": "paint",
+                        "ops": [
+                          {
+                            "shader": 0
+                          },
+                          {
+                            "style": "fill"
+                          },
+                          {
+                            "color": "#EEE7F5"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "drawRoundRect",
+                        "left": 8,
+                        "top": 2,
+                        "right": 172,
+                        "bottom": 155,
+                        "rx": 16,
+                        "ry": 16
+                      },
+                      {
+                        "type": "addBitmap",
+                        "image": "granola",
+                        "varName": "photo_granola"
+                      },
+                      {
+                        "type": "drawBitmap",
+                        "image": "@photo_granola",
+                        "left": 24,
+                        "top": 11,
+                        "right": 156,
+                        "bottom": 143
+                      },
+                      {
+                        "type": "paint",
+                        "ops": [
+                          {
+                            "shader": 0
+                          },
+                          {
+                            "style": "fill"
+                          },
+                          {
+                            "color": "#616D77"
+                          },
+                          {
+                            "textSize": 9
+                          }
+                        ]
+                      },
+                      {
+                        "type": "drawTextAnchored",
+                        "text": "MORN",
+                        "x": 20,
+                        "y": 171,
+                        "panX": -1,
+                        "panY": 0
+                      },
+                      {
+                        "type": "paint",
+                        "ops": [
+                          {
+                            "shader": 0
+                          },
+                          {
+                            "style": "fill"
+                          },
+                          {
+                            "color": "#182C38"
+                          },
+                          {
+                            "textSize": 14
+                          }
+                        ]
+                      },
+                      {
+                        "type": "drawTextAnchored",
+                        "text": "Maple granola",
+                        "x": 20,
+                        "y": 191,
+                        "panX": -1,
+                        "panY": 0
+                      },
+                      {
+                        "type": "paint",
+                        "ops": [
+                          {
+                            "shader": 0
+                          },
+                          {
+                            "style": "fill"
+                          },
+                          {
+                            "color": "#616D77"
+                          },
+                          {
+                            "textSize": 10
+                          }
+                        ]
+                      },
+                      {
+                        "type": "drawTextAnchored",
+                        "text": "350 g · Small batch",
+                        "x": 20,
+                        "y": 212,
+                        "panX": -1,
+                        "panY": 0
+                      },
+                      {
+                        "type": "paint",
+                        "ops": [
+                          {
+                            "shader": 0
+                          },
+                          {
+                            "style": "fill"
+                          },
+                          {
+                            "color": "#182C38"
+                          },
+                          {
+                            "textSize": 21
+                          }
+                        ]
+                      },
+                      {
+                        "type": "drawTextAnchored",
+                        "text": "$6.50",
+                        "x": 20,
+                        "y": 241,
+                        "panX": -1,
+                        "panY": 0
+                      }
+                    ]
+                  },
+                  {
+                    "type": "column",
+                    "children": [
+                      {
+                        "type": "row",
+                        "modifiers": [
+                          {
+                            "height": 153
+                          }
+                        ],
+                        "children": [
+                          {
+                            "type": "canvas",
+                            "modifiers": [
+                              {
+                                "width": 123
+                              },
+                              {
+                                "height": 153
+                              },
+                              {
+                                "onClick": {
+                                  "type": "HostAction",
+                                  "name": "product.open",
+                                  "value": "granola",
+                                  "actionType": 2
+                                }
+                              }
+                            ],
+                            "commands": []
+                          },
+                          {
+                            "type": "canvas",
+                            "modifiers": [
+                              {
+                                "width": 44
+                              },
+                              {
+                                "height": 44
+                              },
+                              {
+                                "onClick": [
+                                  {
+                                    "type": "ValueFloatExpressionChange",
+                                    "targetId": "@product_granola_favorite",
+                                    "value": "1 - @product_granola_favorite"
+                                  },
+                                  {
+                                    "type": "HostAction",
+                                    "name": "product.granola.favorite",
+                                    "value": "@product_granola_favorite",
+                                    "actionType": 0
+                                  }
+                                ]
+                              }
+                            ],
+                            "commands": [
+                              {
+                                "type": "paint",
+                                "ops": [
+                                  {
+                                    "shader": 0
+                                  },
+                                  {
+                                    "style": "fill"
+                                  },
+                                  {
+                                    "color": "#FFFFFF"
+                                  }
+                                ]
+                              },
+                              {
+                                "type": "drawCircle",
+                                "cx": 22,
+                                "cy": 24,
+                                "radius": 13
+                              },
+                              {
+                                "type": "paint",
+                                "ops": [
+                                  {
+                                    "shader": 0
+                                  },
+                                  {
+                                    "color": "#616D77"
+                                  },
+                                  {
+                                    "style": "stroke"
+                                  },
+                                  {
+                                    "strokeWidth": 1.3
+                                  }
+                                ]
+                              },
+                              {
+                                "type": "drawPath",
+                                "path": "M 22 31 C 21 30 13 25 13 21 C 13 16 19 15 22 19 C 25 15 31 16 31 21 C 31 25 23 30 22 31 Z"
+                              },
+                              {
+                                "type": "paint",
+                                "ops": [
+                                  {
+                                    "shader": 0
+                                  },
+                                  {
+                                    "style": "fill"
+                                  },
+                                  {
+                                    "color": "#A7286D"
+                                  },
+                                  {
+                                    "alpha": "@product_granola_favorite"
+                                  }
+                                ]
+                              },
+                              {
+                                "type": "drawPath",
+                                "path": "M 22 31 C 21 30 13 25 13 21 C 13 16 19 15 22 19 C 25 15 31 16 31 21 C 31 25 23 30 22 31 Z"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "type": "spacer",
+                        "modifiers": [
+                          {
+                            "height": 64
+                          }
+                        ]
+                      },
+                      {
+                        "type": "row",
+                        "children": [
+                          {
+                            "type": "spacer",
+                            "modifiers": [
+                              {
+                                "width": 76
+                              }
+                            ]
+                          },
+                          {
+                            "type": "box",
+                            "modifiers": [
+                              {
+                                "width": 96
+                              },
+                              {
+                                "height": 44
+                              }
+                            ],
+                            "children": [
+                              {
+                                "type": "canvas",
+                                "modifiers": [
+                                  {
+                                    "width": 96
+                                  },
+                                  {
+                                    "height": 44
+                                  }
+                                ],
+                                "commands": [
+                                  {
+                                    "type": "paint",
+                                    "ops": [
+                                      {
+                                        "shader": 0
+                                      },
+                                      {
+                                        "style": "fill"
+                                      },
+                                      {
+                                        "color": "#EAF0FF"
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "type": "drawRoundRect",
+                                    "left": 0,
+                                    "top": 3,
+                                    "right": 96,
+                                    "bottom": 41,
+                                    "rx": 19,
+                                    "ry": 19
+                                  },
+                                  {
+                                    "type": "paint",
+                                    "ops": [
+                                      {
+                                        "shader": 0
+                                      },
+                                      {
+                                        "style": "fill"
+                                      },
+                                      {
+                                        "color": "#C3D3FF"
+                                      },
+                                      {
+                                        "alpha": "@product_granola_pressed"
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "type": "drawRoundRect",
+                                    "left": 0,
+                                    "top": 3,
+                                    "right": 96,
+                                    "bottom": 41,
+                                    "rx": 19,
+                                    "ry": 19
+                                  },
+                                  {
+                                    "type": "paint",
+                                    "ops": [
+                                      {
+                                        "shader": 0
+                                      },
+                                      {
+                                        "style": "fill"
+                                      },
+                                      {
+                                        "color": "#305BEF"
+                                      },
+                                      {
+                                        "alpha": "1 - min(1, @product_granola_quantity)"
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "type": "paint",
+                                    "ops": [
+                                      {
+                                        "textSize": 13
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "type": "drawTextAnchored",
+                                    "text": "Add",
+                                    "x": 48,
+                                    "y": 22,
+                                    "panX": 0,
+                                    "panY": 0
+                                  }
+                                ]
+                              },
+                              {
+                                "type": "row",
+                                "children": [
+                                  {
+                                    "type": "canvas",
+                                    "modifiers": [
+                                      {
+                                        "width": 32
+                                      },
+                                      {
+                                        "height": 44
+                                      },
+                                      {
+                                        "onTouchDown": {
+                                          "type": "ValueFloatChange",
+                                          "targetId": "@product_granola_pressed",
+                                          "value": 1
+                                        }
+                                      },
+                                      {
+                                        "onTouchUp": {
+                                          "type": "ValueFloatChange",
+                                          "targetId": "@product_granola_pressed",
+                                          "value": 0
+                                        }
+                                      },
+                                      {
+                                        "onClick": [
+                                          {
+                                            "type": "ValueFloatExpressionChange",
+                                            "targetId": "@product_granola_quantity",
+                                            "value": "max(0, @product_granola_quantity + 1 - 2 * min(1, @product_granola_quantity))"
+                                          },
+                                          {
+                                            "type": "HostAction",
+                                            "name": "product.granola.quantity",
+                                            "value": "@product_granola_quantity",
+                                            "actionType": 0
+                                          }
+                                        ]
+                                      }
+                                    ],
+                                    "commands": [
+                                      {
+                                        "type": "paint",
+                                        "ops": [
+                                          {
+                                            "shader": 0
+                                          },
+                                          {
+                                            "style": "fill"
+                                          },
+                                          {
+                                            "color": "#305BEF"
+                                          },
+                                          {
+                                            "alpha": "min(1, @product_granola_quantity)"
+                                          }
+                                        ]
+                                      },
+                                      {
+                                        "type": "paint",
+                                        "ops": [
+                                          {
+                                            "textSize": 16
+                                          }
+                                        ]
+                                      },
+                                      {
+                                        "type": "drawTextAnchored",
+                                        "text": "−",
+                                        "x": 16,
+                                        "y": 22,
+                                        "panX": 0,
+                                        "panY": 0
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "type": "canvas",
+                                    "modifiers": [
+                                      {
+                                        "width": 32
+                                      },
+                                      {
+                                        "height": 44
+                                      },
+                                      {
+                                        "onTouchDown": {
+                                          "type": "ValueFloatChange",
+                                          "targetId": "@product_granola_pressed",
+                                          "value": 1
+                                        }
+                                      },
+                                      {
+                                        "onTouchUp": {
+                                          "type": "ValueFloatChange",
+                                          "targetId": "@product_granola_pressed",
+                                          "value": 0
+                                        }
+                                      },
+                                      {
+                                        "onClick": [
+                                          {
+                                            "type": "ValueFloatExpressionChange",
+                                            "targetId": "@product_granola_quantity",
+                                            "value": "max(1, @product_granola_quantity)"
+                                          },
+                                          {
+                                            "type": "HostAction",
+                                            "name": "product.granola.quantity",
+                                            "value": "@product_granola_quantity",
+                                            "actionType": 0
+                                          }
+                                        ]
+                                      }
+                                    ],
+                                    "commands": [
+                                      {
+                                        "type": "paint",
+                                        "ops": [
+                                          {
+                                            "shader": 0
+                                          },
+                                          {
+                                            "style": "fill"
+                                          },
+                                          {
+                                            "color": "#305BEF"
+                                          },
+                                          {
+                                            "alpha": "min(1, @product_granola_quantity)"
+                                          }
+                                        ]
+                                      },
+                                      {
+                                        "type": "paint",
+                                        "ops": [
+                                          {
+                                            "textSize": 16
+                                          }
+                                        ]
+                                      },
+                                      {
+                                        "type": "drawTextAnchored",
+                                        "text": "@product_granola_count",
+                                        "x": 16,
+                                        "y": 22,
+                                        "panX": 0,
+                                        "panY": 0
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "type": "canvas",
+                                    "modifiers": [
+                                      {
+                                        "width": 32
+                                      },
+                                      {
+                                        "height": 44
+                                      },
+                                      {
+                                        "onTouchDown": {
+                                          "type": "ValueFloatChange",
+                                          "targetId": "@product_granola_pressed",
+                                          "value": 1
+                                        }
+                                      },
+                                      {
+                                        "onTouchUp": {
+                                          "type": "ValueFloatChange",
+                                          "targetId": "@product_granola_pressed",
+                                          "value": 0
+                                        }
+                                      },
+                                      {
+                                        "onClick": [
+                                          {
+                                            "type": "ValueFloatExpressionChange",
+                                            "targetId": "@product_granola_quantity",
+                                            "value": "min(99, @product_granola_quantity + 1)"
+                                          },
+                                          {
+                                            "type": "HostAction",
+                                            "name": "product.granola.quantity",
+                                            "value": "@product_granola_quantity",
+                                            "actionType": 0
+                                          }
+                                        ]
+                                      }
+                                    ],
+                                    "commands": [
+                                      {
+                                        "type": "paint",
+                                        "ops": [
+                                          {
+                                            "shader": 0
+                                          },
+                                          {
+                                            "style": "fill"
+                                          },
+                                          {
+                                            "color": "#305BEF"
+                                          },
+                                          {
+                                            "alpha": "min(1, @product_granola_quantity)"
+                                          }
+                                        ]
+                                      },
+                                      {
+                                        "type": "paint",
+                                        "ops": [
+                                          {
+                                            "textSize": 16
+                                          }
+                                        ]
+                                      },
+                                      {
+                                        "type": "drawTextAnchored",
+                                        "text": "+",
+                                        "x": 16,
+                                        "y": 22,
+                                        "panX": 0,
+                                        "panY": 0
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
                   }
                 ]
-              },
-              {
-                "type": "drawTextAnchored",
-                "text": "SOL",
-                "x": 20,
-                "y": 171,
-                "panX": -1,
-                "panY": 0
-              },
-              {
-                "type": "paint",
-                "ops": [
-                  {
-                    "shader": 0
-                  },
-                  {
-                    "style": "fill"
-                  },
-                  {
-                    "color": "#182C38"
-                  },
-                  {
-                    "textSize": 14
-                  }
-                ]
-              },
-              {
-                "type": "drawTextAnchored",
-                "text": "Sparkling citrus",
-                "x": 20,
-                "y": 191,
-                "panX": -1,
-                "panY": 0
-              },
-              {
-                "type": "paint",
-                "ops": [
-                  {
-                    "shader": 0
-                  },
-                  {
-                    "style": "fill"
-                  },
-                  {
-                    "color": "#616D77"
-                  },
-                  {
-                    "textSize": 10
-                  }
-                ]
-              },
-              {
-                "type": "drawTextAnchored",
-                "text": "330 mL · Real fruit",
-                "x": 20,
-                "y": 212,
-                "panX": -1,
-                "panY": 0
-              },
-              {
-                "type": "paint",
-                "ops": [
-                  {
-                    "shader": 0
-                  },
-                  {
-                    "style": "fill"
-                  },
-                  {
-                    "color": "#182C38"
-                  },
-                  {
-                    "textSize": 21
-                  }
-                ]
-              },
-              {
-                "type": "drawTextAnchored",
-                "text": "$1.99",
-                "x": 20,
-                "y": 241,
-                "panX": -1,
-                "panY": 0
-              },
-              {
-                "type": "paint",
-                "ops": [
-                  {
-                    "shader": 0
-                  },
-                  {
-                    "style": "fill"
-                  },
-                  {
-                    "color": "#EAF0FF"
-                  }
-                ]
-              },
-              {
-                "type": "drawCircle",
-                "cx": 149,
-                "cy": 239,
-                "radius": 13
-              },
-              {
-                "type": "paint",
-                "ops": [
-                  {
-                    "shader": 0
-                  },
-                  {
-                    "color": "#305BEF"
-                  },
-                  {
-                    "style": "stroke"
-                  },
-                  {
-                    "strokeWidth": 1.7
-                  },
-                  {
-                    "strokeCap": "round"
-                  }
-                ]
-              },
-              {
-                "type": "drawLine",
-                "x1": 144,
-                "y1": 239,
-                "x2": 154,
-                "y2": 239
-              },
-              {
-                "type": "paint",
-                "ops": [
-                  {
-                    "shader": 0
-                  },
-                  {
-                    "color": "#305BEF"
-                  },
-                  {
-                    "style": "stroke"
-                  },
-                  {
-                    "strokeWidth": 1.7
-                  },
-                  {
-                    "strokeCap": "round"
-                  }
-                ]
-              },
-              {
-                "type": "drawLine",
-                "x1": 149,
-                "y1": 234,
-                "x2": 149,
-                "y2": 244
-              },
-              {
-                "type": "paint",
-                "ops": [
-                  {
-                    "shader": 0
-                  },
-                  {
-                    "style": "fill"
-                  },
-                  {
-                    "color": "#FFFFFF"
-                  }
-                ]
-              },
-              {
-                "type": "drawCircle",
-                "cx": 145,
-                "cy": 24,
-                "radius": 13
-              },
-              {
-                "type": "paint",
-                "ops": [
-                  {
-                    "color": "#616D77"
-                  },
-                  {
-                    "style": "stroke"
-                  },
-                  {
-                    "strokeWidth": 1.3
-                  }
-                ]
-              },
-              {
-                "type": "drawPath",
-                "path": "M 145 31 C 144 30 136 25 136 21 C 136 16 142 15 145 19 C 148 15 154 16 154 21 C 154 25 146 30 145 31 Z"
-              }
-            ]
-          },
-          {
-            "type": "canvas",
-            "modifiers": [
-              {
-                "width": 180
-              },
-              {
-                "height": 270
-              },
-              {
-                "onClick": {
-                  "type": "HostAction",
-                  "actionId": 203
-                }
-              }
-            ],
-            "commands": [
-              {
-                "type": "paint",
-                "ops": [
-                  {
-                    "shader": 0
-                  },
-                  {
-                    "style": "fill"
-                  },
-                  {
-                    "color": "#FFFFFF"
-                  }
-                ]
-              },
-              {
-                "type": "drawRoundRect",
-                "left": 8,
-                "top": 2,
-                "right": 172,
-                "bottom": 260,
-                "rx": 16,
-                "ry": 16
-              },
-              {
-                "type": "paint",
-                "ops": [
-                  {
-                    "shader": 0
-                  },
-                  {
-                    "style": "fill"
-                  },
-                  {
-                    "color": "#EEE7F5"
-                  }
-                ]
-              },
-              {
-                "type": "drawRoundRect",
-                "left": 8,
-                "top": 2,
-                "right": 172,
-                "bottom": 155,
-                "rx": 16,
-                "ry": 16
-              },
-              {
-                "type": "addBitmap",
-                "image": "granola",
-                "varName": "photo_granola"
-              },
-              {
-                "type": "drawBitmap",
-                "image": "@photo_granola",
-                "left": 24,
-                "top": 11,
-                "right": 156,
-                "bottom": 143
-              },
-              {
-                "type": "paint",
-                "ops": [
-                  {
-                    "shader": 0
-                  },
-                  {
-                    "style": "fill"
-                  },
-                  {
-                    "color": "#616D77"
-                  },
-                  {
-                    "textSize": 9
-                  }
-                ]
-              },
-              {
-                "type": "drawTextAnchored",
-                "text": "MORN",
-                "x": 20,
-                "y": 171,
-                "panX": -1,
-                "panY": 0
-              },
-              {
-                "type": "paint",
-                "ops": [
-                  {
-                    "shader": 0
-                  },
-                  {
-                    "style": "fill"
-                  },
-                  {
-                    "color": "#182C38"
-                  },
-                  {
-                    "textSize": 14
-                  }
-                ]
-              },
-              {
-                "type": "drawTextAnchored",
-                "text": "Maple granola",
-                "x": 20,
-                "y": 191,
-                "panX": -1,
-                "panY": 0
-              },
-              {
-                "type": "paint",
-                "ops": [
-                  {
-                    "shader": 0
-                  },
-                  {
-                    "style": "fill"
-                  },
-                  {
-                    "color": "#616D77"
-                  },
-                  {
-                    "textSize": 10
-                  }
-                ]
-              },
-              {
-                "type": "drawTextAnchored",
-                "text": "350 g · Small batch",
-                "x": 20,
-                "y": 212,
-                "panX": -1,
-                "panY": 0
-              },
-              {
-                "type": "paint",
-                "ops": [
-                  {
-                    "shader": 0
-                  },
-                  {
-                    "style": "fill"
-                  },
-                  {
-                    "color": "#182C38"
-                  },
-                  {
-                    "textSize": 21
-                  }
-                ]
-              },
-              {
-                "type": "drawTextAnchored",
-                "text": "$6.50",
-                "x": 20,
-                "y": 241,
-                "panX": -1,
-                "panY": 0
-              },
-              {
-                "type": "paint",
-                "ops": [
-                  {
-                    "shader": 0
-                  },
-                  {
-                    "style": "fill"
-                  },
-                  {
-                    "color": "#EAF0FF"
-                  }
-                ]
-              },
-              {
-                "type": "drawCircle",
-                "cx": 149,
-                "cy": 239,
-                "radius": 13
-              },
-              {
-                "type": "paint",
-                "ops": [
-                  {
-                    "shader": 0
-                  },
-                  {
-                    "color": "#305BEF"
-                  },
-                  {
-                    "style": "stroke"
-                  },
-                  {
-                    "strokeWidth": 1.7
-                  },
-                  {
-                    "strokeCap": "round"
-                  }
-                ]
-              },
-              {
-                "type": "drawLine",
-                "x1": 144,
-                "y1": 239,
-                "x2": 154,
-                "y2": 239
-              },
-              {
-                "type": "paint",
-                "ops": [
-                  {
-                    "shader": 0
-                  },
-                  {
-                    "color": "#305BEF"
-                  },
-                  {
-                    "style": "stroke"
-                  },
-                  {
-                    "strokeWidth": 1.7
-                  },
-                  {
-                    "strokeCap": "round"
-                  }
-                ]
-              },
-              {
-                "type": "drawLine",
-                "x1": 149,
-                "y1": 234,
-                "x2": 149,
-                "y2": 244
-              },
-              {
-                "type": "paint",
-                "ops": [
-                  {
-                    "shader": 0
-                  },
-                  {
-                    "style": "fill"
-                  },
-                  {
-                    "color": "#FFFFFF"
-                  }
-                ]
-              },
-              {
-                "type": "drawCircle",
-                "cx": 145,
-                "cy": 24,
-                "radius": 13
-              },
-              {
-                "type": "paint",
-                "ops": [
-                  {
-                    "color": "#616D77"
-                  },
-                  {
-                    "style": "stroke"
-                  },
-                  {
-                    "strokeWidth": 1.3
-                  }
-                ]
-              },
-              {
-                "type": "drawPath",
-                "path": "M 145 31 C 144 30 136 25 136 21 C 136 16 142 15 145 19 C 148 15 154 16 154 21 C 154 25 146 30 145 31 Z"
               }
             ]
           }

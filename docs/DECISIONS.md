@@ -270,3 +270,23 @@ load action. Startup/reset now use the shared interactive primitive factory. The
 static design remains explicit. Migrate only identical untouched old defaults and keep a
 backup; preserve every modified/custom/malformed draft. Published source is never replaced
 by startup. Real browser tests cover migration, reset, retention and genuine player input.
+
+## 028 — Enhance the original full retail page, not a replacement demo (2026-11-04)
+
+Decision: supersede027's choice of the simplified interactive fixture as default. Preserve
+all original full-page sections except the promotional area and product controls; integrate
+carousel and per-product state directly into those sections. Both bundled JSON names are
+identical generated aliases. Remove the alternate design loader; retain historical factories
+only for regression/migration. User clarification explicitly requires the existing full design.
+
+Alternatives: keep a separate interactive demo, hide simplified content behind another action,
+or implement native cards. Rejected because they fail the full-page/same-client objective.
+Consequences: a longer scrolling full page, independent product namespaces and conservative
+inspector editing; existing modified drafts are never regenerated. Namespace collisions are
+reported rather than silently sharing state. Mobile application executables remain identical.
+
+Use an explicit exported products_scroll reference. Browser testing showed the implicit
+literal0 path emits a FloatConstant reapplied during paint, resetting context position on
+press and mis-targeting scrolled products. A primitive-source declaration avoids this path
+without changing pins or player code. Full-page pointer tests on all three platforms and
+actual screenshots, including live native slide frames, are the acceptance evidence.

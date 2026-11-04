@@ -17,7 +17,7 @@ sh scripts/node.sh node player-smoke/interactive-stress.mjs
 sh scripts/node.sh node player-smoke/action-resource-repro.mjs
 sh scripts/node.sh node -e "const fs=require('fs'),p=JSON.parse(fs.readFileSync('artifacts/interactive/browser-proof.json'));fs.writeFileSync('samples/interactive-run.json',JSON.stringify({cases:p.records},null,2))"
 "$ANDROID_HOME/platform-tools/adb" reverse tcp:8092 tcp:8092
-sh scripts/gradle.sh -Pandroid :android-player:connectedDebugAndroidTest --console=plain
+sh scripts/gradle.sh -Pandroid :android-player:connectedDebugAndroidTest -Pandroid.testInstrumentationRunnerArguments.class=demo.remotecompose.ViewerTest,demo.remotecompose.ViewportTest,demo.remotecompose.InteractiveTest --console=plain
 "$ANDROID_HOME/platform-tools/adb" pull /sdcard/Download/rc-interactive artifacts/interactive/android
 sh scripts/build-ios.sh
 xcrun simctl install "$IOS_SIMULATOR" ios-player/build/RemoteCompose.app

@@ -3,14 +3,14 @@ const base=process.env.RC_TEST_URL||'http://127.0.0.1:8092',browser=await chromi
 const page=await browser.newPage({viewport:{width:1500,height:1100}});
 try{
  await page.goto(base);await page.waitForFunction(()=>window.rcProof?.ready);await page.locator('#json-tab').click();await page.locator('#source').fill(await readFile('samples/interactive-retail.json','utf8'));await page.locator('#apply').click();await page.waitForFunction(()=>!document.querySelector('#apply').disabled);
- await page.locator('#outline button').first().click();await page.locator('#properties-tab').click();
+ await page.locator('#outline button').nth(4).click();await page.locator('#properties-tab').click();
  const field=label=>page.locator('#properties label').filter({hasText:label}).locator('input');
  const edit=async(label,value)=>{await field(label).fill(String(value));await field(label).press('Tab');};
  await edit('Rotation interval',6);await edit('Slide duration',.3);
  await page.getByRole('button',{name:'Move banner 2 up',exact:true}).click();
- assert.equal(JSON.parse(await page.locator('#source').inputValue()).root.children[0].children[15].commands[9].text,'Bring home');
+ assert.equal(JSON.parse(await page.locator('#source').inputValue()).root.children[4].children[15].commands[9].text,'Bring home');
  await edit('Number of slides',4);await edit('Show arrow controls',0);await edit('Show position indicators',0);
- const node=JSON.parse(await page.locator('#source').inputValue()).root.children[0];assert.equal(node.children[0].value,6);assert.equal(node.children[1].value,.3);assert.equal(node.children[14].value,4);
+ const node=JSON.parse(await page.locator('#source').inputValue()).root.children[4];assert.equal(node.children[0].value,6);assert.equal(node.children[1].value,.3);assert.equal(node.children[14].value,4);
  for(const n of [4,2,5,3]){await edit('Number of slides',n);await page.locator('#preview').click();await page.waitForFunction(()=>!document.querySelector('#preview').disabled);assert.match(await page.locator('#status').textContent(),/Valid document/);assert.ok(await page.locator('#properties h2').textContent()==='Promotional carousel');}
  await edit('Show arrow controls',1);await edit('Show position indicators',1);
  await page.screenshot({path:'artifacts/interactive/carousel-inspector.png',fullPage:true});

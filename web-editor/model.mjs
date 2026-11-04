@@ -27,7 +27,26 @@ const button=()=>canvas(72,[paint(colors.blue),rect(20,8,350,52,16),...label('St
 const promo=()=>canvas(76,[paint(colors.peach),rect(20,4,350,62,16),...label('A little extra, just for you.',39,28,15),...label('Members save 20% on pantry favorites.',39,48,11,'#875E46'),...label('20%',315,37,18,'#985032')]);
 const image=(name='oat-milk')=>canvas(200,[paint('#E9EDE1'),rect(20,4,350,188,20),...photo(name,101,0,289,188)]);
 function product(name,brand,title,detail,price,bg){return {type:'canvas',modifiers:[{width:180},{height:270},{onClick:{type:'HostAction',actionId:201+['oat-milk','citrus-soda','granola'].indexOf(name)}}],commands:[paint('#FFFFFF'),rect(8,2,164,258,16),paint(bg),rect(8,2,164,153,16),...photo(name,24,11,156,143),...label(brand,20,171,9,colors.muted),...label(title,20,191,14),...label(detail,20,212,10,colors.muted),...label(price,20,241,21),paint('#EAF0FF'),circle(149,239,13),...line(144,239,154,239,colors.blue),...line(149,234,149,244,colors.blue),paint('#FFFFFF'),circle(145,24,13),{type:'paint',ops:[{color:colors.muted},{style:'stroke'},{strokeWidth:1.3}]},{type:'drawPath',path:'M 145 31 C 144 30 136 25 136 21 C 136 16 142 15 145 19 C 148 15 154 16 154 21 C 154 25 146 30 145 31 Z'}]};}
-const products=()=>row([product('oat-milk','FIELD / OAT','Barista oat drink','1 L · Plant based','$3.49','#E8EDDD'),product('citrus-soda','SOL','Sparkling citrus','330 mL · Real fruit','$1.99','#F9E5D4'),product('granola','MORN','Maple granola','350 g · Small batch','$6.50','#EEE7F5')],[{fillMaxWidth:1},{height:274},{padding:[12,0,12,0]},{horizontalScroll:0}]);
+const staticProducts=()=>row([product('oat-milk','FIELD / OAT','Barista oat drink','1 L · Plant based','$3.49','#E8EDDD'),product('citrus-soda','SOL','Sparkling citrus','330 mL · Real fruit','$1.99','#F9E5D4'),product('granola','MORN','Maple granola','350 g · Small batch','$6.50','#EEE7F5')],[{fillMaxWidth:1},{height:274},{padding:[12,0,12,0]},{horizontalScroll:0}]);
+
+// The full retail card keeps its artwork and typography; only the controls are overlaid.
+function interactiveProduct(name,brand,title,detail,price,bg){
+ const key='product_'+name.replaceAll('-','_'),q='@'+key+'_quantity',fav='@'+key+'_favorite',active=`min(1, ${q})`;
+ const variable=(suffix,value)=>({type:'variable',name:key+suffix,value,export:true});
+ const expression=(suffix,value)=>({type:'ValueFloatExpressionChange',targetId:'@'+key+suffix,value});
+ const action=(kind,value)=>({type:'HostAction',name:`product.${name}.${kind}`,value,actionType:0});
+ const alpha=(color,value)=>({type:'paint',ops:[{shader:0},{style:'fill'},{color},{alpha:value}]});
+ const control=(commands,actions,width=32,height=44)=>({type:'canvas',modifiers:[{width},{height},{onTouchDown:{type:'ValueFloatChange',targetId:'@'+key+'_pressed',value:1}},{onTouchUp:{type:'ValueFloatChange',targetId:'@'+key+'_pressed',value:0}},{onClick:actions}],commands});
+ const count=(value)=>[expression('_quantity',value),action('quantity',q)];
+ const base=product(name,brand,title,detail,price,bg);base.modifiers=base.modifiers.slice(0,2);base.commands=base.commands.slice(0,14);
+ const heart='M 22 31 C 21 30 13 25 13 21 C 13 16 19 15 22 19 C 25 15 31 16 31 21 C 31 25 23 30 22 31 Z';
+ const favorite={type:'canvas',modifiers:[{width:44},{height:44},{onClick:[expression('_favorite',`1 - ${fav}`),action('favorite',fav)]}],commands:[paint('#FFFFFF'),circle(22,24,13),{type:'paint',ops:[{shader:0},{color:colors.muted},{style:'stroke'},{strokeWidth:1.3}]},{type:'drawPath',path:heart},alpha('#A7286D',fav),{type:'drawPath',path:heart}]};
+ const symbol=(value,visible)=>[alpha(colors.blue,visible),{type:'paint',ops:[{textSize:16}]},{type:'drawTextAnchored',text:value,x:16,y:22,panX:0,panY:0}];
+ const quantity={type:'box',modifiers:[{width:96},{height:44}],children:[{type:'canvas',modifiers:[{width:96},{height:44}],commands:[paint('#EAF0FF'),rect(0,3,96,38,19),alpha('#C3D3FF','@'+key+'_pressed'),rect(0,3,96,38,19),alpha(colors.blue,`1 - ${active}`),{type:'paint',ops:[{textSize:13}]},{type:'drawTextAnchored',text:'Add',x:48,y:22,panX:0,panY:0}]},{type:'row',children:[control(symbol('−',active),count(`max(0, ${q} + 1 - 2 * ${active})`)),control(symbol('@'+key+'_count',active),count(`max(1, ${q})`)),control(symbol('+',active),count(`min(99, ${q} + 1)`))]}]};
+ return {type:'box',modifiers:[{width:180},{height:270}],children:[variable('_favorite',0),variable('_quantity',0),variable('_pressed',0),variable('_count',{type:'textFromFloat',value:q,decimal:0,whole:1,flags:0}),base,{type:'column',children:[{type:'row',modifiers:[{height:153}],children:[{type:'canvas',modifiers:[{width:123},{height:153},{onClick:{type:'HostAction',name:'product.open',value:name,actionType:2}}],commands:[]},favorite]},{type:'spacer',modifiers:[{height:64}]},{type:'row',children:[{type:'spacer',modifiers:[{width:76}]},quantity]}]}]};
+}
+const products=()=>column([{type:'variable',name:'products_scroll',value:0,export:true},row([interactiveProduct('oat-milk','FIELD / OAT','Barista oat drink','1 L · Plant based','$3.49','#E8EDDD'),interactiveProduct('citrus-soda','SOL','Sparkling citrus','330 mL · Real fruit','$1.99','#F9E5D4'),interactiveProduct('granola','MORN','Maple granola','350 g · Small batch','$6.50','#EEE7F5')],[{fillMaxWidth:1},{height:274},{padding:[12,0,12,0]},{horizontalScroll:'@products_scroll'}])],[{fillMaxWidth:1}]);
+
 const news=()=>row([canvas(182,[paint('#DCE7DE'),rect(8,0,250,170,20),...photo('granola',142,26,254,138),...label('THE SLOW',27,34,10,'#4E6654'),...label('MORNING EDIT',27,50,10,'#4E6654'),...label('Make room',27,91,22),...label('for better.',27,117,22),...label('Discover more  →',27,149,11)],[]),canvas(182,[paint('#F2E1D0'),rect(8,0,250,170,20),...photo('citrus-soda',148,31,255,138),...label('BRIGHTER DAYS',27,35,10,'#805635'),...label('A fresh take',27,88,22),...label('on the usual.',27,114,22),...label('Explore the edit  →',27,149,11)])].map(c=>({...c,modifiers:[{width:266},{height:182}]})),[{fillMaxWidth:1},{height:182},{padding:[12,0,12,0]},{horizontalScroll:0}]);
 const badge=()=>canvas(94,[paint('#E8EDDD'),rect(20,8,350,74,18),paint('#305BEF'),circle(48,48,'4 + 1.2 * sin(time * 3)'),...label('Good to be a member.',64,36,15),...label('A fresh little perk, every week.',64,58,11,colors.muted),...line(332,52,343,41,colors.ink),...line(336,41,343,41,colors.ink),...line(343,41,343,48,colors.ink)]);
 const progress=()=>canvas(104,[...label('A little closer to your next reward',24,23,14),...label('Your membership keeps giving.',24,45,11,colors.muted),paint('#E0E5DC'),rect(20,67,350,5,2.5),paint(colors.blue),{type:'drawRect',left:20,top:67,right:'20 + (windowWidth() - 40) * (185 + 24 * sin(time * 2)) / 350',bottom:72},...label('MEMBER MILESTONES',24,91,9,colors.muted)]);
@@ -40,7 +59,7 @@ const definitions={
  promo:['Member offer',promo,[['Message',['commands',3,'text']]]],
  image:['Product spotlight',image,[['Image size',['commands',3,'right'],'number',{kind:'image-size',left:['commands',3,'left'],top:['commands',3,'top'],bottom:['commands',3,'bottom'],min:16,max:188}],['Illustration',['commands',2,'image'],'asset']]],
  button:['Scan action',button,[['Label',['commands',3,'text']],['Host event ID',['modifiers',2,'onClick','actionId'],'number']]],
- products:['Product collection',products,[['First product',['children',0,'commands',9,'text']],['First price',['children',0,'commands',13,'text']],['First illustration',['children',0,'commands',4,'image'],'asset']]],
+ products:['Product collection',products,Array.from({length:3},(_,i)=>[[`Product ${i+1} name`,['children',1,'children',i,'children',4,'commands',9,'text']],[`Product ${i+1} price`,['children',1,'children',i,'children',4,'commands',13,'text']],[`Product ${i+1} illustration`,['children',1,'children',i,'children',4,'commands',4,'image'],'asset']]).flat()],
  news:['Editorial stories',news,[['First story',['children',0,'commands',9,'text']],['First illustration',['children',0,'commands',2,'image'],'asset']]],
  badge:['Member perk · pulse',badge,[['Pulse expression',['commands',3,'radius']]]],
  progress:['Reward progress · animated',progress,[['Progress expression',['commands',7,'right']]]],
@@ -70,7 +89,7 @@ export function operate(doc,index,operation) {
   if(to>=0&&to<list.length&&to!==index)[list[index],list[to]]=[list[to],list[index]];
   setSections(doc,list);return Math.min(Math.max(to,0),list.length-1);
 }
-export function legacyDesignedDocument(){return {header:{width:390,height:844,profiles:512,fps:60},root:column([header(),canvas(60,[...label('Hello, Alex',20,16,12,colors.muted),...label('A good day starts here.',20,45,26)]),hero(),canvas(58,[paint(colors.blue),rect(20,8,74,30,15),...label('For you',36,23,12,'#FFFFFF'),...label('Fresh',119,23,12,colors.muted),...label('Pantry',199,23,12,colors.muted),...label('Home',287,23,12,colors.muted)]),promo(),{...text('The good stuff',25),fontWeight:650,modifiers:[{padding:[20,16,20,12]}]},products(),badge(),{...text('A little inspiration',25),fontWeight:650,modifiers:[{padding:[20,16,20,16]}]},news(),progress(),{type:'spacer',modifiers:[{height:24}]}],[{fillMaxSize:1},{background:colors.paper},{verticalScroll:0}])};}
+export function legacyDesignedDocument(){return {header:{width:390,height:844,profiles:512,fps:60},root:column([header(),canvas(60,[...label('Hello, Alex',20,16,12,colors.muted),...label('A good day starts here.',20,45,26)]),hero(),canvas(58,[paint(colors.blue),rect(20,8,74,30,15),...label('For you',36,23,12,'#FFFFFF'),...label('Fresh',119,23,12,colors.muted),...label('Pantry',199,23,12,colors.muted),...label('Home',287,23,12,colors.muted)]),promo(),{...text('The good stuff',25),fontWeight:650,modifiers:[{padding:[20,16,20,12]}]},staticProducts(),badge(),{...text('A little inspiration',25),fontWeight:650,modifiers:[{padding:[20,16,20,16]}]},news(),progress(),{type:'spacer',modifiers:[{height:24}]}],[{fillMaxSize:1},{background:colors.paper},{verticalScroll:0}])};}
 
 /** Image slots work for custom primitive trees too; no template regeneration. */
 export function assetSlots(node,path=[]){if(!node||typeof node!=='object')return [];let result=[];if(node.type?.toLowerCase()==='addbitmap'&&typeof node.image==='string')result.push({path:[...path,'image'],value:node.image});if(node.addBitmap?.image)result.push({path:[...path,'addBitmap','image'],value:node.addBitmap.image});for(const [key,value] of Object.entries(node))if(value&&typeof value==='object')result.push(...assetSlots(value,[...path,Array.isArray(node)?Number(key):key]));return result;}
@@ -102,9 +121,9 @@ export function updateField(node,field,value){
  }else patch(node,field.path,value);
 }
 
-export function initialDocument(){return interactiveDocument();}
+export function initialDocument(){const doc=legacyDesignedDocument();doc.root.children[4]=promotionalCarousel();doc.root.children[6]=products();return doc;}
 // Upgrade only the untouched former default. User-authored and malformed drafts survive.
 export function startingSource(saved){
- if(saved){try{if(JSON.stringify(canonical(JSON.parse(saved)))!==JSON.stringify(canonical(legacyDesignedDocument())))return saved;}catch{return saved;}}
+ if(saved){try{if(JSON.stringify(canonical(JSON.parse(saved)))!==JSON.stringify(canonical(legacyDesignedDocument())) && JSON.stringify(canonical(JSON.parse(saved)))!==JSON.stringify(canonical(interactiveDocument())))return saved;}catch{return saved;}}
  return JSON.stringify(initialDocument(),null,2);
 }

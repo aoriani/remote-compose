@@ -67,3 +67,11 @@ in number formatting (JS numbers, Java Float text, C++ six-decimal strings). The
 equivalent values. Native remote-font metrics/accessibility limitations remain open.
 State is local to a decoded document; resume catches up in time rather than freezing.
 General function/conditional-block source support has not been enabled/certified here.
+
+Full bundled retail follow-up: the same1,980,638-byte publication renders and responds in
+browser, Android API37 and iPhone18Pro/iOS27.2. All three product hearts, Add/quantity controls,
+carousel navigation/automatic wrap and27 host events per player pass on the complete page.
+Native executable hashes remain unchanged. Browser held-press pixels and native live slide
+frames are recorded in evidence/full-retail. This adds scoped full-page evidence, not general
+protocol/physical-device conformance. Named horizontal scroll state is required for reliable
+browser redraw/hit testing; see JSON_FORMAT and FULL_FEATURE_TEST_REPORT.

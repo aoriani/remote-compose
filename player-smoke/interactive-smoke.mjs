@@ -1,3 +1,4 @@
+import {interactiveDocument} from '../web-editor/interactive.mjs';
 import {chromium} from 'playwright';
 import {readFile,mkdir,writeFile} from 'node:fs/promises';
 import {createHash} from 'node:crypto';
@@ -9,7 +10,7 @@ const page=await browser.newPage({viewport:{width:1500,height:1100}});
 const errors=[],records=[];page.on('pageerror',e=>errors.push(String(e)));page.on('console',m=>{if(/unknown operation|unknown tag/i.test(m.text()))errors.push(m.text());});
 try{
  await page.goto(base);await page.waitForFunction(()=>window.rcProof?.ready);
- const document=JSON.parse(await readFile('samples/interactive-retail.json','utf8'));
+ const document=interactiveDocument();
  const apply=async doc=>{await page.locator('#json-tab').click();await page.locator('#source').fill(typeof doc==='string'?doc:JSON.stringify(doc,null,2));await page.locator('#apply').click();await page.waitForFunction(()=>!document.querySelector('#apply').disabled);};
  const canvas=page.locator('#phone canvas');
  const tap=async(x,y)=>{const b=await canvas.boundingBox();await page.mouse.click(b.x+x*b.width/390,b.y+y*b.height/844);};

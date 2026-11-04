@@ -1,0 +1,656 @@
+{
+  "publication": {
+    "version": 12,
+    "sha256": "5f32c3221aa7ce717151c6f0adb8e591de968abe2b172f97bff511748d258bda",
+    "bytes": 1980638,
+    "compilerRevision": "8932b2c2b5043cc40c46a44cfd04a1671ec50fb7"
+  },
+  "upstreams": {
+    "androidx": "8932b2c2b5043cc40c46a44cfd04a1671ec50fb7",
+    "experiments": "a7a76f1d9ecc5aff2af93d0de570a11532552ea3"
+  },
+  "validation": {
+    "jvmTests": 85,
+    "modelTests": 16,
+    "editorTemplates": 12,
+    "androidFullPageTests": 1,
+    "iosFullPageTests": 1,
+    "exactEventsPerPlatform": 27,
+    "browserPressedPixels": true,
+    "nativeAppsUnchangedFromPreviousMilestone": {
+      "android": "a10143b723ed39c72497c788b199b1e30f9ed78c16ebbe6d97e513b7148b30b4",
+      "ios": "22ade2cb0ec06ac7f577cf538640eb1f26a52b45828320314ba19254ece8a425"
+    },
+    "historicalJsonBrowserEvents": 18,
+    "historicalJsonPreviewPublishRetention": true,
+    "historicalStressEvents": 37
+  },
+  "events": {
+    "browser": [
+      {
+        "name": "carousel.select",
+        "value": 0
+      },
+      {
+        "name": "carousel.next",
+        "value": 1
+      },
+      {
+        "name": "promotion.open",
+        "value": 1
+      },
+      {
+        "name": "carousel.previous",
+        "value": 0
+      },
+      {
+        "name": "promotion.open",
+        "value": 0
+      },
+      {
+        "name": "carousel.select",
+        "value": 2
+      },
+      {
+        "name": "promotion.open",
+        "value": 2
+      },
+      {
+        "name": "promotion.open",
+        "value": 0
+      },
+      {
+        "name": "product.oat-milk.favorite",
+        "value": 1
+      },
+      {
+        "name": "product.citrus-soda.favorite",
+        "value": 1
+      },
+      {
+        "name": "product.citrus-soda.favorite",
+        "value": 0
+      },
+      {
+        "name": "product.citrus-soda.favorite",
+        "value": 1
+      },
+      {
+        "name": "product.oat-milk.favorite",
+        "value": 0
+      },
+      {
+        "name": "product.oat-milk.favorite",
+        "value": 1
+      },
+      {
+        "name": "product.oat-milk.quantity",
+        "value": 1
+      },
+      {
+        "name": "product.oat-milk.quantity",
+        "value": 2
+      },
+      {
+        "name": "product.oat-milk.quantity",
+        "value": 1
+      },
+      {
+        "name": "product.citrus-soda.quantity",
+        "value": 1
+      },
+      {
+        "name": "product.citrus-soda.quantity",
+        "value": 2
+      },
+      {
+        "name": "product.citrus-soda.quantity",
+        "value": 1
+      },
+      {
+        "name": "product.granola.favorite",
+        "value": 1
+      },
+      {
+        "name": "product.granola.favorite",
+        "value": 0
+      },
+      {
+        "name": "product.granola.favorite",
+        "value": 1
+      },
+      {
+        "name": "product.granola.quantity",
+        "value": 1
+      },
+      {
+        "name": "product.granola.quantity",
+        "value": 2
+      },
+      {
+        "name": "product.granola.quantity",
+        "value": 1
+      },
+      {
+        "name": "product.granola.quantity",
+        "value": 0
+      }
+    ],
+    "android": [
+      "name=carousel.select value=0.0",
+      "name=carousel.next value=1.0",
+      "name=promotion.open value=1.0",
+      "name=carousel.previous value=0.0",
+      "name=promotion.open value=0.0",
+      "name=carousel.select value=2.0",
+      "name=promotion.open value=2.0",
+      "name=promotion.open value=0.0",
+      "name=product.oat-milk.favorite value=1.0",
+      "name=product.citrus-soda.favorite value=1.0",
+      "name=product.citrus-soda.favorite value=0.0",
+      "name=product.citrus-soda.favorite value=1.0",
+      "name=product.oat-milk.favorite value=0.0",
+      "name=product.oat-milk.favorite value=1.0",
+      "name=product.oat-milk.quantity value=1.0",
+      "name=product.oat-milk.quantity value=2.0",
+      "name=product.oat-milk.quantity value=1.0",
+      "name=product.citrus-soda.quantity value=1.0",
+      "name=product.citrus-soda.quantity value=2.0",
+      "name=product.citrus-soda.quantity value=1.0",
+      "name=product.granola.favorite value=1.0",
+      "name=product.granola.favorite value=0.0",
+      "name=product.granola.favorite value=1.0",
+      "name=product.granola.quantity value=1.0",
+      "name=product.granola.quantity value=2.0",
+      "name=product.granola.quantity value=1.0",
+      "name=product.granola.quantity value=0.0"
+    ],
+    "ios": [
+      "Host action: name=carousel.select type=0 value=3.000000. Dismiss",
+      "Host action: name=carousel.next type=0 value=4.000000. Dismiss",
+      "Host action: name=promotion.open type=0 value=1.000000. Dismiss",
+      "Host action: name=carousel.previous type=0 value=3.000000. Dismiss",
+      "Host action: name=promotion.open type=0 value=0.000000. Dismiss",
+      "Host action: name=carousel.select type=0 value=5.000000. Dismiss",
+      "Host action: name=promotion.open type=0 value=2.000000. Dismiss",
+      "Host action: name=promotion.open type=0 value=0.000000. Dismiss",
+      "Host action: name=product.oat-milk.favorite type=0 value=1.000000. Dismiss",
+      "Host action: name=product.citrus-soda.favorite type=0 value=1.000000. Dismiss",
+      "Host action: name=product.citrus-soda.favorite type=0 value=0.000000. Dismiss",
+      "Host action: name=product.citrus-soda.favorite type=0 value=1.000000. Dismiss",
+      "Host action: name=product.oat-milk.favorite type=0 value=0.000000. Dismiss",
+      "Host action: name=product.oat-milk.favorite type=0 value=1.000000. Dismiss",
+      "Host action: name=product.oat-milk.quantity type=0 value=1.000000. Dismiss",
+      "Host action: name=product.oat-milk.quantity type=0 value=2.000000. Dismiss",
+      "Host action: name=product.oat-milk.quantity type=0 value=1.000000. Dismiss",
+      "Host action: name=product.citrus-soda.quantity type=0 value=1.000000. Dismiss",
+      "Host action: name=product.citrus-soda.quantity type=0 value=2.000000. Dismiss",
+      "Host action: name=product.citrus-soda.quantity type=0 value=1.000000. Dismiss",
+      "Host action: name=product.granola.favorite type=0 value=1.000000. Dismiss",
+      "Host action: name=product.granola.favorite type=0 value=0.000000. Dismiss",
+      "Host action: name=product.granola.favorite type=0 value=1.000000. Dismiss",
+      "Host action: name=product.granola.quantity type=0 value=1.000000. Dismiss",
+      "Host action: name=product.granola.quantity type=0 value=2.000000. Dismiss",
+      "Host action: name=product.granola.quantity type=0 value=1.000000. Dismiss",
+      "Host action: name=product.granola.quantity type=0 value=0.000000. Dismiss"
+    ]
+  },
+  "motion": {
+    "publication": {
+      "version": 12,
+      "sha256": "5f32c3221aa7ce717151c6f0adb8e591de968abe2b172f97bff511748d258bda",
+      "bytes": 1980638
+    },
+    "frames": {
+      "android": [
+        {
+          "file": "00.png",
+          "seconds": 0.0
+        },
+        {
+          "file": "01.png",
+          "seconds": 0.382
+        },
+        {
+          "file": "02.png",
+          "seconds": 0.634
+        },
+        {
+          "file": "03.png",
+          "seconds": 0.886
+        },
+        {
+          "file": "04.png",
+          "seconds": 1.165
+        },
+        {
+          "file": "05.png",
+          "seconds": 1.423
+        },
+        {
+          "file": "06.png",
+          "seconds": 1.664
+        },
+        {
+          "file": "07.png",
+          "seconds": 1.924
+        },
+        {
+          "file": "08.png",
+          "seconds": 2.17
+        },
+        {
+          "file": "09.png",
+          "seconds": 2.427
+        },
+        {
+          "file": "10.png",
+          "seconds": 2.677
+        },
+        {
+          "file": "11.png",
+          "seconds": 2.924
+        },
+        {
+          "file": "12.png",
+          "seconds": 3.176
+        },
+        {
+          "file": "13.png",
+          "seconds": 3.457
+        },
+        {
+          "file": "14.png",
+          "seconds": 3.706
+        },
+        {
+          "file": "15.png",
+          "seconds": 3.957
+        },
+        {
+          "file": "16.png",
+          "seconds": 4.212
+        },
+        {
+          "file": "17.png",
+          "seconds": 4.479
+        },
+        {
+          "file": "18.png",
+          "seconds": 4.726
+        },
+        {
+          "file": "19.png",
+          "seconds": 4.979
+        },
+        {
+          "file": "20.png",
+          "seconds": 5.235
+        },
+        {
+          "file": "21.png",
+          "seconds": 5.493
+        },
+        {
+          "file": "22.png",
+          "seconds": 5.745
+        },
+        {
+          "file": "23.png",
+          "seconds": 6.002
+        },
+        {
+          "file": "24.png",
+          "seconds": 6.294
+        },
+        {
+          "file": "25.png",
+          "seconds": 6.543
+        },
+        {
+          "file": "26.png",
+          "seconds": 6.802
+        },
+        {
+          "file": "27.png",
+          "seconds": 7.058
+        },
+        {
+          "file": "28.png",
+          "seconds": 7.31
+        },
+        {
+          "file": "29.png",
+          "seconds": 7.562
+        },
+        {
+          "file": "30.png",
+          "seconds": 7.819
+        },
+        {
+          "file": "31.png",
+          "seconds": 8.079
+        }
+      ],
+      "ios": [
+        {
+          "file": "00.png",
+          "seconds": 0.0
+        },
+        {
+          "file": "01.png",
+          "seconds": 0.509
+        },
+        {
+          "file": "02.png",
+          "seconds": 0.99
+        },
+        {
+          "file": "03.png",
+          "seconds": 1.473
+        },
+        {
+          "file": "04.png",
+          "seconds": 1.958
+        },
+        {
+          "file": "05.png",
+          "seconds": 2.434
+        },
+        {
+          "file": "06.png",
+          "seconds": 2.913
+        },
+        {
+          "file": "07.png",
+          "seconds": 3.385
+        },
+        {
+          "file": "08.png",
+          "seconds": 3.868
+        },
+        {
+          "file": "09.png",
+          "seconds": 4.345
+        },
+        {
+          "file": "10.png",
+          "seconds": 4.829
+        },
+        {
+          "file": "11.png",
+          "seconds": 5.303
+        },
+        {
+          "file": "12.png",
+          "seconds": 5.779
+        },
+        {
+          "file": "13.png",
+          "seconds": 6.262
+        },
+        {
+          "file": "14.png",
+          "seconds": 6.75
+        },
+        {
+          "file": "15.png",
+          "seconds": 7.222
+        },
+        {
+          "file": "16.png",
+          "seconds": 7.705
+        },
+        {
+          "file": "17.png",
+          "seconds": 8.179
+        },
+        {
+          "file": "18.png",
+          "seconds": 8.674
+        },
+        {
+          "file": "19.png",
+          "seconds": 9.18
+        },
+        {
+          "file": "20.png",
+          "seconds": 9.743
+        },
+        {
+          "file": "21.png",
+          "seconds": 10.262
+        },
+        {
+          "file": "22.png",
+          "seconds": 10.762
+        },
+        {
+          "file": "23.png",
+          "seconds": 11.251
+        },
+        {
+          "file": "24.png",
+          "seconds": 11.743
+        },
+        {
+          "file": "25.png",
+          "seconds": 12.238
+        },
+        {
+          "file": "26.png",
+          "seconds": 12.735
+        },
+        {
+          "file": "27.png",
+          "seconds": 13.248
+        },
+        {
+          "file": "28.png",
+          "seconds": 13.753
+        },
+        {
+          "file": "29.png",
+          "seconds": 14.256
+        },
+        {
+          "file": "30.png",
+          "seconds": 14.766
+        },
+        {
+          "file": "31.png",
+          "seconds": 15.277
+        }
+      ]
+    },
+    "clock": "wall time per platform; not synchronized document phase"
+  },
+  "screenshots": [
+    {
+      "file": "browser-editor.png",
+      "width": 1500,
+      "height": 1100,
+      "sha256": "186a7184e838426ecff23d3d2fc7c8244b360f6e3a25c3a12dbc2c02497a5db6"
+    },
+    {
+      "file": "browser-top.png",
+      "width": 332,
+      "height": 718,
+      "sha256": "317a42d4ca8dec9c0cca43f60231d5a4bd05298d161c922df940afa94a125319"
+    },
+    {
+      "file": "browser-products-before.png",
+      "width": 332,
+      "height": 718,
+      "sha256": "bfc8e5c161cbf6bfd06743bd07bdd2086a42a98e59b70aad0f722efcf41b8e1d"
+    },
+    {
+      "file": "browser-products-selected.png",
+      "width": 332,
+      "height": 718,
+      "sha256": "9302850a9c34480fa7352b67c08e3bcb811e2d7d38baf8260f0bd1068b79e609"
+    },
+    {
+      "file": "browser-third-product.png",
+      "width": 332,
+      "height": 718,
+      "sha256": "d9170a02eac761c88dd5677cc55028a32c0e7427b6d1fc30e4f6edb27a1d37a9"
+    },
+    {
+      "file": "browser-pressed.png",
+      "width": 332,
+      "height": 718,
+      "sha256": "2a1bc85d6586aceb4b64a6776a92f03d3d02c8504a6c80888ce5a29b558988fd"
+    },
+    {
+      "file": "browser-phase-4.55.png",
+      "width": 390,
+      "height": 844,
+      "sha256": "0fbd15eec149d5bcfc53bd78a438e5ab884a8e6e2153125a0985ab2f7084c10b"
+    },
+    {
+      "file": "browser-phase-4.775.png",
+      "width": 390,
+      "height": 844,
+      "sha256": "04d3c419e7b8c3d0814ca98447e1816786f26444d077ff22a40739c7192e07fb"
+    },
+    {
+      "file": "browser-phase-5.png",
+      "width": 390,
+      "height": 844,
+      "sha256": "91f91007c0a4e5f4307bd67efd89906d5d892bf1a861cb7bc5accddf7061c57f"
+    },
+    {
+      "file": "android-top.png",
+      "width": 1080,
+      "height": 2400,
+      "sha256": "3242ada6076f11f8071e50468698372aa132c9c43915f3ee59466df0c6e65c87"
+    },
+    {
+      "file": "android-slide-two.png",
+      "width": 1080,
+      "height": 2400,
+      "sha256": "2f8f4de2a30139ce177c961ef326fcd3c3eeececae5fa3044579ff3f95cc580f"
+    },
+    {
+      "file": "android-products-before.png",
+      "width": 1080,
+      "height": 2400,
+      "sha256": "e533b84f967900db57ff897b094fc4fe81eff2ca3e68fba0a03a8cd76fa9f74a"
+    },
+    {
+      "file": "android-products-selected.png",
+      "width": 1080,
+      "height": 2400,
+      "sha256": "ed6e720793176eb739dc5df2c8c9fdc322143d7c83384fbf216c4566bdd209d0"
+    },
+    {
+      "file": "android-third-product.png",
+      "width": 1080,
+      "height": 2400,
+      "sha256": "944510c0a4127e59d26788cfd4fa94fe788093f2114417bc1f320b6087ccded7"
+    },
+    {
+      "file": "ios-digest.png",
+      "width": 1206,
+      "height": 2622,
+      "sha256": "b97d78b5bb1e8ad8d174636fbafbd7f4cbf60f158346c7892eb41c0d77295317"
+    },
+    {
+      "file": "ios-third-product.png",
+      "width": 1206,
+      "height": 2622,
+      "sha256": "0e0dcc1d2b958c1eca52b86942953d06bcef111b1209dda6d92653b8756dd31c"
+    },
+    {
+      "file": "ios-products-selected.png",
+      "width": 1206,
+      "height": 2622,
+      "sha256": "690a85a5f84020fbe5d72d22a93fe3038a6b31c4a68f00d9fd09c5b50eaf5f99"
+    },
+    {
+      "file": "ios-products-before.png",
+      "width": 1206,
+      "height": 2622,
+      "sha256": "0c8b7e3eb445b1d0e2b2dd894cb92cb19dd8e8055e5d581d9adf7a73932fccdd"
+    },
+    {
+      "file": "ios-slide-two.png",
+      "width": 1206,
+      "height": 2622,
+      "sha256": "6961274b13d159d9263f856fa90d55852f40eb3f8b1377168a2e603275180579"
+    },
+    {
+      "file": "ios-top.png",
+      "width": 1206,
+      "height": 2622,
+      "sha256": "30cf7ecf3093f1636fe3e3c1f9185b43f2ae137c103bc0674432aee30a20192c"
+    },
+    {
+      "file": "android-motion-03.png",
+      "width": 1080,
+      "height": 2400,
+      "sha256": "b9fc517feb5e892721c4b4c904c32e112be253a8b95932c560cb6a54d6596e7c"
+    },
+    {
+      "file": "android-motion-04.png",
+      "width": 1080,
+      "height": 2400,
+      "sha256": "7e729a5f61236515a239bd1b1716e3ac538d2b6928aa64ea54ec20110085d0c8"
+    },
+    {
+      "file": "android-motion-05.png",
+      "width": 1080,
+      "height": 2400,
+      "sha256": "80022824bb22154473364fca84378ca254ce83d2707cb5b0958bdf0d94606e20"
+    },
+    {
+      "file": "ios-motion-09.png",
+      "width": 1206,
+      "height": 2622,
+      "sha256": "16df4059c727a475020808fbda19c78bfc921e60599fc18209ff3413d182a4f7"
+    },
+    {
+      "file": "ios-motion-10.png",
+      "width": 1206,
+      "height": 2622,
+      "sha256": "4864b9cefb1f9fe6990ddacdeaf7048e87bc75f2e29250e02a66d4b63e0e6374"
+    },
+    {
+      "file": "ios-motion-11.png",
+      "width": 1206,
+      "height": 2622,
+      "sha256": "92bba5f6f5e45f1e5645a486424a7dc5b483a0dd146bcdfd148420cf3902e80a"
+    },
+    {
+      "file": "ios-motion-19.png",
+      "width": 1206,
+      "height": 2622,
+      "sha256": "92bba5f6f5e45f1e5645a486424a7dc5b483a0dd146bcdfd148420cf3902e80a"
+    },
+    {
+      "file": "ios-motion-20.png",
+      "width": 1206,
+      "height": 2622,
+      "sha256": "9d723c08e0e248a4487a9a0c75fd6062ccbfb4571ff1186da57c3e83fc8913d4"
+    },
+    {
+      "file": "ios-motion-21.png",
+      "width": 1206,
+      "height": 2622,
+      "sha256": "8ff4f503d2c7d592d255fc6e7fee0054df74b3102316c9b53ba794ab81925432"
+    }
+  ],
+  "limitations": [
+    "Session-local state resets on a new document decode",
+    "Native live animation clocks are not phase synchronized",
+    "Native font metrics and ripple rasterization differ",
+    "No new physical-device, accessibility, or performance certification"
+  ],
+  "demoPublication": {
+    "backend": "http://127.0.0.1:8080",
+    "version": 20,
+    "sha256": "5f32c3221aa7ce717151c6f0adb8e591de968abe2b172f97bff511748d258bda",
+    "bytes": 1980638
+  }
+}

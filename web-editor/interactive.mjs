@@ -52,4 +52,6 @@ export function moveCarouselSlide(node,index,delta){
  node.children[15].commands=[...commands.slice(0,2),...blocks.flat(),commands.at(-1)];
 }
 
+// Historical two-section fixture: retained only for regression tests and untouched-draft migration.
+// The bundled full page is model.initialDocument().
 export function interactiveDocument(){return {header:{width:390,height:844,profiles:512,fps:60,contentDescription:'Interactive Common Market — protocol-local state and host actions'},root:{type:'column',modifiers:[{fillMaxSize:1},{background:'#F5F4EF'},{verticalScroll:0}],children:[promotionalCarousel(),localShopping()]}};}

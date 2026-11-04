@@ -83,3 +83,13 @@ not implement carousel state or business navigation. Native refresh scheduling r
 separate from document time. See INTERACTIVE_DEMO.md for the phase model and payloads.
 The browser integration preloads nested immutable TextData, matching the generic iOS
 bridge repair for interned action names; pins and wire format remain unchanged.
+
+## Full retail default authoring
+
+model.initialDocument() preserves the original complete retail composition and replaces
+only the promotional area and product controls with stateful primitives. Generated
+retail-home.json and interactive-retail.json are identical aliases. Each product declares
+its own variables; a named products_scroll is declared before the horizontal row. No
+mobile UI implementation or business component registry is involved. Inspector edits patch
+recognized fields; custom action/layout changes fall back to source editing without loss.
+See INTERACTIVE_DEMO and the full-page acceptance section of FULL_FEATURE_TEST_REPORT.

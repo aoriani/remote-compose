@@ -47,3 +47,24 @@ JSON before deliberately replacing a draft. Confirm “Preview matches draft” 
 presenting a preview; Publish and Preview are separate actions. Do not rebuild apps
 while demonstrating a new composition. Allow the configured refresh interval to elapse.
 The review and screenshots are in DEMONSTRATION_REVIEW.md.
+
+## Current full retail interaction presentation
+
+Open the editor and choose **Reset to full retail design** if a saved draft is present.
+Preview, then Publish. This is the original complete Common Market page. On both native
+players use the same backend URL and Refresh; verify the version/hash in Debug.
+
+1. Scroll slightly to the promotional area. Select a dot, use both arrows, tap its CTA,
+   and wait five seconds for the next offer. Navigation resets the automatic interval.
+2. Scroll to The good stuff. Toggle FIELD/OAT and SOL hearts separately; deselecting one
+   leaves the other selected. Tap Add, then plus/minus. The count changes immediately.
+3. Swipe the product row horizontally to MORN. Its heart/quantity are independent. Decrement
+   to zero to restore Add. Native notices/logs report product asset ID and numeric value.
+4. Keep scrolling to the preserved member perk, editorial stories and reward animation.
+5. In the editor select Product collection, edit a product name/price or replace its asset.
+   Inspect the primitive JSON actions/variables, Preview and Publish. Refresh both unchanged
+   apps to show the updated complete page. New document decoding resets session-local state.
+
+Run `sh scripts/verify-full-retail.sh` with the documented environment for automated full-page
+acceptance; use `python3 scripts/capture-full-retail-motion.py` for live native frame captures.
+The latter reinstalls the existing APK if instrumentation removed it; it does not build apps.

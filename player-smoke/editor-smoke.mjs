@@ -14,6 +14,8 @@ try{
  await page.addInitScript(()=>{window.bitmapDraws=0;const draw=CanvasRenderingContext2D.prototype.drawImage;CanvasRenderingContext2D.prototype.drawImage=function(...a){if(a[0].naturalWidth>=640)window.bitmapDraws++;return draw.apply(this,a);};window.arcObservations=[];window.rectObservations=[];const arc=CanvasRenderingContext2D.prototype.arc;CanvasRenderingContext2D.prototype.arc=function(...a){if(a[0]===48&&a[1]===48)window.arcObservations.push(a[2]);return arc.apply(this,a);};const fill=CanvasRenderingContext2D.prototype.fillRect;CanvasRenderingContext2D.prototype.fillRect=function(...a){if(a[0]===20&&a[1]===67)window.rectObservations.push(a[2]);return fill.apply(this,a);};});
  await page.goto(base);await page.waitForFunction(()=>window.rcProof?.ready||window.rcProof?.lastError);assert.equal(await page.evaluate(()=>window.rcProof.lastError),undefined,await page.locator('#status').textContent());
  await page.waitForFunction(()=>window.bitmapDraws>0);
+ // Catalog checks use the historical full page; default full-page interactions have their own suite.
+ await page.locator('#json-tab').click();await page.locator('#source').fill(JSON.stringify(initialDocument()));await page.locator('#apply').click();await page.waitForFunction(()=>!document.querySelector('#apply').disabled);await page.locator('#properties-tab').click();
  await page.waitForFunction(()=>document.querySelectorAll('#asset-gallery button').length===4);
  await page.locator('#asset-search').fill('granola');assert.equal(await page.locator('#asset-gallery button').count(),1);
  await page.locator('[data-asset="granola"]').click();await page.locator('#insert-asset').click();
@@ -54,7 +56,7 @@ try{
   if(id==='image')assert.equal(sections(added).at(-1).commands[3].right-sections(added).at(-1).commands[3].left,Number(edited));else assert.ok(JSON.stringify(added).includes(edited),id+' property edit');
   await page.locator('[data-op="up"]').click();await page.locator('[data-op="down"]').click();
   await page.locator('[data-op="duplicate"]').click();
-  if(id==='carousel')assert.match(await page.locator('#status').textContent(),/declares IDs or variables/);
+  if(['carousel','products'].includes(id))assert.match(await page.locator('#status').textContent(),/declares IDs or variables/);
   else {
    assert.equal(await page.locator('#outline .selected').textContent(),`${sections(added).length+1}. ${catalog.find(x=>x.id===id).label}`);
    await page.locator('[data-op="delete"]').click();

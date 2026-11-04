@@ -1,6 +1,6 @@
 import {initializeNestedText} from './player-adapter.mjs';
 import {moveCarouselSlide} from './interactive.mjs';
-import {catalog,createWidget,initialDocument,legacyDesignedDocument,startingSource,sections,setSections,recognize,patch,operate,assetSlots,updateField} from './model.mjs';
+import {catalog,createWidget,initialDocument,startingSource,sections,setSections,recognize,patch,operate,assetSlots,updateField} from './model.mjs';
 const $ = s=>document.querySelector(s);
 let selected=0, player=null, serial=0, events=[], previewSource=null, busy=false, library=[], activeAsset='oat-milk', propertySection=-1;
 const source=$('#source'), savedDraft=localStorage.getItem('rc-draft');source.value=startingSource(savedDraft);
@@ -67,7 +67,7 @@ async function preview(publish=false,publishedVersion=null){
  finally{busy=false;for(const id of ['preview','refresh','publish','apply'])$('#'+id).disabled=false;draftState();}
 }
 const glyphs={carousel:'M3 5h18v12H3z M8 21h1M12 21h1M16 21h1',header:'M4 5h16v14H4z M4 10h16',text:'M5 5h14M12 5v14M8 19h8',spacer:'M12 3v18M8 7l4-4 4 4M8 17l4 4 4-4',hero:'M3 4h18v16H3z M3 16l5-5 4 4 3-3 6 6',promo:'M4 6h16v12H4z M8 10h8M8 14h5',image:'M3 3h18v18H3z M4 17l6-7 4 4 3-3 4 6',button:'M3 7h18v10H3z M9 12h6',products:'M2 5h5v14H2z M10 5h5v14h-5z M18 5h4v14h-4z',news:'M3 4h8v16H3z M14 4h7v16h-7z',badge:'M12 3l3 6 6 3-6 3-3 6-3-6-6-3 6-3z',progress:'M3 8h18v8H3z M4 9h10v6H4z'};
-for(const item of catalog){const b=document.createElement('button');b.innerHTML='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="'+glyphs[item.id]+'"/></svg>';const name=document.createElement('span');name.textContent=item.label;b.append(name);b.dataset.template=item.id;b.onclick=()=>change(doc=>{const list=sections(doc).slice();const next=createWidget(item.id);if(item.id==='carousel'&&JSON.stringify(doc).includes('promo_interval'))throw Error('A promotional carousel already declares this variable namespace. Use raw JSON with explicitly renamed variables for another instance.');list.push(next);setSections(doc,list);selected=list.length-1;});$('#palette').append(b);}
+for(const item of catalog){const b=document.createElement('button');b.innerHTML='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="'+glyphs[item.id]+'"/></svg>';const name=document.createElement('span');name.textContent=item.label;b.append(name);b.dataset.template=item.id;b.onclick=()=>change(doc=>{const list=sections(doc).slice();const next=createWidget(item.id);if((item.id==='carousel'&&JSON.stringify(doc).includes('promo_interval'))||(item.id==='products'&&JSON.stringify(doc).includes('product_oat_milk_quantity')))throw Error('This interactive template already declares its variable namespace. Use raw JSON with explicitly renamed variables for another instance.');list.push(next);setSections(doc,list);selected=list.length-1;});$('#palette').append(b);}
 for(const b of document.querySelectorAll('[data-op]'))b.onclick=()=>change(doc=>{selected=operate(doc,selected,b.dataset.op);});
 $('#preview').onclick=()=>preview();$('#refresh').onclick=()=>preview();$('#publish').onclick=()=>preview(true);$('#apply').onclick=()=>preview();
 $('#format').onclick=()=>{try{save(current());}catch(e){message(String(e),true);}};
@@ -91,5 +91,3 @@ fetch('/assets/library.json').then(r=>{if(!r.ok)throw Error('Asset library unava
 $('#rail-library').onclick=()=>$('.library').scrollTo({top:0,behavior:'smooth'});
 $('#rail-json').onclick=()=>{tab(true);$('#json-panel').scrollIntoView({block:'nearest'});source.focus();};
 $('#rail-layers').onclick=()=>$('#outline').scrollIntoView({block:'start',behavior:'smooth'});
-
-$('#legacy-design').onclick=()=>{selected=0;save(legacyDesignedDocument());preview();};

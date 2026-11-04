@@ -374,3 +374,109 @@ default migration/backup and custom draft retention. Screenshot/results:
 no native update or new publication was needed. Restarted8080's stale compiler process
 with the validated current distribution, preserving publication19. Custom drafts are
 never cleared to force the new default.
+
+## Full bundled retail page: interactions in the existing design (2026-11-04)
+
+This supersedes the two-section default introduced in60482fa. Acceptance now uses the
+**complete Common Market page**: brand header, greeting, Scan & Go hero, original category
+pills, integrated promotional carousel, three illustrated product cards, member perk,
+editorial stories and animated reward progress. There is no alternate demo-loading button.
+The carousel replaces the former promotional strip. Other original sections are preserved
+byte-for-byte as primitive trees; a model regression asserts that boundary.
+
+All three existing hearts toggle independently between outlined and filled vector paths.
+Each card has its own favorite, quantity and pressed variables. Add changes immediately
+to minus/count/plus; decrementing to zero restores Add. Touch-down/up provide protocol
+paint feedback; quantity text uses TextFromFloat. Named events identify product and value.
+The inspector edits each product's name, price and artwork without replacing its actions,
+and edits carousel count/order/art/text/timing as before. Raw JSON is authoritative.
+
+### Executed validation
+
+- `sh scripts/verify-full-retail.sh` passed end to end against isolated backend8092.
+  Real browser startup/reset/migration, twelve-template UI regression, full-page pointer
+  interactions, inspector/source round trips, JVM compilation and browser Publish are included.
+- **85 JVM tests** passed in a fresh test execution after registering sample JSON as Gradle
+  test inputs. Previously changed external fixtures could incorrectly leave this task
+  UP-TO-DATE. **16 model tests** pass, including preserved sections and state-safe property edits.
+- Full-page browser, Android and iOS tests each verified **27 expected host events**, with
+  all three hearts toggled on/off, all three quantities incremented/decremented, a zero-to-Add
+  return, independent state, horizontal/vertical scrolling, arrows/dots/banner actions and
+  automatic wraparound. Android checks exactly one callback per tap; iOS asserts27 logged
+  callbacks and browser asserts exact events. Android selected-heart pixels and browser
+  selected/outlined and held-press pixels are asserted; native quantity states were visually inspected.
+- Android CLI compilation/instrumentation, unit and lint tasks passed. The full-page
+  instrumentation test passed; it is separate from the older focused tests. iOS XCTest
+  `testFullRetailPage` passed on the already-installed app (one full-page method). Only the
+  test runner changed; no Android/iOS production source or executable changed.
+- Full-page carousel inspector test passed for2/3/4/5 slides, text/order/timing/visibility,
+  with actual browser renderer frames at4.55/4.775/5seconds. Native live screenshot bursts
+  show intermediate horizontal transitions and iOS last-to-first wrap. These are captured
+  device frames, not synchronized clocks or a frame-rate benchmark.
+
+Environment: Chrome156.0.8078.80, Node22.14.0, JBR25.0.4, Gradle9.2.1, Android API37
+emulator1080×2400/density2.625, Xcode27.2 and iPhone18Pro iOS27.2 Simulator1206×2622/scale3.
+Pins remain AndroidX8932b2c2b5043cc40c46a44cfd04a1671ec50fb7 and
+experimentsa7a76f1d9ecc5aff2af93d0de570a11532552ea3.
+
+### Exact document and unchanged native applications
+
+Publication12 on8092 is **1,980,638bytes**, SHA-256
+`5f32c3221aa7ce717151c6f0adb8e591de968abe2b172f97bff511748d258bda`.
+Browser preview bytes match the fetched immutable publication; Android asserts its decoded
+SHA and iOS asserts the full digest in native Debug. Both fetched that same immutable version.
+The APK remains `a10143b723ed39c72497c788b199b1e30f9ed78c16ebbe6d97e513b7148b30b4`;
+the iOS executable remains `22ade2cb0ec06ac7f577cf538640eb1f26a52b45828320314ba19254ece8a425`,
+identical to the previous interaction milestone. No business widgets, platform carousel
+clocks or native product logic were added.
+
+### Defects found and corrected
+
+1. **Wrong default scope:** the earlier default replaced the full retail design with a
+   two-section demonstration. `initialDocument()` now enhances the original page instead.
+   `retail-home.json` and its compatibility alias `interactive-retail.json` are generated
+   from that one factory. Exact untouched old/simplified defaults migrate with backup;
+   modified/custom/malformed drafts are preserved. Reset explicitly loads the full page.
+2. **Horizontal scroll resets in the browser:** literal `horizontalScroll:0` creates a
+   FloatConstant inside the row. The pinned browser reapplies it while painting, so the
+   context's position became0 even while its TouchExpression retained a nonzero offset.
+   The next pointer-down reset the row, causing a granola tap to reach citrus instead.
+   An exported `products_scroll` declared before the row and referenced by the modifier
+   avoids that encoding path. This is a supported primitive-source correction, not a
+   business-specific player workaround. The full-page drag-then-all-product tests failed
+   before and pass after it. Native apps consume the same corrected source/binary.
+3. **Unsafe palette insertion:** a second interactive collection would reuse state names.
+   Insertion/duplication now reports the explicit namespace conflict, preserving the source.
+   Raw JSON can define a second collection with consistently renamed variables/actions.
+4. **Test assumptions:** an initial native run started before its publication manifest
+   existed; it correctly failed404. The first iOS test tried to tap controls below the safe
+   viewport; the corrected test scrolls them into view and measures actual banner pixels.
+   A strict browser outlined-heart byte comparison also caught subpixel scroll settling;
+   the regression now asserts actual selected-color presence/absence, not identical unrelated
+   antialias pixels. These initial failures are not reported as passing runs.
+
+### Visual evidence and remaining scope
+
+[Evidence and hashes](evidence/full-retail/proof.json) bind29 actual screenshots to source,
+publication, events and native executable hashes. Reviewed [browser](evidence/full-retail/browser-products-selected.png),
+[Android](evidence/full-retail/android-products-selected.png), and
+[iOS](evidence/full-retail/ios-products-selected.png) show intact artwork, typography and
+independent selected hearts/quantity controls. [iOS third product](evidence/full-retail/ios-third-product.png)
+shows Add restored at zero while citrus retains its own quantity. Browser controlled frames
+and native live frames are separate evidence; see the evidence README.
+
+State is session-local and resets when a new document is decoded. Category pills/stories
+retain their original behavior; this change does not implement category filtering or real
+commerce navigation. Product controls retain compact card proportions (32×44 quantity
+subtargets). Native ripple/font rasterization differs. Physical-device, accessibility,
+large-font, all-screen-size and quantitative smoothness certification are not part of this
+iteration. Existing strict cross-platform typography/pixel differences remain open.
+
+The same verified bytes were subsequently published through the real default editor on
+the normal demo backend8080 as **version20** (prior immutable versions retained). Android
+and iOS were launched against8080/latest without version pins; Android logged the same
+full SHA and the actual iOS screen shows decoded v20/1,980,638bytes. Both are left running
+there for the demonstration. Existing modified browser drafts still require explicit Reset.
+The retained historical raw-JSON browser lifecycle (18events) and local-state stress test
+(37events, zero interaction API requests) also passed on a separate8094 test service, which
+was stopped afterward; those results do not substitute for the full-page tests above.

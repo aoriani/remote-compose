@@ -237,3 +237,33 @@ Never clear user storage to update defaults: modified and malformed drafts must 
 The fixture generator uses the same initialDocument factory to prevent source drift.
 After development, an already-running JVM may still have old Validation classes even if
 installDist changed jars:8080 needed restart for textFromFloat. Preserve its data directory.
+
+## Full-page interaction correction (supersedes the two-section default)
+
+model.initialDocument() starts from legacyDesignedDocument() and replaces only section4
+(promotional strip→carousel) and section6 (three original product cards→independent controls).
+The original header/hero/category pills/stories/rewards remain. `retail-home.json` and
+`interactive-retail.json` are identical generated aliases. The old two-section factory is
+only a historical regression/migration input, never an editor design option. There is no
+legacy-load button. Preserve edited drafts; exact untouched historical defaults may migrate.
+
+Products declare `product_<asset>_favorite`, `_quantity`, `_pressed`, `_count`. Named callbacks
+are `product.<asset>.favorite/quantity`, numeric value; product.open has asset string value.
+State is genuine protocol local, session-only. Inspector patches9 product fields; changes
+outside its recognized signature remain custom. Duplication/palette insertion cannot reuse
+state namespaces. Explicit raw renaming is required for another independent collection.
+
+Important pinned browser behavior: an implicit horizontalScroll:0 emits FloatConstant in
+row paint operations; painting resets the scroll context value, even while TouchExpression
+retains its own offset. A subsequent press can jump back and target a different product.
+Declare exported products_scroll before the row and use horizontalScroll:'@products_scroll'.
+This source-only correction passes actual horizontal drag+all-card interactions in all players.
+No native renderer or timer changed. See full-page evidence and ADR028.
+
+verify-full-retail.sh is the current full-page acceptance runner (backend8092 and installed
+native viewers required); full-retail-run.json is ignored publication binding metadata.
+The older verify-interactive.sh explicitly selects its historical native test classes.
+Do not make FullRetailTest inherit a class with @Test methods: that duplicates old cases
+in unfiltered instrumentation. Gradle test inputs now include tracked sample JSON so a
+sample-only edit reruns the compiler tests. Native motion capture uses ordinary screenshots,
+not an injected clock; captured timestamps are per-platform and cannot prove phase parity.

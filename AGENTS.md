@@ -23,7 +23,7 @@ can still require client releases.
 - `player-smoke/`: real binary browser player harness and automated pixel checks.
 - `web-editor/`: designed authoring workbench, asset gallery and genuine browser preview.
 - `assets/`: original transparent artwork, prompts and separate JVM/editor catalogs.
-- `samples/interactive-retail.json`: current interactive default; `retail-home.json` preserves the prior static example.
+- `samples/retail-home.json`: full interactive default; `interactive-retail.json` is an identical compatibility alias.
 - `docs/DESIGN_SYSTEM.md` / `docs/VISUAL_REDESIGN.md`: visual conventions and actual render evidence.
 - `android-player/`: Java generic viewer, Kotlin Material3 chrome and official AndroidX renderer.
 - `ios-player/`: Swift debug shell, Objective-C++ bridge and C++/Skia Metal renderer.
@@ -71,9 +71,9 @@ legacy390×844 goldens must reject incompatible viewports, not stretch the image
 
 ## Interactive demo
 
-Read docs/INTERACTIVE_DEMO.md. The editor defaults to samples/interactive-retail.json;
-the old designed-page sample remains a separate static regression fixture. Carousel/shop
+Read docs/INTERACTIVE_DEMO.md. The default is the full Common Market retail page, not the
+former two-section test fixture. Run scripts/verify-full-retail.sh for full-page acceptance. Carousel/product
 state is protocol-local; do not add platform timers/business widgets. Preserve the generic
-browser nested-TextData shim and minimal repro. Run scripts/verify-interactive.sh with an
+explicit products_scroll variable and browser nested-TextData shim and minimal repro. Run scripts/verify-interactive.sh with an
 isolated backend8092, idle emulator and IOS_SIMULATOR; see its prerequisites. origin is a
 private GitHub repository; no push is authorized.

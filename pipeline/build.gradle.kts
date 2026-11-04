@@ -44,7 +44,14 @@ dependencies {
     testImplementation("junit:junit:4.13.2")
 }
 application { mainClass.set("demo.pipeline.MainKt") }
-tasks.test { useJUnit() }
+tasks.test {
+    useJUnit()
+    // Compiler tests read these golden primitive files at runtime.
+    inputs.files(rootProject.fileTree("samples") {
+        include("*.json")
+        exclude("*-run.json")
+    })
+}
 tasks.processResources {
     dependsOn(verifyUpstreams)
     from(rootProject.file("assets")) { into("assets") }

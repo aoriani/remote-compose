@@ -231,15 +231,16 @@ sh scripts/gradle.sh :pipeline:installDist
 PORT=8092 RC_DATA_DIR=data/interactive sh scripts/start-backend.sh
 ```
 
-Open http://127.0.0.1:8092, use the interactive default (or **Reset to interactive design**), Preview and
+Open http://127.0.0.1:8092, use the interactive default (or **Reset to full retail design**), Preview and
 Publish. Native debug URLs must also use8092; Android requires `adb reverse tcp:8092 tcp:8092`.
 The inspector exposes carousel text/art/timing/order/visibility/actions; raw JSON remains
-editable. With an idle Android emulator and booted arm64 iOS Simulator, the focused suite is:
+editable. With an idle Android emulator and booted arm64 iOS Simulator, the full-page suite is:
 
 ```sh
-IOS_SIMULATOR=<booted-simulator-udid> sh scripts/verify-interactive.sh
+IOS_SIMULATOR=<booted-simulator-udid> sh scripts/verify-full-retail.sh
 ```
 
 Set JAVA_HOME, ANDROID_HOME and DEVELOPER_DIR using the earlier setup instructions. The
-suite publishes test documents to the isolated service and writes artifacts/interactive.
+suite publishes test documents to the isolated service and writes artifacts/full-retail. Install both native viewers using the earlier instructions
+before running this suite. It tests the bundled full page, including all three products.
 It does not push the private GitHub remote; see [GitHub setup](GITHUB_SETUP.md).

@@ -241,4 +241,32 @@ final class DemoUITests: XCTestCase {
         FileHandle.standardOutput.write(Data("JSON_LIVE_PASS version=\(version) sha256=\(after["sha256"]!)\n".utf8));app.buttons["Done"].tap()
     }
 
+    func testFullRetailPage() throws {
+        let base="http://127.0.0.1:8092",done=expectation(description:"full retail manifest");var item:[String:Any]=[:]
+        URLSession.shared.dataTask(with:URL(string:base+"/samples/full-retail-run.json")!){data,_,_ in if let data{item=(try? JSONSerialization.jsonObject(with:data) as? [String:Any]) ?? [:]};done.fulfill()}.resume();wait(for:[done],timeout:15)
+        let version=try XCTUnwrap(item["version"] as? Int),digest=try XCTUnwrap(item["sha256"] as? String)
+        let app=XCUIApplication(bundleIdentifier:"demo.remotecompose.ios");app.launchArguments=["--backend",base,"--version",String(version),"--no-auto"];app.launch()
+        let surface=app.otherElements["remote-document"].firstMatch;XCTAssertTrue(surface.waitForExistence(timeout:15));let ready=XCTNSPredicateExpectation(predicate:NSPredicate(format:"label CONTAINS %@","v\(version) •"),object:app.staticTexts["fetch-status"]);XCTAssertEqual(XCTWaiter.wait(for:[ready],timeout:25),.completed)
+        func point(_ x:CGFloat,_ y:CGFloat)->XCUICoordinate{surface.coordinate(withNormalizedOffset:CGVector(dx:x/surface.frame.width,dy:y/surface.frame.height))}
+        func shot(_ name:String){let a=XCTAttachment(screenshot:app.screenshot());a.name="full-"+name;a.lifetime = .keepAlways;add(a)}
+        func action(_ x:CGFloat,_ y:CGFloat,_ expected:String){point(x,y).tap();let notice=app.buttons.matching(NSPredicate(format:"label BEGINSWITH 'Host action:'")).firstMatch;XCTAssertTrue(notice.waitForExistence(timeout:3));XCTAssertTrue(notice.label.contains(expected),"Expected \(expected), actual \(notice.label)");print("FULL_RETAIL_EVENT \(notice.label)");if notice.exists{notice.tap()}}
+        func bounds(_ color:UInt32)->CGPoint {
+            let cg=app.screenshot().image.cgImage!,w=cg.width,h=cg.height,scale=CGFloat(w)/app.frame.width;var bytes=[UInt8](repeating:0,count:w*h*4)
+            let context=CGContext(data:&bytes,width:w,height:h,bitsPerComponent:8,bytesPerRow:w*4,space:CGColorSpaceCreateDeviceRGB(),bitmapInfo:CGImageAlphaInfo.premultipliedLast.rawValue)!;context.draw(cg,in:CGRect(x:0,y:0,width:w,height:h))
+            var left=w,top=h,bottom=0
+            for y in Int(surface.frame.minY*scale)..<Int(surface.frame.maxY*scale){for x in 0..<w{let i=(y*w+x)*4;let rgb=UInt32(bytes[i])<<16|UInt32(bytes[i+1])<<8|UInt32(bytes[i+2]);if rgb == color || (color == 0 && [UInt32(0xE7EDDF),0xF8E1CA,0xEAE0F0].contains(rgb)) {left=min(left,x);top=min(top,y);bottom=max(bottom,y)}}}
+            XCTAssertGreaterThan(CGFloat(bottom-top)/scale,90,"Visible product background \(color)");return CGPoint(x:CGFloat(left)/scale,y:CGFloat(top)/scale-surface.frame.minY)
+        }
+        func heart(_ p:CGPoint)->Data?{let im=app.screenshot().image,r=CGFloat(im.cgImage!.width)/app.frame.width,f=surface.frame;return im.cgImage?.cropping(to:CGRect(x:(p.x+122)*r,y:(f.minY+p.y+8)*r,width:30*r,height:28*r).integral).flatMap{UIImage(cgImage:$0).pngData()}}
+        let w=surface.frame.width;shot("top");point(w-10,550).press(forDuration:0.1,thenDragTo:point(w-10,400),withVelocity:.slow,thenHoldForDuration:0.4);Thread.sleep(forTimeInterval:1);let banner=bounds(0),controlY=banner.y+286,bannerY=banner.y+80
+        action(w/2-44,controlY,"carousel.select");Thread.sleep(forTimeInterval:0.55);action(w-44,controlY,"carousel.next");Thread.sleep(forTimeInterval:0.55);action(100,bannerY,"promotion.open type=0 value=1.");shot("slide-two");action(44,controlY,"carousel.previous");Thread.sleep(forTimeInterval:0.55);action(100,bannerY,"promotion.open type=0 value=0.");action(w/2+44,controlY,"carousel.select");Thread.sleep(forTimeInterval:0.55);action(100,bannerY,"promotion.open type=0 value=2.");Thread.sleep(forTimeInterval:3.0);action(100,bannerY,"promotion.open type=0 value=0.")
+        point(w-10,700).press(forDuration:0.1,thenDragTo:point(w-10,250),withVelocity:.slow,thenHoldForDuration:0.4);Thread.sleep(forTimeInterval:0.3)
+        let a=bounds(0xE8EDDD),b=bounds(0xF9E5D4);shot("products-before");let before=heart(a)
+        action(a.x+137,a.y+22,"product.oat-milk.favorite type=0 value=1.");XCTAssertNotEqual(heart(a),before)
+        action(b.x+137,b.y+22,"product.citrus-soda.favorite type=0 value=1.");action(b.x+137,b.y+22,"product.citrus-soda.favorite type=0 value=0.");action(b.x+137,b.y+22,"product.citrus-soda.favorite type=0 value=1.");action(a.x+137,a.y+22,"product.oat-milk.favorite type=0 value=0.");XCTAssertNotNil(heart(a));action(a.x+137,a.y+22,"product.oat-milk.favorite type=0 value=1.")
+        action(a.x+116,a.y+237,"product.oat-milk.quantity type=0 value=1.");action(a.x+148,a.y+237,"product.oat-milk.quantity type=0 value=2.");action(a.x+84,a.y+237,"product.oat-milk.quantity type=0 value=1.");action(b.x+116,b.y+237,"product.citrus-soda.quantity type=0 value=1.");action(b.x+148,b.y+237,"product.citrus-soda.quantity type=0 value=2.");action(b.x+84,b.y+237,"product.citrus-soda.quantity type=0 value=1.");shot("products-selected")
+        point(w-60,a.y+100).press(forDuration:0.1,thenDragTo:point(80,a.y+100),withVelocity:.slow,thenHoldForDuration:0.4);Thread.sleep(forTimeInterval:0.3);let c=bounds(0xEEE7F5)
+        action(c.x+137,c.y+22,"product.granola.favorite type=0 value=1.");action(c.x+137,c.y+22,"product.granola.favorite type=0 value=0.");action(c.x+137,c.y+22,"product.granola.favorite type=0 value=1.");action(c.x+116,c.y+237,"product.granola.quantity type=0 value=1.");action(c.x+148,c.y+237,"product.granola.quantity type=0 value=2.");action(c.x+84,c.y+237,"product.granola.quantity type=0 value=1.");action(c.x+84,c.y+237,"product.granola.quantity type=0 value=0.");shot("third-product")
+        app.buttons["Debug"].tap();let hash=app.staticTexts["document-digest"];for _ in 0..<6{if hash.exists{break};app.swipeUp()};XCTAssertEqual(hash.value as? String,digest);shot("digest");for _ in 0..<8{if app.staticTexts["event-count"].exists{break};app.swipeDown()};XCTAssertEqual(app.staticTexts["event-count"].label,"Events: 27");app.buttons["Done"].tap();print("FULL_RETAIL_DOCUMENT \(digest)");app.terminate()
+    }
 }

@@ -52,3 +52,5 @@ samples/native-layout-run.json
 .simulators/
 
 samples/interactive-run.json
+
+samples/full-retail-run.json

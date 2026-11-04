@@ -167,3 +167,16 @@ number. Only textFromFloat objects with scalar value and integer decimal/whole/f
 are enabled by this extension to service validation. General variable value objects,
 function definitions and arbitrary conditional blocks remain outside the enabled subset.
 See INTERACTIVE_DEMO.md for time expressions, action payloads and source examples.
+
+### Full-page product state and horizontal scroll (2026-11-04)
+
+The bundled retail page uses exported float variables, ValueFloatExpressionChange actions,
+TouchDown/TouchUp ValueFloatChange, alpha paint, vector hearts and TextFromFloat. Each product
+has distinct names; no product widget type is serialized. `min(1, quantity)` selects Add versus
+quantity glyph alpha without new conditional operations. The same fixed control areas update
+local values immediately. See the complete compilable samples/retail-home.json.
+
+Declare a named exported scroll variable before a horizontal row, then reference it with
+`{"horizontalScroll":"@products_scroll"}`. The pinned browser's implicit literal0 path
+places a FloatConstant inside paint traversal and resets the context position on redraw.
+The named reference avoids this problem and is verified in the full page on all three players.
