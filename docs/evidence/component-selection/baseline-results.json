@@ -1,0 +1,72 @@
+{
+  "thresholds": {
+    "mae": 1,
+    "fractionOver12": 0.01
+  },
+  "baseline": "2026-11-04 browser acceptance; reviewed responsive-source updates at aac2c0e; all nine images are pixel-identical to the historical reviewed browser goldens",
+  "results": [
+    {
+      "id": "graphics",
+      "platform": "browser",
+      "passed": true,
+      "mae": 0,
+      "badFraction": 0
+    },
+    {
+      "id": "bitmaps",
+      "platform": "browser",
+      "passed": true,
+      "mae": 0,
+      "badFraction": 0
+    },
+    {
+      "id": "layouts",
+      "platform": "browser",
+      "passed": true,
+      "mae": 0,
+      "badFraction": 0
+    },
+    {
+      "id": "phase-0",
+      "platform": "browser",
+      "passed": true,
+      "mae": 0,
+      "badFraction": 0
+    },
+    {
+      "id": "phase-1",
+      "platform": "browser",
+      "passed": true,
+      "mae": 0,
+      "badFraction": 0
+    },
+    {
+      "id": "phase-2",
+      "platform": "browser",
+      "passed": true,
+      "mae": 0,
+      "badFraction": 0
+    },
+    {
+      "id": "phase-3",
+      "platform": "browser",
+      "passed": true,
+      "mae": 0,
+      "badFraction": 0
+    },
+    {
+      "id": "phase-4",
+      "platform": "browser",
+      "passed": true,
+      "mae": 0,
+      "badFraction": 0
+    },
+    {
+      "id": "empty",
+      "platform": "browser",
+      "passed": true,
+      "mae": 0,
+      "badFraction": 0
+    }
+  ]
+}

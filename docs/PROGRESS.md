@@ -4,7 +4,10 @@ Updated 2026-11-04. Branch main. Current phase: usable cross-platform demonstrat
 with measured compatibility limited to the fixtures below. Prior main was pushed with
 explicit authorization; this editor-acceptance follow-up is local only.
 
-Latest editor acceptance: all ten stages of `sh scripts/verify-editor.sh` pass; one async
+Latest feature: canvas selection and Component JSON are implemented and verified; see the
+final section and component-selection evidence. Native full-page regression is fresh.
+
+Previous editor acceptance: all ten stages of `sh scripts/verify-editor.sh` pass; one async
 published-load draft-loss defect fixed. See the final section and FULL_FEATURE_TEST_REPORT.
 Browser/backend evidence is fresh; native results below are historical.
 
@@ -370,3 +373,30 @@ protected ID-bearing duplication, static full-page category pills, Chrome-only e
 No fresh native rerun. Next: broaden browser/native acceptance and improve inspector field
 organization separately. Commit this tested source/evidence milestone locally; no push is
 authorized for these new changes. Use git log to identify its final commit hash.
+
+
+## Component selection, scoped JSON and native regression (2026-11-04)
+
+Implemented Select/Interact modes, measured layout outlines, exact Component JSON/path,
+nested Parent navigation, Find in document and isolated subtree Apply. Pending scoped drafts
+survive reload; malformed/stale buffers preserve document/preview. Full source remains the
+protocol source of truth. Picking is disabled for stale previews or mismatched player trees.
+No published editor metadata, renderer/compiler changes or native source changes.
+
+Verified: full verify-editor command11 stages pass; final targeted18-case selection rerun;
+85 fresh JVM,16 model,3 source/mapping,4 fresh Android unit tests;9 unchanged pixel goldens;
+Android assemble/lint and4 instrumentation tests; iOS build and full-page XCTest pass.
+A headline edit authored through Component JSON produced one1,980,638-byte publication with
+SHA c3e96414df541d94e1fdc80c2674efda5bbd20feb6b33b27ed81a33d80fd6238; both native tests
+verified its digest and27 actions. Full native/editor screenshots were inspected. Client
+build hashes remained unchanged across publication and native execution. See
+[report](FULL_FEATURE_TEST_REPORT.md#component-selection-and-native-regression--2026-11-04)
+and [evidence](evidence/component-selection/README.md).
+
+Known limits: canvas-command granularity, Interact required for scrolling, no general
+source-map contract for unsupported player operations. Existing browser zIndex modifier bug
+was isolated with a minimal reproduction; selection follows actual painted order. No upstream
+changes or cross-platform zIndex claim. Human novice-usability sessions remain recommended.
+Native apps returned to8080; its publication and prior ignored native test binding preserved.
+Changes are committed locally on main; identify the milestone with git log. Do not push
+without new authorization. Next: novice usability observation, then separate zIndex research.

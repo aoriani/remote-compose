@@ -22,13 +22,15 @@ can still require client releases.
 - `pipeline/`: standalone Kotlin/JVM compiler CLI, unchanged upstream sources and tests.
 - `player-smoke/`: real binary browser player harness and automated pixel checks.
 - `web-editor/`: designed authoring workbench, asset gallery and genuine browser preview.
+  `selection.mjs` / `inspector.mjs` provide editor-only measured picking and scoped JSON.
 - `assets/`: original transparent artwork, prompts and separate JVM/editor catalogs.
 - `samples/retail-home.json`: full interactive default; `interactive-retail.json` is an identical compatibility alias.
 - `docs/DESIGN_SYSTEM.md` / `docs/VISUAL_REDESIGN.md`: visual conventions and actual render evidence.
 - `android-player/`: Java generic viewer, Kotlin Material3 chrome and official AndroidX renderer.
 - `ios-player/`: Swift debug shell, Objective-C++ bridge and C++/Skia Metal renderer.
 - Backend HTTP service and immutable version store are in `pipeline/src/main/kotlin/demo/pipeline/Backend.kt`.
-- Run `sh scripts/verify-demo.sh` for backend/editor checks; mobile commands are in GETTING_STARTED.
+- Run `sh scripts/verify-demo.sh` for quick checks, `sh scripts/verify-editor.sh` for full
+  browser acceptance; mobile commands are in GETTING_STARTED and DEVELOPMENT_GUIDE.
 
 ## Development rules
 
@@ -39,6 +41,8 @@ can still require client releases.
 - Do not treat research commit references as tested compatible dependency pins.
 - Do not create another business-widget protocol or an HTML approximation renderer.
 - Primitive JSON is authoritative. Keep editor metadata separate; preserve custom trees.
+  Canvas selection must match the compiled source and measured player tree; never inject
+  editor IDs into published bytes or execute remote actions in Select mode.
 - Android must build, test, install, and debug using SDK/Gradle/emulator CLI tools.
   Do not depend on Android Studio workflows. iOS builds require Xcode on macOS.
 - Use meaningful commits after validated milestones; never reset user work, rewrite

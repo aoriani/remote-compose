@@ -335,3 +335,31 @@ Browser golden manifest under evidence/editor-acceptance reuses historical PNGs.
 binary hashes changed earlier with responsive width expressions, while all nine reviewed PNGs
 remain pixel-identical. Keep original native baselines and strict thresholds. Final evidence
 and limits are in FULL_FEATURE_TEST_REPORT; this run does not renew native compatibility proof.
+
+
+## Measured component selection (2026-11-04)
+
+selection.mjs maps supported typed/shorthand primitive layouts to decoded player nodes by
+structure/opcode with checked child counts. Ignore nonvisual variable declarations; text may
+be opcode208 (TextLayout) or239 (CoreText). CanvasContent207 is not a source layout. Use player
+getLocationInWindow and subtract self padding for the outer box; ancestors already contribute
+padding/scroll. Clip hit testing and selection bounds to explicit ancestors/viewport. Never
+infer component locations from business templates or insert editor IDs in published bytes.
+
+inspector.mjs keeps pending scoped text separate from authoritative source, stored in
+rc-component-draft for reload recovery. Snapshot equality prevents stale patching; Apply uses
+the same JVM compilation path. Startup can preview the authoritative document while restoring
+a pending buffer. Find in document token-walks valid JSON, including escaped strings. Select
+captures pointerdown before the player, so it must not run host/local actions. Default Interact
+keeps prior input behavior. Nonvisual primitives remain reachable through Layers.
+
+Run verify-editor (now11 stages) and the existing native FullRetail tests after selection-
+authored publication with selection-publish.mjs. Do not concurrently overwrite the shared
+samples/full-retail-run binding. Current evidence records a fresh full-page hash match and
+27 actions on each native player. Restore demo8080 endpoints and prior binding afterward.
+
+Known upstream defect: browser LayoutComponent assigns mZIndex from ZIndexModifier.mValue,
+which is absent; modifier exposes mCurrentValue/getValue instead. A red zIndex2 canvas is
+covered by later blue zIndex0. Picking must agree with actual painter ordering. Minimal
+reproduction is in evidence/component-selection; native parity for it is unverified. No fix
+was introduced into pinned upstreams during this editor-only feature.

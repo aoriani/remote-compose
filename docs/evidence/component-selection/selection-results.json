@@ -1,0 +1,79 @@
+{
+  "results": [
+    {
+      "name": "Canvas selection uses measured hero bounds, reveals exact JSON, emits no event and leaves bytes unchanged",
+      "passed": true
+    },
+    {
+      "name": "Nested carousel canvas and parent state container remain inspectable",
+      "passed": true
+    },
+    {
+      "name": "Unapplied component edits cannot be silently discarded by changing selection",
+      "passed": true
+    },
+    {
+      "name": "Unapplied scoped JSON and last authoritative preview are recovered after browser reload",
+      "passed": true
+    },
+    {
+      "name": "Scoped JSON apply patches only the selected subtree and compiles genuine bytes",
+      "passed": true
+    },
+    {
+      "name": "Find in document selects the exact source range",
+      "passed": true
+    },
+    {
+      "name": "Malformed scoped JSON preserves document and discard restores selection",
+      "passed": true
+    },
+    {
+      "name": "Scoped compilation failure preserves last preview/publication and unrelated sections, then recovers",
+      "passed": true
+    },
+    {
+      "name": "Stale scoped apply preserves newer full-document edits",
+      "passed": true
+    },
+    {
+      "name": "Malformed full source does not crash the component inspector",
+      "passed": true
+    },
+    {
+      "name": "Interact mode still delivers the original Scan & Go event",
+      "passed": true
+    },
+    {
+      "name": "Selection remains aligned at 65 percent zoom",
+      "passed": true
+    },
+    {
+      "name": "Custom shorthand nested canvas maps through padding without template recognition",
+      "passed": true
+    },
+    {
+      "name": "Scrolled custom layouts select the visible row using live player bounds",
+      "passed": true
+    },
+    {
+      "name": "Stale preview refuses canvas picking after document reorder",
+      "passed": true
+    },
+    {
+      "name": "Overlapping selection matches actual blue pixels; pinned zIndex modifier ignored by renderer",
+      "passed": true
+    },
+    {
+      "name": "Ancestor rectangular and rounded clipping exclude invisible child areas and constrain selection outline",
+      "passed": true
+    },
+    {
+      "name": "Single non-column root is selectable",
+      "passed": true
+    }
+  ],
+  "errors": [],
+  "browser": "156.0.8078.80",
+  "originalSha256": "5f32c3221aa7ce717151c6f0adb8e591de968abe2b172f97bff511748d258bda"
+}

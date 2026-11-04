@@ -1,7 +1,7 @@
 # Full feature and rendering validation
 
-Latest: [full editor acceptance](#full-editor-acceptance--2026-11-04) and
-[screenshots/proof](evidence/editor-acceptance/README.md). Earlier browser/native results
+Latest: [component selection and native regression](#component-selection-and-native-regression--2026-11-04)
+and [screenshots/proof](evidence/component-selection/README.md). Earlier browser/native results
 remain scoped to their recorded revisions.
 
 > Native viewport follow-up: the manually found margins exposed a gap in this review's
@@ -626,3 +626,76 @@ old cross-platform rasterization differences remain recorded above.
 [Rendered screenshots and results](evidence/editor-acceptance/README.md) are portable.
 Recommended next checks: Safari/Firefox and native refresh of the new editor's publications;
 then address canvas input/accessibility and inspector grouping as separate scoped changes.
+
+
+## Component selection and native regression — 2026-11-04
+
+**Canvas picking and scoped JSON editing work, with passing editor and native regressions.**
+Choose Select, click a measured layout, inspect its exact JSON/path, then apply an edit to
+that subtree. Parent navigation and Find in document connect nested layouts to full source.
+Interact retains the genuine player's normal buttons and scroll gestures. The editor defaults
+to Interact to preserve the existing demonstration behavior.
+
+Tests start from clean main6997f49 plus this commit's changes, with unchanged upstream pins,
+JDK/Chrome/SDK versions from the preceding report. No native, backend or compiler source
+changed. Initial mapping tests found that text uses CoreText239 as well as TextLayout208;
+both are now explicitly checked. A test's assumed Scan & Go event201 was corrected to the
+actual existing event42. These initial failures were not accepted as passes.
+
+| Verification | Result |
+| --- | --- |
+| Full editor command | All11 stages pass;76 property edits/12 templates,30 binary fixtures, custom trees, lifecycle, responsive/scroll, retail/carousel and raw JSON remain covered |
+| New actual browser workflow | 18 targeted cases pass, including a final rerun after pending-draft UI/busy-state refinements and the additional scoped compile-failure check |
+| JVM and Node | 85 JVM tests forced fresh;16 existing model tests plus3 new path/mapping tests pass |
+| Browser pixels | Nine static historical goldens remain pixel-identical; selection clicks leave source and compiled hash unchanged |
+| Android CLI | assembleDebug and lintDebug pass;4 unit tests forced fresh;4 instrumentation tests pass: FullRetailTest, both ViewerTest methods, DebugSheetTest |
+| iOS CLI | C++/Swift Simulator build passes; testFullRetailPage passes in73.457s with zero failures |
+| Cross-platform publication | Actual component-inspector edit compiled/published once; exact digest verified by browser and both native tests;27 retail events per native player |
+
+The dedicated cases cover selecting the full-page hero and nested carousel canvas; parent/
+layer synchronization; isolated subtree patching; exact source-range navigation; malformed
+JSON; stale scoped edits; reload recovery with the last authoritative preview; scoped compiler
+failure without replacing preview/publication; normal event42 in Interact;65% zoom; custom
+shorthand layouts/padding; live scroll coordinates; stale-preview refusal; overlapping paint
+order; ancestor rectangular/rounded clipping and a standalone root. Source navigation unit
+tests also cover root arrays, escaped strings, formatting and deliberate mapping mismatch.
+Selection produces no host event. Pending component edits are clearly marked and must be
+resolved before selection changes, visual mutations or publishing.
+
+Native handoff used `selection-publish.mjs` against isolated8092. It clicked the full-page hero,
+changed only `Good things.` to `Fresh picks.` in Component JSON, applied and published it.
+Publication13: **1,980,638 bytes**, SHA-256
+`c3e96414df541d94e1fdc80c2674efda5bbd20feb6b33b27ed81a33d80fd6238`.
+The browser checks exact subtree preservation; FullRetailTest and testFullRetailPage verify
+this complete published document, its digest, independent favorites, quantities, carousel
+arrows/dots, automatic wrap and host events. Android ViewerTest separately verifies manual/
+auto refresh, failed/corrupt response preservation and recovery; DebugSheetTest protects
+native controls. Android APK and iOS executable hashes before/after publication are identical.
+
+Actual editor and full-screen native captures were inspected: the changed headline appears
+on both native clients with full-width content, clear product artwork and preserved controls.
+Selected product hearts and quantities remain visible. Evidence includes originals, event
+logs, exact hashes and test names in [the portable bundle](evidence/component-selection/README.md).
+The old8080 publication and prior ignored test binding were preserved; both native apps were
+returned to8080 after testing. No remote push was performed for this milestone.
+
+### Limits and next usability checks
+
+Selection is at layout-primitive granularity: a canvas's graphics are inspected together in
+its commands array. Select mode does not scroll; switch to Interact, scroll, then Select.
+Unknown/mismatched decoded trees or stale previews disable picking instead of guessing.
+Layers and Document JSON remain available. Existing canvas wheel/keyboard/screen-reader,
+undo/redo, static category and protected-duplication limits remain.
+
+Overlap testing found an existing pinned browser zIndex defect. LayoutComponent.inflate reads
+`mValue`, but ZIndexModifier stores `mCurrentValue` and exposes `getValue()`. The renderer
+therefore uses the original order; selection follows that actual order. The
+[minimal reproduction](evidence/component-selection/zindex-repro.json) and actual blue-pixel
+assertion distinguish this from a selection defect. No upstream workaround was introduced;
+Android/iOS rendering of this specific reproduction remains unverified.
+
+This milestone checks one Android emulator and one iOS Simulator, not every device or protocol
+operation. Fonts/rasterization remain platform-specific. Automated task completion and visual
+inspection do not establish novice usability: next have an unfamiliar engineer select a
+banner, find its source, change a headline, replace an image and publish without guidance;
+record hesitation, errors and task completion before calling the workflow intuitive.

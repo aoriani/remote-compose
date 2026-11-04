@@ -75,3 +75,17 @@ Native executable hashes remain unchanged. Browser held-press pixels and native 
 frames are recorded in evidence/full-retail. This adds scoped full-page evidence, not general
 protocol/physical-device conformance. Named horizontal scroll state is required for reliable
 browser redraw/hit testing; see JSON_FORMAT and FULL_FEATURE_TEST_REPORT.
+
+
+### Browser inspection and z-index finding (2026-11-04)
+
+Editor-only selection uses measured decoded layouts; it adds no protocol capability or
+client dependency. Full-page scoped-edit publication was verified in both native players;
+see [evidence](evidence/component-selection/README.md). Canvas drawing commands are inspected
+as a group. Generic accessibility and wheel limitations remain unchanged.
+
+The pinned browser player's zIndex modifier is compiled but not reflected in paint order:
+LayoutComponent reads a nonexistent mValue instead of ZIndexModifier.getValue(). The
+[minimal red/blue reproduction](evidence/component-selection/zindex-repro.json) verifies the
+actual browser result. Selection agrees with that result; it does not fix or conceal it.
+This specific z-index case has not been compared on Android/iOS.

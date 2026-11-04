@@ -121,6 +121,15 @@ creation, build/install commands, networking, and tests.
 | Android | JDK, Android SDK command-line tools, Gradle, `adb`, and Android Emulator. Android Studio is not required. Use `adb reverse tcp:8080 tcp:8080` for the local backend. |
 | iOS | macOS, full Xcode, `xcodebuild`, `xcrun`, and an arm64 iOS Simulator. Simulator localhost reaches the Mac backend. Physical-device packaging/signing is not implemented. |
 
+## Click a component to inspect its JSON
+
+Choose **Select** above the phone, then click a component. The editor highlights its layer
+and shows its exact **Component JSON**, including a source path. **Apply component & preview**
+updates only that subtree; **Find in document** locates it in the full JSON. Use **Interact**
+for buttons, favorites, carousel controls and scrolling. See the [demo walkthrough](docs/DEMO_GUIDE.md#inspect-and-edit-a-component).
+
+![Select a component and inspect its JSON](docs/evidence/component-selection/editor.png)
+
 ## Validation
 
 After installing dependencies, choose the quick regression or the comprehensive editor check:
@@ -184,6 +193,8 @@ for exact hashes, environment, fixes, initial failures, and the limits of this e
 Fresh editor evidence: [full acceptance screenshots and results](docs/evidence/editor-acceptance/README.md)
 cover all 12 templates, 76 property edits, custom JSON, lifecycle failures and interactions.
 This browser/backend run does not imply a fresh native rerun.
+
+Latest feature evidence: [component selection, scoped JSON and native regression](docs/evidence/component-selection/README.md).
 
 Every tracked Markdown guide is linked from this README. `python3 scripts/check-project.py`
 checks that coverage along with local documentation links. Historical reports preserve the

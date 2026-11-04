@@ -1,0 +1,76 @@
+{
+  "header": {
+    "width": 390,
+    "height": 844,
+    "profiles": 512
+  },
+  "root": {
+    "type": "box",
+    "modifiers": [
+      {
+        "fillMaxSize": 1
+      }
+    ],
+    "children": [
+      {
+        "type": "canvas",
+        "modifiers": [
+          {
+            "width": 180
+          },
+          {
+            "height": 180
+          },
+          {
+            "zIndex": 2
+          }
+        ],
+        "commands": [
+          {
+            "type": "paint",
+            "ops": [
+              {
+                "color": "#FF0000"
+              }
+            ]
+          },
+          {
+            "type": "drawRect",
+            "left": 0,
+            "top": 0,
+            "right": 180,
+            "bottom": 180
+          }
+        ]
+      },
+      {
+        "type": "canvas",
+        "modifiers": [
+          {
+            "width": 260
+          },
+          {
+            "height": 260
+          }
+        ],
+        "commands": [
+          {
+            "type": "paint",
+            "ops": [
+              {
+                "color": "#0000FF"
+              }
+            ]
+          },
+          {
+            "type": "drawRect",
+            "left": 0,
+            "top": 0,
+            "right": 260,
+            "bottom": 260
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -71,3 +71,21 @@ JSON before deliberately replacing a draft. Confirm “Preview matches draft” 
 presenting a preview; Publish and Preview are separate actions. Do not rebuild apps
 while demonstrating a new composition. Allow the configured refresh interval to elapse.
 The review and screenshots are in DEMONSTRATION_REVIEW.md.
+
+
+## Inspect and edit a component
+
+1. Open the editor, wait for the current draft to compile, then choose **Select** above the phone.
+2. Click the Scan & Go hero. Its layer is selected, its measured bounds are outlined, and
+   **Component JSON** shows its exact primitive object and source path.
+3. Change `Good things.` to `Fresh picks.` in that object's drawing commands. Choose
+   **Apply component & preview**. Other page sections, resources and actions stay intact.
+4. Choose **Find in document** to see the same object selected in **Document JSON**.
+   For a nested canvas, **Parent** opens its surrounding layout/state container.
+5. Choose **Interact** to test buttons or drag the page; selection clicks do not fire actions.
+6. Publish and refresh both native viewers. The new content uses the same generic clients.
+
+Layers can also select components when they are offscreen or do not draw anything. If the
+full draft has changed since compilation, canvas selection asks for a fresh preview rather
+than guessing a source location. Pending component edits survive reload; Apply or Discard
+before switching selections. Discard affects only the uncommitted component buffer.

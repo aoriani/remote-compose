@@ -74,7 +74,7 @@ After installing the prerequisites and setting JAVA_HOME, run:
 sh scripts/verify-editor.sh
 ```
 
-This runs verify-demo (JVM/model/real-player smoke) and ten broader real-browser stages.
+This runs verify-demo (JVM/model/real-player smoke) and eleven broader real-browser stages.
 It starts a private backend on an ephemeral port, preserves demo publications and the existing
 full-retail test binding, and shuts that backend down. No emulator/Simulator is required.
 `artifacts/editor-acceptance/latest.json` identifies the completed run; its run.json lists
@@ -88,3 +88,44 @@ restores supported clipboard formats, instead of Chromium's event-heavy multilin
 The reviewed browser baseline manifest reuses earlier images and enforces fixture identity;
 inspect source/hash changes before approving baseline revisions. See the
 [acceptance report](FULL_FEATURE_TEST_REPORT.md#full-editor-acceptance--2026-11-04).
+
+
+## Selection regression checks
+
+The full editor acceptance now includes `player-smoke/selection-smoke.mjs`: real canvas
+picking, scoped edit/recovery, exact document-range navigation, malformed/stale drafts,
+custom shorthand/nested layouts, zoom, scrolling, overlap and clipping. Three source-navigation
+and mapping guard tests run alongside the model tests. Selection must not emit host events;
+Interact must retain the original callbacks. Preserve the source/tree identity checks when
+changing the player or parser, and never introduce editor IDs into the mobile document.
+
+For native regression, `RC_TEST_URL=http://127.0.0.1:8092 sh scripts/node.sh node
+player-smoke/selection-publish.mjs` authors a full-page headline change through the actual
+component inspector and publishes it. It writes samples/full-retail-run.json for the existing
+Android FullRetailTest and iOS testFullRetailPage. Run these sequentially after browser
+acceptance; both suites share that test binding. Use an isolated8092 publication store, not
+the live8080 demo. The entry point is a Node command on one line:
+
+```sh
+RC_TEST_URL=http://127.0.0.1:8092 sh scripts/node.sh node player-smoke/selection-publish.mjs
+```
+
+
+With SDK/JDK variables configured and both native clients installed (see Getting started),
+the native checks used for this scoped-edit handoff are:
+
+```sh
+adb reverse tcp:8092 tcp:8092
+sh scripts/gradle.sh -Pandroid :android-player:connectedDebugAndroidTest \
+  -Pandroid.testInstrumentationRunnerArguments.class=demo.remotecompose.FullRetailTest,demo.remotecompose.ViewerTest,demo.remotecompose.DebugSheetTest --console=plain
+DEVELOPER_DIR=/Applications/Xcode.app/Contents/Developer xcodebuild test \
+  -project ios-player/UITests.xcodeproj -scheme DemoUITests \
+  -only-testing:DemoUITests/DemoUITests/testFullRetailPage \
+  -destination "platform=iOS Simulator,id=$IOS_SIMULATOR" \
+  -derivedDataPath ios-player/build/uitests CODE_SIGNING_ALLOWED=NO
+```
+
+Preserve any prior samples/full-retail-run.json before publishing this test change and
+restore it after both native suites finish. Do not publish other test documents or run a
+second suite against the same native devices during this handoff. Restore the viewers'
+normal backend URLs afterward; these commands do not change the live8080 publication.

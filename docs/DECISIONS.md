@@ -323,3 +323,28 @@ emits an input event storm absent from the user paste path. Restore supported cl
 contents. Keep failed-run diagnoses and precise scope alongside the final passing result.
 Consequences: reproducible broad editor testing, longer runtime than smoke, and no claim that
 browser acceptance alone revalidates Android/iOS or accessibility.
+
+
+## 031 — Editor-only measured selection and scoped source editing (2026-11-04)
+
+Keep the published protocol and clients unchanged. Pair supported JSON layouts with the
+pinned player's decoded layout tree, asserting types/counts, and use its measured bounds.
+A DOM selection outline is authoring chrome; mobile content continues to be actual binary
+rendering. A stale source or mapping mismatch disables canvas picking without blocking JSON.
+
+Alternatives considered: coordinate guesses based on widget types (wrong for custom/nested
+layouts), new IDs in published JSON (would alter binaries and client assumptions), or sending
+clicks to the player to discover selected nodes (would execute real actions). Rejected all.
+Select captures input for inspection; Interact preserves existing input/scroll behavior and
+remains the default. Canvas commands are inspected as their containing canvas primitive.
+
+Scoped edits are a separately persisted input buffer. Apply replaces one source path and
+uses existing compilation; full source remains authoritative. Snapshot checks protect newer
+document edits, and selection/mutation/publish require resolving pending component changes.
+Exact-range navigation supports arbitrary formatting and escaped strings. No new parser,
+renderer, protocol operation or native business component is introduced.
+
+A pinned browser zIndex defect was observed during overlap testing: LayoutComponent reads
+mValue while ZIndexModifier exposes mCurrentValue/getValue. Selection follows the actual
+painted order. Record a minimal reproduction, leave the renderer unchanged in this scoped
+change, and investigate cross-platform z-order separately.

@@ -134,3 +134,33 @@ Implementation: [DebugSheet.kt](../android-player/src/main/kotlin/demo/remotecom
 See [usage](DEBUGGING.md#android-material-debug-sheet),
 [tests and screenshots](FULL_FEATURE_TEST_REPORT.md#android-material-debug-bottom-sheet--2026-11-04),
 and [decision029](DECISIONS.md#029--android-diagnostics-use-the-existing-material-3-compose-shell-2026-11-04).
+
+
+## Canvas selection and component JSON
+
+Selection is browser authoring UI, separate from Remote Compose rendering and host actions.
+The default **Interact** mode preserves normal player input. **Select** captures pointer-down
+before the player receives it, reads the decoded layout tree and reveals the selected source
+subtree. It never sends a simulated native action or changes document IDs/binary operations.
+
+`web-editor/selection.mjs` pairs the validated source tree with the pinned decoded layout tree,
+checking primitive opcode and child counts. It handles the parser's typed/shorthand layouts,
+root arrays, variable declarations and both TextLayout/CoreText representations. Coordinates
+come from measured player bounds and live ancestor padding/scroll positions, with viewport
+and ancestor clipping. Hit testing follows the player's paint order. A mismatch disables
+canvas picking; Layers and full document editing remain available. Drafts must match the
+compiled preview before picking can resume. This is a guarded adapter to the pinned player,
+not a general protocol source-map guarantee.
+
+`inspector.mjs` keeps a scoped input buffer until Apply, then patches only the selected path
+in the authoritative primitive document and compiles through the existing JVM endpoint.
+Malformed scoped JSON preserves the document. Source snapshots prevent applying an old
+component buffer over newer full-document edits. Pending component drafts are stored separately
+in localStorage and recovered after reload, while the last authoritative document is previewed.
+They must be applied/discarded before changing selection, performing visual mutations or
+publishing. Find in document walks JSON tokens to select the exact range without reformatting.
+
+The selection rectangle is editor chrome outside the canvas, absent from exports and mobile
+binary output. A canvas primitive may contain many shapes; selection exposes that primitive's
+commands together rather than claiming each painted shape is a separate layout component.
+Use Interact to scroll and return to Select to inspect the visible portion.
