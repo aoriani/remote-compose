@@ -93,3 +93,44 @@ its own variables; a named products_scroll is declared before the horizontal row
 mobile UI implementation or business component registry is involved. Inspector edits patch
 recognized fields; custom action/layout changes fall back to source editing without loss.
 See INTERACTIVE_DEMO and the full-page acceptance section of FULL_FEATURE_TEST_REPORT.
+
+
+## Android native debug sheet
+
+The Android debug controls belong to the native player shell, independently of remotely
+authored content. The same sheet remains available when a fetch or decode fails.
+
+```mermaid
+flowchart LR
+  Host[MainActivity: fetch, publication identity, bounded host events] --> Snapshot[Immutable DebugInfo snapshot]
+  Snapshot --> State[PlayerChrome.State: Compose observable state]
+  State --> Sheet[DebugSheet: Material 3 ModalBottomSheet]
+  Sheet --> Draft[Local settings draft and validation]
+  Draft --> Actions[DebugActions: apply or clearEvents]
+  Actions --> Host
+```
+
+- `MainActivity.showState()` copies settings, version, bytes, SHA-256, decoded header,
+  viewport metrics, fetch status and the latest50 events into `DebugInfo`. Copying the
+  event list lets Compose observe changes without sharing a mutable collection.
+- `PlayerChrome` owns visibility. `DebugSheet` uses the existing Material3 1.3.2 dependency,
+  standard modal dismissal, scrollable tabs and content, and keyboard/navigation insets.
+  The sheet is removed from composition after closing; it does not replace the player view.
+- Connection settings are a separate local draft. `rememberSaveableStateHolder` preserves
+  that draft when switching tabs; incoming fetch snapshots do not overwrite it. Dismissing
+  the sheet discards unapplied changes. Apply accepts HTTP(S) server URLs without credentials,
+  query or fragment, plus a whole-number interval of2–300 seconds. Errors stay inline.
+- `DebugActions.apply` persists valid settings, clears the ETag if the server changed,
+  replaces the scheduled refresh cadence and calls the existing guarded refresh method.
+  Fetch/decode failures continue to retain the last valid document. Native polling runs
+  only while the activity is active; it does not drive document animations.
+- Document metadata is selectable and scrollable. Events are generic ID/name/payload
+  callbacks, shown newest first; Clear events empties the host log without changing
+  document state. No retail-specific actions or widgets are implemented in the sheet.
+
+Implementation: [DebugSheet.kt](../android-player/src/main/kotlin/demo/remotecompose/DebugSheet.kt),
+[PlayerChrome.kt](../android-player/src/main/kotlin/demo/remotecompose/PlayerChrome.kt), and
+[MainActivity.java](../android-player/src/main/java/demo/remotecompose/MainActivity.java).
+See [usage](DEBUGGING.md#android-material-debug-sheet),
+[tests and screenshots](FULL_FEATURE_TEST_REPORT.md#android-material-debug-bottom-sheet--2026-11-04),
+and [decision029](DECISIONS.md#029--android-diagnostics-use-the-existing-material-3-compose-shell-2026-11-04).

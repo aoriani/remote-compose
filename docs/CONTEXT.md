@@ -290,3 +290,19 @@ existing Java native tests: the pinned Espresso reflection path fails on Android
 with NoSuchMethodException android.hardware.input.InputManager.getInstance. No dependency
 upgrade is required to test the actual accessible UI. Unit validation covers endpoint schemes,
 URL structure and integral refresh intervals. The remote document and viewport are unchanged.
+
+
+## Documentation navigation and authorized GitHub transport (2026-11-04)
+
+The root README directly links every tracked Markdown guide, including historical reports,
+evidence READMEs and fixture documentation. check-project.py now enforces this coverage and
+checks relative Markdown/HTML image links across tracked guides. Add a README index entry
+when adding a new tracked guide. Architecture documents the Android DebugInfo/DebugActions
+flow; Debugging covers usage, and Development describes tests/extension rules.
+
+The user authorized publishing current main to the existing private aoriani/remote-compose
+repository. Earlier "no push" session notes are historical, not a restriction on this request.
+Default SSH access fails host-key verification in this environment; command-scoped HTTPS
+rewriting with gh auth git-credential succeeds without changing origin or disabling SSH
+verification. See GITHUB_SETUP for the exact command and audit scope. Future pushes still
+require explicit authorization; no force pushes or history rewrites.

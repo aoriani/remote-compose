@@ -4,6 +4,7 @@ import json
 from pathlib import Path
 import re
 import sys
+import subprocess
 from urllib.parse import unquote
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -21,13 +22,23 @@ def main():
     for relative in required:
         if not (ROOT / relative).is_file():
             errors.append("Missing " + relative)
-    markdown = [ROOT / "README.md", ROOT / "AGENTS.md"]
-    markdown += sorted((ROOT / "docs").glob("*.md"))
-    markdown += sorted((ROOT / "samples").glob("*.md"))
+    tracked = subprocess.check_output(
+        ["git", "ls-files", "-z", "--", "*.md"], cwd=ROOT).decode().split("\0")
+    markdown = [ROOT / path for path in tracked if path]
+    readme_targets = {
+        unquote(target.strip("<>").split("#", 1)[0])
+        for target in re.findall(r"\]\(([^)]+)\)", (ROOT / "README.md").read_text())
+    }
+    for path in markdown:
+        relative = path.relative_to(ROOT).as_posix()
+        if relative != "README.md" and relative not in readme_targets:
+            errors.append("Guide missing from root README index: " + relative)
     for path in markdown:
         if not path.exists():
             continue
-        for target in re.findall(r"\]\(([^)]+)\)", path.read_text()):
+        targets = re.findall(r"\]\(([^)]+)\)", path.read_text())
+        targets += re.findall(r'<(?:img|a)\b[^>]*?\b(?:src|href)="([^"]+)"', path.read_text())
+        for target in targets:
             target = target.strip("<>")
             if "://" in target or target.startswith("#"):
                 continue
@@ -54,7 +65,7 @@ def main():
         print("ERROR: " + error, file=sys.stderr)
     if errors:
         return 1
-    print("PASS: required handoff files, local Markdown links, JSON syntax, and lock consistency")
+    print("PASS: required handoff files, root README guide coverage, local documentation/image links, JSON syntax, and lock consistency")
     print("NOT CHECKED: JSON compilation, binary validity, rendering, mobile builds, or events")
     return 0
 

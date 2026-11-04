@@ -76,4 +76,4 @@ former two-section test fixture. Run scripts/verify-full-retail.sh for full-page
 state is protocol-local; do not add platform timers/business widgets. Preserve the
 explicit products_scroll variable, generic browser nested-TextData shim, and minimal repro. Run scripts/verify-interactive.sh with an
 isolated backend8092, idle emulator and IOS_SIMULATOR; see its prerequisites. origin is a
-private GitHub repository; no push is authorized.
+private GitHub repository; push only with explicit user authorization.

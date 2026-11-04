@@ -35,6 +35,19 @@ See the interactive product states on [Android](docs/evidence/full-retail/androi
 and [iOS](docs/evidence/full-retail/ios-products-selected.png), plus
 [animation frames, event logs, and binary hashes](docs/evidence/full-retail/proof.json).
 
+### Android debug bottom sheet
+
+The native Android debug UI uses a Material 3 modal bottom sheet. **Connection** configures
+refresh and the backend; **Document** shows the binary identity and viewport; **Events**
+shows generic host callbacks. Settings remain drafts until **Apply and refresh now**.
+Invalid settings leave the active configuration/document intact; closing discards drafts.
+
+<img src="docs/evidence/android-debug-sheet/connection.png" alt="Android Material 3 debug bottom sheet with connection settings and refresh controls" width="320">
+
+See [how to use it](docs/DEBUGGING.md#android-material-debug-sheet),
+[how it works](docs/ARCHITECTURE.md#android-native-debug-sheet), and
+[verified tests and limitations](docs/FULL_FEATURE_TEST_REPORT.md#android-material-debug-bottom-sheet--2026-11-04).
+
 ## What works
 
 - **Visual authoring:** twelve templates, product asset browsing/replacement, section ordering,
@@ -159,6 +172,16 @@ for exact hashes, environment, fixes, initial failures, and the limits of this e
 | [Full test report](docs/FULL_FEATURE_TEST_REPORT.md) · [Screenshot evidence](docs/evidence/full-retail/README.md) | Measured behavior and actual rendered output |
 | [AGENTS.md](AGENTS.md) · [Progress](docs/PROGRESS.md) · [Context](docs/CONTEXT.md) · [Decisions](docs/DECISIONS.md) | Portable development instructions and session handoff |
 | [Third-party software](THIRD_PARTY.md) | Upstream attribution and dependency information |
+| [Native layout fixes](docs/NATIVE_LAYOUT_FIX.md) | Viewport sizing, density conversion, app bars, and native regression checks |
+| [Visual redesign](docs/VISUAL_REDESIGN.md) · [Demonstration review](docs/DEMONSTRATION_REVIEW.md) | Design iterations and earlier demonstration findings; dated evidence, not current certification |
+| [Foundation compatibility](docs/COMPATIBILITY_FOUNDATION.md) | Historical minimal-pipeline compatibility investigation |
+| [GitHub setup](docs/GITHUB_SETUP.md) | Private repository, remote transport, push authorization, and pre-push checks |
+| [Primitive samples](samples/README.md) · [Validation fixtures](samples/validation/README.md) · [Android test assets](android-player/src/androidTest/assets/README.md) | Fixture purposes, generation, and validation scope |
+| [Full validation evidence](docs/evidence/full-validation/README.md) · [Native layout evidence](docs/evidence/native-layout/README.md) · [Interaction evidence](docs/evidence/interactive/README.md) | Earlier recorded screenshot and cross-platform test runs |
+
+Every tracked Markdown guide is linked from this README. `python3 scripts/check-project.py`
+checks that coverage along with local documentation links. Historical reports preserve the
+results of their recorded revision; [Progress](docs/PROGRESS.md) identifies the current state.
 
 ## Current limits
 

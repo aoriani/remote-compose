@@ -318,3 +318,24 @@ Display/font/keyboard test overrides were restored. Physical-device, dark-mode, 
 and TalkBack checks remain unverified; browser/iOS were not rerun for this Android-only UI
 change. Next: obtain user feedback on the new sheet, then resume the broader demonstration
 validation backlog. Commit this milestone locally as `fix: replace Android debug dialog with Material bottom sheet`; do not push.
+
+
+## README coverage and authorized GitHub publication (2026-11-04)
+
+User authorized pushing main to the existing private GitHub repository. Reviewed the clean
+branch at9853484 and confirmed origin/account/private visibility. Before the first push the
+remote has no branches, so publication includes existing local history. Default SSH fails
+host-key verification; authenticated HTTPS works with a command-scoped rewrite (origin is
+preserved). See [GitHub setup](GITHUB_SETUP.md) for transport and audit scope.
+
+README now links every tracked Markdown guide and includes the new Android debug screenshot,
+usage, implementation and test links. Architecture explains snapshot flow, draft validation,
+settings persistence, refresh scheduling and generic host events. Development documents
+extension/testing boundaries. Existing historical research/evidence remains intact.
+
+Validation: doctor passes; check-project.py passes complete README coverage, local links and
+image paths; Python compilation and an isolated positive/negative coverage-check exercise
+pass; git diff --check passes. Historical targeted secret/filename scan found only a reviewed
+synthetic URL validation fixture and no real findings/oversize blobs. Runtime suites were
+not rerun for these documentation/checker changes; Android runtime results remain scoped
+to9853484. This milestone's publication is authorized; future pushes require authorization.

@@ -26,7 +26,7 @@ Keep fetch/decode failure preservation and host/local action distinctions. Andro
 Gradle/SDK/adb CLI; iOS uses CMake/xcrun. No physical-device iOS signer is configured.
 
 Update PROGRESS, CONTEXT, DECISIONS, compatibility and setup with each tested milestone.
-Commit source/tests/docs together; keep artifacts/caches/secrets out of Git. Do not push.
+Commit source/tests/docs together; keep artifacts/caches/secrets out of Git. Push only with explicit user authorization.
 
 For visual work use DESIGN_SYSTEM.md and the exact artwork prompts in assets/PROVENANCE.md.
 Keep mobile content primitive; capture actual player screenshots before accepting changes.
@@ -47,3 +47,20 @@ checks reviewed static goldens within each platform and rejects changed fixture 
 Keep native window size/density and normalization in the evidence. Never silently regenerate
 baselines to bless a failure. The reporter produces local REPORT.md/summary.json even when
 strict comparison fails. GUI tests must not run concurrently against the same emulator.
+
+
+## Android debug UI changes
+
+Keep native diagnostics in `PlayerChrome.kt` / `DebugSheet.kt`. Add generic snapshot fields
+through `DebugInfo` and `MainActivity.showState()`; use `DebugActions` for host mutations.
+Never put document-specific state, navigation or animation logic in the native sheet.
+Preserve the separate draft/apply lifecycle and bounded immutable event snapshots described
+in [Architecture](ARCHITECTURE.md#android-native-debug-sheet).
+
+Run the Android unit and CLI instrumentation command in the
+[debug-sheet test report](FULL_FEATURE_TEST_REPORT.md#android-material-debug-bottom-sheet--2026-11-04).
+`DebugSettingsTest` checks input validation. `DebugSheetTest` drives real accessible controls
+and an upstream-player host callback; ViewerTest and ViewportTest protect refresh and layout.
+Use UiAutomation on the API37 preview image because the pinned Espresso reflection path
+fails there. Inspect emulator screenshots with the keyboard open and larger text before
+accepting a layout change. Preserve existing dependency pins unless a separate change justifies it.
