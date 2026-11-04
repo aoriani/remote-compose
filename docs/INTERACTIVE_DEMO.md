@@ -1,8 +1,8 @@
 # Interactive primitive demo
 
 Implemented and exercised on pinned AndroidX8932b2c / experimentsa7a76f1. No upstream
-revision change. Load **Library → Load interactive demo** in the editor, then Preview
-or Publish. The older designed-page sample remains available separately; its decorative
+revision change. The editor opens this interactive design by default; **Reset to interactive design**
+restores it. Preview or Publish as needed. The older designed-page sample remains available separately; its decorative
 controls are not the interaction acceptance fixture.
 
 ## Document and timing
@@ -107,7 +107,7 @@ sh scripts/gradle.sh :pipeline:installDist
 PORT=8092 RC_DATA_DIR=data/interactive sh scripts/start-backend.sh
 ```
 
-Open http://127.0.0.1:8092. Load interactive demo, edit source/inspector, Preview and Publish.
+Open http://127.0.0.1:8092. Edit the default source/inspector, Preview and Publish.
 Set both native debug backend URLs to `http://127.0.0.1:8092`; use
 `adb reverse tcp:8092 tcp:8092` for Android. Do not share the emulator with another suite.
 

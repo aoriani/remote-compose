@@ -231,7 +231,7 @@ sh scripts/gradle.sh :pipeline:installDist
 PORT=8092 RC_DATA_DIR=data/interactive sh scripts/start-backend.sh
 ```
 
-Open http://127.0.0.1:8092, choose **Load interactive demo** in the Library, Preview and
+Open http://127.0.0.1:8092, use the interactive default (or **Reset to interactive design**), Preview and
 Publish. Native debug URLs must also use8092; Android requires `adb reverse tcp:8092 tcp:8092`.
 The inspector exposes carousel text/art/timing/order/visibility/actions; raw JSON remains
 editable. With an idle Android emulator and booted arm64 iOS Simulator, the focused suite is:

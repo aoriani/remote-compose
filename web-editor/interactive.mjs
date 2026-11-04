@@ -51,3 +51,5 @@ export function moveCarouselSlide(node,index,delta){
  blocks.forEach((block,i)=>{block[12].varName=`promo_art_${i}`;block[13].image=`@promo_art_${i}`;block[1].dx=`(((${i} - @promo_position + @promo_count * 1.5) % @promo_count + @promo_count) % @promo_count - @promo_count * 0.5) * (windowWidth() - 40)`;});
  node.children[15].commands=[...commands.slice(0,2),...blocks.flat(),commands.at(-1)];
 }
+
+export function interactiveDocument(){return {header:{width:390,height:844,profiles:512,fps:60,contentDescription:'Interactive Common Market — protocol-local state and host actions'},root:{type:'column',modifiers:[{fillMaxSize:1},{background:'#F5F4EF'},{verticalScroll:0}],children:[promotionalCarousel(),localShopping()]}};}

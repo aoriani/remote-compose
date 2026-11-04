@@ -1,0 +1,9 @@
+{
+  "freshStartupInteractive": true,
+  "realPlayerEvent": "carousel.next",
+  "resetInteractive": true,
+  "legacyAvailable": true,
+  "untouchedMigration": true,
+  "backupRetained": true,
+  "customDraftPreserved": true
+}

@@ -1,5 +1,5 @@
 import {chromium} from 'playwright';import assert from 'node:assert/strict';import {spawn} from 'node:child_process';import {mkdtemp,writeFile} from 'node:fs/promises';import {tmpdir} from 'node:os';import {resolve} from 'node:path';import {fileURLToPath} from 'node:url';
-import {catalog,createWidget,initialDocument,sections,assetSlots,patch} from '../web-editor/model.mjs';
+import {catalog,createWidget,legacyDesignedDocument as initialDocument,sections,assetSlots,patch} from '../web-editor/model.mjs';
 import {createHash} from 'node:crypto';
 import {mkdir} from 'node:fs/promises';
 const root=fileURLToPath(new URL('../',import.meta.url));

@@ -1,9 +1,10 @@
 import {initializeNestedText} from './player-adapter.mjs';
 import {moveCarouselSlide} from './interactive.mjs';
-import {catalog,createWidget,initialDocument,sections,setSections,recognize,patch,operate,assetSlots,updateField} from './model.mjs';
+import {catalog,createWidget,initialDocument,legacyDesignedDocument,startingSource,sections,setSections,recognize,patch,operate,assetSlots,updateField} from './model.mjs';
 const $ = s=>document.querySelector(s);
 let selected=0, player=null, serial=0, events=[], previewSource=null, busy=false, library=[], activeAsset='oat-milk', propertySection=-1;
-const source=$('#source');source.value=localStorage.getItem('rc-draft')||JSON.stringify(initialDocument(),null,2);
+const source=$('#source'), savedDraft=localStorage.getItem('rc-draft');source.value=startingSource(savedDraft);
+if(savedDraft&&source.value!==savedDraft){if(!localStorage.getItem('rc-draft-before-interactive-default'))localStorage.setItem('rc-draft-before-interactive-default',savedDraft);localStorage.setItem('rc-draft',source.value);}
 window.rcProof={events,ready:false};
 function message(value,error=false){$('#status').textContent=typeof value==='string'?value:JSON.stringify(value,null,2);$('#status').classList.toggle('error',error);if(error)$('#diagnostics').open=true;draftState();}
 const esc=s=>s.replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;');
@@ -91,4 +92,4 @@ $('#rail-library').onclick=()=>$('.library').scrollTo({top:0,behavior:'smooth'})
 $('#rail-json').onclick=()=>{tab(true);$('#json-panel').scrollIntoView({block:'nearest'});source.focus();};
 $('#rail-layers').onclick=()=>$('#outline').scrollIntoView({block:'start',behavior:'smooth'});
 
-$('#interactive-demo').onclick=async()=>{try{const response=await fetch('/samples/interactive-retail.json');if(!response.ok)throw Error('Interactive sample unavailable');selected=0;save(await response.json());await preview();}catch(e){message(String(e),true);}};
+$('#legacy-design').onclick=()=>{selected=0;save(legacyDesignedDocument());preview();};

@@ -230,3 +230,17 @@ against8092/latest. No push. Follow-up report/evidence commit followsbbdf2fc.
 Next: presentation review, optional inspector grouping/long-copy handling, namespace-safe
 multi-carousel authoring, physical-device/accessibility/performance validation. General
 protocol functions and strict cross-player typography parity are still not certified.
+
+## Interactive design is now the default (2026-11-04)
+
+Fresh editor sessions and Reset now use the fully interactive retail composition, not
+the older static landing page. The previous design remains explicitly available via
+Load previous static design. One shared source factory drives startup and the checked-in
+interactive fixture. Untouched saved copies of the old default migrate with a local backup;
+custom/modified/malformed drafts are preserved. No publication is changed by startup/reset.
+
+Verified14 model tests, existing real twelve-template browser regression and a new real
+browser startup/reset/legacy/migration/custom-draft/player-event test. Screenshot and
+results are in evidence/default-design. Restarted the stale8080 JVM service with the
+already validated current compiler; its existing publication19 was preserved. No native
+changes or remote push. This milestone's commit is identified by git log.

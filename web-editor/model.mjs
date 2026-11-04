@@ -1,4 +1,4 @@
-import {promotionalCarousel,carouselFields} from './interactive.mjs';
+import {promotionalCarousel,carouselFields,interactiveDocument} from './interactive.mjs';
 // Authoring templates only: their output is upstream primitive JSON, never client widgets.
 export const colors={paper:'#F5F4EF',ink:'#182C38',muted:'#616D77',blue:'#305BEF',navy:'#203B73',line:'#E3E6E6',white:'#FFFFFF',sage:'#E6ECDD',peach:'#F7E4D6'};
 export const text=(value,fontSize=20,color=colors.ink)=>({type:'text',value,fontSize,color});
@@ -70,7 +70,7 @@ export function operate(doc,index,operation) {
   if(to>=0&&to<list.length&&to!==index)[list[index],list[to]]=[list[to],list[index]];
   setSections(doc,list);return Math.min(Math.max(to,0),list.length-1);
 }
-export function initialDocument(){return {header:{width:390,height:844,profiles:512,fps:60},root:column([header(),canvas(60,[...label('Hello, Alex',20,16,12,colors.muted),...label('A good day starts here.',20,45,26)]),hero(),canvas(58,[paint(colors.blue),rect(20,8,74,30,15),...label('For you',36,23,12,'#FFFFFF'),...label('Fresh',119,23,12,colors.muted),...label('Pantry',199,23,12,colors.muted),...label('Home',287,23,12,colors.muted)]),promo(),{...text('The good stuff',25),fontWeight:650,modifiers:[{padding:[20,16,20,12]}]},products(),badge(),{...text('A little inspiration',25),fontWeight:650,modifiers:[{padding:[20,16,20,16]}]},news(),progress(),{type:'spacer',modifiers:[{height:24}]}],[{fillMaxSize:1},{background:colors.paper},{verticalScroll:0}])};}
+export function legacyDesignedDocument(){return {header:{width:390,height:844,profiles:512,fps:60},root:column([header(),canvas(60,[...label('Hello, Alex',20,16,12,colors.muted),...label('A good day starts here.',20,45,26)]),hero(),canvas(58,[paint(colors.blue),rect(20,8,74,30,15),...label('For you',36,23,12,'#FFFFFF'),...label('Fresh',119,23,12,colors.muted),...label('Pantry',199,23,12,colors.muted),...label('Home',287,23,12,colors.muted)]),promo(),{...text('The good stuff',25),fontWeight:650,modifiers:[{padding:[20,16,20,12]}]},products(),badge(),{...text('A little inspiration',25),fontWeight:650,modifiers:[{padding:[20,16,20,16]}]},news(),progress(),{type:'spacer',modifiers:[{height:24}]}],[{fillMaxSize:1},{background:colors.paper},{verticalScroll:0}])};}
 
 /** Image slots work for custom primitive trees too; no template regeneration. */
 export function assetSlots(node,path=[]){if(!node||typeof node!=='object')return [];let result=[];if(node.type?.toLowerCase()==='addbitmap'&&typeof node.image==='string')result.push({path:[...path,'image'],value:node.image});if(node.addBitmap?.image)result.push({path:[...path,'addBitmap','image'],value:node.addBitmap.image});for(const [key,value] of Object.entries(node))if(value&&typeof value==='object')result.push(...assetSlots(value,[...path,Array.isArray(node)?Number(key):key]));return result;}
@@ -100,4 +100,11 @@ export function updateField(node,field,value){
   const left=at(node,o.left),right=at(node,field.path),top=at(node,o.top),bottom=at(node,o.bottom),cx=(left+right)/2,cy=(top+bottom)/2,height=value*(bottom-top)/(right-left);
   patch(node,o.left,cx-value/2);patch(node,field.path,cx+value/2);patch(node,o.top,cy-height/2);patch(node,o.bottom,cy+height/2);
  }else patch(node,field.path,value);
+}
+
+export function initialDocument(){return interactiveDocument();}
+// Upgrade only the untouched former default. User-authored and malformed drafts survive.
+export function startingSource(saved){
+ if(saved){try{if(JSON.stringify(canonical(JSON.parse(saved)))!==JSON.stringify(canonical(legacyDesignedDocument())))return saved;}catch{return saved;}}
+ return JSON.stringify(initialDocument(),null,2);
 }

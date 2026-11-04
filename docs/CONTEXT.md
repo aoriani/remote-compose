@@ -229,3 +229,11 @@ The iOS live test supplies a readiness log marker; do not publish before it reac
 initial version. It then checks new version/digest and real banner event after Refresh.
 All18 retained screenshots keep their actual dimensions. Final report files are tracked;
 raw logs, xcresult and runtime publication manifests stay ignored. Read latest PROGRESS.
+
+The editor now uses initialDocument() for the interactive default. legacyDesignedDocument()
+preserves the old regression fixture. startingSource() migrates only a tree-identical old
+default; app.mjs backs it up in rc-draft-before-interactive-default before replacement.
+Never clear user storage to update defaults: modified and malformed drafts must survive.
+The fixture generator uses the same initialDocument factory to prevent source drift.
+After development, an already-running JVM may still have old Validation classes even if
+installDist changed jars:8080 needed restart for textFromFloat. Preserve its data directory.

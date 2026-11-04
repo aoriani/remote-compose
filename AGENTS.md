@@ -23,7 +23,7 @@ can still require client releases.
 - `player-smoke/`: real binary browser player harness and automated pixel checks.
 - `web-editor/`: designed authoring workbench, asset gallery and genuine browser preview.
 - `assets/`: original transparent artwork, prompts and separate JVM/editor catalogs.
-- `samples/retail-home.json`: current designed example; preserve older regression fixtures.
+- `samples/interactive-retail.json`: current interactive default; `retail-home.json` preserves the prior static example.
 - `docs/DESIGN_SYSTEM.md` / `docs/VISUAL_REDESIGN.md`: visual conventions and actual render evidence.
 - `android-player/`: Java generic viewer, Kotlin Material3 chrome and official AndroidX renderer.
 - `ios-player/`: Swift debug shell, Objective-C++ bridge and C++/Skia Metal renderer.
@@ -71,7 +71,7 @@ legacy390×844 goldens must reject incompatible viewports, not stretch the image
 
 ## Interactive demo
 
-Read docs/INTERACTIVE_DEMO.md. Use Load interactive demo or samples/interactive-retail.json;
+Read docs/INTERACTIVE_DEMO.md. The editor defaults to samples/interactive-retail.json;
 the old designed-page sample remains a separate static regression fixture. Carousel/shop
 state is protocol-local; do not add platform timers/business widgets. Preserve the generic
 browser nested-TextData shim and minimal repro. Run scripts/verify-interactive.sh with an

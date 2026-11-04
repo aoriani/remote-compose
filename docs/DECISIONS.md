@@ -262,3 +262,11 @@ Authenticated owner aoriani and workspace name remote-compose resolved naming. C
 private aoriani/remote-compose with gh, set origin SSH, retained all local history. No
 push is authorized. Future push requires explicit user authorization and renewed content/
 history secret audit. See GITHUB_SETUP.md. Ignore rules alone do not prove a clean history.
+
+## 027 — Interactive design is the editor default (2026-11-04)
+
+User requested that the new design replace the default rather than require an extra
+load action. Startup/reset now use the shared interactive primitive factory. The previous
+static design remains explicit. Migrate only identical untouched old defaults and keep a
+backup; preserve every modified/custom/malformed draft. Published source is never replaced
+by startup. Real browser tests cover migration, reset, retention and genuine player input.

@@ -362,3 +362,15 @@ workflow passed; no thresholds were loosened or host widgets substituted to obta
   remain as previously documented. The new suite does not erase earlier strict pixel flags.
 - GitHub is private with origin configured; no commits pushed. Limited tracked-file key/token
   pattern checks passed. Renew content/history secret review before any authorized future push.
+
+## Default editor design follow-up — 2026-11-04
+
+The interactive composition is now the fresh-session/reset default.14 model tests and
+the existing twelve-template real browser regression pass. A focused real-browser test
+verifies fresh startup, genuine carousel event, legacy-design selection, reset, exact old
+default migration/backup and custom draft retention. Screenshot/results:
+[evidence/default-design](evidence/default-design/results.json) and
+[startup](evidence/default-design/startup.png). The compiled primitive fixture is unchanged;
+no native update or new publication was needed. Restarted8080's stale compiler process
+with the validated current distribution, preserving publication19. Custom drafts are
+never cleared to force the new default.
