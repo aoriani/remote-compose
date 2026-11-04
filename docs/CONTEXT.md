@@ -273,3 +273,20 @@ reference docs/evidence/full-retail directly, with relative paths and preserved 
 do not substitute mockups or copy stale images into a second asset set. Its test totals are
 a dated record tied to implementation1b4ef0f, not a claim that documentation edits rerun
 platform suites. Current setup examples select test classes/methods with matching prerequisites.
+
+## Android debug sheet (2026-11-04)
+
+PlayerChrome owns a genuine Material3 ModalBottomSheet via DebugSheet.kt. MainActivity sends
+immutable DebugInfo snapshots and implements DebugActions; no protocol/player code moved into
+the sheet. Connection fields have a separate draft lifetime, with SaveableStateHolder retaining
+drafts across tabs. Dismiss/reopen resets to applied settings. Apply resets the scheduled
+refresh cadence immediately. Events are copied before entering Compose state, bounded to50,
+and shown newest first. Header/SHA/viewport remain selectable and scrollable.
+
+The old UI was a platform Dialog placed at Gravity.BOTTOM with raw-pixel padding/fixed-height
+scrolling. Do not reintroduce it or call a bottom-positioned dialog a Material sheet.
+Material3 stays pinned to1.3.2. DebugSheetTest uses ActivityScenario + UiAutomation, like the
+existing Java native tests: the pinned Espresso reflection path fails on Android17/API37
+with NoSuchMethodException android.hardware.input.InputManager.getInstance. No dependency
+upgrade is required to test the actual accessible UI. Unit validation covers endpoint schemes,
+URL structure and integral refresh intervals. The remote document and viewport are unchanged.

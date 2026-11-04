@@ -294,3 +294,27 @@ explicitly, avoiding accidental execution of suites that require other manifests
 Documentation-only validation: doctor prerequisites pass; project Markdown/link/JSON checks,
 README image existence/dimensions/evidence-hash checks and git diff --check pass. Existing
 rendered screenshots were inspected. Runtime suites were not rerun for documentation edits.
+
+## Android Material 3 debug sheet (2026-11-04)
+
+Replaced the plain bottom-positioned Dialog with a genuine Compose ModalBottomSheet using
+existing Material3 1.3.2. Connection/Document/Events tabs now provide labeled settings,
+Auto-refresh, inline errors, a persistent Apply/refresh button, readable selectable metadata
+and a newest-first event log. Dismissal discards drafts; tab switches preserve them. New
+cadence settings reset the pending refresh callback. No Remote Compose renderer, document,
+upstream pin, backend, editor or iOS change. Based on clean main at d0d5728.
+
+Verified: assembleDebug,4 unit tests, lint (0errors/206 existing scan warnings), DebugSheetTest,
+2 ViewerTest methods, ViewportTest and FullRetailTest all pass. The full retail test exercises
+27 expected actions with the same1,980,638-byte published binary. After the large-text tab fix,
+assemble/unit/lint and DebugSheetTest were rerun successfully. Actual emulator screenshots
+were inspected at411.43dp/1.0font and360dp/1.3font, including software keyboard, scrolling,
+metadata and a real Scan & Go event. Downward sheet dismissal is manually verified.
+Evidence and scope: [full report](FULL_FEATURE_TEST_REPORT.md#android-material-debug-bottom-sheet--2026-11-04)
+and [screenshots/manifest](evidence/android-debug-sheet/manifest.json).
+
+The APK is installed on the running Android emulator. Its backend remains8080/latest(v20).
+Display/font/keyboard test overrides were restored. Physical-device, dark-mode, landscape
+and TalkBack checks remain unverified; browser/iOS were not rerun for this Android-only UI
+change. Next: obtain user feedback on the new sheet, then resume the broader demonstration
+validation backlog. Commit this milestone locally as `fix: replace Android debug dialog with Material bottom sheet`; do not push.

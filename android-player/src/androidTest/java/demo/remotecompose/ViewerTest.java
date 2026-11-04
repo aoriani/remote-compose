@@ -53,9 +53,9 @@ public class ViewerTest {
             nativeClick("Refresh");waitSha(activity,hashB);
             // Enable the actual native debug controls, not an alternate timer implementation.
             nativeClick("Debug and logs");
-            android.app.Instrumentation instrumentation=getInstrumentation();android.view.accessibility.AccessibilityNodeInfo root=null;for(int i=0;i<50&&root==null;i++){SystemClock.sleep(100);root=instrumentation.getUiAutomation().getRootInActiveWindow();}assertNotNull("Native debug sheet must be accessible",root);
-            java.util.List<android.view.accessibility.AccessibilityNodeInfo> toggles=root.findAccessibilityNodeInfosByText("Auto-refresh");for(int i=0;i<40&&toggles.isEmpty();i++){SystemClock.sleep(100);root=instrumentation.getUiAutomation().getRootInActiveWindow();if(root!=null)toggles=root.findAccessibilityNodeInfosByText("Auto-refresh");}assertFalse("Actual debug dialog must appear",toggles.isEmpty());if(!toggles.get(0).isChecked())toggles.get(0).performAction(android.view.accessibility.AccessibilityNodeInfo.ACTION_CLICK);
-            java.util.List<android.view.accessibility.AccessibilityNodeInfo> apply=root.findAccessibilityNodeInfosByText("Apply and refresh now");assertFalse(apply.isEmpty());apply.get(0).performAction(android.view.accessibility.AccessibilityNodeInfo.ACTION_CLICK);
+            // Compose exposes virtual descendants; click the actual switch and button.
+            nativeClick("Auto-refresh");
+            nativeClick("Apply and refresh now");
             getInstrumentation().sendKeyDownUpSync(android.view.KeyEvent.KEYCODE_BACK);getInstrumentation().waitForIdleSync();SystemClock.sleep(1000);current.set(a);waitSha(activity,hashA);SystemClock.sleep(500);int retainedPixel=screenPixel(activity,100,25);
             mode.set(2);long end=SystemClock.uptimeMillis()+15000;while(!activity.fetchStatus().contains("failed")&&SystemClock.uptimeMillis()<end)SystemClock.sleep(100);assertTrue(activity.fetchStatus().contains("failed"));assertEquals(hashA,activity.renderedSha());assertEquals("Corrupt refresh must retain the actual visible document pixel",retainedPixel,screenPixel(activity,100,25));
             mode.set(0);current.set(b);waitSha(activity,hashB);SystemClock.sleep(500);assertEquals("Recovered binary must visibly paint its circle",0xFF0067A0,screenPixel(activity,195,160));

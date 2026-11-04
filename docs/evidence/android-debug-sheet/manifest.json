@@ -1,0 +1,202 @@
+{
+  "date": "2026-11-04",
+  "baseCommit": "d0d5728",
+  "scope": "Android native debug sheet; no changes to the Remote Compose binary/player/viewport",
+  "environment": {
+    "avd": "Medium_Phone_API_37.0",
+    "api": 37,
+    "displayPx": [
+      1080,
+      2400
+    ],
+    "defaultDensityDpi": 420,
+    "defaultFontScale": 1.0,
+    "compactDensityDpi": 480,
+    "compactFontScale": 1.3,
+    "material3": "1.3.2",
+    "gradle": "9.2.1",
+    "jdk": "JBR 25.0.4"
+  },
+  "upstreams": {
+    "schemaVersion": 1,
+    "status": "cross-platform-demonstration-verified-subset",
+    "androidx": {
+      "repository": "https://github.com/androidx/androidx.git",
+      "requestedBranch": "androidx-main",
+      "revision": "8932b2c2b5043cc40c46a44cfd04a1671ec50fb7",
+      "researchRevisions": [
+        "4d0b56080497b79e6ac3d1b3b87f1029edf9c3c7",
+        "62d36f9952c23fdd41095a4fd7ba968fade32eaf",
+        "fa07a37857e71e91427b7d68ec6b6f7f2931000a"
+      ]
+    },
+    "experiments": {
+      "repository": "https://github.com/camaelon/remotecompose-experiments.git",
+      "requestedBranch": "main",
+      "revision": "a7a76f1d9ecc5aff2af93d0de570a11532552ea3"
+    },
+    "dependencies": {
+      "org.json": {
+        "observedVersion": "20231013",
+        "selectedVersion": "20231013"
+      },
+      "androidx.annotation": {
+        "observedVersion": "1.9.1",
+        "selectedVersion": "1.9.1"
+      },
+      "kotlin": "2.2.20",
+      "gradle": "9.2.1",
+      "androidGradlePlugin": "9.0.0",
+      "jdk": "25.0.4 (tested JBR; JVM target 17)",
+      "node": "22.14.0",
+      "skia": "m144-e2e6623374-4",
+      "jspecify": "1.0.0",
+      "playwright": "1.56.1",
+      "esbuild": "0.27.7",
+      "typescript": "5.9.3",
+      "cmake": "3.31.6",
+      "jackson": "2.18.3",
+      "androidNativeChrome": {
+        "activityCompose": "1.10.1",
+        "material3": "1.3.2",
+        "composeUi": "1.7.8",
+        "composeCompiler": "2.2.20",
+        "builtInKotlin": true
+      }
+    },
+    "verification": {
+      "upstreamsCloned": true,
+      "jvmCompiled": true,
+      "browserRendered": true,
+      "androidRendered": true,
+      "iosRendered": true
+    },
+    "verificationScope": "Pinned API-7 subset: browser editor; Android emulator and arm64 iOS Simulator: interaction fixture, two animations and custom composition. Not protocol conformance or physical-device certification."
+  },
+  "publication": {
+    "backendPort": 8080,
+    "version": 20,
+    "equivalentFullRetailFixtureVersion": 12,
+    "fixtureBackendPort": 8092,
+    "bytes": 1980638,
+    "sha256": "5f32c3221aa7ce717151c6f0adb8e591de968abe2b172f97bff511748d258bda"
+  },
+  "apkSha256": "030772ad1fe9fd7a2de0a1cf35ed3ef29d5cbd44fe333082a06a672127dd4bc5",
+  "validation": {
+    "assembleDebug": "pass",
+    "unitTests": 4,
+    "lintErrors": 0,
+    "lintWarnings": 206,
+    "instrumentationRuns": [
+      {
+        "run": "debug-tests.xml",
+        "cases": [
+          {
+            "class": "demo.remotecompose.DebugSheetTest",
+            "name": "settingsValidationTabsEventsAndDismissal",
+            "seconds": "19.127",
+            "passed": true
+          },
+          {
+            "class": "demo.remotecompose.ViewerTest",
+            "name": "testFetchEventAndFailurePreservesDocument",
+            "seconds": "5.872",
+            "passed": true
+          },
+          {
+            "class": "demo.remotecompose.ViewerTest",
+            "name": "testManualAutoAndCorruptRefreshRecovery",
+            "seconds": "24.016",
+            "passed": true
+          },
+          {
+            "class": "demo.remotecompose.ViewportTest",
+            "name": "fillsViewportAndNativeToolbarHasRealTargets",
+            "seconds": "6.945",
+            "passed": true
+          }
+        ]
+      },
+      {
+        "run": "full-retail-tests.xml",
+        "cases": [
+          {
+            "class": "demo.remotecompose.FullRetailTest",
+            "name": "fullPageInteractions",
+            "seconds": "38.765",
+            "passed": true
+          }
+        ]
+      },
+      {
+        "run": "final-debug-tests.xml",
+        "cases": [
+          {
+            "class": "demo.remotecompose.DebugSheetTest",
+            "name": "settingsValidationTabsEventsAndDismissal",
+            "seconds": "20.213",
+            "passed": true
+          }
+        ]
+      }
+    ],
+    "manual": [
+      "actual screenshot inspection",
+      "compact 360dp at 130% text",
+      "software keyboard respects focused field and Apply button",
+      "vertical settings scrolling",
+      "downward sheet dismissal"
+    ],
+    "notTested": [
+      "physical devices",
+      "landscape",
+      "dark mode",
+      "TalkBack",
+      "browser/iOS rerun"
+    ]
+  },
+  "screenshots": [
+    {
+      "file": "before.png",
+      "width": 1080,
+      "height": 2400,
+      "sha256": "7cfccfd8a10bbc2becb38bab66f19e6a970feda4634b45fd763ff1ce44f82667"
+    },
+    {
+      "file": "compact-large-text.png",
+      "width": 1080,
+      "height": 2400,
+      "sha256": "71de7d8b96b315bd341e222afcb1079bd2646b1c02ad61c85f35bfaffb4367d0"
+    },
+    {
+      "file": "compact-scrolled.png",
+      "width": 1080,
+      "height": 2400,
+      "sha256": "a6b04605b5f6ebbef8b8b05e11d9fe4df33472951fbadad1b70aaa99e9a5e44e"
+    },
+    {
+      "file": "connection.png",
+      "width": 1080,
+      "height": 2400,
+      "sha256": "3bd50e2ae8a72fc98deef880dfebf906cf6d8d1c3a13d0153db0ead00c29aa74"
+    },
+    {
+      "file": "document.png",
+      "width": 1080,
+      "height": 2400,
+      "sha256": "11b13c110b2a95daa0156c3bbdf5cd8ad40588314f0e90a1ef2637dd9c555c29"
+    },
+    {
+      "file": "events.png",
+      "width": 1080,
+      "height": 2400,
+      "sha256": "1a121ecaf8f1f4c68f2904792c556aeffe954384b2f7d88e7ac95b98e7bb79c4"
+    },
+    {
+      "file": "keyboard.png",
+      "width": 1080,
+      "height": 2400,
+      "sha256": "c4ab887ae0755a4abbf3b912f7b1b866d88a29fe031253f511c37edd4efb9f55"
+    }
+  ]
+}

@@ -16,15 +16,20 @@ import androidx.compose.ui.viewinterop.AndroidView
 
 /** Native developer chrome only. The AndroidView is the upstream protocol player. */
 object PlayerChrome {
-    class State { var status by mutableStateOf("Loading…") }
+    class State {
+        var status by mutableStateOf("Loading…")
+        var debugVisible by mutableStateOf(false)
+        var debugInfo by mutableStateOf(DebugInfo())
+    }
 
     @JvmStatic
     @OptIn(ExperimentalMaterial3Api::class)
     fun install(activity: ComponentActivity, state: State, stage: ProtocolViewport,
-                refresh: Runnable, debug: Runnable) {
+                refresh: Runnable, debug: Runnable, debugActions: DebugActions) {
         activity.enableEdgeToEdge()
         activity.setContent {
             MaterialTheme(colorScheme = lightColorScheme(primary = Color(0xFF305BEF))) {
+                if (state.debugVisible) DebugSheet(state, debugActions)
                 Scaffold(
                     modifier = Modifier.fillMaxSize(),
                     topBar = {

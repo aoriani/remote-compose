@@ -290,3 +290,19 @@ literal0 path emits a FloatConstant reapplied during paint, resetting context po
 press and mis-targeting scrolled products. A primitive-source declaration avoids this path
 without changing pins or player code. Full-page pointer tests on all three platforms and
 actual screenshots, including live native slide frames, are the acceptance evidence.
+
+## 029 — Android diagnostics use the existing Material 3 Compose shell (2026-11-04)
+
+Replace the gravity-bottom platform Dialog with Material 3 ModalBottomSheet. A bottom-aligned
+Dialog is not a bottom sheet: it lacked sheet gestures, themed controls, meaningful labels,
+and density-independent layout. Keep the generic HTTP/player host in MainActivity; publish
+observable diagnostic snapshots to the Compose shell and send settings/clear actions back.
+Connection, Document and Events tabs separate configuration from long technical output.
+
+Use the already pinned Material3 1.3.2 dependency, not another dialog library or remote
+business-widget implementation. Follow the [official bottom-sheet lifecycle](https://developer.android.com/develop/ui/compose/components/bottom-sheets):
+remove the sheet from composition after dismissal. Local drafts survive tab switches and
+live fetch snapshots, but are discarded on dismissal; only Apply persists configuration.
+Validate endpoints and refresh cadence before changing host state. Changing cadence replaces
+the pending refresh callback. The existing generic player, document bytes and viewport
+measurement are unchanged. This native-shell improvement requires installing the updated APK.

@@ -129,3 +129,22 @@ failure. Use the supported roundRect form, or expect the strict backend's unsupp
 
 Native test debug settings may point at the isolated8091 backend afterward. Use the generic
 CLI --backend/--version overrides or set the normal8080 URL in native debug for the live demo.
+
+## Android Material debug sheet
+
+Tap the app-bar settings icon (**Debug and logs**). The native Material 3 modal sheet has:
+
+- **Connection:** full fetch/error status, backend URL, Auto-refresh switch, 2–300 second
+  interval and **Apply and refresh now**. Changes remain drafts until applied. Invalid values
+  show inline errors and leave the loaded document/configuration intact.
+- **Document:** version, binary size, selectable SHA-256, decoded protocol header and actual
+  player viewport metrics. Scroll to inspect longer output.
+- **Events:** newest-first host action identifiers and payloads (last 50), plus **Clear events**.
+
+Close with the close icon, system Back, a downward sheet gesture or the scrim. Dismissal
+cancels unapplied settings. Tabs preserve an in-progress settings draft. Fetch failures keep
+the previous document visible and report their full message in Connection.
+
+The Android17/API37 preview removed an InputManager method reflected by the pinned Espresso
+version. Use the project's UiAutomation/accessibility instrumentation tests on this image;
+the new DebugSheetTest follows that existing approach without changing dependency pins.

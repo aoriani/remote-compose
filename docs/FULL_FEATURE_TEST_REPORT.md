@@ -480,3 +480,73 @@ there for the demonstration. Existing modified browser drafts still require expl
 The retained historical raw-JSON browser lifecycle (18events) and local-state stress test
 (37events, zero interaction API requests) also passed on a separate8094 test service, which
 was stopped afterward; those results do not substitute for the full-page tests above.
+
+## Android Material debug bottom sheet — 2026-11-04
+
+**Scope:** native Android diagnostic UI only. The previous implementation was a plain
+`android.app.Dialog` anchored with `Gravity.BOTTOM`, with unthemed widgets, unlabeled inputs,
+raw-pixel padding and a fixed600px diagnostic text area. It had none of the Material sheet
+behavior implied by its name. Replaced it with the existing Compose Material3 stack's
+`ModalBottomSheet` (1.3.2), without modifying the Remote Compose player or document format.
+
+The sheet now provides a drag handle/scrim, rounded themed surface, close action, scrolling
+Connection/Document/Events panels, labeled outlined fields, an Auto-refresh switch, inline
+validation, selectable metadata and individual host-event entries. Apply stays above the
+keyboard and system navigation inset. Drafts survive tab changes and background fetches;
+closing discards unapplied edits. Changing the refresh interval resets its pending schedule.
+
+### Validation and evidence
+
+Environment: existing Medium_Phone_API_37.0 emulator, Android17/API37,1080×2400,
+density420 (411.43×914.29dp), font scale1.0. Additional visual check on the **same emulator**
+at density480 (360×800dp), font scale1.3, with a visible software keyboard. This is not
+physical-device or full device-matrix certification. JBR25.0.4, Gradle9.2.1; upstream pins
+remain AndroidX8932b2c2b5043cc40c46a44cfd04a1671ec50fb7 and
+a7a76f1d9ecc5aff2af93d0de570a11532552ea3 for experiments.
+
+- APK assemble and4 unit tests pass (3 new settings-validation tests plus HashesTest).
+- Lint passes with0 errors and206 warnings from the existing project/upstream scan; no
+  warnings in the changed production Kotlin/Java files. This is not a warning-free build.
+- DebugSheetTest passes through actual accessible controls: invalid URL/interval errors,
+  prior-document retention, tab/draft preservation, Apply persistence, auto toggle, metadata,
+  a real upstream host event, Clear events, close/draft cancellation and system Back.
+- Both ViewerTest methods and ViewportTest pass: real HTTP refresh, failed/corrupt refresh
+  retention and recovery, automatic polling, native toolbar targets, width/geometry and input.
+- FullRetailTest passes against the existing publication12 on8092: all27 expected full-page
+  interactions, per-product hearts/quantities, carousel, scroll and rendered pixel assertions.
+- The first Compose-rule test attempt hit the pinned Espresso/API37 reflection incompatibility
+  (`InputManager.getInstance` missing). The final test uses the established UiAutomation path.
+- Actual compact/large-text screenshots exposed a tab label wrapping defect. The tabs now
+  scroll horizontally and keep labels on one line; this was fixed before final screenshots.
+
+The normal demo remains8080/latest, publication20,1,980,638bytes,
+SHA-256 `5f32c3221aa7ce717151c6f0adb8e591de968abe2b172f97bff511748d258bda`.
+It is identical to the full-retail fixture's publication12 on8092. No publication was changed
+for this work. The updated Android APK must be installed for this native-shell change;
+subsequent remote content changes continue to use the generic player.
+
+Before and after (actual emulator captures):
+
+| Previous platform dialog | Material 3 bottom sheet |
+| --- | --- |
+| ![Old debug dialog](evidence/android-debug-sheet/before.png) | ![Connection sheet](evidence/android-debug-sheet/connection.png) |
+
+Additional captures: [document metadata](evidence/android-debug-sheet/document.png),
+[real host event](evidence/android-debug-sheet/events.png),
+[compact screen with larger text](evidence/android-debug-sheet/compact-large-text.png),
+[software keyboard](evidence/android-debug-sheet/keyboard.png).
+Full screenshot/test metadata is in [the evidence manifest](evidence/android-debug-sheet/manifest.json).
+
+Reproduce the standalone checks with the documented JDK/SDK environment:
+
+```sh
+sh scripts/gradle.sh -Pandroid :android-player:assembleDebug \
+  :android-player:testDebugUnitTest :android-player:lintDebug \
+  :android-player:connectedDebugAndroidTest \
+  -Pandroid.testInstrumentationRunnerArguments.class=demo.remotecompose.DebugSheetTest,demo.remotecompose.ViewerTest,demo.remotecompose.ViewportTest
+```
+
+FullRetailTest additionally needs the8092 backend and `samples/full-retail-run.json` created
+by the existing full-retail browser flow. This is the same fixture prerequisite recorded in
+the full retail section above. Browser/iOS suites were not rerun for Android-only native UI.
+Dark mode, landscape, physical devices and TalkBack are not certified by this check.
