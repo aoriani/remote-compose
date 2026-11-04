@@ -52,9 +52,27 @@ class BackendTest {
         assertTrue(operations.any { it.toString().contains("BitmapData") })
         invalid(source.replace("club-bag","missing-asset"), "UNSUPPORTED_OPERATION", "/root/commands/0/image")
     }
-    @Test fun rejectsUnverifiedSvgPathEncodingAndPermitsShaderReset() {
-        invalid("""{"root":{"type":"canvas","commands":[{"type":"drawPath","path":"M 0 0 L 20 20 Z"}]}}""", "UNSUPPORTED_OPERATION", "/root/commands/0/type")
+    @Test fun trimmedSvgPathCompilesAndPermitsShaderReset() {
+        val encoded=compileValidated("""{"root":{"type":"canvas","commands":[{"type":"drawPath","path":"M 0 0 L 20 20 Z"}]}}""")
+        val operations=arrayListOf<androidx.compose.remote.core.Operation>()
+        androidx.compose.remote.core.RemoteComposeBuffer.fromInputStream(java.io.ByteArrayInputStream(encoded)).inflateFromBuffer(operations)
+        val path=operations.filterIsInstance<androidx.compose.remote.core.operations.PathData>().single().floatPath
+        assertEquals(androidx.compose.remote.core.operations.PathData.CLOSE,androidx.compose.remote.core.operations.Utils.idFromNan(path.last()))
+
         compileValidated("""{"root":{"type":"canvas","commands":[{"type":"paint","ops":[{"shader":0},{"color":"#FFFFFF"}]}]}}""")
+    }
+    @Test fun catalogAssetsHaveAlphaAndResolutionIsBoundedInActualBinary() {
+        for(name in listOf("oat-milk","citrus-soda","granola","market-harvest")) {
+            assertTrue(JvmAssets.contains(name))
+            val image=javax.imageio.ImageIO.read(javaClass.getResourceAsStream("/assets/$name.png"))
+            assertTrue(image.colorModel.hasAlpha());assertEquals(0,image.getRGB(0,0) ushr 24)
+            val bytes=compileValidated("""{"header":{"profiles":512},"root":{"type":"canvas","commands":[{"type":"addBitmap","image":"$name","varName":"a"},{"type":"drawBitmap","image":"@a","left":0,"top":0,"right":100,"bottom":100}]}}""")
+            val ops=arrayListOf<androidx.compose.remote.core.Operation>()
+            androidx.compose.remote.core.RemoteComposeBuffer.fromInputStream(java.io.ByteArrayInputStream(bytes)).inflateFromBuffer(ops)
+            val bitmap=ops.filterIsInstance<androidx.compose.remote.core.operations.BitmapData>().single()
+            assertEquals(640,bitmap.width);assertEquals(640,bitmap.height)
+        }
+        invalid("""{"root":{"type":"canvas","commands":[{"type":"drawPath","path":"M NaN 20"}]}}""","INVALID_PROPERTY","/root/commands/0/path")
     }
     @Test fun validShorthandAndInvalidFloatBounds() {
         compileValidated("""{"header":{"profiles":512},"root":{"column":{"children":[{"text":"Uncatalogued shorthand"}]}}}""")
@@ -73,6 +91,8 @@ class BackendTest {
                 if(etag != null) builder.header("If-None-Match",etag)
                 return client.send(builder.build(),HttpResponse.BodyHandlers.ofByteArray())
             }
+            assertEquals(200,request("/assets/library.json").statusCode())
+            assertEquals("image/png",request("/assets/oat-milk.png").headers().firstValue("Content-Type").orElse(""))
             assertEquals(404,request("/api/documents/latest").statusCode())
             assertEquals(200,request("/api/compile",sample).statusCode())
             assertEquals(404,request("/api/documents/latest").statusCode())

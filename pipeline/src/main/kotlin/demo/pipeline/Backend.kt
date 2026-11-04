@@ -130,6 +130,8 @@ class Backend(port: Int, data: Path, private val project: Path, host: String = "
             path == "/player.js" -> project.resolve("upstream/experiments/players/typescript/web-player/bundle.js")
             path.startsWith("/editor/") -> project.resolve("web-editor").resolve(path.removePrefix("/editor/")).normalize()
                 .takeIf { it.startsWith(project.resolve("web-editor")) }
+            path.startsWith("/assets/") && (path.endsWith(".png") || path.endsWith(".json")) -> project.resolve(path.removePrefix("/")).normalize()
+                .takeIf { it.startsWith(project.resolve("assets")) }
             path.startsWith("/samples/") && path.endsWith(".json") -> project.resolve(path.removePrefix("/")).normalize()
                 .takeIf { it.startsWith(project.resolve("samples")) }
             else -> null
@@ -138,7 +140,7 @@ class Backend(port: Int, data: Path, private val project: Path, host: String = "
             json(x,404,JSONObject().put("error","Not found")); return
         }
         val mime = when(file.toString().substringAfterLast('.')) {
-            "html" -> "text/html; charset=utf-8"; "js", "mjs" -> "text/javascript"; "css" -> "text/css"; "json" -> "application/json"; else -> "application/octet-stream"
+            "png" -> "image/png"; "html" -> "text/html; charset=utf-8"; "js", "mjs" -> "text/javascript"; "css" -> "text/css"; "json" -> "application/json"; else -> "application/octet-stream"
         }
         send(x,200,Files.readAllBytes(file),mime)
     }

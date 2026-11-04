@@ -1,0 +1,44 @@
+{
+  "header": {
+    "width": 390,
+    "height": 844,
+    "profiles": 512
+  },
+  "root": {
+    "type": "canvas",
+    "modifiers": [
+      {
+        "fillMaxSize": 1
+      }
+    ],
+    "commands": [
+      {
+        "type": "paint",
+        "ops": [
+          {
+            "color": "#F5F4EF"
+          }
+        ]
+      },
+      {
+        "type": "drawRect",
+        "left": 0,
+        "top": 0,
+        "right": 390,
+        "bottom": 844
+      },
+      {
+        "type": "paint",
+        "ops": [
+          {
+            "color": "#305BEF"
+          }
+        ]
+      },
+      {
+        "type": "drawPath",
+        "path": "M 195 220 C 175 200 115 165 115 120 C 115 60 180 60 195 105 C 210 60 275 60 275 120 C 275 165 215 200 195 220 Z"
+      }
+    ]
+  }
+}

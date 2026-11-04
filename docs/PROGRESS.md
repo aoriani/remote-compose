@@ -76,3 +76,10 @@ verified. iOS raw metadata is collapsible; one actual XCTest UI test passes. See
 Editor fixes commit `78fb077`; native test/evidence commit follows (git log identifies it).
 All requested review areas are covered on the documented emulator/Simulator setup.
 No physical-device or general protocol conformance claim is made.
+
+## Visual redesign — validated asset/compiler foundation
+
+Four distinct original assets, dynamic catalog validation, actual alpha-preserving PNG
+embedding and populated-length vector serialization are implemented.80 JVM tests pass.
+The curved SVG heart is visually verified on all three players. Original109-byte browser
+pixel proof still passes. Editor and retail design/evidence follow in the next milestone.

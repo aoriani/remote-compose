@@ -145,3 +145,20 @@ engine-input-only interaction evidence with actual gesture/host-log assertions f
 reviewed fixture. Keep scroll/bitmap visual verification separate from automated event
 assertions. Collapse raw iOS metadata to expose events; keep source/renderer/pins unchanged.
 No business widget, native animation or application-specific click behavior is introduced.
+
+## 017 — Repair path capacity and use a real, portable asset catalog (2026-11-03)
+
+The prior SVG failure was traced to DEFAULT_PLATFORM returning RemotePathBase.getPath(),
+which exposes allocated capacity rather than populated length. The JVM platform now
+copies only getSize() elements. A decoded-binary regression asserts the final CLOSE
+opcode, preventing trailing zero commands. Curved heart paths rendered on browser,
+Android and iOS. Strict service enables bounded finite inline absolute M/L/C/Z paths;
+other path dialects/resources remain outside the enabled subset. This supersedes014's
+blanket path restriction, without changing protocol pins or modifying upstream.
+
+Original transparent product artwork is checked in. Classpath catalog IDs are resolved
+dynamically, assets are proportionally bounded to640px for binary embedding, and the
+editor gets a separate browse/insert/replace gallery. Source JSON still contains only
+upstream addBitmap/drawBitmap/path operations. New artwork/compositions need no mobile
+business widgets or client rebuild. Bitmap documents are larger; compression and fragment
+caching remain deferred.

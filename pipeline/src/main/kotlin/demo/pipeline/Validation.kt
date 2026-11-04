@@ -198,6 +198,7 @@ object Validation {
         val (type,v) = normalized(n,path)
         val p = if (n.has("type")) path else "$path/${n.fieldNames().next()}"
         val fields = when(type) {
+            "drawpath" -> "path"
             "drawcircle" -> "cx cy radius"
             "drawrect", "drawoval", "cliprect" -> "left top right bottom"
             "drawroundrect" -> "left top right bottom rx ry"
@@ -208,7 +209,7 @@ object Validation {
             "rotate" -> "angle pivotX pivotY"
             "addbitmap" -> {
                 keys(v,setOf("type","image","varName"),p); required(v,"image",p)
-                if(v.get("image").asText() != "club-bag") fail("$p/image","Unknown catalog bitmap", "UNSUPPORTED_OPERATION")
+                if(!v.get("image").isTextual || !JvmAssets.contains(v.get("image").asText())) fail("$p/image","Unknown catalog bitmap", "UNSUPPORTED_OPERATION")
                 v.get("varName")?.let { text(it,"$p/varName") }; return
             }
             "drawbitmap" -> "image left top right bottom"
@@ -231,6 +232,15 @@ object Validation {
             if(k in setOf("path","text","image")) text(v.get(k),"$p/$k") else scalar(v.get(k),"$p/$k")
         }
         v.get("commands")?.let { array(it,"$p/commands",::command) }
+        if(type == "drawpath") {
+            val svg=v.get("path").asText()
+            if(svg.length !in 1..8192 || !svg.trimStart().startsWith("M") || !svg.matches(Regex("[MLCZ0-9eE+.,\\s-]+")))
+                fail("$p/path", "Use finite inline SVG with absolute M, L, C and Z commands (max 8192 characters)")
+            try {
+                val parsed=androidx.compose.remote.core.RemotePathBase(svg)
+                if(parsed.size == 0 || parsed.path.take(parsed.size).any { it.isInfinite() }) fail("$p/path","Path must contain finite coordinates")
+            } catch(e: InvalidDocument) { throw e } catch(e: Exception) { fail("$p/path","Invalid SVG coordinates: ${e.message}") }
+        }
         v.get("flags")?.let { if (!it.isIntegralNumber) fail("$p/flags", "Expected integer") }
     }
 }

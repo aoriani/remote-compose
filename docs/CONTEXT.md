@@ -79,3 +79,14 @@ and bitmap screenshots are visually reviewed. Raw iOS metadata is a DisclosureGr
 events remain reachable. Android real adb taps also produced 42/99. Both native apps kept
 identical hashes while publication changed to the 4,163-byte combined landing/custom doc.
 New native image/scroll evidence supersedes earlier pending notes. See readiness/results.
+
+## Visual iteration: asset and path foundation
+
+Four new generated transparent originals and prompts live in assets/. JvmAssets now
+accepts catalog IDs dynamically and bounds embedded images proportionally to640px.
+PNG alpha/dimensions, MIME routes and catalog validation are tested. The path bug was
+unused backing-array capacity: copy getSize() of RemotePathBase.getPath(), not the full
+array. The service supports finite inline absolute M/L/C/Z paths; a curved heart and
+product outline hearts rendered in all three unchanged players. Older claims that all
+paths are disabled are superseded. Legacy CLI compile still uses the default upstream
+platform; use service compile for the corrected asset/path adapter.

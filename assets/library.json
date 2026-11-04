@@ -1,0 +1,34 @@
+[
+  {
+    "id": "oat-milk",
+    "brand": "Field / Oat",
+    "label": "Barista oat drink",
+    "category": "Products",
+    "color": "#E8EDDD",
+    "file": "oat-milk.png"
+  },
+  {
+    "id": "citrus-soda",
+    "brand": "Sol",
+    "label": "Sparkling citrus",
+    "category": "Products",
+    "color": "#F9E5D4",
+    "file": "citrus-soda.png"
+  },
+  {
+    "id": "granola",
+    "brand": "Morn",
+    "label": "Maple granola",
+    "category": "Products",
+    "color": "#EEE7F5",
+    "file": "granola.png"
+  },
+  {
+    "id": "market-harvest",
+    "brand": "Market harvest",
+    "label": "Seasonal basket",
+    "category": "Illustrations",
+    "color": "#E4EAF9",
+    "file": "market-harvest.png"
+  }
+]
