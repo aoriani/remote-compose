@@ -1,0 +1,154 @@
+[
+  {
+    "text": "",
+    "content-desc": "",
+    "class": "android.widget.FrameLayout",
+    "clickable": "false",
+    "focusable": "false",
+    "bounds": "[0,0][1080,2400]"
+  },
+  {
+    "text": "",
+    "content-desc": "",
+    "class": "android.widget.LinearLayout",
+    "clickable": "false",
+    "focusable": "false",
+    "bounds": "[0,0][1080,2400]"
+  },
+  {
+    "text": "",
+    "content-desc": "",
+    "class": "android.widget.FrameLayout",
+    "clickable": "false",
+    "focusable": "false",
+    "bounds": "[0,0][1080,2400]"
+  },
+  {
+    "text": "",
+    "content-desc": "",
+    "class": "android.widget.LinearLayout",
+    "clickable": "false",
+    "focusable": "false",
+    "bounds": "[0,0][1080,2400]"
+  },
+  {
+    "text": "",
+    "content-desc": "",
+    "class": "android.widget.LinearLayout",
+    "clickable": "false",
+    "focusable": "false",
+    "bounds": "[0,63][1080,189]"
+  },
+  {
+    "text": "REFRESH",
+    "content-desc": "",
+    "class": "android.widget.Button",
+    "clickable": "true",
+    "focusable": "true",
+    "bounds": "[0,63][231,189]"
+  },
+  {
+    "text": "DEBUG",
+    "content-desc": "",
+    "class": "android.widget.Button",
+    "clickable": "true",
+    "focusable": "true",
+    "bounds": "[231,63][462,189]"
+  },
+  {
+    "text": "Unchanged \u2022 version 23 \u2022 1970167 bytes",
+    "content-desc": "",
+    "class": "android.widget.TextView",
+    "clickable": "false",
+    "focusable": "false",
+    "bounds": "[0,189][1080,248]"
+  },
+  {
+    "text": "",
+    "content-desc": "",
+    "class": "android.widget.FrameLayout",
+    "clickable": "false",
+    "focusable": "false",
+    "bounds": "[0,248][1080,2337]"
+  },
+  {
+    "text": "",
+    "content-desc": "",
+    "class": "android.widget.FrameLayout",
+    "clickable": "false",
+    "focusable": "true",
+    "bounds": "[0,248][965,2337]"
+  },
+  {
+    "text": "",
+    "content-desc": "",
+    "class": "android.widget.ScrollView",
+    "clickable": "false",
+    "focusable": "true",
+    "bounds": "[0,248][390,1092]"
+  },
+  {
+    "text": "",
+    "content-desc": "",
+    "class": "android.view.View",
+    "clickable": "true",
+    "focusable": "true",
+    "bounds": "[0,388][390,620]"
+  },
+  {
+    "text": "The good stuff",
+    "content-desc": "",
+    "class": "android.view.View",
+    "clickable": "false",
+    "focusable": "true",
+    "bounds": "[0,754][203,811]"
+  },
+  {
+    "text": "",
+    "content-desc": "",
+    "class": "android.widget.HorizontalScrollView",
+    "clickable": "false",
+    "focusable": "true",
+    "bounds": "[0,811][390,1085]"
+  },
+  {
+    "text": "",
+    "content-desc": "",
+    "class": "android.view.View",
+    "clickable": "true",
+    "focusable": "true",
+    "bounds": "[12,1374][192,1644]"
+  },
+  {
+    "text": "",
+    "content-desc": "",
+    "class": "android.view.View",
+    "clickable": "true",
+    "focusable": "true",
+    "bounds": "[192,1374][372,1644]"
+  },
+  {
+    "text": "",
+    "content-desc": "",
+    "class": "android.view.View",
+    "clickable": "true",
+    "focusable": "true",
+    "bounds": "[372,1374][552,1644]"
+  },
+  {
+    "text": "A little inspiration",
+    "content-desc": "",
+    "class": "android.view.View",
+    "clickable": "false",
+    "focusable": "true",
+    "bounds": "[0,1179][239,1240]"
+  },
+  {
+    "text": "",
+    "content-desc": "",
+    "class": "android.widget.HorizontalScrollView",
+    "clickable": "false",
+    "focusable": "true",
+    "bounds": "[0,1240][390,1422]"
+  }
+]

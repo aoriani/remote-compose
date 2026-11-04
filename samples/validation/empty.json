@@ -1,0 +1,21 @@
+{
+  "header": {
+    "width": 390,
+    "height": 844,
+    "profiles": 512,
+    "fps": 60,
+    "contentDescription": "empty"
+  },
+  "root": {
+    "type": "column",
+    "modifiers": [
+      {
+        "fillMaxSize": 1
+      },
+      {
+        "background": "#FFFFFF"
+      }
+    ],
+    "children": []
+  }
+}

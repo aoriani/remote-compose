@@ -36,3 +36,19 @@ its unbuilt/untested statements describe the earlier milestone only.
 The current visual fixture is samples/retail-home.json (~1.97MB). Four genuine PNGs,
 vector hearts and two time expressions were rendered in unchanged native apps. See
 VISUAL_REDESIGN.md and evidence/redesign/results.json for measured checks and visual scope.
+
+## Expanded measured subset (2026-11-03)
+
+See [full feature report](FULL_FEATURE_TEST_REPORT.md) for captures and exact scope.
+DrawCircle/Oval/RoundRect/Arc, cubic inline paths, linear gradients, alpha, save/clipRect,
+translate/rotate/scale, embedded PNGs, named string callbacks and local float-state changes
+are exercised with genuine binary documents on all three players. Parser acceptance alone
+is insufficient: CircleShape clip is silently omitted by the pinned writer and is now
+rejected; supported square roundRect radius half the side produces circular clipping.
+
+C++ named-action text resources nested in action lists require generic bridge initialization.
+No business-specific native implementation was introduced. Fonts and bitmap edge filtering
+are not pixel-equivalent. Browser wheel input is absent; pointer/touch dragging works.
+Android scaled virtual accessibility bounds and canvas labels are incomplete; iOS Metal has
+no generated remote semantic tree. Shadows/elevation/general SVG/external images remain
+outside the enabled subset. Do not extrapolate this gallery to protocol conformance.

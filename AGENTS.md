@@ -51,3 +51,12 @@ can still require client releases.
   and next steps. Do not describe scaffolding or upstream claims as working product code.
 
 Start with [README](README.md) and [research](docs/RESEARCH.md).
+
+## Full rendering validation
+
+Read docs/FULL_FEATURE_TEST_REPORT.md and inspect docs/evidence/full-validation.
+Run `sh scripts/validate-all.sh` on a free emulator/Simulator (isolated backend8091);
+`FULL_NATIVE=0` runs JVM/browser only. Do not run two native suites against one device.
+Strict cross-platform pixel discrepancies are retained separately from functional and
+same-platform golden checks. Never approve baselines solely because tests pass. Keep
+plans.json/run.json test bindings separate from primitive documents. Preserve pins.

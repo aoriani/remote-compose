@@ -1,0 +1,850 @@
+{
+  "properties": [
+    {
+      "widget": "header",
+      "field": "Brand name",
+      "value": "Fresh finds.",
+      "passed": true
+    },
+    {
+      "widget": "text",
+      "field": "Text",
+      "value": "Fresh finds.",
+      "passed": true
+    },
+    {
+      "widget": "text",
+      "field": "Font size",
+      "value": 26,
+      "passed": true
+    },
+    {
+      "widget": "text",
+      "field": "Color",
+      "value": "#305BEF",
+      "passed": true
+    },
+    {
+      "widget": "spacer",
+      "field": "Height",
+      "value": 18,
+      "passed": true
+    },
+    {
+      "widget": "hero",
+      "field": "Headline",
+      "value": "Fresh finds.",
+      "passed": true
+    },
+    {
+      "widget": "hero",
+      "field": "Supporting line",
+      "value": "Fresh finds.",
+      "passed": true
+    },
+    {
+      "widget": "hero",
+      "field": "Hero illustration",
+      "value": "oat-milk",
+      "passed": true
+    },
+    {
+      "widget": "promo",
+      "field": "Message",
+      "value": "Fresh finds.",
+      "passed": true
+    },
+    {
+      "widget": "image",
+      "field": "Image size",
+      "value": 160,
+      "passed": true
+    },
+    {
+      "widget": "image",
+      "field": "Illustration",
+      "value": "citrus-soda",
+      "passed": true
+    },
+    {
+      "widget": "button",
+      "field": "Label",
+      "value": "Fresh finds.",
+      "passed": true
+    },
+    {
+      "widget": "button",
+      "field": "Host event ID",
+      "value": 44,
+      "passed": true
+    },
+    {
+      "widget": "products",
+      "field": "First product",
+      "value": "Fresh finds.",
+      "passed": true
+    },
+    {
+      "widget": "products",
+      "field": "First price",
+      "value": "$4.75",
+      "passed": true
+    },
+    {
+      "widget": "products",
+      "field": "First illustration",
+      "value": "citrus-soda",
+      "passed": true
+    },
+    {
+      "widget": "news",
+      "field": "First story",
+      "value": "Fresh finds.",
+      "passed": true
+    },
+    {
+      "widget": "news",
+      "field": "First illustration",
+      "value": "oat-milk",
+      "passed": true
+    },
+    {
+      "widget": "badge",
+      "field": "Pulse expression",
+      "value": "4 + 1.2 * sin(time * 3) + 0.25",
+      "passed": true
+    },
+    {
+      "widget": "progress",
+      "field": "Progress expression",
+      "value": "205 + 24 * sin(time * 2) + 0.25",
+      "passed": true
+    }
+  ],
+  "coverage": {
+    "interactionEvents": [
+      {
+        "id": 502,
+        "metadata": ""
+      },
+      {
+        "id": 501,
+        "metadata": ""
+      },
+      {
+        "id": 503,
+        "metadata": ""
+      },
+      {
+        "name": "validation.echo",
+        "value": "hello-protocol"
+      }
+    ],
+    "largeSections": 160,
+    "undoRedo": "Not implemented; no undo/redo controls",
+    "errors": []
+  },
+  "cases": [
+    {
+      "id": "widget-header",
+      "version": 1,
+      "sha256": "91a04a544fecc55619012fed60f11f42248d8a86892aee07566335d0804df6fa",
+      "bytes": 941,
+      "plan": {
+        "widget": "header",
+        "rois": []
+      }
+    },
+    {
+      "id": "widget-text",
+      "version": 2,
+      "sha256": "562f61bade8b993975fd19d9a1da6e2c5aa49457c98fdc67a0efa8005f8afabd",
+      "bytes": 452,
+      "plan": {
+        "widget": "text",
+        "rois": []
+      }
+    },
+    {
+      "id": "widget-spacer",
+      "version": 3,
+      "sha256": "6cf7826373f3671b8b3e10be1118d414cfe04613dfd37fcf3b1b699466eebfff",
+      "bytes": 412,
+      "plan": {
+        "widget": "spacer",
+        "rois": []
+      }
+    },
+    {
+      "id": "widget-hero",
+      "version": 4,
+      "sha256": "1938fca1f27d9f9c28e192d550ccaec201009a5c394db9143a8335ad7c624633",
+      "bytes": 400554,
+      "plan": {
+        "widget": "hero",
+        "rois": []
+      }
+    },
+    {
+      "id": "widget-promo",
+      "version": 5,
+      "sha256": "306c4ed1f95d71ac070e99f67e0ceb8dd1a629e896d63457fbffa46550dcafe8",
+      "bytes": 720,
+      "plan": {
+        "widget": "promo",
+        "rois": []
+      }
+    },
+    {
+      "id": "widget-image",
+      "version": 6,
+      "sha256": "2da5adc30e2845bb66a032b7cd2851a3bf815f53b6d82d100d4a51a207b8e6bc",
+      "bytes": 405365,
+      "plan": {
+        "widget": "image",
+        "rois": []
+      }
+    },
+    {
+      "id": "widget-button",
+      "version": 7,
+      "sha256": "734b750a7cfc64790eb4094c0bb5a8ca07c0d1cd1709c4660344dab0f03bcfd2",
+      "bytes": 663,
+      "plan": {
+        "widget": "button",
+        "rois": []
+      }
+    },
+    {
+      "id": "widget-products",
+      "version": 8,
+      "sha256": "21e314459e1fca35eafb9a7974715ea398db68ccf4a0d1408d2b7184242576c0",
+      "bytes": 840793,
+      "plan": {
+        "widget": "products",
+        "rois": []
+      }
+    },
+    {
+      "id": "widget-news",
+      "version": 9,
+      "sha256": "74bd3d76c4c36b1bc14568f5ebdf7d72d012133cfbb2a3d7140e2bca23ecf464",
+      "bytes": 805768,
+      "plan": {
+        "widget": "news",
+        "rois": []
+      }
+    },
+    {
+      "id": "widget-badge",
+      "version": 10,
+      "sha256": "a6b5a3eb53760c614c38bf2e8d00f0fa43dc2341552d774986dd352bea77a4b4",
+      "bytes": 902,
+      "plan": {
+        "widget": "badge",
+        "rois": []
+      }
+    },
+    {
+      "id": "widget-progress",
+      "version": 11,
+      "sha256": "ef0b49f164d1cfaecd2a152f6fa8f50621981b4c2d1fc6408be0d8c70677479e",
+      "bytes": 846,
+      "plan": {
+        "widget": "progress",
+        "rois": []
+      }
+    },
+    {
+      "id": "graphics",
+      "version": 12,
+      "sha256": "f34e50af4a2d450b61ea09036aca92c51259506a3ef336c4c7f3a868c8cfc772",
+      "bytes": 1119,
+      "plan": {
+        "rois": [
+          [
+            35,
+            95,
+            50,
+            30
+          ],
+          [
+            150,
+            95,
+            60,
+            30
+          ],
+          [
+            270,
+            95,
+            60,
+            30
+          ],
+          [
+            60,
+            210,
+            30,
+            20
+          ],
+          [
+            30,
+            410,
+            70,
+            50
+          ],
+          [
+            245,
+            425,
+            25,
+            20
+          ],
+          [
+            190,
+            570,
+            90,
+            15
+          ],
+          [
+            24,
+            300,
+            340,
+            45
+          ]
+        ],
+        "samples": [
+          {
+            "x": 60,
+            "y": 110,
+            "rgb": [
+              48,
+              91,
+              239
+            ]
+          },
+          {
+            "x": 170,
+            "y": 110,
+            "rgb": [
+              129,
+              168,
+              132
+            ]
+          },
+          {
+            "x": 150,
+            "y": 440,
+            "rgb": [
+              255,
+              255,
+              255
+            ]
+          },
+          {
+            "x": 205,
+            "y": 580,
+            "rgb": [
+              247,
+              176,
+              123
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "bitmaps",
+      "version": 13,
+      "sha256": "c0e5a465b336c6e2b5283c13286e1cd670e480a7f8aa899cacabe56eb19d2ed0",
+      "bytes": 1964089,
+      "plan": {
+        "rois": [
+          [
+            25,
+            75,
+            140,
+            140
+          ],
+          [
+            215,
+            75,
+            140,
+            140
+          ],
+          [
+            25,
+            275,
+            140,
+            140
+          ],
+          [
+            215,
+            275,
+            140,
+            140
+          ],
+          [
+            20,
+            630,
+            120,
+            120
+          ]
+        ],
+        "legacyBag": {
+          "x": 20,
+          "y": 630,
+          "width": 120,
+          "height": 120
+        },
+        "deliberatelyDistorted": true
+      }
+    },
+    {
+      "id": "layouts",
+      "version": 14,
+      "sha256": "8b2ce8c6b6fb5ff020038fa58312c87832dbf123589840ccf4d0c87c77e18a07",
+      "bytes": 1405,
+      "plan": {
+        "typography": true,
+        "rois": [
+          [
+            32,
+            110,
+            80,
+            45
+          ],
+          [
+            215,
+            115,
+            90,
+            35
+          ]
+        ],
+        "samples": [
+          {
+            "x": 17,
+            "y": 205,
+            "rgb": [
+              255,
+              255,
+              255
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "interactions",
+      "version": 15,
+      "sha256": "a244b82485428ef5fc5ac97b6cc5f8524f49b27132939f308c0d1fbc2826e44b",
+      "bytes": 909,
+      "plan": {
+        "actions": [
+          {
+            "x": 150,
+            "y": 95,
+            "id": 501
+          },
+          {
+            "x": 150,
+            "y": 175,
+            "name": "validation.echo",
+            "payload": "hello-protocol"
+          }
+        ],
+        "stateRoi": [
+          20,
+          240,
+          200,
+          180
+        ],
+        "rois": []
+      }
+    },
+    {
+      "id": "nested-scroll",
+      "version": 16,
+      "sha256": "85e574b531ec09e822251626377a471a0e023aa9b0c88f3c63035ca67d6cd812",
+      "bytes": 1243414,
+      "plan": {
+        "scroll": true,
+        "rois": []
+      }
+    },
+    {
+      "id": "phase-0",
+      "version": 17,
+      "sha256": "be207ec10f7ce83adac950d1d79195baf8d343effe3cfe2f4d685121dada0faa",
+      "bytes": 1134,
+      "plan": {
+        "phase": 0,
+        "rois": [
+          [
+            35,
+            35,
+            26,
+            26
+          ],
+          [
+            20,
+            159,
+            350,
+            9
+          ]
+        ],
+        "samples": []
+      }
+    },
+    {
+      "id": "phase-1",
+      "version": 18,
+      "sha256": "50b9b56521a205580184a12d21d2a486830e18f1455ff97ac39f48c4b2787cfd",
+      "bytes": 1134,
+      "plan": {
+        "phase": 0.7853981633974483,
+        "rois": [
+          [
+            35,
+            35,
+            26,
+            26
+          ],
+          [
+            20,
+            159,
+            350,
+            9
+          ]
+        ],
+        "samples": []
+      }
+    },
+    {
+      "id": "phase-2",
+      "version": 19,
+      "sha256": "3a5037a52173aab7742a171ebdfa68c93ee921e2a828f825ebf4804b700a26ce",
+      "bytes": 1134,
+      "plan": {
+        "phase": 1.5707963267948966,
+        "rois": [
+          [
+            35,
+            35,
+            26,
+            26
+          ],
+          [
+            20,
+            159,
+            350,
+            9
+          ]
+        ],
+        "samples": []
+      }
+    },
+    {
+      "id": "phase-3",
+      "version": 20,
+      "sha256": "891a5b7d424d861fabab6426386e68cc11803911190befdc171fa856ded07af7",
+      "bytes": 1134,
+      "plan": {
+        "phase": 3.141592653589793,
+        "rois": [
+          [
+            35,
+            35,
+            26,
+            26
+          ],
+          [
+            20,
+            159,
+            350,
+            9
+          ]
+        ],
+        "samples": []
+      }
+    },
+    {
+      "id": "phase-4",
+      "version": 21,
+      "sha256": "7385537c3b41c0696028d8a43ade5d5233e197ae7324b9bb06ef4c60a72eba3a",
+      "bytes": 1134,
+      "plan": {
+        "phase": 6.283185307179586,
+        "rois": [
+          [
+            35,
+            35,
+            26,
+            26
+          ],
+          [
+            20,
+            159,
+            350,
+            9
+          ]
+        ],
+        "samples": []
+      }
+    },
+    {
+      "id": "live-animations",
+      "version": 22,
+      "sha256": "bef11392f6945a6e966a1613605c53c5d11a4e53c8c49e3e352092f77767f794",
+      "bytes": 1133,
+      "plan": {
+        "live": true,
+        "rois": []
+      }
+    },
+    {
+      "id": "retail",
+      "version": 23,
+      "sha256": "e2c601547fc4eefab6dca6aa5d635442234e07bd015a6b4a0661769f09b454a2",
+      "bytes": 1970167,
+      "plan": {
+        "scroll": true,
+        "rois": []
+      }
+    },
+    {
+      "id": "empty",
+      "version": 24,
+      "sha256": "caeba2b99841bcc5764bba2827c6ebe9ba304d7cb8c6555596cbda9d4f9f4521",
+      "bytes": 151,
+      "plan": {
+        "rois": [
+          [
+            0,
+            0,
+            390,
+            844
+          ]
+        ]
+      }
+    },
+    {
+      "id": "graphics-edited",
+      "version": 25,
+      "sha256": "7105cac2138146b7eb6af05630b07ad1fc14cc34ed3d8105505fb80d704b10de",
+      "bytes": 1126,
+      "plan": {
+        "rois": [
+          [
+            35,
+            95,
+            50,
+            30
+          ],
+          [
+            150,
+            95,
+            60,
+            30
+          ],
+          [
+            270,
+            95,
+            60,
+            30
+          ],
+          [
+            60,
+            210,
+            30,
+            20
+          ],
+          [
+            30,
+            410,
+            70,
+            50
+          ],
+          [
+            245,
+            425,
+            25,
+            20
+          ],
+          [
+            190,
+            570,
+            90,
+            15
+          ],
+          [
+            24,
+            300,
+            340,
+            45
+          ]
+        ],
+        "samples": [
+          {
+            "x": 60,
+            "y": 110,
+            "rgb": [
+              48,
+              91,
+              239
+            ]
+          },
+          {
+            "x": 170,
+            "y": 110,
+            "rgb": [
+              129,
+              168,
+              132
+            ]
+          },
+          {
+            "x": 150,
+            "y": 440,
+            "rgb": [
+              255,
+              255,
+              255
+            ]
+          },
+          {
+            "x": 205,
+            "y": 580,
+            "rgb": [
+              247,
+              176,
+              123
+            ]
+          }
+        ],
+        "modifiedFrom": "graphics"
+      }
+    },
+    {
+      "id": "bitmaps-edited",
+      "version": 26,
+      "sha256": "469813eeeaa185ce299dbf9e1c42bc05ca6aa96ea7e244328224d4a8ed31f2de",
+      "bytes": 1964096,
+      "plan": {
+        "rois": [
+          [
+            25,
+            75,
+            140,
+            140
+          ],
+          [
+            215,
+            75,
+            140,
+            140
+          ],
+          [
+            25,
+            275,
+            140,
+            140
+          ],
+          [
+            215,
+            275,
+            140,
+            140
+          ],
+          [
+            20,
+            630,
+            120,
+            120
+          ]
+        ],
+        "legacyBag": {
+          "x": 20,
+          "y": 630,
+          "width": 120,
+          "height": 120
+        },
+        "deliberatelyDistorted": true,
+        "modifiedFrom": "bitmaps"
+      }
+    },
+    {
+      "id": "layouts-edited",
+      "version": 27,
+      "sha256": "36d3e3aadd9e7ee743336d9fa873f5c78cde033bfc37ca41a72e4718f67b6b66",
+      "bytes": 1412,
+      "plan": {
+        "typography": true,
+        "rois": [
+          [
+            32,
+            110,
+            80,
+            45
+          ],
+          [
+            215,
+            115,
+            90,
+            35
+          ]
+        ],
+        "samples": [
+          {
+            "x": 17,
+            "y": 205,
+            "rgb": [
+              255,
+              255,
+              255
+            ]
+          }
+        ],
+        "modifiedFrom": "layouts"
+      }
+    },
+    {
+      "id": "interactions-edited",
+      "version": 28,
+      "sha256": "f447a998ac20b034c5ecff9386b81c2b6a8b2f3920f5a2fc85da47f414fc6056",
+      "bytes": 916,
+      "plan": {
+        "actions": [
+          {
+            "x": 150,
+            "y": 95,
+            "id": 501
+          },
+          {
+            "x": 150,
+            "y": 175,
+            "name": "validation.echo",
+            "payload": "hello-protocol"
+          }
+        ],
+        "stateRoi": [
+          20,
+          240,
+          200,
+          180
+        ],
+        "rois": [],
+        "modifiedFrom": "interactions"
+      }
+    },
+    {
+      "id": "nested-scroll-edited",
+      "version": 29,
+      "sha256": "0266d8b4f7d5e93d9557f54adc743d42a885a2edf6b891cfdfe0f1ac5a0fc266",
+      "bytes": 1243429,
+      "plan": {
+        "scroll": true,
+        "rois": [],
+        "modifiedFrom": "nested-scroll"
+      }
+    }
+  ]
+}

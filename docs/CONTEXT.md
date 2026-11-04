@@ -127,3 +127,26 @@ Muted text colors were darkened after contrast measurements (paper 4.81:1, edito
 5.02:1 for the corrected tokens). Browser pointer and synthetic touch scroll work;
 wheel events do not scroll the pinned player. Real trackpad hardware remains untested.
 Further native gallery/lifecycle evidence and final verdict follow in FULL_FEATURE_TEST_REPORT.
+
+## Expanded native validation and evidence interpretation
+
+The generic Android viewer supports transient intent backend/version selection and named
+CoreDocument callbacks. iOS supports --backend/--version/--no-auto/--interval, idempotent
+start and full GUI digest identity. C++ named action name DATA_TEXT is nested in the
+writer's action list; generic bridge preloading repairs its omitted data traversal.
+No upstream source/pin changes were made. Fixture generators use only actual primitive
+JSON; plans/immutable run bindings are separate test metadata.
+
+Use FULL_FEATURE_TEST_REPORT and docs/evidence/full-validation/proof.json. Primary raw
+runs are artifacts/full-validation/final (gallery, initial failed lifecycle), lifecycle-fixed
+(successful corrected lifecycle), and retention-final (stronger final retention assertions).
+The first lifecycle failure was an automation row tap, not proven runtime auto-refresh
+failure; tapping the actual switch and asserting value1 makes the test precise. Gradle's
+connected test may uninstall the target on completion: never interleave it with a gallery
+run against the same emulator. The driver reinstalls the same APK before final captures.
+
+Cross-player font metrics and physical-pixel filtering differ. Strict pixel failures are
+retained, not accepted by larger tolerances. Phase-variable fixtures are deterministic
+states, not live clock injection. Android font-scale150% does not enlarge authored text;
+virtual accessibility child bounds also fail to follow host scaling. iOS Metal semantics
+are absent. These are open limitations, not successful accessibility tests.

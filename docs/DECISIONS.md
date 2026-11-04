@@ -174,7 +174,7 @@ measured in a visible fixture and native captures. Adopt visible-line highlighti
 retain raw-JSON editing performance with larger primitive documents. No protocol pin or
 native business renderer changes; record remaining fixed-frame and payload-size limits.
 
-## 015 — Validate emitted capabilities and load immutable preview bytes (2026-11-03)
+## 019 — Validate emitted capabilities and load immutable preview bytes (2026-11-03)
 
 Decision: Load published fetches the immutable version binary, not a recompilation of
 its JSON. Editable bitmap size preserves its aspect ratio and center within the existing
@@ -186,3 +186,26 @@ bitmap by editing only its right edge, or treat recompilation as proof of identi
 published bytes. Consequences: arbitrary safe JSON remains authoritative; larger image
 frames require raw JSON; compilation failures identify the actual supported subset.
 Tests: 81 JVM tests, nine model tests, browser controls and exact downloaded-hash checks.
+
+## 020 — Generic nested text initialization and observable native actions (2026-11-03)
+
+Decision: subscribe Android CoreDocument's named-action callback alongside ID actions;
+initialize immutable nested DATA_TEXT in the iOS bridge before interaction. Context:
+real gallery clicks exposed an empty C++ action name despite an intact string payload.
+The writer creates the name inside the action list, which the pinned C++ DATA traversal
+skips. Alternatives: change protocol JSON/business names, special-case event IDs, or
+advance upstream pins. Reasoning: resource initialization is a generic renderer concern.
+Consequences: pins stay unchanged; no business callback map or native widget types;
+XCTest asserts both name/payload, and a separate marker proves local variable updates.
+Patterns/overriding text and broader action-list data semantics remain outside this proof.
+
+## 021 — Separate functional, deterministic-state and strict pixel evidence (2026-11-03)
+
+Decision: publish each gallery case once, validate immutable digest in all players,
+retain strict cross-platform differences, and keep same-platform static goldens separate.
+Five phase-variable documents test matching expression states; live time-driven frames
+prove motion without claiming clock synchronization or frame-rate parity. Alternatives:
+compare arbitrary live phases, raise thresholds until all screenshots pass, or accept
+model tests/decoding as rendering evidence. Consequences:15 strict ROI comparison flags
+remain visible;24 independent unchanged golden captures pass, and two known bad earlier
+Android captures are rejected. Test coordinates/ROIs never become a business UI protocol.

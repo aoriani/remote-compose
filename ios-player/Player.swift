@@ -3,6 +3,8 @@ import MetalKit
 import CryptoKit
 import Darwin
 
+private func launchValue(_ name:String)->String? {let args=ProcessInfo.processInfo.arguments;guard let i=args.firstIndex(of:name),i+1<args.count else{return nil};return args[i+1]}
+
 @MainActor final class Viewer: ObservableObject {
     @Published var backend = UserDefaults.standard.string(forKey: "backend") ?? "http://127.0.0.1:8080"
     @Published var auto = true
@@ -15,6 +17,7 @@ import Darwin
     @Published var events: [String] = []
     let device = MTLCreateSystemDefaultDevice()
     var renderer: RCMetalRenderer?
+    private let documentSelector = launchValue("--version") ?? "latest"
     private var etag = ""
     private var lastBackend = ""
     private var fetching = false
@@ -22,6 +25,9 @@ import Darwin
     private var smokeDone = false
     init() {
         setbuf(stdout, nil)
+        if let value=launchValue("--backend") {backend=value}
+        auto = !ProcessInfo.processInfo.arguments.contains("--no-auto")
+        if let value=launchValue("--interval"),let seconds=Double(value) {interval=max(2,min(300,seconds))}
         if let device, let queue = device.makeCommandQueue() { renderer = RCMetalRenderer(device: device, commandQueue: queue) }
         renderer?.eventHandler = { [weak self] event in self?.events.append(event); if self?.events.count ?? 0 > 50 { self?.events.removeFirst() }; print("RC_HOST_EVENT \(event)") }
         renderer?.errorHandler = { [weak self] error in self?.status = "Render failed: \(error)"; print("RC_RENDER_ERROR \(error)") }
@@ -32,7 +38,7 @@ import Darwin
         status = "Fetching…"
         let requestedBackend = backend
         do {
-            guard let url = URL(string: backend + "/api/documents/latest") else { throw URLError(.badURL) }
+            guard let url = URL(string: backend + "/api/documents/" + documentSelector) else { throw URLError(.badURL) }
             if lastBackend != backend { etag = "" }; lastBackend = backend
             var request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 10)
             if !etag.isEmpty { request.setValue(etag, forHTTPHeaderField: "If-None-Match") }
@@ -61,7 +67,7 @@ import Darwin
             }
         } catch { status = "Refresh failed (last document retained): \(error.localizedDescription)"; print("RC_FETCH_ERROR \(error)") }
     }
-    func start() { stop(); task = Task { await refresh(); while !Task.isCancelled { try? await Task.sleep(nanoseconds: UInt64(max(2,min(300,interval))*1_000_000_000)); if Task.isCancelled { return }; if auto { await refresh() } } } }
+    func start() { guard task == nil else { return }; task = Task { await refresh(); while !Task.isCancelled { try? await Task.sleep(nanoseconds: UInt64(max(2,min(300,interval))*1_000_000_000)); if Task.isCancelled { return }; if auto { await refresh() } } } }
     func stop() { task?.cancel(); task = nil }
 }
 
@@ -100,7 +106,7 @@ struct PlayerScreen: View {
         }.sheet(isPresented:$debug) {
             NavigationStack { Form {
                 Section("Connection") { TextField("Backend URL",text:$model.backend).textInputAutocapitalization(.never).autocorrectionDisabled();Toggle("Auto-refresh",isOn:$model.auto);Stepper("Interval: \(Int(model.interval)) seconds",value:$model.interval,in:2...300);Button("Refresh now"){UserDefaults.standard.set(model.backend,forKey:"backend");Task{await model.refresh()}} }
-                Section("Document") { Text("Version \(model.version) • \(model.bytes) bytes");Text("SHA-256 \(model.digest)").font(.caption).textSelection(.enabled);Text(model.status);DisclosureGroup("Raw document metadata") { Text(model.metadata).font(.system(.caption,design:.monospaced)).textSelection(.enabled) } }
+                Section("Document") { Text("Version \(model.version) • \(model.bytes) bytes");Text("SHA-256 \(model.digest)").font(.caption).textSelection(.enabled).accessibilityIdentifier("document-digest").accessibilityValue(model.digest);Text(model.status);DisclosureGroup("Raw document metadata") { Text(model.metadata).font(.system(.caption,design:.monospaced)).textSelection(.enabled) } }
                 Section("Host events") { Button("Clear event log"){model.events=[]};ForEach(Array(model.events.enumerated()),id:\.offset){ _,event in Text(event) } }
             }.navigationTitle("Player debug").toolbar { Button("Done"){debug=false} } }.presentationDetents([.medium,.large])
         }.task { model.start() }.onChange(of:phase){ _,value in if value == .active {model.start()} else {model.stop()} }

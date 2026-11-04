@@ -8,6 +8,19 @@
 #include "rccore/CoreDocument.h"
 #include "rccore/RemoteContext.h"
 #include "rccore/TimeVariables.h"
+#include "rccore/operations/DrawOperations.h"
+
+// The pinned C++ action containers skip their DATA pass. HostAction.write emits
+// the action name as nested DATA_TEXT, so preload immutable text definitions at
+// every depth before interaction. No actions or drawing operations are executed.
+static void loadNestedText(rccore::RemoteContext& context,
+        const std::vector<std::unique_ptr<rccore::Operation>>& operations) {
+    for (const auto& op : operations) {
+        if (auto* text = dynamic_cast<rccore::TextData*>(op.get()))
+            context.loadText(text->textId, text->text);
+        loadNestedText(context, op->mChildren);
+    }
+}
 #include "rcskia/SkiaPaintContext.h"
 
 #include "include/core/SkCanvas.h"
@@ -109,6 +122,7 @@
 
     _doc->registerListeners(*_context);
     _doc->applyDataOperations(*_context);
+    loadNestedText(*_context, _doc->getOperations());
     _timeVars = rccore::TimeVariables();
     _lastSurfaceSize = size;
 }

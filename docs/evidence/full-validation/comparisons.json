@@ -1,0 +1,3096 @@
+{
+  "thresholds": {
+    "roiMae": 5,
+    "roiFractionOver12": 0.03,
+    "colorInterior": 3,
+    "geometryPixels": 2
+  },
+  "results": [
+    {
+      "id": "widget-header",
+      "platform": "android",
+      "sha256": "91a04a544fecc55619012fed60f11f42248d8a86892aee07566335d0804df6fa",
+      "passed": true,
+      "failures": [],
+      "fullFrame": {
+        "mae": 0.880523149835946,
+        "badFraction": 0.013188115202333211
+      },
+      "unsynchronizedLive": false,
+      "rois": [],
+      "samples": [],
+      "typographyExcluded": false,
+      "assertionsPassed": true,
+      "visualParity": "FULL_FRAME_NOT_GATED",
+      "scope": "Capture/hash and any declared actions; full-frame metrics informational, not a visual pass"
+    },
+    {
+      "id": "widget-header",
+      "platform": "ios",
+      "sha256": "91a04a544fecc55619012fed60f11f42248d8a86892aee07566335d0804df6fa",
+      "passed": true,
+      "failures": [],
+      "fullFrame": {
+        "mae": 0.7933315105116053,
+        "badFraction": 0.014108640174990885
+      },
+      "unsynchronizedLive": false,
+      "rois": [],
+      "samples": [],
+      "typographyExcluded": false,
+      "assertionsPassed": true,
+      "visualParity": "FULL_FRAME_NOT_GATED",
+      "scope": "Capture/hash and any declared actions; full-frame metrics informational, not a visual pass"
+    },
+    {
+      "id": "widget-text",
+      "platform": "android",
+      "sha256": "562f61bade8b993975fd19d9a1da6e2c5aa49457c98fdc67a0efa8005f8afabd",
+      "passed": true,
+      "failures": [],
+      "fullFrame": {
+        "mae": 0.5740440312715195,
+        "badFraction": 0.010250334183983472
+      },
+      "unsynchronizedLive": false,
+      "rois": [],
+      "samples": [],
+      "typographyExcluded": false,
+      "assertionsPassed": true,
+      "visualParity": "FULL_FRAME_NOT_GATED",
+      "scope": "Capture/hash and any declared actions; full-frame metrics informational, not a visual pass"
+    },
+    {
+      "id": "widget-text",
+      "platform": "ios",
+      "sha256": "562f61bade8b993975fd19d9a1da6e2c5aa49457c98fdc67a0efa8005f8afabd",
+      "passed": true,
+      "failures": [],
+      "fullFrame": {
+        "mae": 1.1884402722080447,
+        "badFraction": 0.01482865475756471
+      },
+      "unsynchronizedLive": false,
+      "rois": [],
+      "samples": [],
+      "typographyExcluded": false,
+      "assertionsPassed": true,
+      "visualParity": "FULL_FRAME_NOT_GATED",
+      "scope": "Capture/hash and any declared actions; full-frame metrics informational, not a visual pass"
+    },
+    {
+      "id": "widget-spacer",
+      "platform": "android",
+      "sha256": "6cf7826373f3671b8b3e10be1118d414cfe04613dfd37fcf3b1b699466eebfff",
+      "passed": true,
+      "failures": [],
+      "fullFrame": {
+        "mae": 0.10871815125369627,
+        "badFraction": 0.005307449264795237
+      },
+      "unsynchronizedLive": false,
+      "rois": [],
+      "samples": [],
+      "typographyExcluded": false,
+      "assertionsPassed": true,
+      "visualParity": "FULL_FRAME_NOT_GATED",
+      "scope": "Capture/hash and any declared actions; full-frame metrics informational, not a visual pass"
+    },
+    {
+      "id": "widget-spacer",
+      "platform": "ios",
+      "sha256": "6cf7826373f3671b8b3e10be1118d414cfe04613dfd37fcf3b1b699466eebfff",
+      "passed": true,
+      "failures": [],
+      "fullFrame": {
+        "mae": 0.5444768501640539,
+        "badFraction": 0.010456920646494106
+      },
+      "unsynchronizedLive": false,
+      "rois": [],
+      "samples": [],
+      "typographyExcluded": false,
+      "assertionsPassed": true,
+      "visualParity": "FULL_FRAME_NOT_GATED",
+      "scope": "Capture/hash and any declared actions; full-frame metrics informational, not a visual pass"
+    },
+    {
+      "id": "widget-hero",
+      "platform": "android",
+      "sha256": "1938fca1f27d9f9c28e192d550ccaec201009a5c394db9143a8335ad7c624633",
+      "passed": true,
+      "failures": [],
+      "fullFrame": {
+        "mae": 2.3728105885688824,
+        "badFraction": 0.03239458014339531
+      },
+      "unsynchronizedLive": false,
+      "rois": [],
+      "samples": [],
+      "typographyExcluded": false,
+      "assertionsPassed": true,
+      "visualParity": "FULL_FRAME_NOT_GATED",
+      "scope": "Capture/hash and any declared actions; full-frame metrics informational, not a visual pass"
+    },
+    {
+      "id": "widget-hero",
+      "platform": "ios",
+      "sha256": "1938fca1f27d9f9c28e192d550ccaec201009a5c394db9143a8335ad7c624633",
+      "passed": true,
+      "failures": [],
+      "fullFrame": {
+        "mae": 1.3496648033377892,
+        "badFraction": 0.027946895126989914
+      },
+      "unsynchronizedLive": false,
+      "rois": [],
+      "samples": [],
+      "typographyExcluded": false,
+      "assertionsPassed": true,
+      "visualParity": "FULL_FRAME_NOT_GATED",
+      "scope": "Capture/hash and any declared actions; full-frame metrics informational, not a visual pass"
+    },
+    {
+      "id": "widget-promo",
+      "platform": "android",
+      "sha256": "306c4ed1f95d71ac070e99f67e0ceb8dd1a629e896d63457fbffa46550dcafe8",
+      "passed": true,
+      "failures": [],
+      "fullFrame": {
+        "mae": 0.5682464454976303,
+        "badFraction": 0.009062462024547333
+      },
+      "unsynchronizedLive": false,
+      "rois": [],
+      "samples": [],
+      "typographyExcluded": false,
+      "assertionsPassed": true,
+      "visualParity": "FULL_FRAME_NOT_GATED",
+      "scope": "Capture/hash and any declared actions; full-frame metrics informational, not a visual pass"
+    },
+    {
+      "id": "widget-promo",
+      "platform": "ios",
+      "sha256": "306c4ed1f95d71ac070e99f67e0ceb8dd1a629e896d63457fbffa46550dcafe8",
+      "passed": true,
+      "failures": [],
+      "fullFrame": {
+        "mae": 0.6825748369587231,
+        "badFraction": 0.014111678211204277
+      },
+      "unsynchronizedLive": false,
+      "rois": [],
+      "samples": [],
+      "typographyExcluded": false,
+      "assertionsPassed": true,
+      "visualParity": "FULL_FRAME_NOT_GATED",
+      "scope": "Capture/hash and any declared actions; full-frame metrics informational, not a visual pass"
+    },
+    {
+      "id": "widget-image",
+      "platform": "android",
+      "sha256": "2da5adc30e2845bb66a032b7cd2851a3bf815f53b6d82d100d4a51a207b8e6bc",
+      "passed": true,
+      "failures": [],
+      "fullFrame": {
+        "mae": 0.2956333292826184,
+        "badFraction": 0.011334913112164297
+      },
+      "unsynchronizedLive": false,
+      "rois": [],
+      "samples": [],
+      "typographyExcluded": false,
+      "assertionsPassed": true,
+      "visualParity": "FULL_FRAME_NOT_GATED",
+      "scope": "Capture/hash and any declared actions; full-frame metrics informational, not a visual pass"
+    },
+    {
+      "id": "widget-image",
+      "platform": "ios",
+      "sha256": "2da5adc30e2845bb66a032b7cd2851a3bf815f53b6d82d100d4a51a207b8e6bc",
+      "passed": true,
+      "failures": [],
+      "fullFrame": {
+        "mae": 0.6825940778547414,
+        "badFraction": 0.01404180337829627
+      },
+      "unsynchronizedLive": false,
+      "rois": [],
+      "samples": [],
+      "typographyExcluded": false,
+      "assertionsPassed": true,
+      "visualParity": "FULL_FRAME_NOT_GATED",
+      "scope": "Capture/hash and any declared actions; full-frame metrics informational, not a visual pass"
+    },
+    {
+      "id": "widget-button",
+      "platform": "android",
+      "sha256": "734b750a7cfc64790eb4094c0bb5a8ca07c0d1cd1709c4660344dab0f03bcfd2",
+      "passed": true,
+      "failures": [],
+      "fullFrame": {
+        "mae": 0.41917102118523925,
+        "badFraction": 0.01022602989427634
+      },
+      "unsynchronizedLive": false,
+      "rois": [],
+      "samples": [],
+      "typographyExcluded": false,
+      "assertionsPassed": true,
+      "visualParity": "FULL_FRAME_NOT_GATED",
+      "scope": "Capture/hash and any declared actions; full-frame metrics informational, not a visual pass"
+    },
+    {
+      "id": "widget-button",
+      "platform": "ios",
+      "sha256": "734b750a7cfc64790eb4094c0bb5a8ca07c0d1cd1709c4660344dab0f03bcfd2",
+      "passed": true,
+      "failures": [],
+      "fullFrame": {
+        "mae": 0.644466723376676,
+        "badFraction": 0.014275732166727428
+      },
+      "unsynchronizedLive": false,
+      "rois": [],
+      "samples": [],
+      "typographyExcluded": false,
+      "assertionsPassed": true,
+      "visualParity": "FULL_FRAME_NOT_GATED",
+      "scope": "Capture/hash and any declared actions; full-frame metrics informational, not a visual pass"
+    },
+    {
+      "id": "widget-products",
+      "platform": "android",
+      "sha256": "21e314459e1fca35eafb9a7974715ea398db68ccf4a0d1408d2b7184242576c0",
+      "passed": true,
+      "failures": [],
+      "fullFrame": {
+        "mae": 1.1524405557580912,
+        "badFraction": 0.020336614412443797
+      },
+      "unsynchronizedLive": false,
+      "rois": [],
+      "samples": [],
+      "typographyExcluded": false,
+      "assertionsPassed": true,
+      "visualParity": "FULL_FRAME_NOT_GATED",
+      "scope": "Capture/hash and any declared actions; full-frame metrics informational, not a visual pass"
+    },
+    {
+      "id": "widget-products",
+      "platform": "ios",
+      "sha256": "21e314459e1fca35eafb9a7974715ea398db68ccf4a0d1408d2b7184242576c0",
+      "passed": true,
+      "failures": [],
+      "fullFrame": {
+        "mae": 1.1188702556001136,
+        "badFraction": 0.026397496658160165
+      },
+      "unsynchronizedLive": false,
+      "rois": [],
+      "samples": [],
+      "typographyExcluded": false,
+      "assertionsPassed": true,
+      "visualParity": "FULL_FRAME_NOT_GATED",
+      "scope": "Capture/hash and any declared actions; full-frame metrics informational, not a visual pass"
+    },
+    {
+      "id": "widget-news",
+      "platform": "android",
+      "sha256": "74bd3d76c4c36b1bc14568f5ebdf7d72d012133cfbb2a3d7140e2bca23ecf464",
+      "passed": true,
+      "failures": [],
+      "fullFrame": {
+        "mae": 1.466284886782517,
+        "badFraction": 0.02162170373070847
+      },
+      "unsynchronizedLive": false,
+      "rois": [],
+      "samples": [],
+      "typographyExcluded": false,
+      "assertionsPassed": true,
+      "visualParity": "FULL_FRAME_NOT_GATED",
+      "scope": "Capture/hash and any declared actions; full-frame metrics informational, not a visual pass"
+    },
+    {
+      "id": "widget-news",
+      "platform": "ios",
+      "sha256": "74bd3d76c4c36b1bc14568f5ebdf7d72d012133cfbb2a3d7140e2bca23ecf464",
+      "passed": true,
+      "failures": [],
+      "fullFrame": {
+        "mae": 1.078525134686272,
+        "badFraction": 0.02323490096001944
+      },
+      "unsynchronizedLive": false,
+      "rois": [],
+      "samples": [],
+      "typographyExcluded": false,
+      "assertionsPassed": true,
+      "visualParity": "FULL_FRAME_NOT_GATED",
+      "scope": "Capture/hash and any declared actions; full-frame metrics informational, not a visual pass"
+    },
+    {
+      "id": "widget-badge",
+      "platform": "android",
+      "sha256": "a6b5a3eb53760c614c38bf2e8d00f0fa43dc2341552d774986dd352bea77a4b4",
+      "passed": true,
+      "failures": [],
+      "fullFrame": {
+        "mae": 0.5210930854295783,
+        "badFraction": 0.01084882731802163
+      },
+      "unsynchronizedLive": false,
+      "rois": [],
+      "samples": [],
+      "typographyExcluded": false,
+      "assertionsPassed": true,
+      "visualParity": "FULL_FRAME_NOT_GATED",
+      "scope": "Capture/hash and any declared actions; full-frame metrics informational, not a visual pass"
+    },
+    {
+      "id": "widget-badge",
+      "platform": "ios",
+      "sha256": "a6b5a3eb53760c614c38bf2e8d00f0fa43dc2341552d774986dd352bea77a4b4",
+      "passed": true,
+      "failures": [],
+      "fullFrame": {
+        "mae": 0.7346963989144083,
+        "badFraction": 0.01241645400413173
+      },
+      "unsynchronizedLive": false,
+      "rois": [],
+      "samples": [],
+      "typographyExcluded": false,
+      "assertionsPassed": true,
+      "visualParity": "FULL_FRAME_NOT_GATED",
+      "scope": "Capture/hash and any declared actions; full-frame metrics informational, not a visual pass"
+    },
+    {
+      "id": "widget-progress",
+      "platform": "android",
+      "sha256": "ef0b49f164d1cfaecd2a152f6fa8f50621981b4c2d1fc6408be0d8c70677479e",
+      "passed": true,
+      "failures": [],
+      "fullFrame": {
+        "mae": 0.9711933406246201,
+        "badFraction": 0.016253493741645402
+      },
+      "unsynchronizedLive": false,
+      "rois": [],
+      "samples": [],
+      "typographyExcluded": false,
+      "assertionsPassed": true,
+      "visualParity": "FULL_FRAME_NOT_GATED",
+      "scope": "Capture/hash and any declared actions; full-frame metrics informational, not a visual pass"
+    },
+    {
+      "id": "widget-progress",
+      "platform": "ios",
+      "sha256": "ef0b49f164d1cfaecd2a152f6fa8f50621981b4c2d1fc6408be0d8c70677479e",
+      "passed": true,
+      "failures": [],
+      "fullFrame": {
+        "mae": 0.9594523433385992,
+        "badFraction": 0.01605602138777494
+      },
+      "unsynchronizedLive": false,
+      "rois": [],
+      "samples": [],
+      "typographyExcluded": false,
+      "assertionsPassed": true,
+      "visualParity": "FULL_FRAME_NOT_GATED",
+      "scope": "Capture/hash and any declared actions; full-frame metrics informational, not a visual pass"
+    },
+    {
+      "id": "graphics",
+      "platform": "android",
+      "sha256": "f34e50af4a2d450b61ea09036aca92c51259506a3ef336c4c7f3a868c8cfc772",
+      "passed": true,
+      "failures": [],
+      "fullFrame": {
+        "mae": 1.1436849353910965,
+        "badFraction": 0.014673714910681736
+      },
+      "unsynchronizedLive": false,
+      "rois": [
+        {
+          "roi": [
+            35,
+            95,
+            50,
+            30
+          ],
+          "mae": 0,
+          "badFraction": 0,
+          "edgeDiagnostic": {
+            "meanNearestError": 0,
+            "fractionOver12": 0
+          },
+          "ssim": 1
+        },
+        {
+          "roi": [
+            150,
+            95,
+            60,
+            30
+          ],
+          "mae": 0,
+          "badFraction": 0,
+          "edgeDiagnostic": {
+            "meanNearestError": 0,
+            "fractionOver12": 0
+          },
+          "ssim": 1
+        },
+        {
+          "roi": [
+            270,
+            95,
+            60,
+            30
+          ],
+          "mae": 0,
+          "badFraction": 0,
+          "edgeDiagnostic": {
+            "meanNearestError": 0,
+            "fractionOver12": 0
+          },
+          "ssim": 1
+        },
+        {
+          "roi": [
+            60,
+            210,
+            30,
+            20
+          ],
+          "mae": 0,
+          "badFraction": 0,
+          "edgeDiagnostic": {
+            "meanNearestError": 0,
+            "fractionOver12": 0
+          },
+          "ssim": 1
+        },
+        {
+          "roi": [
+            30,
+            410,
+            70,
+            50
+          ],
+          "mae": 0,
+          "badFraction": 0,
+          "edgeDiagnostic": {
+            "meanNearestError": 0,
+            "fractionOver12": 0
+          },
+          "ssim": 1
+        },
+        {
+          "roi": [
+            245,
+            425,
+            25,
+            20
+          ],
+          "mae": 0.036,
+          "badFraction": 0,
+          "edgeDiagnostic": {
+            "meanNearestError": 0.028,
+            "fractionOver12": 0
+          },
+          "ssim": 0.9997557906876705
+        },
+        {
+          "roi": [
+            190,
+            570,
+            90,
+            15
+          ],
+          "mae": 0,
+          "badFraction": 0,
+          "edgeDiagnostic": {
+            "meanNearestError": 0,
+            "fractionOver12": 0
+          },
+          "ssim": 1
+        },
+        {
+          "roi": [
+            24,
+            300,
+            340,
+            45
+          ],
+          "mae": 0.2553812636165577,
+          "badFraction": 0,
+          "edgeDiagnostic": {
+            "meanNearestError": 0.44254901960784315,
+            "fractionOver12": 0
+          },
+          "ssim": 0.997022959380088
+        }
+      ],
+      "samples": [
+        {
+          "x": 60,
+          "y": 110,
+          "actual": [
+            48,
+            91,
+            239
+          ],
+          "expected": [
+            48,
+            91,
+            239
+          ]
+        },
+        {
+          "x": 170,
+          "y": 110,
+          "actual": [
+            129,
+            168,
+            132
+          ],
+          "expected": [
+            129,
+            168,
+            132
+          ]
+        },
+        {
+          "x": 150,
+          "y": 440,
+          "actual": [
+            255,
+            255,
+            255
+          ],
+          "expected": [
+            255,
+            255,
+            255
+          ]
+        },
+        {
+          "x": 205,
+          "y": 580,
+          "actual": [
+            247,
+            176,
+            123
+          ],
+          "expected": [
+            247,
+            176,
+            123
+          ]
+        }
+      ],
+      "circle": {
+        "x": 30,
+        "y": 80,
+        "width": 60,
+        "height": 60,
+        "pixels": 2757,
+        "cx": 59.507798331519766,
+        "cy": 109.50743561842583
+      },
+      "typographyExcluded": false,
+      "assertionsPassed": true,
+      "visualParity": "DECLARED_ROIS_ONLY",
+      "scope": "Declared ROIs, samples, geometry; full-frame metrics informational"
+    },
+    {
+      "id": "graphics",
+      "platform": "ios",
+      "sha256": "f34e50af4a2d450b61ea09036aca92c51259506a3ef336c4c7f3a868c8cfc772",
+      "passed": true,
+      "failures": [],
+      "fullFrame": {
+        "mae": 0.8434074614169401,
+        "badFraction": 0.016207923198444524
+      },
+      "unsynchronizedLive": false,
+      "rois": [
+        {
+          "roi": [
+            35,
+            95,
+            50,
+            30
+          ],
+          "mae": 0,
+          "badFraction": 0,
+          "edgeDiagnostic": {
+            "meanNearestError": 0,
+            "fractionOver12": 0
+          },
+          "ssim": 1
+        },
+        {
+          "roi": [
+            150,
+            95,
+            60,
+            30
+          ],
+          "mae": 0,
+          "badFraction": 0,
+          "edgeDiagnostic": {
+            "meanNearestError": 0,
+            "fractionOver12": 0
+          },
+          "ssim": 1
+        },
+        {
+          "roi": [
+            270,
+            95,
+            60,
+            30
+          ],
+          "mae": 0,
+          "badFraction": 0,
+          "edgeDiagnostic": {
+            "meanNearestError": 0,
+            "fractionOver12": 0
+          },
+          "ssim": 1
+        },
+        {
+          "roi": [
+            60,
+            210,
+            30,
+            20
+          ],
+          "mae": 1,
+          "badFraction": 0,
+          "edgeDiagnostic": {
+            "meanNearestError": 1,
+            "fractionOver12": 0
+          },
+          "ssim": 0.9999693381588751
+        },
+        {
+          "roi": [
+            30,
+            410,
+            70,
+            50
+          ],
+          "mae": 0,
+          "badFraction": 0,
+          "edgeDiagnostic": {
+            "meanNearestError": 0,
+            "fractionOver12": 0
+          },
+          "ssim": 1
+        },
+        {
+          "roi": [
+            245,
+            425,
+            25,
+            20
+          ],
+          "mae": 0.07333333333333333,
+          "badFraction": 0.006,
+          "edgeDiagnostic": {
+            "meanNearestError": 0.08,
+            "fractionOver12": 0.004
+          },
+          "ssim": 0.9990023360707193
+        },
+        {
+          "roi": [
+            190,
+            570,
+            90,
+            15
+          ],
+          "mae": 0,
+          "badFraction": 0,
+          "edgeDiagnostic": {
+            "meanNearestError": 0,
+            "fractionOver12": 0
+          },
+          "ssim": 1
+        },
+        {
+          "roi": [
+            24,
+            300,
+            340,
+            45
+          ],
+          "mae": 0.25655773420479305,
+          "badFraction": 0,
+          "edgeDiagnostic": {
+            "meanNearestError": 0.448562091503268,
+            "fractionOver12": 0
+          },
+          "ssim": 0.9970724040630603
+        }
+      ],
+      "samples": [
+        {
+          "x": 60,
+          "y": 110,
+          "actual": [
+            48,
+            91,
+            239
+          ],
+          "expected": [
+            48,
+            91,
+            239
+          ]
+        },
+        {
+          "x": 170,
+          "y": 110,
+          "actual": [
+            129,
+            168,
+            132
+          ],
+          "expected": [
+            129,
+            168,
+            132
+          ]
+        },
+        {
+          "x": 150,
+          "y": 440,
+          "actual": [
+            255,
+            255,
+            255
+          ],
+          "expected": [
+            255,
+            255,
+            255
+          ]
+        },
+        {
+          "x": 205,
+          "y": 580,
+          "actual": [
+            247,
+            176,
+            123
+          ],
+          "expected": [
+            247,
+            176,
+            123
+          ]
+        }
+      ],
+      "circle": {
+        "x": 31,
+        "y": 80,
+        "width": 59,
+        "height": 60,
+        "pixels": 2762,
+        "cx": 59.80738595220854,
+        "cy": 109.5
+      },
+      "typographyExcluded": false,
+      "assertionsPassed": true,
+      "visualParity": "DECLARED_ROIS_ONLY",
+      "scope": "Declared ROIs, samples, geometry; full-frame metrics informational"
+    },
+    {
+      "id": "bitmaps",
+      "platform": "android",
+      "sha256": "c0e5a465b336c6e2b5283c13286e1cd670e480a7f8aa899cacabe56eb19d2ed0",
+      "passed": false,
+      "failures": [
+        "ROI mismatch {\"roi\":[25,75,140,140],\"mae\":1.7346938775510203,\"badFraction\":0.052244897959183675,\"edgeDiagnostic\":{\"meanNearestError\":1.2596938775510205,\"fractionOver12\":0.025255102040816328},\"ssim\":0.9861809932310607}",
+        "ROI mismatch {\"roi\":[215,75,140,140],\"mae\":1.8910544217687075,\"badFraction\":0.08025510204081633,\"edgeDiagnostic\":{\"meanNearestError\":1.7979081632653062,\"fractionOver12\":0.036734693877551024},\"ssim\":0.9869564346843499}",
+        "ROI mismatch {\"roi\":[25,275,140,140],\"mae\":1.5895068027210886,\"badFraction\":0.04229591836734694,\"edgeDiagnostic\":{\"meanNearestError\":1.0685714285714285,\"fractionOver12\":0.015306122448979591},\"ssim\":0.9782187145138305}",
+        "ROI mismatch {\"roi\":[215,275,140,140],\"mae\":4.405255102040816,\"badFraction\":0.1763265306122449,\"edgeDiagnostic\":{\"meanNearestError\":4.055816326530612,\"fractionOver12\":0.09122448979591836},\"ssim\":0.9746623768364032}",
+        "ROI mismatch {\"roi\":[20,630,120,120],\"mae\":1.4673148148148147,\"badFraction\":0.06395833333333334,\"edgeDiagnostic\":{\"meanNearestError\":0.05361111111111111,\"fractionOver12\":0.0011111111111111111},\"ssim\":0.9723644140976555}"
+      ],
+      "fullFrame": {
+        "mae": 1.611506055818852,
+        "badFraction": 0.03557844209502977
+      },
+      "unsynchronizedLive": false,
+      "rois": [
+        {
+          "roi": [
+            25,
+            75,
+            140,
+            140
+          ],
+          "mae": 1.7346938775510203,
+          "badFraction": 0.052244897959183675,
+          "edgeDiagnostic": {
+            "meanNearestError": 1.2596938775510205,
+            "fractionOver12": 0.025255102040816328
+          },
+          "ssim": 0.9861809932310607
+        },
+        {
+          "roi": [
+            215,
+            75,
+            140,
+            140
+          ],
+          "mae": 1.8910544217687075,
+          "badFraction": 0.08025510204081633,
+          "edgeDiagnostic": {
+            "meanNearestError": 1.7979081632653062,
+            "fractionOver12": 0.036734693877551024
+          },
+          "ssim": 0.9869564346843499
+        },
+        {
+          "roi": [
+            25,
+            275,
+            140,
+            140
+          ],
+          "mae": 1.5895068027210886,
+          "badFraction": 0.04229591836734694,
+          "edgeDiagnostic": {
+            "meanNearestError": 1.0685714285714285,
+            "fractionOver12": 0.015306122448979591
+          },
+          "ssim": 0.9782187145138305
+        },
+        {
+          "roi": [
+            215,
+            275,
+            140,
+            140
+          ],
+          "mae": 4.405255102040816,
+          "badFraction": 0.1763265306122449,
+          "edgeDiagnostic": {
+            "meanNearestError": 4.055816326530612,
+            "fractionOver12": 0.09122448979591836
+          },
+          "ssim": 0.9746623768364032
+        },
+        {
+          "roi": [
+            20,
+            630,
+            120,
+            120
+          ],
+          "mae": 1.4673148148148147,
+          "badFraction": 0.06395833333333334,
+          "edgeDiagnostic": {
+            "meanNearestError": 0.05361111111111111,
+            "fractionOver12": 0.0011111111111111111
+          },
+          "ssim": 0.9723644140976555
+        }
+      ],
+      "samples": [],
+      "typographyExcluded": false,
+      "assertionsPassed": false,
+      "visualParity": "STRICT_ROI_DIFFERENCES",
+      "scope": "Declared ROIs, samples, geometry; full-frame metrics informational"
+    },
+    {
+      "id": "bitmaps",
+      "platform": "ios",
+      "sha256": "c0e5a465b336c6e2b5283c13286e1cd670e480a7f8aa899cacabe56eb19d2ed0",
+      "passed": false,
+      "failures": [
+        "ROI mismatch {\"roi\":[25,75,140,140],\"mae\":2.013894557823129,\"badFraction\":0.06020408163265306,\"edgeDiagnostic\":{\"meanNearestError\":1.415561224489796,\"fractionOver12\":0.02816326530612245},\"ssim\":0.9805395364578956}",
+        "ROI mismatch {\"roi\":[215,75,140,140],\"mae\":2.1123979591836735,\"badFraction\":0.08484693877551021,\"edgeDiagnostic\":{\"meanNearestError\":1.9209183673469388,\"fractionOver12\":0.03938775510204082},\"ssim\":0.9846178034027759}",
+        "ROI mismatch {\"roi\":[25,275,140,140],\"mae\":1.9153061224489798,\"badFraction\":0.04994897959183674,\"edgeDiagnostic\":{\"meanNearestError\":1.1554081632653062,\"fractionOver12\":0.01760204081632653},\"ssim\":0.9714912058071439}",
+        "ROI mismatch {\"roi\":[215,275,140,140],\"mae\":5.093367346938775,\"badFraction\":0.19785714285714287,\"edgeDiagnostic\":{\"meanNearestError\":4.301326530612245,\"fractionOver12\":0.09642857142857143},\"ssim\":0.9684068223180624}",
+        "ROI mismatch {\"roi\":[20,630,120,120],\"mae\":1.5464583333333335,\"badFraction\":0.05659722222222222,\"edgeDiagnostic\":{\"meanNearestError\":0.05631944444444444,\"fractionOver12\":0.0011111111111111111},\"ssim\":0.9683599398145355}"
+      ],
+      "fullFrame": {
+        "mae": 1.5006288734961721,
+        "badFraction": 0.04055778344877871
+      },
+      "unsynchronizedLive": false,
+      "rois": [
+        {
+          "roi": [
+            25,
+            75,
+            140,
+            140
+          ],
+          "mae": 2.013894557823129,
+          "badFraction": 0.06020408163265306,
+          "edgeDiagnostic": {
+            "meanNearestError": 1.415561224489796,
+            "fractionOver12": 0.02816326530612245
+          },
+          "ssim": 0.9805395364578956
+        },
+        {
+          "roi": [
+            215,
+            75,
+            140,
+            140
+          ],
+          "mae": 2.1123979591836735,
+          "badFraction": 0.08484693877551021,
+          "edgeDiagnostic": {
+            "meanNearestError": 1.9209183673469388,
+            "fractionOver12": 0.03938775510204082
+          },
+          "ssim": 0.9846178034027759
+        },
+        {
+          "roi": [
+            25,
+            275,
+            140,
+            140
+          ],
+          "mae": 1.9153061224489798,
+          "badFraction": 0.04994897959183674,
+          "edgeDiagnostic": {
+            "meanNearestError": 1.1554081632653062,
+            "fractionOver12": 0.01760204081632653
+          },
+          "ssim": 0.9714912058071439
+        },
+        {
+          "roi": [
+            215,
+            275,
+            140,
+            140
+          ],
+          "mae": 5.093367346938775,
+          "badFraction": 0.19785714285714287,
+          "edgeDiagnostic": {
+            "meanNearestError": 4.301326530612245,
+            "fractionOver12": 0.09642857142857143
+          },
+          "ssim": 0.9684068223180624
+        },
+        {
+          "roi": [
+            20,
+            630,
+            120,
+            120
+          ],
+          "mae": 1.5464583333333335,
+          "badFraction": 0.05659722222222222,
+          "edgeDiagnostic": {
+            "meanNearestError": 0.05631944444444444,
+            "fractionOver12": 0.0011111111111111111
+          },
+          "ssim": 0.9683599398145355
+        }
+      ],
+      "samples": [],
+      "typographyExcluded": false,
+      "assertionsPassed": false,
+      "visualParity": "STRICT_ROI_DIFFERENCES",
+      "scope": "Declared ROIs, samples, geometry; full-frame metrics informational"
+    },
+    {
+      "id": "layouts",
+      "platform": "android",
+      "sha256": "8b2ce8c6b6fb5ff020038fa58312c87832dbf123589840ccf4d0c87c77e18a07",
+      "passed": true,
+      "failures": [],
+      "fullFrame": {
+        "mae": 7.066492485923766,
+        "badFraction": 0.08981954064892453
+      },
+      "unsynchronizedLive": false,
+      "rois": [
+        {
+          "roi": [
+            32,
+            110,
+            80,
+            45
+          ],
+          "mae": 24.82574074074074,
+          "badFraction": 0.23972222222222223,
+          "edgeDiagnostic": {
+            "meanNearestError": 4.291666666666667,
+            "fractionOver12": 0.09388888888888888
+          },
+          "ssim": 0.6117372275787762
+        },
+        {
+          "roi": [
+            215,
+            115,
+            90,
+            35
+          ],
+          "mae": 20.606455026455027,
+          "badFraction": 0.32,
+          "edgeDiagnostic": {
+            "meanNearestError": 9.108253968253969,
+            "fractionOver12": 0.1438095238095238
+          },
+          "ssim": 0.6029355360480456
+        }
+      ],
+      "samples": [
+        {
+          "x": 17,
+          "y": 205,
+          "actual": [
+            255,
+            255,
+            255
+          ],
+          "expected": [
+            255,
+            255,
+            255
+          ]
+        }
+      ],
+      "typographyExcluded": true,
+      "assertionsPassed": true,
+      "visualParity": "NOT_ESTABLISHED_FONT_DIFFERENCES",
+      "scope": "Declared ROIs, samples, geometry; full-frame metrics informational"
+    },
+    {
+      "id": "layouts",
+      "platform": "ios",
+      "sha256": "8b2ce8c6b6fb5ff020038fa58312c87832dbf123589840ccf4d0c87c77e18a07",
+      "passed": true,
+      "failures": [],
+      "fullFrame": {
+        "mae": 8.144282415846396,
+        "badFraction": 0.09454976303317536
+      },
+      "unsynchronizedLive": false,
+      "rois": [
+        {
+          "roi": [
+            32,
+            110,
+            80,
+            45
+          ],
+          "mae": 45.93611111111111,
+          "badFraction": 0.35388888888888886,
+          "edgeDiagnostic": {
+            "meanNearestError": 26.836388888888887,
+            "fractionOver12": 0.2238888888888889
+          },
+          "ssim": 0.17419553412762473
+        },
+        {
+          "roi": [
+            215,
+            115,
+            90,
+            35
+          ],
+          "mae": 30.02021164021164,
+          "badFraction": 0.4031746031746032,
+          "edgeDiagnostic": {
+            "meanNearestError": 24.06888888888889,
+            "fractionOver12": 0.23904761904761904
+          },
+          "ssim": 0.3144235177018879
+        }
+      ],
+      "samples": [
+        {
+          "x": 17,
+          "y": 205,
+          "actual": [
+            255,
+            255,
+            255
+          ],
+          "expected": [
+            255,
+            255,
+            255
+          ]
+        }
+      ],
+      "typographyExcluded": true,
+      "assertionsPassed": true,
+      "visualParity": "NOT_ESTABLISHED_FONT_DIFFERENCES",
+      "scope": "Declared ROIs, samples, geometry; full-frame metrics informational"
+    },
+    {
+      "id": "interactions",
+      "platform": "android",
+      "sha256": "a244b82485428ef5fc5ac97b6cc5f8524f49b27132939f308c0d1fbc2826e44b",
+      "passed": true,
+      "failures": [],
+      "fullFrame": {
+        "mae": 2.9332978895775104,
+        "badFraction": 0.028053226394458623
+      },
+      "unsynchronizedLive": false,
+      "rois": [],
+      "samples": [],
+      "stateBefore": {
+        "x": 30,
+        "y": 307,
+        "width": 40,
+        "height": 40,
+        "pixels": 1220,
+        "cx": 49.531967213114754,
+        "cy": 326.46803278688526
+      },
+      "stateAfter": {
+        "x": 150,
+        "y": 307,
+        "width": 40,
+        "height": 40,
+        "pixels": 1220,
+        "cx": 169.53196721311474,
+        "cy": 326.46803278688526
+      },
+      "typographyExcluded": false,
+      "assertionsPassed": true,
+      "visualParity": "FULL_FRAME_NOT_GATED",
+      "scope": "Capture/hash and any declared actions; full-frame metrics informational, not a visual pass"
+    },
+    {
+      "id": "interactions",
+      "platform": "ios",
+      "sha256": "a244b82485428ef5fc5ac97b6cc5f8524f49b27132939f308c0d1fbc2826e44b",
+      "passed": true,
+      "failures": [],
+      "fullFrame": {
+        "mae": 3.5969406975331144,
+        "badFraction": 0.04223174140235752
+      },
+      "unsynchronizedLive": false,
+      "rois": [],
+      "samples": [],
+      "stateBefore": {
+        "x": 31,
+        "y": 303,
+        "width": 39,
+        "height": 40,
+        "pixels": 1211,
+        "cx": 49.771263418662265,
+        "cy": 322.51857968620976
+      },
+      "stateAfter": {
+        "x": 150,
+        "y": 303,
+        "width": 40,
+        "height": 40,
+        "pixels": 1218,
+        "cx": 169.5320197044335,
+        "cy": 322.5
+      },
+      "typographyExcluded": false,
+      "assertionsPassed": true,
+      "visualParity": "FULL_FRAME_NOT_GATED",
+      "scope": "Capture/hash and any declared actions; full-frame metrics informational, not a visual pass"
+    },
+    {
+      "id": "nested-scroll",
+      "platform": "android",
+      "sha256": "85e574b531ec09e822251626377a471a0e023aa9b0c88f3c63035ca67d6cd812",
+      "passed": true,
+      "failures": [],
+      "fullFrame": {
+        "mae": 4.787488354194515,
+        "badFraction": 0.06957406732288249
+      },
+      "unsynchronizedLive": false,
+      "rois": [],
+      "samples": [],
+      "typographyExcluded": false,
+      "assertionsPassed": true,
+      "visualParity": "FULL_FRAME_NOT_GATED",
+      "scope": "Capture/hash and any declared actions; full-frame metrics informational, not a visual pass"
+    },
+    {
+      "id": "nested-scroll",
+      "platform": "ios",
+      "sha256": "85e574b531ec09e822251626377a471a0e023aa9b0c88f3c63035ca67d6cd812",
+      "passed": true,
+      "failures": [],
+      "fullFrame": {
+        "mae": 8.498754405152509,
+        "badFraction": 0.11664843844938631
+      },
+      "unsynchronizedLive": false,
+      "rois": [],
+      "samples": [],
+      "typographyExcluded": false,
+      "assertionsPassed": true,
+      "visualParity": "FULL_FRAME_NOT_GATED",
+      "scope": "Capture/hash and any declared actions; full-frame metrics informational, not a visual pass"
+    },
+    {
+      "id": "phase-0",
+      "platform": "android",
+      "sha256": "be207ec10f7ce83adac950d1d79195baf8d343effe3cfe2f4d685121dada0faa",
+      "passed": false,
+      "failures": [
+        "ROI mismatch {\"roi\":[20,159,350,9],\"mae\":2.7183068783068784,\"badFraction\":0.12158730158730159,\"edgeDiagnostic\":{\"meanNearestError\":0.005714285714285714,\"fractionOver12\":0},\"ssim\":0.9964381212730206}"
+      ],
+      "fullFrame": {
+        "mae": 1.0875531656337343,
+        "badFraction": 0.014816502612711143
+      },
+      "unsynchronizedLive": false,
+      "rois": [
+        {
+          "roi": [
+            35,
+            35,
+            26,
+            26
+          ],
+          "mae": 0.28353057199211046,
+          "badFraction": 0.01775147928994083,
+          "edgeDiagnostic": {
+            "meanNearestError": 0.07692307692307693,
+            "fractionOver12": 0
+          },
+          "ssim": 0.9989988414056079
+        },
+        {
+          "roi": [
+            20,
+            159,
+            350,
+            9
+          ],
+          "mae": 2.7183068783068784,
+          "badFraction": 0.12158730158730159,
+          "edgeDiagnostic": {
+            "meanNearestError": 0.005714285714285714,
+            "fractionOver12": 0
+          },
+          "ssim": 0.9964381212730206
+        }
+      ],
+      "samples": [],
+      "phase": 0,
+      "dot": {
+        "x": 44,
+        "y": 44,
+        "width": 8,
+        "height": 8,
+        "pixels": 44,
+        "cx": 47.5,
+        "cy": 47.5
+      },
+      "bar": {
+        "x": 20,
+        "y": 161,
+        "width": 185,
+        "height": 5,
+        "pixels": 924,
+        "cx": 112.0995670995671,
+        "cy": 163.0021645021645
+      },
+      "typographyExcluded": false,
+      "assertionsPassed": false,
+      "visualParity": "STRICT_ROI_DIFFERENCES",
+      "scope": "Declared ROIs, samples, geometry; full-frame metrics informational"
+    },
+    {
+      "id": "phase-0",
+      "platform": "ios",
+      "sha256": "be207ec10f7ce83adac950d1d79195baf8d343effe3cfe2f4d685121dada0faa",
+      "passed": false,
+      "failures": [
+        "ROI mismatch {\"roi\":[35,35,26,26],\"mae\":0.782051282051282,\"badFraction\":0.042899408284023666,\"edgeDiagnostic\":{\"meanNearestError\":0.4393491124260355,\"fractionOver12\":0.020710059171597635},\"ssim\":0.9961445730787156}",
+        "ROI mismatch {\"roi\":[20,159,350,9],\"mae\":2.3575661375661374,\"badFraction\":0.11873015873015873,\"edgeDiagnostic\":{\"meanNearestError\":0.002857142857142857,\"fractionOver12\":0},\"ssim\":0.9977464406827086}"
+      ],
+      "fullFrame": {
+        "mae": 1.0015696520435857,
+        "badFraction": 0.01721655122129056
+      },
+      "unsynchronizedLive": false,
+      "rois": [
+        {
+          "roi": [
+            35,
+            35,
+            26,
+            26
+          ],
+          "mae": 0.782051282051282,
+          "badFraction": 0.042899408284023666,
+          "edgeDiagnostic": {
+            "meanNearestError": 0.4393491124260355,
+            "fractionOver12": 0.020710059171597635
+          },
+          "ssim": 0.9961445730787156
+        },
+        {
+          "roi": [
+            20,
+            159,
+            350,
+            9
+          ],
+          "mae": 2.3575661375661374,
+          "badFraction": 0.11873015873015873,
+          "edgeDiagnostic": {
+            "meanNearestError": 0.002857142857142857,
+            "fractionOver12": 0
+          },
+          "ssim": 0.9977464406827086
+        }
+      ],
+      "samples": [],
+      "phase": 0,
+      "dot": {
+        "x": 45,
+        "y": 44,
+        "width": 7,
+        "height": 8,
+        "pixels": 42,
+        "cx": 47.95238095238095,
+        "cy": 47.5
+      },
+      "bar": {
+        "x": 21,
+        "y": 161,
+        "width": 184,
+        "height": 5,
+        "pixels": 920,
+        "cx": 112.5,
+        "cy": 163
+      },
+      "typographyExcluded": false,
+      "assertionsPassed": false,
+      "visualParity": "STRICT_ROI_DIFFERENCES",
+      "scope": "Declared ROIs, samples, geometry; full-frame metrics informational"
+    },
+    {
+      "id": "phase-1",
+      "platform": "android",
+      "sha256": "50b9b56521a205580184a12d21d2a486830e18f1455ff97ac39f48c4b2787cfd",
+      "passed": false,
+      "failures": [
+        "ROI mismatch {\"roi\":[20,159,350,9],\"mae\":2.9219047619047616,\"badFraction\":0.13428571428571429,\"edgeDiagnostic\":{\"meanNearestError\":0.005714285714285714,\"fractionOver12\":0},\"ssim\":0.996499855149812}"
+      ],
+      "fullFrame": {
+        "mae": 1.089562320249524,
+        "badFraction": 0.01493802406124681
+      },
+      "unsynchronizedLive": false,
+      "rois": [
+        {
+          "roi": [
+            35,
+            35,
+            26,
+            26
+          ],
+          "mae": 0.3131163708086785,
+          "badFraction": 0.01775147928994083,
+          "edgeDiagnostic": {
+            "meanNearestError": 0.3624260355029586,
+            "fractionOver12": 0.01775147928994083
+          },
+          "ssim": 0.9988605234977633
+        },
+        {
+          "roi": [
+            20,
+            159,
+            350,
+            9
+          ],
+          "mae": 2.9219047619047616,
+          "badFraction": 0.13428571428571429,
+          "edgeDiagnostic": {
+            "meanNearestError": 0.005714285714285714,
+            "fractionOver12": 0
+          },
+          "ssim": 0.996499855149812
+        }
+      ],
+      "samples": [],
+      "phase": 0.7853981633974483,
+      "dot": {
+        "x": 44,
+        "y": 44,
+        "width": 9,
+        "height": 9,
+        "pixels": 64,
+        "cx": 47.640625,
+        "cy": 47.640625
+      },
+      "bar": {
+        "x": 20,
+        "y": 161,
+        "width": 209,
+        "height": 5,
+        "pixels": 1044,
+        "cx": 124.09961685823755,
+        "cy": 163.00191570881225
+      },
+      "typographyExcluded": false,
+      "assertionsPassed": false,
+      "visualParity": "STRICT_ROI_DIFFERENCES",
+      "scope": "Declared ROIs, samples, geometry; full-frame metrics informational"
+    },
+    {
+      "id": "phase-1",
+      "platform": "ios",
+      "sha256": "50b9b56521a205580184a12d21d2a486830e18f1455ff97ac39f48c4b2787cfd",
+      "passed": false,
+      "failures": [
+        "ROI mismatch {\"roi\":[35,35,26,26],\"mae\":0.8816568047337278,\"badFraction\":0.04437869822485207,\"edgeDiagnostic\":{\"meanNearestError\":0.6272189349112426,\"fractionOver12\":0.020710059171597635},\"ssim\":0.9932564756177527}",
+        "ROI mismatch {\"roi\":[20,159,350,9],\"mae\":2.544761904761905,\"badFraction\":0.13396825396825396,\"edgeDiagnostic\":{\"meanNearestError\":0.002857142857142857,\"fractionOver12\":0},\"ssim\":0.9977195757074303}"
+      ],
+      "fullFrame": {
+        "mae": 1.003565641835784,
+        "badFraction": 0.017365414995746748
+      },
+      "unsynchronizedLive": false,
+      "rois": [
+        {
+          "roi": [
+            35,
+            35,
+            26,
+            26
+          ],
+          "mae": 0.8816568047337278,
+          "badFraction": 0.04437869822485207,
+          "edgeDiagnostic": {
+            "meanNearestError": 0.6272189349112426,
+            "fractionOver12": 0.020710059171597635
+          },
+          "ssim": 0.9932564756177527
+        },
+        {
+          "roi": [
+            20,
+            159,
+            350,
+            9
+          ],
+          "mae": 2.544761904761905,
+          "badFraction": 0.13396825396825396,
+          "edgeDiagnostic": {
+            "meanNearestError": 0.002857142857142857,
+            "fractionOver12": 0
+          },
+          "ssim": 0.9977195757074303
+        }
+      ],
+      "samples": [],
+      "phase": 0.7853981633974483,
+      "dot": {
+        "x": 44,
+        "y": 43,
+        "width": 9,
+        "height": 10,
+        "pixels": 66,
+        "cx": 47.78787878787879,
+        "cy": 47.5
+      },
+      "bar": {
+        "x": 21,
+        "y": 161,
+        "width": 208,
+        "height": 5,
+        "pixels": 1040,
+        "cx": 124.5,
+        "cy": 163
+      },
+      "typographyExcluded": false,
+      "assertionsPassed": false,
+      "visualParity": "STRICT_ROI_DIFFERENCES",
+      "scope": "Declared ROIs, samples, geometry; full-frame metrics informational"
+    },
+    {
+      "id": "phase-2",
+      "platform": "android",
+      "sha256": "3a5037a52173aab7742a171ebdfa68c93ee921e2a828f825ebf4804b700a26ce",
+      "passed": false,
+      "failures": [
+        "ROI mismatch {\"roi\":[20,159,350,9],\"mae\":2.7183068783068784,\"badFraction\":0.12158730158730159,\"edgeDiagnostic\":{\"meanNearestError\":0.005714285714285714,\"fractionOver12\":0},\"ssim\":0.9964381212730206}"
+      ],
+      "fullFrame": {
+        "mae": 1.0872220196864746,
+        "badFraction": 0.014780046178150444
+      },
+      "unsynchronizedLive": false,
+      "rois": [
+        {
+          "roi": [
+            35,
+            35,
+            26,
+            26
+          ],
+          "mae": 0.1222879684418146,
+          "badFraction": 0,
+          "edgeDiagnostic": {
+            "meanNearestError": 0.15976331360946747,
+            "fractionOver12": 0
+          },
+          "ssim": 0.9999298217184318
+        },
+        {
+          "roi": [
+            20,
+            159,
+            350,
+            9
+          ],
+          "mae": 2.7183068783068784,
+          "badFraction": 0.12158730158730159,
+          "edgeDiagnostic": {
+            "meanNearestError": 0.005714285714285714,
+            "fractionOver12": 0
+          },
+          "ssim": 0.9964381212730206
+        }
+      ],
+      "samples": [],
+      "phase": 1.5707963267948966,
+      "dot": {
+        "x": 46,
+        "y": 46,
+        "width": 4,
+        "height": 4,
+        "pixels": 16,
+        "cx": 47.5,
+        "cy": 47.5
+      },
+      "bar": {
+        "x": 20,
+        "y": 161,
+        "width": 185,
+        "height": 5,
+        "pixels": 924,
+        "cx": 112.0995670995671,
+        "cy": 163.0021645021645
+      },
+      "typographyExcluded": false,
+      "assertionsPassed": false,
+      "visualParity": "STRICT_ROI_DIFFERENCES",
+      "scope": "Declared ROIs, samples, geometry; full-frame metrics informational"
+    },
+    {
+      "id": "phase-2",
+      "platform": "ios",
+      "sha256": "3a5037a52173aab7742a171ebdfa68c93ee921e2a828f825ebf4804b700a26ce",
+      "passed": false,
+      "failures": [
+        "ROI mismatch {\"roi\":[20,159,350,9],\"mae\":2.3575661375661374,\"badFraction\":0.11873015873015873,\"edgeDiagnostic\":{\"meanNearestError\":0.002857142857142857,\"fractionOver12\":0},\"ssim\":0.9977464406827086}"
+      ],
+      "fullFrame": {
+        "mae": 1.0009650828371208,
+        "badFraction": 0.017174018714303074
+      },
+      "unsynchronizedLive": false,
+      "rois": [
+        {
+          "roi": [
+            35,
+            35,
+            26,
+            26
+          ],
+          "mae": 0.48767258382643,
+          "badFraction": 0.022189349112426034,
+          "edgeDiagnostic": {
+            "meanNearestError": 0.4349112426035503,
+            "fractionOver12": 0.01775147928994083
+          },
+          "ssim": 0.9978283021816693
+        },
+        {
+          "roi": [
+            20,
+            159,
+            350,
+            9
+          ],
+          "mae": 2.3575661375661374,
+          "badFraction": 0.11873015873015873,
+          "edgeDiagnostic": {
+            "meanNearestError": 0.002857142857142857,
+            "fractionOver12": 0
+          },
+          "ssim": 0.9977464406827086
+        }
+      ],
+      "samples": [],
+      "phase": 1.5707963267948966,
+      "dot": {
+        "x": 46,
+        "y": 46,
+        "width": 5,
+        "height": 4,
+        "pixels": 18,
+        "cx": 47.77777777777778,
+        "cy": 47.5
+      },
+      "bar": {
+        "x": 21,
+        "y": 161,
+        "width": 184,
+        "height": 5,
+        "pixels": 920,
+        "cx": 112.5,
+        "cy": 163
+      },
+      "typographyExcluded": false,
+      "assertionsPassed": false,
+      "visualParity": "STRICT_ROI_DIFFERENCES",
+      "scope": "Declared ROIs, samples, geometry; full-frame metrics informational"
+    },
+    {
+      "id": "phase-3",
+      "platform": "android",
+      "sha256": "891a5b7d424d861fabab6426386e68cc11803911190befdc171fa856ded07af7",
+      "passed": false,
+      "failures": [
+        "ROI mismatch {\"roi\":[20,159,350,9],\"mae\":2.7183068783068784,\"badFraction\":0.12158730158730159,\"edgeDiagnostic\":{\"meanNearestError\":0.005714285714285714,\"fractionOver12\":0},\"ssim\":0.9964381212730206}"
+      ],
+      "fullFrame": {
+        "mae": 1.0875531656337343,
+        "badFraction": 0.014816502612711143
+      },
+      "unsynchronizedLive": false,
+      "rois": [
+        {
+          "roi": [
+            35,
+            35,
+            26,
+            26
+          ],
+          "mae": 0.28353057199211046,
+          "badFraction": 0.01775147928994083,
+          "edgeDiagnostic": {
+            "meanNearestError": 0.07692307692307693,
+            "fractionOver12": 0
+          },
+          "ssim": 0.9989988414056079
+        },
+        {
+          "roi": [
+            20,
+            159,
+            350,
+            9
+          ],
+          "mae": 2.7183068783068784,
+          "badFraction": 0.12158730158730159,
+          "edgeDiagnostic": {
+            "meanNearestError": 0.005714285714285714,
+            "fractionOver12": 0
+          },
+          "ssim": 0.9964381212730206
+        }
+      ],
+      "samples": [],
+      "phase": 3.141592653589793,
+      "dot": {
+        "x": 44,
+        "y": 44,
+        "width": 8,
+        "height": 8,
+        "pixels": 44,
+        "cx": 47.5,
+        "cy": 47.5
+      },
+      "bar": {
+        "x": 20,
+        "y": 161,
+        "width": 185,
+        "height": 5,
+        "pixels": 924,
+        "cx": 112.0995670995671,
+        "cy": 163.0021645021645
+      },
+      "typographyExcluded": false,
+      "assertionsPassed": false,
+      "visualParity": "STRICT_ROI_DIFFERENCES",
+      "scope": "Declared ROIs, samples, geometry; full-frame metrics informational"
+    },
+    {
+      "id": "phase-3",
+      "platform": "ios",
+      "sha256": "891a5b7d424d861fabab6426386e68cc11803911190befdc171fa856ded07af7",
+      "passed": false,
+      "failures": [
+        "ROI mismatch {\"roi\":[35,35,26,26],\"mae\":0.782051282051282,\"badFraction\":0.042899408284023666,\"edgeDiagnostic\":{\"meanNearestError\":0.4393491124260355,\"fractionOver12\":0.020710059171597635},\"ssim\":0.9961445730787156}",
+        "ROI mismatch {\"roi\":[20,159,350,9],\"mae\":2.3575661375661374,\"badFraction\":0.11873015873015873,\"edgeDiagnostic\":{\"meanNearestError\":0.002857142857142857,\"fractionOver12\":0},\"ssim\":0.9977464406827086}"
+      ],
+      "fullFrame": {
+        "mae": 1.0015696520435857,
+        "badFraction": 0.01721655122129056
+      },
+      "unsynchronizedLive": false,
+      "rois": [
+        {
+          "roi": [
+            35,
+            35,
+            26,
+            26
+          ],
+          "mae": 0.782051282051282,
+          "badFraction": 0.042899408284023666,
+          "edgeDiagnostic": {
+            "meanNearestError": 0.4393491124260355,
+            "fractionOver12": 0.020710059171597635
+          },
+          "ssim": 0.9961445730787156
+        },
+        {
+          "roi": [
+            20,
+            159,
+            350,
+            9
+          ],
+          "mae": 2.3575661375661374,
+          "badFraction": 0.11873015873015873,
+          "edgeDiagnostic": {
+            "meanNearestError": 0.002857142857142857,
+            "fractionOver12": 0
+          },
+          "ssim": 0.9977464406827086
+        }
+      ],
+      "samples": [],
+      "phase": 3.141592653589793,
+      "dot": {
+        "x": 45,
+        "y": 44,
+        "width": 7,
+        "height": 8,
+        "pixels": 42,
+        "cx": 47.95238095238095,
+        "cy": 47.5
+      },
+      "bar": {
+        "x": 21,
+        "y": 161,
+        "width": 184,
+        "height": 5,
+        "pixels": 920,
+        "cx": 112.5,
+        "cy": 163
+      },
+      "typographyExcluded": false,
+      "assertionsPassed": false,
+      "visualParity": "STRICT_ROI_DIFFERENCES",
+      "scope": "Declared ROIs, samples, geometry; full-frame metrics informational"
+    },
+    {
+      "id": "phase-4",
+      "platform": "android",
+      "sha256": "7385537c3b41c0696028d8a43ade5d5233e197ae7324b9bb06ef4c60a72eba3a",
+      "passed": false,
+      "failures": [
+        "ROI mismatch {\"roi\":[20,159,350,9],\"mae\":2.7183068783068784,\"badFraction\":0.12158730158730159,\"edgeDiagnostic\":{\"meanNearestError\":0.005714285714285714,\"fractionOver12\":0},\"ssim\":0.9964381212730206}"
+      ],
+      "fullFrame": {
+        "mae": 1.0875531656337343,
+        "badFraction": 0.014816502612711143
+      },
+      "unsynchronizedLive": false,
+      "rois": [
+        {
+          "roi": [
+            35,
+            35,
+            26,
+            26
+          ],
+          "mae": 0.28353057199211046,
+          "badFraction": 0.01775147928994083,
+          "edgeDiagnostic": {
+            "meanNearestError": 0.07692307692307693,
+            "fractionOver12": 0
+          },
+          "ssim": 0.9989988414056079
+        },
+        {
+          "roi": [
+            20,
+            159,
+            350,
+            9
+          ],
+          "mae": 2.7183068783068784,
+          "badFraction": 0.12158730158730159,
+          "edgeDiagnostic": {
+            "meanNearestError": 0.005714285714285714,
+            "fractionOver12": 0
+          },
+          "ssim": 0.9964381212730206
+        }
+      ],
+      "samples": [],
+      "phase": 6.283185307179586,
+      "dot": {
+        "x": 44,
+        "y": 44,
+        "width": 8,
+        "height": 8,
+        "pixels": 44,
+        "cx": 47.5,
+        "cy": 47.5
+      },
+      "bar": {
+        "x": 20,
+        "y": 161,
+        "width": 185,
+        "height": 5,
+        "pixels": 924,
+        "cx": 112.0995670995671,
+        "cy": 163.0021645021645
+      },
+      "typographyExcluded": false,
+      "assertionsPassed": false,
+      "visualParity": "STRICT_ROI_DIFFERENCES",
+      "scope": "Declared ROIs, samples, geometry; full-frame metrics informational"
+    },
+    {
+      "id": "phase-4",
+      "platform": "ios",
+      "sha256": "7385537c3b41c0696028d8a43ade5d5233e197ae7324b9bb06ef4c60a72eba3a",
+      "passed": false,
+      "failures": [
+        "ROI mismatch {\"roi\":[35,35,26,26],\"mae\":0.782051282051282,\"badFraction\":0.042899408284023666,\"edgeDiagnostic\":{\"meanNearestError\":0.4393491124260355,\"fractionOver12\":0.020710059171597635},\"ssim\":0.9961445730787156}",
+        "ROI mismatch {\"roi\":[20,159,350,9],\"mae\":2.3575661375661374,\"badFraction\":0.11873015873015873,\"edgeDiagnostic\":{\"meanNearestError\":0.002857142857142857,\"fractionOver12\":0},\"ssim\":0.9977464406827086}"
+      ],
+      "fullFrame": {
+        "mae": 1.0015696520435857,
+        "badFraction": 0.01721655122129056
+      },
+      "unsynchronizedLive": false,
+      "rois": [
+        {
+          "roi": [
+            35,
+            35,
+            26,
+            26
+          ],
+          "mae": 0.782051282051282,
+          "badFraction": 0.042899408284023666,
+          "edgeDiagnostic": {
+            "meanNearestError": 0.4393491124260355,
+            "fractionOver12": 0.020710059171597635
+          },
+          "ssim": 0.9961445730787156
+        },
+        {
+          "roi": [
+            20,
+            159,
+            350,
+            9
+          ],
+          "mae": 2.3575661375661374,
+          "badFraction": 0.11873015873015873,
+          "edgeDiagnostic": {
+            "meanNearestError": 0.002857142857142857,
+            "fractionOver12": 0
+          },
+          "ssim": 0.9977464406827086
+        }
+      ],
+      "samples": [],
+      "phase": 6.283185307179586,
+      "dot": {
+        "x": 45,
+        "y": 44,
+        "width": 7,
+        "height": 8,
+        "pixels": 42,
+        "cx": 47.95238095238095,
+        "cy": 47.5
+      },
+      "bar": {
+        "x": 21,
+        "y": 161,
+        "width": 184,
+        "height": 5,
+        "pixels": 920,
+        "cx": 112.5,
+        "cy": 163
+      },
+      "typographyExcluded": false,
+      "assertionsPassed": false,
+      "visualParity": "STRICT_ROI_DIFFERENCES",
+      "scope": "Declared ROIs, samples, geometry; full-frame metrics informational"
+    },
+    {
+      "id": "live-animations",
+      "platform": "android",
+      "sha256": "bef11392f6945a6e966a1613605c53c5d11a4e53c8c49e3e352092f77767f794",
+      "passed": true,
+      "failures": [],
+      "fullFrame": {
+        "mae": 1.0973437436707578,
+        "badFraction": 0.01499270871308786
+      },
+      "unsynchronizedLive": true,
+      "rois": [],
+      "samples": [],
+      "liveBadge": {
+        "mae": 1.8684895833333333,
+        "badFraction": 0.03515625
+      },
+      "liveProgress": {
+        "mae": 5.47793427230047,
+        "badFraction": 0.06032863849765258
+      },
+      "typographyExcluded": false,
+      "assertionsPassed": true,
+      "visualParity": "UNSYNCHRONIZED_LIVE_NOT_COMPARED",
+      "scope": "Capture/hash and any declared actions; full-frame metrics informational, not a visual pass"
+    },
+    {
+      "id": "live-animations",
+      "platform": "ios",
+      "sha256": "bef11392f6945a6e966a1613605c53c5d11a4e53c8c49e3e352092f77767f794",
+      "passed": true,
+      "failures": [],
+      "fullFrame": {
+        "mae": 1.054778830963665,
+        "badFraction": 0.017559849313403816
+      },
+      "unsynchronizedLive": true,
+      "rois": [],
+      "samples": [],
+      "liveBadge": {
+        "mae": 5.1572265625,
+        "badFraction": 0.064453125
+      },
+      "liveProgress": {
+        "mae": 3.7758215962441315,
+        "badFraction": 0.04178403755868545
+      },
+      "typographyExcluded": false,
+      "assertionsPassed": true,
+      "visualParity": "UNSYNCHRONIZED_LIVE_NOT_COMPARED",
+      "scope": "Capture/hash and any declared actions; full-frame metrics informational, not a visual pass"
+    },
+    {
+      "id": "retail",
+      "platform": "android",
+      "sha256": "e2c601547fc4eefab6dca6aa5d635442234e07bd015a6b4a0661769f09b454a2",
+      "passed": true,
+      "failures": [],
+      "fullFrame": {
+        "mae": 6.003425892169968,
+        "badFraction": 0.08259509053347916
+      },
+      "unsynchronizedLive": false,
+      "rois": [],
+      "samples": [],
+      "typographyExcluded": false,
+      "assertionsPassed": true,
+      "visualParity": "FULL_FRAME_NOT_GATED",
+      "scope": "Capture/hash and any declared actions; full-frame metrics informational, not a visual pass"
+    },
+    {
+      "id": "retail",
+      "platform": "ios",
+      "sha256": "e2c601547fc4eefab6dca6aa5d635442234e07bd015a6b4a0661769f09b454a2",
+      "passed": true,
+      "failures": [],
+      "fullFrame": {
+        "mae": 4.207365212459999,
+        "badFraction": 0.08737088346093086
+      },
+      "unsynchronizedLive": false,
+      "rois": [],
+      "samples": [],
+      "typographyExcluded": false,
+      "assertionsPassed": true,
+      "visualParity": "FULL_FRAME_NOT_GATED",
+      "scope": "Capture/hash and any declared actions; full-frame metrics informational, not a visual pass"
+    },
+    {
+      "id": "empty",
+      "platform": "android",
+      "sha256": "caeba2b99841bcc5764bba2827c6ebe9ba304d7cb8c6555596cbda9d4f9f4521",
+      "passed": true,
+      "failures": [],
+      "fullFrame": {
+        "mae": 0,
+        "badFraction": 0
+      },
+      "unsynchronizedLive": false,
+      "rois": [
+        {
+          "roi": [
+            0,
+            0,
+            390,
+            844
+          ],
+          "mae": 0,
+          "badFraction": 0,
+          "edgeDiagnostic": {
+            "meanNearestError": 0,
+            "fractionOver12": 0
+          },
+          "ssim": 1
+        }
+      ],
+      "samples": [],
+      "typographyExcluded": false,
+      "assertionsPassed": true,
+      "visualParity": "DECLARED_ROIS_ONLY",
+      "scope": "Declared ROIs, samples, geometry; full-frame metrics informational"
+    },
+    {
+      "id": "empty",
+      "platform": "ios",
+      "sha256": "caeba2b99841bcc5764bba2827c6ebe9ba304d7cb8c6555596cbda9d4f9f4521",
+      "passed": true,
+      "failures": [],
+      "fullFrame": {
+        "mae": 0.4358974358974359,
+        "badFraction": 0.005128205128205128
+      },
+      "unsynchronizedLive": false,
+      "rois": [
+        {
+          "roi": [
+            0,
+            0,
+            390,
+            844
+          ],
+          "mae": 0.4358974358974359,
+          "badFraction": 0.005128205128205128,
+          "edgeDiagnostic": {
+            "meanNearestError": 0,
+            "fractionOver12": 0
+          },
+          "ssim": 0.9617123420364908
+        }
+      ],
+      "samples": [],
+      "typographyExcluded": false,
+      "assertionsPassed": true,
+      "visualParity": "DECLARED_ROIS_ONLY",
+      "scope": "Declared ROIs, samples, geometry; full-frame metrics informational"
+    },
+    {
+      "id": "graphics-edited",
+      "platform": "android",
+      "sha256": "7105cac2138146b7eb6af05630b07ad1fc14cc34ed3d8105505fb80d704b10de",
+      "passed": true,
+      "failures": [],
+      "fullFrame": {
+        "mae": 1.1423431360635152,
+        "badFraction": 0.01455219346214607
+      },
+      "unsynchronizedLive": false,
+      "rois": [
+        {
+          "roi": [
+            35,
+            95,
+            50,
+            30
+          ],
+          "mae": 0.23622222222222222,
+          "badFraction": 0.006,
+          "edgeDiagnostic": {
+            "meanNearestError": 0.11533333333333333,
+            "fractionOver12": 0
+          },
+          "ssim": 0.9986613796904243
+        },
+        {
+          "roi": [
+            150,
+            95,
+            60,
+            30
+          ],
+          "mae": 0,
+          "badFraction": 0,
+          "edgeDiagnostic": {
+            "meanNearestError": 0,
+            "fractionOver12": 0
+          },
+          "ssim": 1
+        },
+        {
+          "roi": [
+            270,
+            95,
+            60,
+            30
+          ],
+          "mae": 0,
+          "badFraction": 0,
+          "edgeDiagnostic": {
+            "meanNearestError": 0,
+            "fractionOver12": 0
+          },
+          "ssim": 1
+        },
+        {
+          "roi": [
+            60,
+            210,
+            30,
+            20
+          ],
+          "mae": 0,
+          "badFraction": 0,
+          "edgeDiagnostic": {
+            "meanNearestError": 0,
+            "fractionOver12": 0
+          },
+          "ssim": 1
+        },
+        {
+          "roi": [
+            30,
+            410,
+            70,
+            50
+          ],
+          "mae": 0,
+          "badFraction": 0,
+          "edgeDiagnostic": {
+            "meanNearestError": 0,
+            "fractionOver12": 0
+          },
+          "ssim": 1
+        },
+        {
+          "roi": [
+            245,
+            425,
+            25,
+            20
+          ],
+          "mae": 0.036,
+          "badFraction": 0,
+          "edgeDiagnostic": {
+            "meanNearestError": 0.028,
+            "fractionOver12": 0
+          },
+          "ssim": 0.9997557906876705
+        },
+        {
+          "roi": [
+            190,
+            570,
+            90,
+            15
+          ],
+          "mae": 0,
+          "badFraction": 0,
+          "edgeDiagnostic": {
+            "meanNearestError": 0,
+            "fractionOver12": 0
+          },
+          "ssim": 1
+        },
+        {
+          "roi": [
+            24,
+            300,
+            340,
+            45
+          ],
+          "mae": 0.2553812636165577,
+          "badFraction": 0,
+          "edgeDiagnostic": {
+            "meanNearestError": 0.44254901960784315,
+            "fractionOver12": 0
+          },
+          "ssim": 0.997022959380088
+        }
+      ],
+      "samples": [
+        {
+          "x": 60,
+          "y": 110,
+          "actual": [
+            48,
+            91,
+            239
+          ],
+          "expected": [
+            48,
+            91,
+            239
+          ]
+        },
+        {
+          "x": 170,
+          "y": 110,
+          "actual": [
+            129,
+            168,
+            132
+          ],
+          "expected": [
+            129,
+            168,
+            132
+          ]
+        },
+        {
+          "x": 150,
+          "y": 440,
+          "actual": [
+            255,
+            255,
+            255
+          ],
+          "expected": [
+            255,
+            255,
+            255
+          ]
+        },
+        {
+          "x": 205,
+          "y": 580,
+          "actual": [
+            247,
+            176,
+            123
+          ],
+          "expected": [
+            247,
+            176,
+            123
+          ]
+        }
+      ],
+      "circle": {
+        "x": 36,
+        "y": 86,
+        "width": 48,
+        "height": 48,
+        "pixels": 1763,
+        "cx": 59.49858196256381,
+        "cy": 109.48667044809983
+      },
+      "typographyExcluded": false,
+      "assertionsPassed": true,
+      "visualParity": "DECLARED_ROIS_ONLY",
+      "scope": "Declared ROIs, samples, geometry; full-frame metrics informational"
+    },
+    {
+      "id": "graphics-edited",
+      "platform": "ios",
+      "sha256": "7105cac2138146b7eb6af05630b07ad1fc14cc34ed3d8105505fb80d704b10de",
+      "passed": false,
+      "failures": [
+        "ROI mismatch {\"roi\":[35,95,50,30],\"mae\":1.220888888888889,\"badFraction\":0.048,\"edgeDiagnostic\":{\"meanNearestError\":0.6466666666666666,\"fractionOver12\":0.024},\"ssim\":0.9893899987338372}"
+      ],
+      "fullFrame": {
+        "mae": 0.8417233766759833,
+        "badFraction": 0.0161441244379633
+      },
+      "unsynchronizedLive": false,
+      "rois": [
+        {
+          "roi": [
+            35,
+            95,
+            50,
+            30
+          ],
+          "mae": 1.220888888888889,
+          "badFraction": 0.048,
+          "edgeDiagnostic": {
+            "meanNearestError": 0.6466666666666666,
+            "fractionOver12": 0.024
+          },
+          "ssim": 0.9893899987338372
+        },
+        {
+          "roi": [
+            150,
+            95,
+            60,
+            30
+          ],
+          "mae": 0,
+          "badFraction": 0,
+          "edgeDiagnostic": {
+            "meanNearestError": 0,
+            "fractionOver12": 0
+          },
+          "ssim": 1
+        },
+        {
+          "roi": [
+            270,
+            95,
+            60,
+            30
+          ],
+          "mae": 0,
+          "badFraction": 0,
+          "edgeDiagnostic": {
+            "meanNearestError": 0,
+            "fractionOver12": 0
+          },
+          "ssim": 1
+        },
+        {
+          "roi": [
+            60,
+            210,
+            30,
+            20
+          ],
+          "mae": 1,
+          "badFraction": 0,
+          "edgeDiagnostic": {
+            "meanNearestError": 1,
+            "fractionOver12": 0
+          },
+          "ssim": 0.9999693381588751
+        },
+        {
+          "roi": [
+            30,
+            410,
+            70,
+            50
+          ],
+          "mae": 0,
+          "badFraction": 0,
+          "edgeDiagnostic": {
+            "meanNearestError": 0,
+            "fractionOver12": 0
+          },
+          "ssim": 1
+        },
+        {
+          "roi": [
+            245,
+            425,
+            25,
+            20
+          ],
+          "mae": 0.07333333333333333,
+          "badFraction": 0.006,
+          "edgeDiagnostic": {
+            "meanNearestError": 0.08,
+            "fractionOver12": 0.004
+          },
+          "ssim": 0.9990023360707193
+        },
+        {
+          "roi": [
+            190,
+            570,
+            90,
+            15
+          ],
+          "mae": 0,
+          "badFraction": 0,
+          "edgeDiagnostic": {
+            "meanNearestError": 0,
+            "fractionOver12": 0
+          },
+          "ssim": 1
+        },
+        {
+          "roi": [
+            24,
+            300,
+            340,
+            45
+          ],
+          "mae": 0.25655773420479305,
+          "badFraction": 0,
+          "edgeDiagnostic": {
+            "meanNearestError": 0.448562091503268,
+            "fractionOver12": 0
+          },
+          "ssim": 0.9970724040630603
+        }
+      ],
+      "samples": [
+        {
+          "x": 60,
+          "y": 110,
+          "actual": [
+            48,
+            91,
+            239
+          ],
+          "expected": [
+            48,
+            91,
+            239
+          ]
+        },
+        {
+          "x": 170,
+          "y": 110,
+          "actual": [
+            129,
+            168,
+            132
+          ],
+          "expected": [
+            129,
+            168,
+            132
+          ]
+        },
+        {
+          "x": 150,
+          "y": 440,
+          "actual": [
+            255,
+            255,
+            255
+          ],
+          "expected": [
+            255,
+            255,
+            255
+          ]
+        },
+        {
+          "x": 205,
+          "y": 580,
+          "actual": [
+            247,
+            176,
+            123
+          ],
+          "expected": [
+            247,
+            176,
+            123
+          ]
+        }
+      ],
+      "circle": {
+        "x": 37,
+        "y": 86,
+        "width": 47,
+        "height": 48,
+        "pixels": 1758,
+        "cx": 59.78270762229807,
+        "cy": 109.5028441410694
+      },
+      "typographyExcluded": false,
+      "assertionsPassed": false,
+      "visualParity": "STRICT_ROI_DIFFERENCES",
+      "scope": "Declared ROIs, samples, geometry; full-frame metrics informational"
+    },
+    {
+      "id": "bitmaps-edited",
+      "platform": "android",
+      "sha256": "469813eeeaa185ce299dbf9e1c42bc05ca6aa96ea7e244328224d4a8ed31f2de",
+      "passed": false,
+      "failures": [
+        "ROI mismatch {\"roi\":[25,75,140,140],\"mae\":1.5899489795918367,\"badFraction\":0.04224489795918367,\"edgeDiagnostic\":{\"meanNearestError\":1.0614795918367348,\"fractionOver12\":0.015255102040816327},\"ssim\":0.978238927980953}",
+        "ROI mismatch {\"roi\":[215,75,140,140],\"mae\":1.8910544217687075,\"badFraction\":0.08025510204081633,\"edgeDiagnostic\":{\"meanNearestError\":1.7979081632653062,\"fractionOver12\":0.036734693877551024},\"ssim\":0.9869564346843499}",
+        "ROI mismatch {\"roi\":[25,275,140,140],\"mae\":1.5895068027210886,\"badFraction\":0.04229591836734694,\"edgeDiagnostic\":{\"meanNearestError\":1.0685714285714285,\"fractionOver12\":0.015306122448979591},\"ssim\":0.9782187145138305}",
+        "ROI mismatch {\"roi\":[215,275,140,140],\"mae\":4.405255102040816,\"badFraction\":0.1763265306122449,\"edgeDiagnostic\":{\"meanNearestError\":4.055816326530612,\"fractionOver12\":0.09122448979591836},\"ssim\":0.9746623768364032}",
+        "ROI mismatch {\"roi\":[20,630,120,120],\"mae\":1.4673148148148147,\"badFraction\":0.06395833333333334,\"edgeDiagnostic\":{\"meanNearestError\":0.05361111111111111,\"fractionOver12\":0.0011111111111111111},\"ssim\":0.9723644140976555}"
+      ],
+      "fullFrame": {
+        "mae": 1.6003372220196865,
+        "badFraction": 0.03486754162109612
+      },
+      "unsynchronizedLive": false,
+      "rois": [
+        {
+          "roi": [
+            25,
+            75,
+            140,
+            140
+          ],
+          "mae": 1.5899489795918367,
+          "badFraction": 0.04224489795918367,
+          "edgeDiagnostic": {
+            "meanNearestError": 1.0614795918367348,
+            "fractionOver12": 0.015255102040816327
+          },
+          "ssim": 0.978238927980953
+        },
+        {
+          "roi": [
+            215,
+            75,
+            140,
+            140
+          ],
+          "mae": 1.8910544217687075,
+          "badFraction": 0.08025510204081633,
+          "edgeDiagnostic": {
+            "meanNearestError": 1.7979081632653062,
+            "fractionOver12": 0.036734693877551024
+          },
+          "ssim": 0.9869564346843499
+        },
+        {
+          "roi": [
+            25,
+            275,
+            140,
+            140
+          ],
+          "mae": 1.5895068027210886,
+          "badFraction": 0.04229591836734694,
+          "edgeDiagnostic": {
+            "meanNearestError": 1.0685714285714285,
+            "fractionOver12": 0.015306122448979591
+          },
+          "ssim": 0.9782187145138305
+        },
+        {
+          "roi": [
+            215,
+            275,
+            140,
+            140
+          ],
+          "mae": 4.405255102040816,
+          "badFraction": 0.1763265306122449,
+          "edgeDiagnostic": {
+            "meanNearestError": 4.055816326530612,
+            "fractionOver12": 0.09122448979591836
+          },
+          "ssim": 0.9746623768364032
+        },
+        {
+          "roi": [
+            20,
+            630,
+            120,
+            120
+          ],
+          "mae": 1.4673148148148147,
+          "badFraction": 0.06395833333333334,
+          "edgeDiagnostic": {
+            "meanNearestError": 0.05361111111111111,
+            "fractionOver12": 0.0011111111111111111
+          },
+          "ssim": 0.9723644140976555
+        }
+      ],
+      "samples": [],
+      "typographyExcluded": false,
+      "assertionsPassed": false,
+      "visualParity": "STRICT_ROI_DIFFERENCES",
+      "scope": "Declared ROIs, samples, geometry; full-frame metrics informational"
+    },
+    {
+      "id": "bitmaps-edited",
+      "platform": "ios",
+      "sha256": "469813eeeaa185ce299dbf9e1c42bc05ca6aa96ea7e244328224d4a8ed31f2de",
+      "passed": false,
+      "failures": [
+        "ROI mismatch {\"roi\":[25,75,140,140],\"mae\":1.9069897959183673,\"badFraction\":0.05,\"edgeDiagnostic\":{\"meanNearestError\":1.1518367346938776,\"fractionOver12\":0.017551020408163264},\"ssim\":0.9717740189682568}",
+        "ROI mismatch {\"roi\":[215,75,140,140],\"mae\":2.1123979591836735,\"badFraction\":0.08484693877551021,\"edgeDiagnostic\":{\"meanNearestError\":1.9209183673469388,\"fractionOver12\":0.03938775510204082},\"ssim\":0.9846178034027759}",
+        "ROI mismatch {\"roi\":[25,275,140,140],\"mae\":1.9153061224489798,\"badFraction\":0.04994897959183674,\"edgeDiagnostic\":{\"meanNearestError\":1.1554081632653062,\"fractionOver12\":0.01760204081632653},\"ssim\":0.9714912058071439}",
+        "ROI mismatch {\"roi\":[215,275,140,140],\"mae\":5.093367346938775,\"badFraction\":0.19785714285714287,\"edgeDiagnostic\":{\"meanNearestError\":4.301326530612245,\"fractionOver12\":0.09642857142857143},\"ssim\":0.9684068223180624}",
+        "ROI mismatch {\"roi\":[20,630,120,120],\"mae\":1.5464583333333335,\"badFraction\":0.05659722222222222,\"edgeDiagnostic\":{\"meanNearestError\":0.05631944444444444,\"fractionOver12\":0.0011111111111111111},\"ssim\":0.9683599398145355}"
+      ],
+      "fullFrame": {
+        "mae": 1.4916221088022035,
+        "badFraction": 0.03984384493863167
+      },
+      "unsynchronizedLive": false,
+      "rois": [
+        {
+          "roi": [
+            25,
+            75,
+            140,
+            140
+          ],
+          "mae": 1.9069897959183673,
+          "badFraction": 0.05,
+          "edgeDiagnostic": {
+            "meanNearestError": 1.1518367346938776,
+            "fractionOver12": 0.017551020408163264
+          },
+          "ssim": 0.9717740189682568
+        },
+        {
+          "roi": [
+            215,
+            75,
+            140,
+            140
+          ],
+          "mae": 2.1123979591836735,
+          "badFraction": 0.08484693877551021,
+          "edgeDiagnostic": {
+            "meanNearestError": 1.9209183673469388,
+            "fractionOver12": 0.03938775510204082
+          },
+          "ssim": 0.9846178034027759
+        },
+        {
+          "roi": [
+            25,
+            275,
+            140,
+            140
+          ],
+          "mae": 1.9153061224489798,
+          "badFraction": 0.04994897959183674,
+          "edgeDiagnostic": {
+            "meanNearestError": 1.1554081632653062,
+            "fractionOver12": 0.01760204081632653
+          },
+          "ssim": 0.9714912058071439
+        },
+        {
+          "roi": [
+            215,
+            275,
+            140,
+            140
+          ],
+          "mae": 5.093367346938775,
+          "badFraction": 0.19785714285714287,
+          "edgeDiagnostic": {
+            "meanNearestError": 4.301326530612245,
+            "fractionOver12": 0.09642857142857143
+          },
+          "ssim": 0.9684068223180624
+        },
+        {
+          "roi": [
+            20,
+            630,
+            120,
+            120
+          ],
+          "mae": 1.5464583333333335,
+          "badFraction": 0.05659722222222222,
+          "edgeDiagnostic": {
+            "meanNearestError": 0.05631944444444444,
+            "fractionOver12": 0.0011111111111111111
+          },
+          "ssim": 0.9683599398145355
+        }
+      ],
+      "samples": [],
+      "typographyExcluded": false,
+      "assertionsPassed": false,
+      "visualParity": "STRICT_ROI_DIFFERENCES",
+      "scope": "Declared ROIs, samples, geometry; full-frame metrics informational"
+    },
+    {
+      "id": "layouts-edited",
+      "platform": "android",
+      "sha256": "36d3e3aadd9e7ee743336d9fa873f5c78cde033bfc37ca41a72e4718f67b6b66",
+      "passed": true,
+      "failures": [],
+      "fullFrame": {
+        "mae": 6.660333373840483,
+        "badFraction": 0.08331510511605299
+      },
+      "unsynchronizedLive": false,
+      "rois": [
+        {
+          "roi": [
+            32,
+            110,
+            80,
+            45
+          ],
+          "mae": 18.624259259259258,
+          "badFraction": 0.19555555555555557,
+          "edgeDiagnostic": {
+            "meanNearestError": 3.917777777777778,
+            "fractionOver12": 0.08805555555555555
+          },
+          "ssim": 0.7615520174362249
+        },
+        {
+          "roi": [
+            215,
+            115,
+            90,
+            35
+          ],
+          "mae": 16.43830687830688,
+          "badFraction": 0.2768253968253968,
+          "edgeDiagnostic": {
+            "meanNearestError": 7.945714285714286,
+            "fractionOver12": 0.12666666666666668
+          },
+          "ssim": 0.6438452796558897
+        }
+      ],
+      "samples": [
+        {
+          "x": 17,
+          "y": 205,
+          "actual": [
+            255,
+            255,
+            255
+          ],
+          "expected": [
+            255,
+            255,
+            255
+          ]
+        }
+      ],
+      "typographyExcluded": true,
+      "assertionsPassed": true,
+      "visualParity": "NOT_ESTABLISHED_FONT_DIFFERENCES",
+      "scope": "Declared ROIs, samples, geometry; full-frame metrics informational"
+    },
+    {
+      "id": "layouts-edited",
+      "platform": "ios",
+      "sha256": "36d3e3aadd9e7ee743336d9fa873f5c78cde033bfc37ca41a72e4718f67b6b66",
+      "passed": true,
+      "failures": [],
+      "fullFrame": {
+        "mae": 9.067661117187184,
+        "badFraction": 0.10399805565682343
+      },
+      "unsynchronizedLive": false,
+      "rois": [
+        {
+          "roi": [
+            32,
+            110,
+            80,
+            45
+          ],
+          "mae": 45.36222222222222,
+          "badFraction": 0.35583333333333333,
+          "edgeDiagnostic": {
+            "meanNearestError": 24.823333333333334,
+            "fractionOver12": 0.2038888888888889
+          },
+          "ssim": 0.18113623866789
+        },
+        {
+          "roi": [
+            215,
+            115,
+            90,
+            35
+          ],
+          "mae": 32.716719576719576,
+          "badFraction": 0.42698412698412697,
+          "edgeDiagnostic": {
+            "meanNearestError": 26.72126984126984,
+            "fractionOver12": 0.266031746031746
+          },
+          "ssim": 0.14644597446846136
+        }
+      ],
+      "samples": [
+        {
+          "x": 17,
+          "y": 205,
+          "actual": [
+            255,
+            255,
+            255
+          ],
+          "expected": [
+            255,
+            255,
+            255
+          ]
+        }
+      ],
+      "typographyExcluded": true,
+      "assertionsPassed": true,
+      "visualParity": "NOT_ESTABLISHED_FONT_DIFFERENCES",
+      "scope": "Declared ROIs, samples, geometry; full-frame metrics informational"
+    },
+    {
+      "id": "interactions-edited",
+      "platform": "android",
+      "sha256": "f447a998ac20b034c5ecff9386b81c2b6a8b2f3920f5a2fc85da47f414fc6056",
+      "passed": true,
+      "failures": [],
+      "fullFrame": {
+        "mae": 2.933349536193138,
+        "badFraction": 0.028053226394458623
+      },
+      "unsynchronizedLive": false,
+      "rois": [],
+      "samples": [],
+      "stateBefore": {
+        "x": 66,
+        "y": 307,
+        "width": 40,
+        "height": 40,
+        "pixels": 1220,
+        "cx": 85.53196721311475,
+        "cy": 326.46803278688526
+      },
+      "stateAfter": {
+        "x": 150,
+        "y": 307,
+        "width": 40,
+        "height": 40,
+        "pixels": 1220,
+        "cx": 169.53196721311474,
+        "cy": 326.46803278688526
+      },
+      "typographyExcluded": false,
+      "assertionsPassed": true,
+      "visualParity": "FULL_FRAME_NOT_GATED",
+      "scope": "Capture/hash and any declared actions; full-frame metrics informational, not a visual pass"
+    },
+    {
+      "id": "interactions-edited",
+      "platform": "ios",
+      "sha256": "f447a998ac20b034c5ecff9386b81c2b6a8b2f3920f5a2fc85da47f414fc6056",
+      "passed": true,
+      "failures": [],
+      "fullFrame": {
+        "mae": 3.5968151253696274,
+        "badFraction": 0.04223174140235752
+      },
+      "unsynchronizedLive": false,
+      "rois": [],
+      "samples": [],
+      "stateBefore": {
+        "x": 67,
+        "y": 303,
+        "width": 39,
+        "height": 40,
+        "pixels": 1209,
+        "cx": 85.66004962779157,
+        "cy": 322.4846980976013
+      },
+      "stateAfter": {
+        "x": 150,
+        "y": 303,
+        "width": 40,
+        "height": 40,
+        "pixels": 1218,
+        "cx": 169.5320197044335,
+        "cy": 322.5
+      },
+      "typographyExcluded": false,
+      "assertionsPassed": true,
+      "visualParity": "FULL_FRAME_NOT_GATED",
+      "scope": "Capture/hash and any declared actions; full-frame metrics informational, not a visual pass"
+    },
+    {
+      "id": "nested-scroll-edited",
+      "platform": "android",
+      "sha256": "0266d8b4f7d5e93d9557f54adc743d42a885a2edf6b891cfdfe0f1ac5a0fc266",
+      "passed": true,
+      "failures": [],
+      "fullFrame": {
+        "mae": 5.179738323814154,
+        "badFraction": 0.07318933041681856
+      },
+      "unsynchronizedLive": false,
+      "rois": [],
+      "samples": [],
+      "typographyExcluded": false,
+      "assertionsPassed": true,
+      "visualParity": "FULL_FRAME_NOT_GATED",
+      "scope": "Capture/hash and any declared actions; full-frame metrics informational, not a visual pass"
+    },
+    {
+      "id": "nested-scroll-edited",
+      "platform": "ios",
+      "sha256": "0266d8b4f7d5e93d9557f54adc743d42a885a2edf6b891cfdfe0f1ac5a0fc266",
+      "passed": true,
+      "failures": [],
+      "fullFrame": {
+        "mae": 9.131094300644063,
+        "badFraction": 0.12095029772754891
+      },
+      "unsynchronizedLive": false,
+      "rois": [],
+      "samples": [],
+      "typographyExcluded": false,
+      "assertionsPassed": true,
+      "visualParity": "FULL_FRAME_NOT_GATED",
+      "scope": "Capture/hash and any declared actions; full-frame metrics informational, not a visual pass"
+    },
+    {
+      "id": "lifecycle-a",
+      "platform": "android",
+      "sha256": "fbbd39619f80db06acc4210aa11bf38d25d228dc0a8754a6d31825d656214c73",
+      "passed": true,
+      "failures": [],
+      "fullFrame": {
+        "mae": 0.007034066512739499,
+        "badFraction": 0.00017924413659010815
+      },
+      "unsynchronizedLive": false,
+      "rois": [
+        {
+          "roi": [
+            160,
+            160,
+            60,
+            60
+          ],
+          "mae": 0,
+          "badFraction": 0,
+          "edgeDiagnostic": {
+            "meanNearestError": 0,
+            "fractionOver12": 0
+          },
+          "ssim": 1
+        }
+      ],
+      "samples": [],
+      "typographyExcluded": false,
+      "assertionsPassed": true,
+      "visualParity": "DECLARED_ROIS_ONLY",
+      "scope": "Declared ROIs, samples, geometry; full-frame metrics informational"
+    },
+    {
+      "id": "lifecycle-a",
+      "platform": "ios",
+      "sha256": "fbbd39619f80db06acc4210aa11bf38d25d228dc0a8754a6d31825d656214c73",
+      "passed": true,
+      "failures": [],
+      "fullFrame": {
+        "mae": 0.4526876493701138,
+        "badFraction": 0.00611860493377081
+      },
+      "unsynchronizedLive": false,
+      "rois": [
+        {
+          "roi": [
+            160,
+            160,
+            60,
+            60
+          ],
+          "mae": 0,
+          "badFraction": 0,
+          "edgeDiagnostic": {
+            "meanNearestError": 0,
+            "fractionOver12": 0
+          },
+          "ssim": 1
+        }
+      ],
+      "samples": [],
+      "typographyExcluded": false,
+      "assertionsPassed": true,
+      "visualParity": "DECLARED_ROIS_ONLY",
+      "scope": "Declared ROIs, samples, geometry; full-frame metrics informational"
+    },
+    {
+      "id": "lifecycle-b",
+      "platform": "android",
+      "sha256": "5f10781b7192b428d258fcf65b800c26e96e77aa776c0c991a318e9c18d99943",
+      "passed": true,
+      "failures": [],
+      "fullFrame": {
+        "mae": 0.00923461740997286,
+        "badFraction": 0.0002916514764855997
+      },
+      "unsynchronizedLive": false,
+      "rois": [
+        {
+          "roi": [
+            160,
+            160,
+            60,
+            60
+          ],
+          "mae": 0,
+          "badFraction": 0,
+          "edgeDiagnostic": {
+            "meanNearestError": 0,
+            "fractionOver12": 0
+          },
+          "ssim": 1
+        }
+      ],
+      "samples": [],
+      "typographyExcluded": false,
+      "assertionsPassed": true,
+      "visualParity": "DECLARED_ROIS_ONLY",
+      "scope": "Declared ROIs, samples, geometry; full-frame metrics informational"
+    },
+    {
+      "id": "lifecycle-b",
+      "platform": "ios",
+      "sha256": "5f10781b7192b428d258fcf65b800c26e96e77aa776c0c991a318e9c18d99943",
+      "passed": true,
+      "failures": [],
+      "fullFrame": {
+        "mae": 0.45797180702393975,
+        "badFraction": 0.0062279742374529105
+      },
+      "unsynchronizedLive": false,
+      "rois": [
+        {
+          "roi": [
+            160,
+            160,
+            60,
+            60
+          ],
+          "mae": 0,
+          "badFraction": 0,
+          "edgeDiagnostic": {
+            "meanNearestError": 0,
+            "fractionOver12": 0
+          },
+          "ssim": 1
+        }
+      ],
+      "samples": [],
+      "typographyExcluded": false,
+      "assertionsPassed": true,
+      "visualParity": "DECLARED_ROIS_ONLY",
+      "scope": "Declared ROIs, samples, geometry; full-frame metrics informational"
+    }
+  ]
+}

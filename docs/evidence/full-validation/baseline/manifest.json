@@ -1,0 +1,50 @@
+{
+  "source": "2026-11-03 real gallery; ed5ad06 baseline plus 6c66fb6 and accompanying validated native/test changes",
+  "cases": [
+    {
+      "id": "graphics",
+      "sha256": "f34e50af4a2d450b61ea09036aca92c51259506a3ef336c4c7f3a868c8cfc772",
+      "bytes": 1119
+    },
+    {
+      "id": "bitmaps",
+      "sha256": "c0e5a465b336c6e2b5283c13286e1cd670e480a7f8aa899cacabe56eb19d2ed0",
+      "bytes": 1964089
+    },
+    {
+      "id": "layouts",
+      "sha256": "8b2ce8c6b6fb5ff020038fa58312c87832dbf123589840ccf4d0c87c77e18a07",
+      "bytes": 1405
+    },
+    {
+      "id": "phase-0",
+      "sha256": "be207ec10f7ce83adac950d1d79195baf8d343effe3cfe2f4d685121dada0faa",
+      "bytes": 1134
+    },
+    {
+      "id": "phase-1",
+      "sha256": "50b9b56521a205580184a12d21d2a486830e18f1455ff97ac39f48c4b2787cfd",
+      "bytes": 1134
+    },
+    {
+      "id": "phase-2",
+      "sha256": "3a5037a52173aab7742a171ebdfa68c93ee921e2a828f825ebf4804b700a26ce",
+      "bytes": 1134
+    },
+    {
+      "id": "phase-3",
+      "sha256": "891a5b7d424d861fabab6426386e68cc11803911190befdc171fa856ded07af7",
+      "bytes": 1134
+    },
+    {
+      "id": "phase-4",
+      "sha256": "7385537c3b41c0696028d8a43ade5d5233e197ae7324b9bb06ef4c60a72eba3a",
+      "bytes": 1134
+    },
+    {
+      "id": "empty",
+      "sha256": "caeba2b99841bcc5764bba2827c6ebe9ba304d7cb8c6555596cbda9d4f9f4521",
+      "bytes": 151
+    }
+  ]
+}

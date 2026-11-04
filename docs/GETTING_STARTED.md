@@ -130,3 +130,42 @@ prefix and swipes, and tests 99 only when present in the publication's primitive
 To analyze retained native screenshots:
 `sh scripts/node.sh node scripts/analyze-animation.mjs docs/evidence/redesign`.
 Review VISUAL_REDESIGN.md for current screenshots and limitations before presenting.
+
+## Full feature and rendered-output validation
+
+Use the same JDK/SDK/Xcode environment above and boot one Android emulator and one
+arm64 iOS Simulator. Stop other test runs that manipulate those devices. The single
+command is:
+
+```sh
+sh scripts/validate-all.sh
+```
+
+It runs JVM/model/browser checks, CLI Android unit/lint/instrumentation, the iOS build,
+actual editor controls, immutable binary gallery captures, native UI lifecycle checks,
+viewport variants and screenshot comparisons. It starts its own backend on **8091**
+with isolated publication data; leave that port free. `FULL_NATIVE=0 sh scripts/validate-all.sh`
+runs the portable browser/JVM portion. Native tests require the documented macOS tools;
+Linux must use browser-only mode. Screenshots/reports go to `artifacts/full-validation/`;
+`latest.json` points to the last run. Use a new FULL_REPORT_DIR for native runs; Xcode
+refuses to overwrite an existing xcresult bundle. `REPORT.md`, `summary.json`, `run.json`, native logs,
+xcresult, source/binary fixtures and pixel-difference heatmaps remain local artifacts.
+
+Strict cross-platform pixels can differ despite correct geometry. The command retains
+nonzero comparison results and still writes the report; inspect `comparisons.json`
+rather than raising thresholds. Reviewed same-platform static baselines are checked
+separately. Changed fixture hashes require explicit baseline review. See
+[FULL_FEATURE_TEST_REPORT](FULL_FEATURE_TEST_REPORT.md) for measured limitations.
+
+The generic viewers also accept transient CLI connection/version overrides, useful for
+replaying an immutable publication without changing saved debug preferences:
+
+```sh
+adb reverse tcp:8091 tcp:8091
+adb shell am start -S -W -n demo.remotecompose/.MainActivity --es backend http://127.0.0.1:8091 --es version 1
+xcrun simctl launch booted demo.remotecompose.ios --backend http://127.0.0.1:8091 --version 1
+```
+
+Use an existing version number from that backend. iOS `--no-auto --interval 2` sets
+transient refresh options for lifecycle automation. These options select documents,
+not business widgets.

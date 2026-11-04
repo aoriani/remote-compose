@@ -33,3 +33,17 @@ Keep mobile content primitive; capture actual player screenshots before acceptin
 Do not change old fixtures to hide regressions. Image replacements must patch only the
 chosen reference, including in custom trees. The JSON editor virtualizes highlight lines;
 do not restore full-document span mounting for large source documents.
+
+## Rendering regression workflow
+
+`sh scripts/validate-all.sh` extends the existing JVM, Playwright, instrumentation and
+XCTest suites; it does not add an alternate renderer. New primitive gallery cases belong
+in scripts/generate-validation.mjs. Test-only interaction coordinates/ROIs stay in plans,
+not protocol JSON. A publication is compiled once, and all viewers select its immutable
+version/full SHA. Inspect actual screenshots and native logs before declaring a pass.
+
+`compare-validation.mjs` retains strict cross-platform failures; `check-visual-baseline.mjs`
+checks reviewed static goldens within each platform and rejects changed fixture hashes.
+Keep native window size/density and normalization in the evidence. Never silently regenerate
+baselines to bless a failure. The reporter produces local REPORT.md/summary.json even when
+strict comparison fails. GUI tests must not run concurrently against the same emulator.

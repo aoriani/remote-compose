@@ -1,5 +1,8 @@
 # Demonstration-readiness review
 
+> Historical scoped review. The later [full feature report](FULL_FEATURE_TEST_REPORT.md)
+> supersedes its path/artwork limitations and adds native gallery, lifecycle and pixel evidence.
+
 Reviewed 2026-11-03 from clean main at `7d2d3cc`. The prototype is ready for a scoped live
 engineering demo on the tested Chrome/Android emulator/iOS Simulator setup. Source pins,
 compiler, publishing architecture and actual players are unchanged. Physical-device and

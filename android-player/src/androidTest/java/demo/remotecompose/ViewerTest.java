@@ -23,4 +23,41 @@ public class ViewerTest {
             getInstrumentation().runOnMainSync(()->activity.testBackend("http://127.0.0.1:1"));end=SystemClock.uptimeMillis()+10000;while(!activity.fetchStatus().contains("failed")&&SystemClock.uptimeMillis()<end)SystemClock.sleep(100);assertTrue(activity.fetchStatus().contains("failed"));assertEquals(sha,activity.renderedSha());
         }finally{server.close();responder.join(1000);}
     }
+    private byte[] asset(String name) throws Exception {
+        try(InputStream in=getInstrumentation().getContext().getAssets().open(name);ByteArrayOutputStream out=new ByteArrayOutputStream()){byte[] b=new byte[1024];int n;while((n=in.read(b))!=-1)out.write(b,0,n);return out.toByteArray();}
+    }
+    private android.widget.Button button(View v,String text){
+        if(v instanceof android.widget.Button && text.contentEquals(((android.widget.Button)v).getText()))return (android.widget.Button)v;
+        if(v instanceof android.view.ViewGroup){android.view.ViewGroup g=(android.view.ViewGroup)v;for(int i=0;i<g.getChildCount();i++){android.widget.Button b=button(g.getChildAt(i),text);if(b!=null)return b;}}return null;
+    }
+    private void waitSha(MainActivity a,String sha){long end=SystemClock.uptimeMillis()+20000;while(!sha.equals(a.renderedSha())&&SystemClock.uptimeMillis()<end)SystemClock.sleep(100);assertEquals(sha,a.renderedSha());}
+    private int screenPixel(MainActivity a,int x,int y){
+        int[] point=new int[2];getInstrumentation().runOnMainSync(()->{View v=a.findViewById(R.id.protocol_player);v.getLocationOnScreen(point);point[0]+=Math.round(x*v.getScaleX());point[1]+=Math.round(y*v.getScaleY());});android.graphics.Bitmap screenshot=getInstrumentation().getUiAutomation().takeScreenshot();assertNotNull(screenshot);int color=screenshot.getPixel(point[0],point[1]);screenshot.recycle();return color;
+    }
+    @Test public void testManualAutoAndCorruptRefreshRecovery() throws Exception {
+        android.content.SharedPreferences prefs=getInstrumentation().getTargetContext().getSharedPreferences("MainActivity",0);java.util.Map<String,?> originalPreferences=prefs.getAll();
+        byte[] a=asset("button.rc"),b=asset("circle.rc");String hashA=Hashes.sha256(a),hashB=Hashes.sha256(b);
+        java.util.concurrent.atomic.AtomicReference<byte[]> current=new java.util.concurrent.atomic.AtomicReference<>(a);
+        java.util.concurrent.atomic.AtomicInteger mode=new java.util.concurrent.atomic.AtomicInteger(0);
+        ServerSocket server=new ServerSocket(0);
+        Thread responder=new Thread(()->{try{while(!server.isClosed()){try(Socket socket=server.accept()){
+            BufferedReader reader=new BufferedReader(new InputStreamReader(socket.getInputStream()));String line;while((line=reader.readLine())!=null&&!line.isEmpty()){}
+            byte[] bytes=mode.get()==2?new byte[]{1,2,3}:current.get();String code=mode.get()==1?"503 Unavailable":"200 OK";
+            OutputStream out=socket.getOutputStream();out.write(("HTTP/1.1 "+code+"\r\nContent-Length: "+bytes.length+"\r\nX-Document-Version: "+(current.get()==a?1:2)+"\r\nX-Document-SHA256: "+Hashes.sha256(bytes)+"\r\nConnection: close\r\n\r\n").getBytes());out.write(bytes);out.flush();
+        }}}catch(Exception ignored){}});responder.start();
+        try{java.util.concurrent.atomic.AtomicReference<MainActivity> ref=new java.util.concurrent.atomic.AtomicReference<>();rule.getScenario().onActivity(ref::set);MainActivity activity=ref.get();SystemClock.sleep(500);
+            getInstrumentation().runOnMainSync(()->activity.testBackend("http://127.0.0.1:"+server.getLocalPort()));waitSha(activity,hashA);
+            current.set(b);SystemClock.sleep(700);assertEquals("Manual mode must retain A before refresh",hashA,activity.renderedSha());
+            getInstrumentation().runOnMainSync(()->button(activity.getWindow().getDecorView(),"Refresh").performClick());waitSha(activity,hashB);
+            // Enable the actual native debug controls, not an alternate timer implementation.
+            getInstrumentation().runOnMainSync(()->button(activity.getWindow().getDecorView(),"Debug").performClick());
+            android.app.Instrumentation instrumentation=getInstrumentation();android.view.accessibility.AccessibilityNodeInfo root=null;for(int i=0;i<50&&root==null;i++){SystemClock.sleep(100);root=instrumentation.getUiAutomation().getRootInActiveWindow();}assertNotNull("Native debug sheet must be accessible",root);
+            java.util.List<android.view.accessibility.AccessibilityNodeInfo> toggles=root.findAccessibilityNodeInfosByText("Auto-refresh");assertFalse(toggles.isEmpty());if(!toggles.get(0).isChecked())toggles.get(0).performAction(android.view.accessibility.AccessibilityNodeInfo.ACTION_CLICK);
+            java.util.List<android.view.accessibility.AccessibilityNodeInfo> apply=root.findAccessibilityNodeInfosByText("Apply and refresh now");assertFalse(apply.isEmpty());apply.get(0).performAction(android.view.accessibility.AccessibilityNodeInfo.ACTION_CLICK);
+            getInstrumentation().sendKeyDownUpSync(android.view.KeyEvent.KEYCODE_BACK);SystemClock.sleep(1000);current.set(a);waitSha(activity,hashA);SystemClock.sleep(500);int retainedPixel=screenPixel(activity,100,25);
+            mode.set(2);long end=SystemClock.uptimeMillis()+15000;while(!activity.fetchStatus().contains("failed")&&SystemClock.uptimeMillis()<end)SystemClock.sleep(100);assertTrue(activity.fetchStatus().contains("failed"));assertEquals(hashA,activity.renderedSha());assertEquals("Corrupt refresh must retain the actual visible document pixel",retainedPixel,screenPixel(activity,100,25));
+            mode.set(0);current.set(b);waitSha(activity,hashB);SystemClock.sleep(500);assertEquals("Recovered binary must visibly paint its circle",0xFF0067A0,screenPixel(activity,195,160));
+        }finally{server.close();responder.join(1000);android.content.SharedPreferences.Editor restore=prefs.edit();for(String key:new String[]{"backend","auto","interval"}){Object value=originalPreferences.get(key);if(value==null)restore.remove(key);else if(value instanceof String)restore.putString(key,(String)value);else if(value instanceof Boolean)restore.putBoolean(key,(Boolean)value);else if(value instanceof Integer)restore.putInt(key,(Integer)value);}restore.commit();}
+    }
+
 }

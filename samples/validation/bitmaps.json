@@ -1,0 +1,190 @@
+{
+  "header": {
+    "width": 390,
+    "height": 844,
+    "profiles": 512,
+    "fps": 60,
+    "contentDescription": "bitmaps"
+  },
+  "root": {
+    "type": "canvas",
+    "modifiers": [
+      {
+        "fillMaxSize": 1
+      }
+    ],
+    "commands": [
+      {
+        "type": "paint",
+        "ops": [
+          {
+            "shader": 0
+          },
+          {
+            "alpha": 1
+          },
+          {
+            "style": "fill"
+          },
+          {
+            "color": "#FFFFFF"
+          }
+        ]
+      },
+      {
+        "type": "drawRect",
+        "left": 0,
+        "top": 0,
+        "right": 390,
+        "bottom": 844
+      },
+      {
+        "type": "paint",
+        "ops": [
+          {
+            "shader": 0
+          },
+          {
+            "alpha": 1
+          },
+          {
+            "style": "fill"
+          },
+          {
+            "color": "#182C38"
+          },
+          {
+            "textSize": 20
+          }
+        ]
+      },
+      {
+        "type": "drawTextAnchored",
+        "text": "Bitmap, alpha & aspect gallery",
+        "x": 20,
+        "y": 28,
+        "panX": -1,
+        "panY": 0
+      },
+      {
+        "type": "addBitmap",
+        "image": "oat-milk",
+        "varName": "oat_milk"
+      },
+      {
+        "type": "drawBitmap",
+        "image": "@oat_milk",
+        "left": 20,
+        "top": 70,
+        "right": 170,
+        "bottom": 220
+      },
+      {
+        "type": "addBitmap",
+        "image": "citrus-soda",
+        "varName": "citrus_soda"
+      },
+      {
+        "type": "drawBitmap",
+        "image": "@citrus_soda",
+        "left": 210,
+        "top": 70,
+        "right": 360,
+        "bottom": 220
+      },
+      {
+        "type": "addBitmap",
+        "image": "granola",
+        "varName": "granola"
+      },
+      {
+        "type": "drawBitmap",
+        "image": "@granola",
+        "left": 20,
+        "top": 270,
+        "right": 170,
+        "bottom": 420
+      },
+      {
+        "type": "addBitmap",
+        "image": "market-harvest",
+        "varName": "market_harvest"
+      },
+      {
+        "type": "drawBitmap",
+        "image": "@market_harvest",
+        "left": 210,
+        "top": 270,
+        "right": 360,
+        "bottom": 420
+      },
+      {
+        "type": "addBitmap",
+        "image": "oat-milk",
+        "varName": "deliberate_stretch"
+      },
+      {
+        "type": "drawBitmap",
+        "image": "@deliberate_stretch",
+        "left": 20,
+        "top": 480,
+        "right": 170,
+        "bottom": 555
+      },
+      {
+        "type": "paint",
+        "ops": [
+          {
+            "shader": 0
+          },
+          {
+            "alpha": 1
+          },
+          {
+            "style": "fill"
+          },
+          {
+            "color": "#182C38"
+          },
+          {
+            "textSize": 20
+          }
+        ]
+      },
+      {
+        "type": "drawTextAnchored",
+        "text": "",
+        "x": 20,
+        "y": 28,
+        "panX": -1,
+        "panY": 0
+      },
+      {
+        "type": "addBitmap",
+        "image": "club-bag",
+        "varName": "club_bag"
+      },
+      {
+        "type": "drawBitmap",
+        "image": "@club_bag",
+        "left": 20,
+        "top": 630,
+        "right": 140,
+        "bottom": 750
+      },
+      {
+        "type": "addBitmap",
+        "image": "club-bag",
+        "varName": "legacy_stretch"
+      },
+      {
+        "type": "drawBitmap",
+        "image": "@legacy_stretch",
+        "left": 190,
+        "top": 630,
+        "right": 350,
+        "bottom": 750
+      }
+    ]
+  }
+}

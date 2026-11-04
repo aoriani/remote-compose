@@ -1,0 +1,41 @@
+[
+  {
+    "id": "live-animations",
+    "platform": "browser",
+    "badge": {
+      "mae": 1.1829427083333333,
+      "badFraction": 0.02734375
+    },
+    "progress": {
+      "mae": 1.1949139280125196,
+      "badFraction": 0.011737089201877934
+    },
+    "passed": true
+  },
+  {
+    "id": "live-animations",
+    "platform": "android",
+    "badge": {
+      "mae": 1.8684895833333333,
+      "badFraction": 0.03515625
+    },
+    "progress": {
+      "mae": 5.47793427230047,
+      "badFraction": 0.06032863849765258
+    },
+    "passed": true
+  },
+  {
+    "id": "live-animations",
+    "platform": "ios",
+    "badge": {
+      "mae": 5.1572265625,
+      "badFraction": 0.064453125
+    },
+    "progress": {
+      "mae": 3.7758215962441315,
+      "badFraction": 0.04178403755868545
+    },
+    "passed": true
+  }
+]

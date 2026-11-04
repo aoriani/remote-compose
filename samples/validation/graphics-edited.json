@@ -1,0 +1,404 @@
+{
+  "header": {
+    "width": 390,
+    "height": 844,
+    "profiles": 512,
+    "fps": 60,
+    "contentDescription": "graphics-edited"
+  },
+  "root": {
+    "type": "canvas",
+    "modifiers": [
+      {
+        "fillMaxSize": 1
+      }
+    ],
+    "commands": [
+      {
+        "type": "paint",
+        "ops": [
+          {
+            "shader": 0
+          },
+          {
+            "alpha": 1
+          },
+          {
+            "style": "fill"
+          },
+          {
+            "color": "#FFFFFF"
+          }
+        ]
+      },
+      {
+        "type": "drawRect",
+        "left": 0,
+        "top": 0,
+        "right": 390,
+        "bottom": 844
+      },
+      {
+        "type": "paint",
+        "ops": [
+          {
+            "shader": 0
+          },
+          {
+            "alpha": 1
+          },
+          {
+            "style": "fill"
+          },
+          {
+            "color": "#182C38"
+          },
+          {
+            "textSize": 20
+          }
+        ]
+      },
+      {
+        "type": "drawTextAnchored",
+        "text": "Drawing, colors & transforms",
+        "x": 20,
+        "y": 28,
+        "panX": -1,
+        "panY": 0
+      },
+      {
+        "type": "paint",
+        "ops": [
+          {
+            "shader": 0
+          },
+          {
+            "alpha": 1
+          },
+          {
+            "style": "fill"
+          },
+          {
+            "color": "#305BEF"
+          }
+        ]
+      },
+      {
+        "type": "drawCircle",
+        "cx": 60,
+        "cy": 110,
+        "radius": 24
+      },
+      {
+        "type": "paint",
+        "ops": [
+          {
+            "shader": 0
+          },
+          {
+            "alpha": 1
+          },
+          {
+            "style": "fill"
+          },
+          {
+            "color": "#81A884"
+          }
+        ]
+      },
+      {
+        "type": "drawOval",
+        "left": 130,
+        "top": 80,
+        "right": 230,
+        "bottom": 140
+      },
+      {
+        "type": "paint",
+        "ops": [
+          {
+            "shader": 0
+          },
+          {
+            "alpha": 1
+          },
+          {
+            "style": "fill"
+          },
+          {
+            "color": "#F7B07B"
+          }
+        ]
+      },
+      {
+        "type": "drawRoundRect",
+        "left": 250,
+        "top": 80,
+        "right": 365,
+        "bottom": 140,
+        "rx": 16,
+        "ry": 16
+      },
+      {
+        "type": "paint",
+        "ops": [
+          {
+            "shader": 0
+          },
+          {
+            "alpha": 1
+          },
+          {
+            "style": "fill"
+          },
+          {
+            "color": "#305BEF"
+          }
+        ]
+      },
+      {
+        "type": "drawRect",
+        "left": 20,
+        "top": 180,
+        "right": 110,
+        "bottom": 240
+      },
+      {
+        "type": "paint",
+        "ops": [
+          {
+            "shader": 0
+          },
+          {
+            "alpha": 1
+          },
+          {
+            "style": "fill"
+          },
+          {
+            "color": "#FF0000"
+          },
+          {
+            "alpha": 0.5
+          }
+        ]
+      },
+      {
+        "type": "drawRect",
+        "left": 50,
+        "top": 200,
+        "right": 140,
+        "bottom": 260
+      },
+      {
+        "type": "paint",
+        "ops": [
+          {
+            "shader": 0
+          },
+          {
+            "alpha": 1
+          },
+          {
+            "style": "fill"
+          },
+          {
+            "color": "#FFFFFF"
+          }
+        ]
+      },
+      {
+        "type": "paint",
+        "ops": [
+          {
+            "linearGradient": {
+              "x1": 20,
+              "y1": 300,
+              "x2": 370,
+              "y2": 300,
+              "colors": [
+                "#305BEF",
+                "#FFB76B"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "type": "drawRect",
+        "left": 20,
+        "top": 290,
+        "right": 370,
+        "bottom": 355
+      },
+      {
+        "type": "paint",
+        "ops": [
+          {
+            "shader": 0
+          },
+          {
+            "alpha": 1
+          },
+          {
+            "style": "fill"
+          },
+          {
+            "color": "#00827E"
+          }
+        ]
+      },
+      {
+        "type": "save",
+        "commands": [
+          {
+            "type": "clipRect",
+            "left": 20,
+            "top": 400,
+            "right": 120,
+            "bottom": 475
+          },
+          {
+            "type": "drawRect",
+            "left": 0,
+            "top": 380,
+            "right": 180,
+            "bottom": 500
+          }
+        ]
+      },
+      {
+        "type": "save",
+        "commands": [
+          {
+            "type": "translate",
+            "dx": 265,
+            "dy": 435
+          },
+          {
+            "type": "rotate",
+            "angle": 45,
+            "pivotX": 0,
+            "pivotY": 0
+          },
+          {
+            "type": "paint",
+            "ops": [
+              {
+                "shader": 0
+              },
+              {
+                "alpha": 1
+              },
+              {
+                "style": "fill"
+              },
+              {
+                "color": "#305BEF"
+              }
+            ]
+          },
+          {
+            "type": "drawRect",
+            "left": -30,
+            "top": -20,
+            "right": 30,
+            "bottom": 20
+          }
+        ]
+      },
+      {
+        "type": "save",
+        "commands": [
+          {
+            "type": "translate",
+            "dx": 180,
+            "dy": 560
+          },
+          {
+            "type": "scale",
+            "sx": 1.5,
+            "sy": 0.5
+          },
+          {
+            "type": "paint",
+            "ops": [
+              {
+                "shader": 0
+              },
+              {
+                "alpha": 1
+              },
+              {
+                "style": "fill"
+              },
+              {
+                "color": "#F7B07B"
+              }
+            ]
+          },
+          {
+            "type": "drawRect",
+            "left": 0,
+            "top": 0,
+            "right": 80,
+            "bottom": 80
+          }
+        ]
+      },
+      {
+        "type": "paint",
+        "ops": [
+          {
+            "shader": 0
+          },
+          {
+            "alpha": 1
+          },
+          {
+            "style": "fill"
+          },
+          {
+            "color": "#305BEF"
+          }
+        ]
+      },
+      {
+        "type": "drawPath",
+        "path": "M 65 720 C 45 700 20 680 20 650 C 20 620 55 620 65 640 C 75 620 110 620 110 650 C 110 680 85 700 65 720 Z"
+      },
+      {
+        "type": "paint",
+        "ops": [
+          {
+            "shader": 0
+          },
+          {
+            "alpha": 1
+          },
+          {
+            "style": "fill"
+          },
+          {
+            "color": "#182C38"
+          },
+          {
+            "style": "stroke"
+          },
+          {
+            "strokeWidth": 3
+          }
+        ]
+      },
+      {
+        "type": "drawArc",
+        "left": 180,
+        "top": 660,
+        "right": 280,
+        "bottom": 760,
+        "startAngle": 0,
+        "sweepAngle": 220
+      }
+    ]
+  }
+}

@@ -3,6 +3,12 @@
 Updated 2026-11-03. Branch main. Current phase: usable cross-platform demonstration,
 with measured compatibility limited to the fixtures below. No remote push performed.
 
+Latest handoff:31 shared binary documents validated;81 JVM/9 model tests, native GUI
+and lifecycle checks pass within recorded scope.15 strict pixel comparison flags and
+font/accessibility gaps remain. Read FULL_FEATURE_TEST_REPORT and the final sections
+below before historical milestones.6c66fb6 contains the first fixes; the following
+validation/evidence commit is identified by git log. The working tree was clean at start.
+
 ## Implemented
 
 - Preserved foundation, exact upstream pins and the 109-byte original proof.
@@ -119,3 +125,23 @@ silently dropped CircleShape clipping. 81 JVM tests, nine model tests, existing 
 regression and browser responsive/pointer/touch/keyboard checks pass. Wheel scrolling is
 an observed player limitation. The expanded cross-platform corpus, native lifecycle tests,
 strict screenshot differences and final report are being collected separately.
+
+## Expanded gallery and lifecycle validation
+
+The31-document corpus (11 edited widgets,18 primitive/custom fixtures,2 lifecycle documents)
+has actual browser/Android/iOS captures and full digest checks. All18 complete custom trees
+survive real visual operations.81 JVM and9 model tests pass; the109-byte browser proof is
+preserved. Android assembly/unit/lint and2 instrumentation tests pass, including actual
+visible-pixel retention across corrupt refresh and the recovered circle's RGB. The iOS
+29-document gallery passes; its lifecycle test passes after correcting the automation's
+switch hit target and asserting its value. The final strengthened iOS lifecycle test passes38.780s: an offline viewport retains
+the actual green circle, and recovery requires a successful response rather than a stale
+digest. See FULL_FEATURE_TEST_REPORT and evidence/full-validation. Native gallery and
+lifecycle stages passed separately; failed earlier attempts remain recorded.
+
+Fifteen of62 strict cross-platform ROI comparison rows differ; fonts are additionally
+reported outside generic ROI gating. All deterministic animation geometry checks pass;
+both live effects change in all players.27 reviewed initial golden checks and24 independent
+repeat captures pass; the golden tool rejects two earlier bad Android capture frames.
+Browser-only single-command validation ran successfully. Full native stages were executed
+individually; do not imply a fresh clean-checkout one-shot native run was performed.

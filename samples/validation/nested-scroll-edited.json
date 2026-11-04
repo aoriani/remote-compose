@@ -1,0 +1,1577 @@
+{
+  "header": {
+    "width": 390,
+    "height": 844,
+    "profiles": 512,
+    "fps": 60,
+    "contentDescription": "nested-scroll-edited"
+  },
+  "root": {
+    "type": "column",
+    "modifiers": [
+      {
+        "fillMaxSize": 1
+      },
+      {
+        "background": "#FFFFFF"
+      },
+      {
+        "verticalScroll": 0
+      }
+    ],
+    "children": [
+      {
+        "type": "text",
+        "value": "Updated custom hierarchy",
+        "fontSize": 28,
+        "modifiers": [
+          {
+            "padding": 20
+          }
+        ]
+      },
+      {
+        "type": "row",
+        "modifiers": [
+          {
+            "fillMaxWidth": 1
+          },
+          {
+            "height": 274
+          },
+          {
+            "padding": [
+              12,
+              0,
+              12,
+              0
+            ]
+          },
+          {
+            "horizontalScroll": 0
+          }
+        ],
+        "children": [
+          {
+            "type": "canvas",
+            "modifiers": [
+              {
+                "width": 180
+              },
+              {
+                "height": 270
+              },
+              {
+                "onClick": {
+                  "type": "HostAction",
+                  "actionId": 201
+                }
+              }
+            ],
+            "commands": [
+              {
+                "type": "paint",
+                "ops": [
+                  {
+                    "shader": 0
+                  },
+                  {
+                    "style": "fill"
+                  },
+                  {
+                    "color": "#FFFFFF"
+                  }
+                ]
+              },
+              {
+                "type": "drawRoundRect",
+                "left": 8,
+                "top": 2,
+                "right": 172,
+                "bottom": 260,
+                "rx": 16,
+                "ry": 16
+              },
+              {
+                "type": "paint",
+                "ops": [
+                  {
+                    "shader": 0
+                  },
+                  {
+                    "style": "fill"
+                  },
+                  {
+                    "color": "#E8EDDD"
+                  }
+                ]
+              },
+              {
+                "type": "drawRoundRect",
+                "left": 8,
+                "top": 2,
+                "right": 172,
+                "bottom": 155,
+                "rx": 16,
+                "ry": 16
+              },
+              {
+                "type": "addBitmap",
+                "image": "oat-milk",
+                "varName": "photo_oat_milk"
+              },
+              {
+                "type": "drawBitmap",
+                "image": "@photo_oat_milk",
+                "left": 24,
+                "top": 11,
+                "right": 156,
+                "bottom": 143
+              },
+              {
+                "type": "paint",
+                "ops": [
+                  {
+                    "shader": 0
+                  },
+                  {
+                    "style": "fill"
+                  },
+                  {
+                    "color": "#616D77"
+                  },
+                  {
+                    "textSize": 9
+                  }
+                ]
+              },
+              {
+                "type": "drawTextAnchored",
+                "text": "FIELD / OAT",
+                "x": 20,
+                "y": 171,
+                "panX": -1,
+                "panY": 0
+              },
+              {
+                "type": "paint",
+                "ops": [
+                  {
+                    "shader": 0
+                  },
+                  {
+                    "style": "fill"
+                  },
+                  {
+                    "color": "#182C38"
+                  },
+                  {
+                    "textSize": 14
+                  }
+                ]
+              },
+              {
+                "type": "drawTextAnchored",
+                "text": "Barista oat drink",
+                "x": 20,
+                "y": 191,
+                "panX": -1,
+                "panY": 0
+              },
+              {
+                "type": "paint",
+                "ops": [
+                  {
+                    "shader": 0
+                  },
+                  {
+                    "style": "fill"
+                  },
+                  {
+                    "color": "#616D77"
+                  },
+                  {
+                    "textSize": 10
+                  }
+                ]
+              },
+              {
+                "type": "drawTextAnchored",
+                "text": "1 L · Plant based",
+                "x": 20,
+                "y": 212,
+                "panX": -1,
+                "panY": 0
+              },
+              {
+                "type": "paint",
+                "ops": [
+                  {
+                    "shader": 0
+                  },
+                  {
+                    "style": "fill"
+                  },
+                  {
+                    "color": "#182C38"
+                  },
+                  {
+                    "textSize": 21
+                  }
+                ]
+              },
+              {
+                "type": "drawTextAnchored",
+                "text": "$3.49",
+                "x": 20,
+                "y": 241,
+                "panX": -1,
+                "panY": 0
+              },
+              {
+                "type": "paint",
+                "ops": [
+                  {
+                    "shader": 0
+                  },
+                  {
+                    "style": "fill"
+                  },
+                  {
+                    "color": "#EAF0FF"
+                  }
+                ]
+              },
+              {
+                "type": "drawCircle",
+                "cx": 149,
+                "cy": 239,
+                "radius": 13
+              },
+              {
+                "type": "paint",
+                "ops": [
+                  {
+                    "shader": 0
+                  },
+                  {
+                    "color": "#305BEF"
+                  },
+                  {
+                    "style": "stroke"
+                  },
+                  {
+                    "strokeWidth": 1.7
+                  },
+                  {
+                    "strokeCap": "round"
+                  }
+                ]
+              },
+              {
+                "type": "drawLine",
+                "x1": 144,
+                "y1": 239,
+                "x2": 154,
+                "y2": 239
+              },
+              {
+                "type": "paint",
+                "ops": [
+                  {
+                    "shader": 0
+                  },
+                  {
+                    "color": "#305BEF"
+                  },
+                  {
+                    "style": "stroke"
+                  },
+                  {
+                    "strokeWidth": 1.7
+                  },
+                  {
+                    "strokeCap": "round"
+                  }
+                ]
+              },
+              {
+                "type": "drawLine",
+                "x1": 149,
+                "y1": 234,
+                "x2": 149,
+                "y2": 244
+              },
+              {
+                "type": "paint",
+                "ops": [
+                  {
+                    "shader": 0
+                  },
+                  {
+                    "style": "fill"
+                  },
+                  {
+                    "color": "#FFFFFF"
+                  }
+                ]
+              },
+              {
+                "type": "drawCircle",
+                "cx": 145,
+                "cy": 24,
+                "radius": 13
+              },
+              {
+                "type": "paint",
+                "ops": [
+                  {
+                    "color": "#616D77"
+                  },
+                  {
+                    "style": "stroke"
+                  },
+                  {
+                    "strokeWidth": 1.3
+                  }
+                ]
+              },
+              {
+                "type": "drawPath",
+                "path": "M 145 31 C 144 30 136 25 136 21 C 136 16 142 15 145 19 C 148 15 154 16 154 21 C 154 25 146 30 145 31 Z"
+              }
+            ]
+          },
+          {
+            "type": "canvas",
+            "modifiers": [
+              {
+                "width": 180
+              },
+              {
+                "height": 270
+              },
+              {
+                "onClick": {
+                  "type": "HostAction",
+                  "actionId": 202
+                }
+              }
+            ],
+            "commands": [
+              {
+                "type": "paint",
+                "ops": [
+                  {
+                    "shader": 0
+                  },
+                  {
+                    "style": "fill"
+                  },
+                  {
+                    "color": "#FFFFFF"
+                  }
+                ]
+              },
+              {
+                "type": "drawRoundRect",
+                "left": 8,
+                "top": 2,
+                "right": 172,
+                "bottom": 260,
+                "rx": 16,
+                "ry": 16
+              },
+              {
+                "type": "paint",
+                "ops": [
+                  {
+                    "shader": 0
+                  },
+                  {
+                    "style": "fill"
+                  },
+                  {
+                    "color": "#F9E5D4"
+                  }
+                ]
+              },
+              {
+                "type": "drawRoundRect",
+                "left": 8,
+                "top": 2,
+                "right": 172,
+                "bottom": 155,
+                "rx": 16,
+                "ry": 16
+              },
+              {
+                "type": "addBitmap",
+                "image": "citrus-soda",
+                "varName": "photo_citrus_soda"
+              },
+              {
+                "type": "drawBitmap",
+                "image": "@photo_citrus_soda",
+                "left": 24,
+                "top": 11,
+                "right": 156,
+                "bottom": 143
+              },
+              {
+                "type": "paint",
+                "ops": [
+                  {
+                    "shader": 0
+                  },
+                  {
+                    "style": "fill"
+                  },
+                  {
+                    "color": "#616D77"
+                  },
+                  {
+                    "textSize": 9
+                  }
+                ]
+              },
+              {
+                "type": "drawTextAnchored",
+                "text": "SOL",
+                "x": 20,
+                "y": 171,
+                "panX": -1,
+                "panY": 0
+              },
+              {
+                "type": "paint",
+                "ops": [
+                  {
+                    "shader": 0
+                  },
+                  {
+                    "style": "fill"
+                  },
+                  {
+                    "color": "#182C38"
+                  },
+                  {
+                    "textSize": 14
+                  }
+                ]
+              },
+              {
+                "type": "drawTextAnchored",
+                "text": "Sparkling citrus",
+                "x": 20,
+                "y": 191,
+                "panX": -1,
+                "panY": 0
+              },
+              {
+                "type": "paint",
+                "ops": [
+                  {
+                    "shader": 0
+                  },
+                  {
+                    "style": "fill"
+                  },
+                  {
+                    "color": "#616D77"
+                  },
+                  {
+                    "textSize": 10
+                  }
+                ]
+              },
+              {
+                "type": "drawTextAnchored",
+                "text": "330 mL · Real fruit",
+                "x": 20,
+                "y": 212,
+                "panX": -1,
+                "panY": 0
+              },
+              {
+                "type": "paint",
+                "ops": [
+                  {
+                    "shader": 0
+                  },
+                  {
+                    "style": "fill"
+                  },
+                  {
+                    "color": "#182C38"
+                  },
+                  {
+                    "textSize": 21
+                  }
+                ]
+              },
+              {
+                "type": "drawTextAnchored",
+                "text": "$1.99",
+                "x": 20,
+                "y": 241,
+                "panX": -1,
+                "panY": 0
+              },
+              {
+                "type": "paint",
+                "ops": [
+                  {
+                    "shader": 0
+                  },
+                  {
+                    "style": "fill"
+                  },
+                  {
+                    "color": "#EAF0FF"
+                  }
+                ]
+              },
+              {
+                "type": "drawCircle",
+                "cx": 149,
+                "cy": 239,
+                "radius": 13
+              },
+              {
+                "type": "paint",
+                "ops": [
+                  {
+                    "shader": 0
+                  },
+                  {
+                    "color": "#305BEF"
+                  },
+                  {
+                    "style": "stroke"
+                  },
+                  {
+                    "strokeWidth": 1.7
+                  },
+                  {
+                    "strokeCap": "round"
+                  }
+                ]
+              },
+              {
+                "type": "drawLine",
+                "x1": 144,
+                "y1": 239,
+                "x2": 154,
+                "y2": 239
+              },
+              {
+                "type": "paint",
+                "ops": [
+                  {
+                    "shader": 0
+                  },
+                  {
+                    "color": "#305BEF"
+                  },
+                  {
+                    "style": "stroke"
+                  },
+                  {
+                    "strokeWidth": 1.7
+                  },
+                  {
+                    "strokeCap": "round"
+                  }
+                ]
+              },
+              {
+                "type": "drawLine",
+                "x1": 149,
+                "y1": 234,
+                "x2": 149,
+                "y2": 244
+              },
+              {
+                "type": "paint",
+                "ops": [
+                  {
+                    "shader": 0
+                  },
+                  {
+                    "style": "fill"
+                  },
+                  {
+                    "color": "#FFFFFF"
+                  }
+                ]
+              },
+              {
+                "type": "drawCircle",
+                "cx": 145,
+                "cy": 24,
+                "radius": 13
+              },
+              {
+                "type": "paint",
+                "ops": [
+                  {
+                    "color": "#616D77"
+                  },
+                  {
+                    "style": "stroke"
+                  },
+                  {
+                    "strokeWidth": 1.3
+                  }
+                ]
+              },
+              {
+                "type": "drawPath",
+                "path": "M 145 31 C 144 30 136 25 136 21 C 136 16 142 15 145 19 C 148 15 154 16 154 21 C 154 25 146 30 145 31 Z"
+              }
+            ]
+          },
+          {
+            "type": "canvas",
+            "modifiers": [
+              {
+                "width": 180
+              },
+              {
+                "height": 270
+              },
+              {
+                "onClick": {
+                  "type": "HostAction",
+                  "actionId": 203
+                }
+              }
+            ],
+            "commands": [
+              {
+                "type": "paint",
+                "ops": [
+                  {
+                    "shader": 0
+                  },
+                  {
+                    "style": "fill"
+                  },
+                  {
+                    "color": "#FFFFFF"
+                  }
+                ]
+              },
+              {
+                "type": "drawRoundRect",
+                "left": 8,
+                "top": 2,
+                "right": 172,
+                "bottom": 260,
+                "rx": 16,
+                "ry": 16
+              },
+              {
+                "type": "paint",
+                "ops": [
+                  {
+                    "shader": 0
+                  },
+                  {
+                    "style": "fill"
+                  },
+                  {
+                    "color": "#EEE7F5"
+                  }
+                ]
+              },
+              {
+                "type": "drawRoundRect",
+                "left": 8,
+                "top": 2,
+                "right": 172,
+                "bottom": 155,
+                "rx": 16,
+                "ry": 16
+              },
+              {
+                "type": "addBitmap",
+                "image": "granola",
+                "varName": "photo_granola"
+              },
+              {
+                "type": "drawBitmap",
+                "image": "@photo_granola",
+                "left": 24,
+                "top": 11,
+                "right": 156,
+                "bottom": 143
+              },
+              {
+                "type": "paint",
+                "ops": [
+                  {
+                    "shader": 0
+                  },
+                  {
+                    "style": "fill"
+                  },
+                  {
+                    "color": "#616D77"
+                  },
+                  {
+                    "textSize": 9
+                  }
+                ]
+              },
+              {
+                "type": "drawTextAnchored",
+                "text": "MORN",
+                "x": 20,
+                "y": 171,
+                "panX": -1,
+                "panY": 0
+              },
+              {
+                "type": "paint",
+                "ops": [
+                  {
+                    "shader": 0
+                  },
+                  {
+                    "style": "fill"
+                  },
+                  {
+                    "color": "#182C38"
+                  },
+                  {
+                    "textSize": 14
+                  }
+                ]
+              },
+              {
+                "type": "drawTextAnchored",
+                "text": "Maple granola",
+                "x": 20,
+                "y": 191,
+                "panX": -1,
+                "panY": 0
+              },
+              {
+                "type": "paint",
+                "ops": [
+                  {
+                    "shader": 0
+                  },
+                  {
+                    "style": "fill"
+                  },
+                  {
+                    "color": "#616D77"
+                  },
+                  {
+                    "textSize": 10
+                  }
+                ]
+              },
+              {
+                "type": "drawTextAnchored",
+                "text": "350 g · Small batch",
+                "x": 20,
+                "y": 212,
+                "panX": -1,
+                "panY": 0
+              },
+              {
+                "type": "paint",
+                "ops": [
+                  {
+                    "shader": 0
+                  },
+                  {
+                    "style": "fill"
+                  },
+                  {
+                    "color": "#182C38"
+                  },
+                  {
+                    "textSize": 21
+                  }
+                ]
+              },
+              {
+                "type": "drawTextAnchored",
+                "text": "$6.50",
+                "x": 20,
+                "y": 241,
+                "panX": -1,
+                "panY": 0
+              },
+              {
+                "type": "paint",
+                "ops": [
+                  {
+                    "shader": 0
+                  },
+                  {
+                    "style": "fill"
+                  },
+                  {
+                    "color": "#EAF0FF"
+                  }
+                ]
+              },
+              {
+                "type": "drawCircle",
+                "cx": 149,
+                "cy": 239,
+                "radius": 13
+              },
+              {
+                "type": "paint",
+                "ops": [
+                  {
+                    "shader": 0
+                  },
+                  {
+                    "color": "#305BEF"
+                  },
+                  {
+                    "style": "stroke"
+                  },
+                  {
+                    "strokeWidth": 1.7
+                  },
+                  {
+                    "strokeCap": "round"
+                  }
+                ]
+              },
+              {
+                "type": "drawLine",
+                "x1": 144,
+                "y1": 239,
+                "x2": 154,
+                "y2": 239
+              },
+              {
+                "type": "paint",
+                "ops": [
+                  {
+                    "shader": 0
+                  },
+                  {
+                    "color": "#305BEF"
+                  },
+                  {
+                    "style": "stroke"
+                  },
+                  {
+                    "strokeWidth": 1.7
+                  },
+                  {
+                    "strokeCap": "round"
+                  }
+                ]
+              },
+              {
+                "type": "drawLine",
+                "x1": 149,
+                "y1": 234,
+                "x2": 149,
+                "y2": 244
+              },
+              {
+                "type": "paint",
+                "ops": [
+                  {
+                    "shader": 0
+                  },
+                  {
+                    "style": "fill"
+                  },
+                  {
+                    "color": "#FFFFFF"
+                  }
+                ]
+              },
+              {
+                "type": "drawCircle",
+                "cx": 145,
+                "cy": 24,
+                "radius": 13
+              },
+              {
+                "type": "paint",
+                "ops": [
+                  {
+                    "color": "#616D77"
+                  },
+                  {
+                    "style": "stroke"
+                  },
+                  {
+                    "strokeWidth": 1.3
+                  }
+                ]
+              },
+              {
+                "type": "drawPath",
+                "path": "M 145 31 C 144 30 136 25 136 21 C 136 16 142 15 145 19 C 148 15 154 16 154 21 C 154 25 146 30 145 31 Z"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "row",
+        "modifiers": [
+          {
+            "height": 100
+          },
+          {
+            "background": "#E8EDDD"
+          }
+        ],
+        "children": [
+          {
+            "type": "text",
+            "value": "Row 0",
+            "fontSize": 24,
+            "fontWeight": 400,
+            "color": "#182C38",
+            "modifiers": [
+              {
+                "padding": 8
+              }
+            ]
+          },
+          {
+            "type": "column",
+            "children": [
+              {
+                "type": "text",
+                "value": "Nested title",
+                "fontSize": 18,
+                "fontWeight": 400,
+                "color": "#305BEF",
+                "modifiers": [
+                  {
+                    "padding": 8
+                  }
+                ]
+              },
+              {
+                "type": "text",
+                "value": "Secondary copy",
+                "fontSize": 12,
+                "fontWeight": 400,
+                "color": "#73808A",
+                "modifiers": [
+                  {
+                    "padding": 8
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "row",
+        "modifiers": [
+          {
+            "height": 100
+          },
+          {
+            "background": "#EEE7F5"
+          }
+        ],
+        "children": [
+          {
+            "type": "text",
+            "value": "Row 1",
+            "fontSize": 24,
+            "fontWeight": 400,
+            "color": "#182C38",
+            "modifiers": [
+              {
+                "padding": 8
+              }
+            ]
+          },
+          {
+            "type": "column",
+            "children": [
+              {
+                "type": "text",
+                "value": "Nested title",
+                "fontSize": 18,
+                "fontWeight": 400,
+                "color": "#305BEF",
+                "modifiers": [
+                  {
+                    "padding": 8
+                  }
+                ]
+              },
+              {
+                "type": "text",
+                "value": "Secondary copy",
+                "fontSize": 12,
+                "fontWeight": 400,
+                "color": "#73808A",
+                "modifiers": [
+                  {
+                    "padding": 8
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "row",
+        "modifiers": [
+          {
+            "height": 100
+          },
+          {
+            "background": "#E8EDDD"
+          }
+        ],
+        "children": [
+          {
+            "type": "text",
+            "value": "Row 2",
+            "fontSize": 24,
+            "fontWeight": 400,
+            "color": "#182C38",
+            "modifiers": [
+              {
+                "padding": 8
+              }
+            ]
+          },
+          {
+            "type": "column",
+            "children": [
+              {
+                "type": "text",
+                "value": "Nested title",
+                "fontSize": 18,
+                "fontWeight": 400,
+                "color": "#305BEF",
+                "modifiers": [
+                  {
+                    "padding": 8
+                  }
+                ]
+              },
+              {
+                "type": "text",
+                "value": "Secondary copy",
+                "fontSize": 12,
+                "fontWeight": 400,
+                "color": "#73808A",
+                "modifiers": [
+                  {
+                    "padding": 8
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "row",
+        "modifiers": [
+          {
+            "height": 100
+          },
+          {
+            "background": "#EEE7F5"
+          }
+        ],
+        "children": [
+          {
+            "type": "text",
+            "value": "Row 3",
+            "fontSize": 24,
+            "fontWeight": 400,
+            "color": "#182C38",
+            "modifiers": [
+              {
+                "padding": 8
+              }
+            ]
+          },
+          {
+            "type": "column",
+            "children": [
+              {
+                "type": "text",
+                "value": "Nested title",
+                "fontSize": 18,
+                "fontWeight": 400,
+                "color": "#305BEF",
+                "modifiers": [
+                  {
+                    "padding": 8
+                  }
+                ]
+              },
+              {
+                "type": "text",
+                "value": "Secondary copy",
+                "fontSize": 12,
+                "fontWeight": 400,
+                "color": "#73808A",
+                "modifiers": [
+                  {
+                    "padding": 8
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "row",
+        "modifiers": [
+          {
+            "height": 100
+          },
+          {
+            "background": "#E8EDDD"
+          }
+        ],
+        "children": [
+          {
+            "type": "text",
+            "value": "Row 4",
+            "fontSize": 24,
+            "fontWeight": 400,
+            "color": "#182C38",
+            "modifiers": [
+              {
+                "padding": 8
+              }
+            ]
+          },
+          {
+            "type": "column",
+            "children": [
+              {
+                "type": "text",
+                "value": "Nested title",
+                "fontSize": 18,
+                "fontWeight": 400,
+                "color": "#305BEF",
+                "modifiers": [
+                  {
+                    "padding": 8
+                  }
+                ]
+              },
+              {
+                "type": "text",
+                "value": "Secondary copy",
+                "fontSize": 12,
+                "fontWeight": 400,
+                "color": "#73808A",
+                "modifiers": [
+                  {
+                    "padding": 8
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "row",
+        "modifiers": [
+          {
+            "height": 100
+          },
+          {
+            "background": "#EEE7F5"
+          }
+        ],
+        "children": [
+          {
+            "type": "text",
+            "value": "Row 5",
+            "fontSize": 24,
+            "fontWeight": 400,
+            "color": "#182C38",
+            "modifiers": [
+              {
+                "padding": 8
+              }
+            ]
+          },
+          {
+            "type": "column",
+            "children": [
+              {
+                "type": "text",
+                "value": "Nested title",
+                "fontSize": 18,
+                "fontWeight": 400,
+                "color": "#305BEF",
+                "modifiers": [
+                  {
+                    "padding": 8
+                  }
+                ]
+              },
+              {
+                "type": "text",
+                "value": "Secondary copy",
+                "fontSize": 12,
+                "fontWeight": 400,
+                "color": "#73808A",
+                "modifiers": [
+                  {
+                    "padding": 8
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "row",
+        "modifiers": [
+          {
+            "height": 100
+          },
+          {
+            "background": "#E8EDDD"
+          }
+        ],
+        "children": [
+          {
+            "type": "text",
+            "value": "Row 6",
+            "fontSize": 24,
+            "fontWeight": 400,
+            "color": "#182C38",
+            "modifiers": [
+              {
+                "padding": 8
+              }
+            ]
+          },
+          {
+            "type": "column",
+            "children": [
+              {
+                "type": "text",
+                "value": "Nested title",
+                "fontSize": 18,
+                "fontWeight": 400,
+                "color": "#305BEF",
+                "modifiers": [
+                  {
+                    "padding": 8
+                  }
+                ]
+              },
+              {
+                "type": "text",
+                "value": "Secondary copy",
+                "fontSize": 12,
+                "fontWeight": 400,
+                "color": "#73808A",
+                "modifiers": [
+                  {
+                    "padding": 8
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "row",
+        "modifiers": [
+          {
+            "height": 100
+          },
+          {
+            "background": "#EEE7F5"
+          }
+        ],
+        "children": [
+          {
+            "type": "text",
+            "value": "Row 7",
+            "fontSize": 24,
+            "fontWeight": 400,
+            "color": "#182C38",
+            "modifiers": [
+              {
+                "padding": 8
+              }
+            ]
+          },
+          {
+            "type": "column",
+            "children": [
+              {
+                "type": "text",
+                "value": "Nested title",
+                "fontSize": 18,
+                "fontWeight": 400,
+                "color": "#305BEF",
+                "modifiers": [
+                  {
+                    "padding": 8
+                  }
+                ]
+              },
+              {
+                "type": "text",
+                "value": "Secondary copy",
+                "fontSize": 12,
+                "fontWeight": 400,
+                "color": "#73808A",
+                "modifiers": [
+                  {
+                    "padding": 8
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "row",
+        "modifiers": [
+          {
+            "height": 100
+          },
+          {
+            "background": "#E8EDDD"
+          }
+        ],
+        "children": [
+          {
+            "type": "text",
+            "value": "Row 8",
+            "fontSize": 24,
+            "fontWeight": 400,
+            "color": "#182C38",
+            "modifiers": [
+              {
+                "padding": 8
+              }
+            ]
+          },
+          {
+            "type": "column",
+            "children": [
+              {
+                "type": "text",
+                "value": "Nested title",
+                "fontSize": 18,
+                "fontWeight": 400,
+                "color": "#305BEF",
+                "modifiers": [
+                  {
+                    "padding": 8
+                  }
+                ]
+              },
+              {
+                "type": "text",
+                "value": "Secondary copy",
+                "fontSize": 12,
+                "fontWeight": 400,
+                "color": "#73808A",
+                "modifiers": [
+                  {
+                    "padding": 8
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "row",
+        "modifiers": [
+          {
+            "height": 100
+          },
+          {
+            "background": "#EEE7F5"
+          }
+        ],
+        "children": [
+          {
+            "type": "text",
+            "value": "Row 9",
+            "fontSize": 24,
+            "fontWeight": 400,
+            "color": "#182C38",
+            "modifiers": [
+              {
+                "padding": 8
+              }
+            ]
+          },
+          {
+            "type": "column",
+            "children": [
+              {
+                "type": "text",
+                "value": "Nested title",
+                "fontSize": 18,
+                "fontWeight": 400,
+                "color": "#305BEF",
+                "modifiers": [
+                  {
+                    "padding": 8
+                  }
+                ]
+              },
+              {
+                "type": "text",
+                "value": "Secondary copy",
+                "fontSize": 12,
+                "fontWeight": 400,
+                "color": "#73808A",
+                "modifiers": [
+                  {
+                    "padding": 8
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "row",
+        "modifiers": [
+          {
+            "height": 100
+          },
+          {
+            "background": "#E8EDDD"
+          }
+        ],
+        "children": [
+          {
+            "type": "text",
+            "value": "Row 10",
+            "fontSize": 24,
+            "fontWeight": 400,
+            "color": "#182C38",
+            "modifiers": [
+              {
+                "padding": 8
+              }
+            ]
+          },
+          {
+            "type": "column",
+            "children": [
+              {
+                "type": "text",
+                "value": "Nested title",
+                "fontSize": 18,
+                "fontWeight": 400,
+                "color": "#305BEF",
+                "modifiers": [
+                  {
+                    "padding": 8
+                  }
+                ]
+              },
+              {
+                "type": "text",
+                "value": "Secondary copy",
+                "fontSize": 12,
+                "fontWeight": 400,
+                "color": "#73808A",
+                "modifiers": [
+                  {
+                    "padding": 8
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "row",
+        "modifiers": [
+          {
+            "height": 100
+          },
+          {
+            "background": "#EEE7F5"
+          }
+        ],
+        "children": [
+          {
+            "type": "text",
+            "value": "Row 11",
+            "fontSize": 24,
+            "fontWeight": 400,
+            "color": "#182C38",
+            "modifiers": [
+              {
+                "padding": 8
+              }
+            ]
+          },
+          {
+            "type": "column",
+            "children": [
+              {
+                "type": "text",
+                "value": "Nested title",
+                "fontSize": 18,
+                "fontWeight": 400,
+                "color": "#305BEF",
+                "modifiers": [
+                  {
+                    "padding": 8
+                  }
+                ]
+              },
+              {
+                "type": "text",
+                "value": "Secondary copy",
+                "fontSize": 12,
+                "fontWeight": 400,
+                "color": "#73808A",
+                "modifiers": [
+                  {
+                    "padding": 8
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

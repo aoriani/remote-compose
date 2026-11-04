@@ -1,0 +1,262 @@
+{
+  "header": {
+    "width": 390,
+    "height": 844,
+    "profiles": 512,
+    "fps": 60,
+    "contentDescription": "interactions"
+  },
+  "resources": {
+    "variables": {
+      "state": {
+        "value": 0,
+        "export": true
+      }
+    }
+  },
+  "root": {
+    "type": "column",
+    "modifiers": [
+      {
+        "fillMaxSize": 1
+      },
+      {
+        "background": "#FFFFFF"
+      }
+    ],
+    "children": [
+      {
+        "type": "text",
+        "value": "Interaction state + host events",
+        "fontSize": 23,
+        "modifiers": [
+          {
+            "padding": 20
+          }
+        ]
+      },
+      {
+        "type": "canvas",
+        "modifiers": [
+          {
+            "height": 80
+          },
+          {
+            "fillMaxWidth": 1
+          },
+          {
+            "onClick": [
+              {
+                "type": "ValueFloatChange",
+                "targetId": "@state",
+                "value": 1
+              },
+              {
+                "type": "HostAction",
+                "actionId": 501
+              }
+            ]
+          },
+          {
+            "onTouchDown": {
+              "type": "HostAction",
+              "actionId": 502
+            }
+          },
+          {
+            "onTouchUp": {
+              "type": "HostAction",
+              "actionId": 503
+            }
+          }
+        ],
+        "commands": [
+          {
+            "type": "paint",
+            "ops": [
+              {
+                "shader": 0
+              },
+              {
+                "alpha": 1
+              },
+              {
+                "style": "fill"
+              },
+              {
+                "color": "#E8EDDD"
+              }
+            ]
+          },
+          {
+            "type": "drawRect",
+            "left": 20,
+            "top": 0,
+            "right": 370,
+            "bottom": 70
+          },
+          {
+            "type": "paint",
+            "ops": [
+              {
+                "shader": 0
+              },
+              {
+                "alpha": 1
+              },
+              {
+                "style": "fill"
+              },
+              {
+                "color": "#182C38"
+              },
+              {
+                "textSize": 20
+              }
+            ]
+          },
+          {
+            "type": "drawTextAnchored",
+            "text": "Change local state + event501",
+            "x": 20,
+            "y": 28,
+            "panX": -1,
+            "panY": 0
+          }
+        ]
+      },
+      {
+        "type": "canvas",
+        "modifiers": [
+          {
+            "height": 80
+          },
+          {
+            "fillMaxWidth": 1
+          },
+          {
+            "onClick": {
+              "type": "HostAction",
+              "name": "validation.echo",
+              "value": "hello-protocol"
+            }
+          }
+        ],
+        "commands": [
+          {
+            "type": "paint",
+            "ops": [
+              {
+                "shader": 0
+              },
+              {
+                "alpha": 1
+              },
+              {
+                "style": "fill"
+              },
+              {
+                "color": "#EEE7F5"
+              }
+            ]
+          },
+          {
+            "type": "drawRect",
+            "left": 20,
+            "top": 0,
+            "right": 370,
+            "bottom": 70
+          },
+          {
+            "type": "paint",
+            "ops": [
+              {
+                "shader": 0
+              },
+              {
+                "alpha": 1
+              },
+              {
+                "style": "fill"
+              },
+              {
+                "color": "#182C38"
+              },
+              {
+                "textSize": 20
+              }
+            ]
+          },
+          {
+            "type": "drawTextAnchored",
+            "text": "Named action / payload",
+            "x": 20,
+            "y": 28,
+            "panX": -1,
+            "panY": 0
+          }
+        ]
+      },
+      {
+        "type": "canvas",
+        "modifiers": [
+          {
+            "height": 250
+          },
+          {
+            "fillMaxWidth": 1
+          }
+        ],
+        "commands": [
+          {
+            "type": "paint",
+            "ops": [
+              {
+                "shader": 0
+              },
+              {
+                "alpha": 1
+              },
+              {
+                "style": "fill"
+              },
+              {
+                "color": "#FFFFFF"
+              }
+            ]
+          },
+          {
+            "type": "drawRect",
+            "left": 0,
+            "top": 0,
+            "right": 390,
+            "bottom": 250
+          },
+          {
+            "type": "paint",
+            "ops": [
+              {
+                "shader": 0
+              },
+              {
+                "alpha": 1
+              },
+              {
+                "style": "fill"
+              },
+              {
+                "color": "#305BEF"
+              }
+            ]
+          },
+          {
+            "type": "drawCircle",
+            "cx": "50 + @state * 120",
+            "cy": 100,
+            "radius": 20
+          }
+        ]
+      }
+    ]
+  }
+}

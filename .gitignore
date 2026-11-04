@@ -38,3 +38,6 @@ local.properties
 xcuserdata/
 .idea/
 .vscode/
+
+# Generated validation run bindings (immutable versions are local runtime state)
+samples/validation/run.json

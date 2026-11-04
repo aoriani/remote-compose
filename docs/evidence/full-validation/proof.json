@@ -1,0 +1,488 @@
+{
+  "date": "2026-11-03",
+  "sourceBase": "ed5ad06",
+  "firstFix": "6c66fb6",
+  "pins": {
+    "schemaVersion": 1,
+    "status": "cross-platform-demonstration-verified-subset",
+    "androidx": {
+      "repository": "https://github.com/androidx/androidx.git",
+      "requestedBranch": "androidx-main",
+      "revision": "8932b2c2b5043cc40c46a44cfd04a1671ec50fb7",
+      "researchRevisions": [
+        "4d0b56080497b79e6ac3d1b3b87f1029edf9c3c7",
+        "62d36f9952c23fdd41095a4fd7ba968fade32eaf",
+        "fa07a37857e71e91427b7d68ec6b6f7f2931000a"
+      ]
+    },
+    "experiments": {
+      "repository": "https://github.com/camaelon/remotecompose-experiments.git",
+      "requestedBranch": "main",
+      "revision": "a7a76f1d9ecc5aff2af93d0de570a11532552ea3"
+    },
+    "dependencies": {
+      "org.json": {
+        "observedVersion": "20231013",
+        "selectedVersion": "20231013"
+      },
+      "androidx.annotation": {
+        "observedVersion": "1.9.1",
+        "selectedVersion": "1.9.1"
+      },
+      "kotlin": "2.2.20",
+      "gradle": "9.2.1",
+      "androidGradlePlugin": "9.0.0",
+      "jdk": "25.0.4 (tested JBR; JVM target 17)",
+      "node": "22.14.0",
+      "skia": "m144-e2e6623374-4",
+      "jspecify": "1.0.0",
+      "playwright": "1.56.1",
+      "esbuild": "0.27.7",
+      "typescript": "5.9.3",
+      "cmake": "3.31.6",
+      "jackson": "2.18.3"
+    },
+    "verification": {
+      "upstreamsCloned": true,
+      "jvmCompiled": true,
+      "browserRendered": true,
+      "androidRendered": true,
+      "iosRendered": true
+    },
+    "verificationScope": "Pinned API-7 subset: browser editor; Android emulator and arm64 iOS Simulator: interaction fixture, two animations and custom composition. Not protocol conformance or physical-device certification."
+  },
+  "gallery": {
+    "cases": 29,
+    "iosTestPassed": true,
+    "xctestSeconds": 319.794
+  },
+  "lifecycle": {
+    "iosTestPassed": true,
+    "errors": [],
+    "sourceRun": "artifacts/full-validation/retention-final",
+    "reusedGalleryFrom": "artifacts/full-validation/final",
+    "visibleOfflineRetention": {
+      "before": [
+        0,
+        130,
+        126
+      ],
+      "offline": [
+        0,
+        130,
+        126
+      ],
+      "beforeGeometry": {
+        "x": 115,
+        "y": 120,
+        "width": 160,
+        "height": 160,
+        "pixels": 19888,
+        "cx": 194.5,
+        "cy": 199.50070394207563
+      },
+      "offlineGeometry": {
+        "x": 116,
+        "y": 120,
+        "width": 158,
+        "height": 160,
+        "pixels": 19878,
+        "cx": 194.5,
+        "cy": 199.5174564845558
+      },
+      "passed": true
+    }
+  },
+  "androidVariants": [
+    {
+      "name": "small",
+      "size": "720x1600",
+      "density": "320",
+      "font": "1",
+      "sha256": "e2c601547fc4eefab6dca6aa5d635442234e07bd015a6b4a0661769f09b454a2",
+      "hashVerified": true,
+      "viewport": {
+        "x": 0,
+        "y": 190,
+        "width": 629.36017,
+        "height": 1362
+      }
+    },
+    {
+      "name": "large",
+      "size": "1440x3120",
+      "density": "560",
+      "font": "1",
+      "sha256": "e2c601547fc4eefab6dca6aa5d635442234e07bd015a6b4a0661769f09b454a2",
+      "hashVerified": true,
+      "viewport": {
+        "x": 0,
+        "y": 326,
+        "width": 1252.2512,
+        "height": 2710
+      }
+    },
+    {
+      "name": "large-text",
+      "size": "1080x2400",
+      "density": "420",
+      "font": "1.5",
+      "sha256": "e2c601547fc4eefab6dca6aa5d635442234e07bd015a6b4a0661769f09b454a2",
+      "hashVerified": true,
+      "viewport": {
+        "x": 0,
+        "y": 277,
+        "width": 951.8957,
+        "height": 2060
+      }
+    },
+    {
+      "name": "landscape",
+      "size": "1600x720",
+      "density": "320",
+      "font": "1",
+      "sha256": "e2c601547fc4eefab6dca6aa5d635442234e07bd015a6b4a0661769f09b454a2",
+      "hashVerified": true,
+      "viewport": {
+        "x": 0,
+        "y": 190,
+        "width": 222.72511,
+        "height": 482
+      }
+    }
+  ],
+  "binaryManifest": [
+    {
+      "id": "widget-header",
+      "version": 1,
+      "sha256": "91a04a544fecc55619012fed60f11f42248d8a86892aee07566335d0804df6fa",
+      "bytes": 941
+    },
+    {
+      "id": "widget-text",
+      "version": 2,
+      "sha256": "562f61bade8b993975fd19d9a1da6e2c5aa49457c98fdc67a0efa8005f8afabd",
+      "bytes": 452
+    },
+    {
+      "id": "widget-spacer",
+      "version": 3,
+      "sha256": "6cf7826373f3671b8b3e10be1118d414cfe04613dfd37fcf3b1b699466eebfff",
+      "bytes": 412
+    },
+    {
+      "id": "widget-hero",
+      "version": 4,
+      "sha256": "1938fca1f27d9f9c28e192d550ccaec201009a5c394db9143a8335ad7c624633",
+      "bytes": 400554
+    },
+    {
+      "id": "widget-promo",
+      "version": 5,
+      "sha256": "306c4ed1f95d71ac070e99f67e0ceb8dd1a629e896d63457fbffa46550dcafe8",
+      "bytes": 720
+    },
+    {
+      "id": "widget-image",
+      "version": 6,
+      "sha256": "2da5adc30e2845bb66a032b7cd2851a3bf815f53b6d82d100d4a51a207b8e6bc",
+      "bytes": 405365
+    },
+    {
+      "id": "widget-button",
+      "version": 7,
+      "sha256": "734b750a7cfc64790eb4094c0bb5a8ca07c0d1cd1709c4660344dab0f03bcfd2",
+      "bytes": 663
+    },
+    {
+      "id": "widget-products",
+      "version": 8,
+      "sha256": "21e314459e1fca35eafb9a7974715ea398db68ccf4a0d1408d2b7184242576c0",
+      "bytes": 840793
+    },
+    {
+      "id": "widget-news",
+      "version": 9,
+      "sha256": "74bd3d76c4c36b1bc14568f5ebdf7d72d012133cfbb2a3d7140e2bca23ecf464",
+      "bytes": 805768
+    },
+    {
+      "id": "widget-badge",
+      "version": 10,
+      "sha256": "a6b5a3eb53760c614c38bf2e8d00f0fa43dc2341552d774986dd352bea77a4b4",
+      "bytes": 902
+    },
+    {
+      "id": "widget-progress",
+      "version": 11,
+      "sha256": "ef0b49f164d1cfaecd2a152f6fa8f50621981b4c2d1fc6408be0d8c70677479e",
+      "bytes": 846
+    },
+    {
+      "id": "graphics",
+      "version": 12,
+      "sha256": "f34e50af4a2d450b61ea09036aca92c51259506a3ef336c4c7f3a868c8cfc772",
+      "bytes": 1119
+    },
+    {
+      "id": "bitmaps",
+      "version": 13,
+      "sha256": "c0e5a465b336c6e2b5283c13286e1cd670e480a7f8aa899cacabe56eb19d2ed0",
+      "bytes": 1964089
+    },
+    {
+      "id": "layouts",
+      "version": 14,
+      "sha256": "8b2ce8c6b6fb5ff020038fa58312c87832dbf123589840ccf4d0c87c77e18a07",
+      "bytes": 1405
+    },
+    {
+      "id": "interactions",
+      "version": 15,
+      "sha256": "a244b82485428ef5fc5ac97b6cc5f8524f49b27132939f308c0d1fbc2826e44b",
+      "bytes": 909
+    },
+    {
+      "id": "nested-scroll",
+      "version": 16,
+      "sha256": "85e574b531ec09e822251626377a471a0e023aa9b0c88f3c63035ca67d6cd812",
+      "bytes": 1243414
+    },
+    {
+      "id": "phase-0",
+      "version": 17,
+      "sha256": "be207ec10f7ce83adac950d1d79195baf8d343effe3cfe2f4d685121dada0faa",
+      "bytes": 1134
+    },
+    {
+      "id": "phase-1",
+      "version": 18,
+      "sha256": "50b9b56521a205580184a12d21d2a486830e18f1455ff97ac39f48c4b2787cfd",
+      "bytes": 1134
+    },
+    {
+      "id": "phase-2",
+      "version": 19,
+      "sha256": "3a5037a52173aab7742a171ebdfa68c93ee921e2a828f825ebf4804b700a26ce",
+      "bytes": 1134
+    },
+    {
+      "id": "phase-3",
+      "version": 20,
+      "sha256": "891a5b7d424d861fabab6426386e68cc11803911190befdc171fa856ded07af7",
+      "bytes": 1134
+    },
+    {
+      "id": "phase-4",
+      "version": 21,
+      "sha256": "7385537c3b41c0696028d8a43ade5d5233e197ae7324b9bb06ef4c60a72eba3a",
+      "bytes": 1134
+    },
+    {
+      "id": "live-animations",
+      "version": 22,
+      "sha256": "bef11392f6945a6e966a1613605c53c5d11a4e53c8c49e3e352092f77767f794",
+      "bytes": 1133
+    },
+    {
+      "id": "retail",
+      "version": 23,
+      "sha256": "e2c601547fc4eefab6dca6aa5d635442234e07bd015a6b4a0661769f09b454a2",
+      "bytes": 1970167
+    },
+    {
+      "id": "empty",
+      "version": 24,
+      "sha256": "caeba2b99841bcc5764bba2827c6ebe9ba304d7cb8c6555596cbda9d4f9f4521",
+      "bytes": 151
+    },
+    {
+      "id": "graphics-edited",
+      "version": 25,
+      "sha256": "7105cac2138146b7eb6af05630b07ad1fc14cc34ed3d8105505fb80d704b10de",
+      "bytes": 1126
+    },
+    {
+      "id": "bitmaps-edited",
+      "version": 26,
+      "sha256": "469813eeeaa185ce299dbf9e1c42bc05ca6aa96ea7e244328224d4a8ed31f2de",
+      "bytes": 1964096
+    },
+    {
+      "id": "layouts-edited",
+      "version": 27,
+      "sha256": "36d3e3aadd9e7ee743336d9fa873f5c78cde033bfc37ca41a72e4718f67b6b66",
+      "bytes": 1412
+    },
+    {
+      "id": "interactions-edited",
+      "version": 28,
+      "sha256": "f447a998ac20b034c5ecff9386b81c2b6a8b2f3920f5a2fc85da47f414fc6056",
+      "bytes": 916
+    },
+    {
+      "id": "nested-scroll-edited",
+      "version": 29,
+      "sha256": "0266d8b4f7d5e93d9557f54adc743d42a885a2edf6b891cfdfe0f1ac5a0fc266",
+      "bytes": 1243429
+    },
+    {
+      "id": "lifecycle-a",
+      "version": 34,
+      "sha256": "fbbd39619f80db06acc4210aa11bf38d25d228dc0a8754a6d31825d656214c73",
+      "bytes": 143
+    },
+    {
+      "id": "lifecycle-b",
+      "version": 35,
+      "sha256": "5f10781b7192b428d258fcf65b800c26e96e77aa776c0c991a318e9c18d99943",
+      "bytes": 143
+    }
+  ],
+  "androidHashChecks": [
+    {
+      "id": "widget-header",
+      "passed": true
+    },
+    {
+      "id": "widget-text",
+      "passed": true
+    },
+    {
+      "id": "widget-spacer",
+      "passed": true
+    },
+    {
+      "id": "widget-hero",
+      "passed": true
+    },
+    {
+      "id": "widget-promo",
+      "passed": true
+    },
+    {
+      "id": "widget-image",
+      "passed": true
+    },
+    {
+      "id": "widget-button",
+      "passed": true
+    },
+    {
+      "id": "widget-products",
+      "passed": true
+    },
+    {
+      "id": "widget-news",
+      "passed": true
+    },
+    {
+      "id": "widget-badge",
+      "passed": true
+    },
+    {
+      "id": "widget-progress",
+      "passed": true
+    },
+    {
+      "id": "graphics",
+      "passed": true
+    },
+    {
+      "id": "bitmaps",
+      "passed": true
+    },
+    {
+      "id": "layouts",
+      "passed": true
+    },
+    {
+      "id": "interactions",
+      "passed": true
+    },
+    {
+      "id": "nested-scroll",
+      "passed": true
+    },
+    {
+      "id": "phase-0",
+      "passed": true
+    },
+    {
+      "id": "phase-1",
+      "passed": true
+    },
+    {
+      "id": "phase-2",
+      "passed": true
+    },
+    {
+      "id": "phase-3",
+      "passed": true
+    },
+    {
+      "id": "phase-4",
+      "passed": true
+    },
+    {
+      "id": "live-animations",
+      "passed": true
+    },
+    {
+      "id": "retail",
+      "passed": true
+    },
+    {
+      "id": "empty",
+      "passed": true
+    },
+    {
+      "id": "graphics-edited",
+      "passed": true
+    },
+    {
+      "id": "bitmaps-edited",
+      "passed": true
+    },
+    {
+      "id": "layouts-edited",
+      "passed": true
+    },
+    {
+      "id": "interactions-edited",
+      "passed": true
+    },
+    {
+      "id": "nested-scroll-edited",
+      "passed": true
+    },
+    {
+      "id": "lifecycle-a",
+      "passed": true
+    },
+    {
+      "id": "lifecycle-b",
+      "passed": true
+    }
+  ],
+  "sourceFileHashes": {
+    "web-editor/app.mjs": "741b7a6999d4b69d696600a6dc207060949d60f8b753a67002cf5cdf8d52f9c5",
+    "web-editor/model.mjs": "76d098d5aa37232227a87a0bdb749434f829b96b90bd384a376750ab00a6dfab",
+    "pipeline/src/main/kotlin/demo/pipeline/Validation.kt": "42266b6c4f5bdc91200a54e10edc7d9af3ad4153c914ac51a01de2290604a7b5",
+    "android-player/src/main/java/demo/remotecompose/MainActivity.java": "7dd580c81e1c18107a976f36ece995a2e06b2e4772afc8928cbac3d123ccd8c6",
+    "ios-player/Player.swift": "a78563ef5a9001bc2a02be9be094c3e87abe7eee5e26872f19206f64dfcd20eb",
+    "ios-player/Bridge/RCMetalRenderer.mm": "77a1ac3d6d4dedbf25e399ddcaf6f46d0adefa8500c53ec9877f40e9059871cf",
+    "ios-player/UITests/DemoUITests.swift": "f565dd9eb542870512667451c403cfce2e2123584060ca1396d8cd62810a708b"
+  },
+  "installedApplicationsAtEnd": {
+    "android": {
+      "localApkSha256": "092910c74f1bdbe1cc7c4eb7316a7c4988c239563f001a78e7d9998d020b08be",
+      "installedApkSha256": "092910c74f1bdbe1cc7c4eb7316a7c4988c239563f001a78e7d9998d020b08be"
+    },
+    "ios": {
+      "localExecutableSha256": "620c8d2b0f275f21c9b0241497f78edbf957be76d1111c69b415bd0406dd3f90",
+      "installedExecutableSha256": "620c8d2b0f275f21c9b0241497f78edbf957be76d1111c69b415bd0406dd3f90"
+    },
+    "scope": "Same generic builds used across the gallery; checked installed artifacts at end, no per-document rebuilding. Generic callback/resource fixes required one build before this corpus."
+  }
+}

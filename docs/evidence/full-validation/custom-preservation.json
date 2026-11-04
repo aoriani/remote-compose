@@ -1,0 +1,236 @@
+[
+  {
+    "id": "graphics",
+    "passed": true,
+    "operations": [
+      "add",
+      "property",
+      "up",
+      "down",
+      "duplicate",
+      "delete duplicate",
+      "delete unrelated"
+    ]
+  },
+  {
+    "id": "bitmaps",
+    "passed": true,
+    "operations": [
+      "add",
+      "property",
+      "up",
+      "down",
+      "duplicate",
+      "delete duplicate",
+      "delete unrelated"
+    ]
+  },
+  {
+    "id": "layouts",
+    "passed": true,
+    "operations": [
+      "add",
+      "property",
+      "up",
+      "down",
+      "duplicate",
+      "delete duplicate",
+      "delete unrelated"
+    ]
+  },
+  {
+    "id": "interactions",
+    "passed": true,
+    "operations": [
+      "add",
+      "property",
+      "up",
+      "down",
+      "duplicate",
+      "delete duplicate",
+      "delete unrelated"
+    ]
+  },
+  {
+    "id": "nested-scroll",
+    "passed": true,
+    "operations": [
+      "add",
+      "property",
+      "up",
+      "down",
+      "duplicate",
+      "delete duplicate",
+      "delete unrelated"
+    ]
+  },
+  {
+    "id": "phase-0",
+    "passed": true,
+    "operations": [
+      "add",
+      "property",
+      "up",
+      "down",
+      "duplicate",
+      "delete duplicate",
+      "delete unrelated"
+    ]
+  },
+  {
+    "id": "phase-1",
+    "passed": true,
+    "operations": [
+      "add",
+      "property",
+      "up",
+      "down",
+      "duplicate",
+      "delete duplicate",
+      "delete unrelated"
+    ]
+  },
+  {
+    "id": "phase-2",
+    "passed": true,
+    "operations": [
+      "add",
+      "property",
+      "up",
+      "down",
+      "duplicate",
+      "delete duplicate",
+      "delete unrelated"
+    ]
+  },
+  {
+    "id": "phase-3",
+    "passed": true,
+    "operations": [
+      "add",
+      "property",
+      "up",
+      "down",
+      "duplicate",
+      "delete duplicate",
+      "delete unrelated"
+    ]
+  },
+  {
+    "id": "phase-4",
+    "passed": true,
+    "operations": [
+      "add",
+      "property",
+      "up",
+      "down",
+      "duplicate",
+      "delete duplicate",
+      "delete unrelated"
+    ]
+  },
+  {
+    "id": "live-animations",
+    "passed": true,
+    "operations": [
+      "add",
+      "property",
+      "up",
+      "down",
+      "duplicate",
+      "delete duplicate",
+      "delete unrelated"
+    ]
+  },
+  {
+    "id": "retail",
+    "passed": true,
+    "operations": [
+      "add",
+      "property",
+      "up",
+      "down",
+      "duplicate",
+      "delete duplicate",
+      "delete unrelated"
+    ]
+  },
+  {
+    "id": "empty",
+    "passed": true,
+    "operations": [
+      "add",
+      "property",
+      "up",
+      "down",
+      "duplicate",
+      "delete duplicate",
+      "delete unrelated"
+    ]
+  },
+  {
+    "id": "graphics-edited",
+    "passed": true,
+    "operations": [
+      "add",
+      "property",
+      "up",
+      "down",
+      "duplicate",
+      "delete duplicate",
+      "delete unrelated"
+    ]
+  },
+  {
+    "id": "bitmaps-edited",
+    "passed": true,
+    "operations": [
+      "add",
+      "property",
+      "up",
+      "down",
+      "duplicate",
+      "delete duplicate",
+      "delete unrelated"
+    ]
+  },
+  {
+    "id": "layouts-edited",
+    "passed": true,
+    "operations": [
+      "add",
+      "property",
+      "up",
+      "down",
+      "duplicate",
+      "delete duplicate",
+      "delete unrelated"
+    ]
+  },
+  {
+    "id": "interactions-edited",
+    "passed": true,
+    "operations": [
+      "add",
+      "property",
+      "up",
+      "down",
+      "duplicate",
+      "delete duplicate",
+      "delete unrelated"
+    ]
+  },
+  {
+    "id": "nested-scroll-edited",
+    "passed": true,
+    "operations": [
+      "add",
+      "property",
+      "up",
+      "down",
+      "duplicate",
+      "delete duplicate",
+      "delete unrelated"
+    ]
+  }
+]

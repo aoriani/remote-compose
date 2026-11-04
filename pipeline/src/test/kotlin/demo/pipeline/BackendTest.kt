@@ -31,6 +31,8 @@ class BackendTest {
     }
     @Test fun refusesCircleClipThatUpstreamWriterSilentlyDrops() {
         val source="""{"root":{"type":"canvas","modifiers":[{"clip":{"type":"circle"}}],"commands":[]}}"""
+        val withoutClip=JSONObject(source);withoutClip.getJSONObject("root").remove("modifiers")
+        assertArrayEquals("Characterize the upstream silent omission",compile(withoutClip.toString()),compile(source))
         invalid(source,"UNSUPPORTED_OPERATION","/root/modifiers/0/clip/type")
         val supported=source.replace("\"circle\"","\"roundRect\",\"radius\":50")
         assertFalse(compileValidated(supported).contentEquals(compileValidated(source.replace("{\"clip\":{\"type\":\"circle\"}}", "{\"height\":100}"))))

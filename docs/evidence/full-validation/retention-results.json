@@ -1,0 +1,31 @@
+{
+  "before": [
+    0,
+    130,
+    126
+  ],
+  "offline": [
+    0,
+    130,
+    126
+  ],
+  "beforeGeometry": {
+    "x": 115,
+    "y": 120,
+    "width": 160,
+    "height": 160,
+    "pixels": 19888,
+    "cx": 194.5,
+    "cy": 199.50070394207563
+  },
+  "offlineGeometry": {
+    "x": 116,
+    "y": 120,
+    "width": 158,
+    "height": 160,
+    "pixels": 19878,
+    "cx": 194.5,
+    "cy": 199.5174564845558
+  },
+  "passed": true
+}

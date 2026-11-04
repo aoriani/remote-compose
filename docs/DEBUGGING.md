@@ -113,3 +113,19 @@ must match source aspect ratio unless deliberate stretching is intended. Avoid e
 arrow glyphs for cross-platform icon consistency; use supported line/path operations.
 Existing browser drafts do not automatically become the new example—Load designed page
 explicitly. Large JSON syntax highlighting renders only visible lines to prevent freezes.
+
+### Gallery capture and rendering diagnostics
+
+Use FULL_FEATURE_TEST_REPORT before interpreting a pixel mismatch. Android activity fade
+and a restored task can produce a wrong first screenshot: wait for the expected full
+RC_DOCUMENT digest and RC_VIEWPORT, then let the activity settle. The gallery retries one
+mismatched launch, and fails if the hash/viewport still does not match. The comparison
+normalizes only the actual document rectangle to390×844, not the native toolbar.
+
+An iOS callback `name= type=2 value=...` indicates the action name's nested DATA_TEXT was
+not loaded; the local bridge now initializes those static definitions recursively. A circle
+clip that parses but draws square is a pinned creation-writer omission, not a player mask
+failure. Use the supported roundRect form, or expect the strict backend's unsupported error.
+
+Native test debug settings may point at the isolated8091 backend afterward. Use the generic
+CLI --backend/--version overrides or set the normal8080 URL in native debug for the live demo.

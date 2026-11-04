@@ -1,0 +1,177 @@
+{
+  "thresholds": {
+    "mae": 1,
+    "fractionOver12": 0.01
+  },
+  "baseline": "2026-11-03 real gallery; ed5ad06 baseline plus 6c66fb6 and accompanying validated native/test changes",
+  "results": [
+    {
+      "id": "graphics",
+      "platform": "browser",
+      "passed": true,
+      "mae": 0,
+      "badFraction": 0
+    },
+    {
+      "id": "graphics",
+      "platform": "android",
+      "passed": true,
+      "mae": 0,
+      "badFraction": 0
+    },
+    {
+      "id": "graphics",
+      "platform": "ios",
+      "passed": true,
+      "mae": 0,
+      "badFraction": 0
+    },
+    {
+      "id": "bitmaps",
+      "platform": "browser",
+      "passed": true,
+      "mae": 0,
+      "badFraction": 0
+    },
+    {
+      "id": "bitmaps",
+      "platform": "android",
+      "passed": true,
+      "mae": 0,
+      "badFraction": 0
+    },
+    {
+      "id": "bitmaps",
+      "platform": "ios",
+      "passed": true,
+      "mae": 0,
+      "badFraction": 0
+    },
+    {
+      "id": "phase-0",
+      "platform": "browser",
+      "passed": true,
+      "mae": 0,
+      "badFraction": 0
+    },
+    {
+      "id": "phase-0",
+      "platform": "android",
+      "passed": false,
+      "mae": 2.5379319074816706,
+      "badFraction": 0.0223022238425082
+    },
+    {
+      "id": "phase-0",
+      "platform": "ios",
+      "passed": true,
+      "mae": 0,
+      "badFraction": 0
+    },
+    {
+      "id": "phase-1",
+      "platform": "browser",
+      "passed": true,
+      "mae": 0,
+      "badFraction": 0
+    },
+    {
+      "id": "phase-1",
+      "platform": "android",
+      "passed": true,
+      "mae": 0,
+      "badFraction": 0
+    },
+    {
+      "id": "phase-1",
+      "platform": "ios",
+      "passed": true,
+      "mae": 0,
+      "badFraction": 0
+    },
+    {
+      "id": "phase-2",
+      "platform": "browser",
+      "passed": true,
+      "mae": 0,
+      "badFraction": 0
+    },
+    {
+      "id": "phase-2",
+      "platform": "android",
+      "passed": true,
+      "mae": 0,
+      "badFraction": 0
+    },
+    {
+      "id": "phase-2",
+      "platform": "ios",
+      "passed": true,
+      "mae": 0,
+      "badFraction": 0
+    },
+    {
+      "id": "phase-3",
+      "platform": "browser",
+      "passed": true,
+      "mae": 0,
+      "badFraction": 0
+    },
+    {
+      "id": "phase-3",
+      "platform": "android",
+      "passed": true,
+      "mae": 0,
+      "badFraction": 0
+    },
+    {
+      "id": "phase-3",
+      "platform": "ios",
+      "passed": true,
+      "mae": 0,
+      "badFraction": 0
+    },
+    {
+      "id": "phase-4",
+      "platform": "browser",
+      "passed": true,
+      "mae": 0,
+      "badFraction": 0
+    },
+    {
+      "id": "phase-4",
+      "platform": "android",
+      "passed": false,
+      "mae": 1.4720125977234981,
+      "badFraction": 0.013987118726455219
+    },
+    {
+      "id": "phase-4",
+      "platform": "ios",
+      "passed": true,
+      "mae": 0,
+      "badFraction": 0
+    },
+    {
+      "id": "empty",
+      "platform": "browser",
+      "passed": true,
+      "mae": 0,
+      "badFraction": 0
+    },
+    {
+      "id": "empty",
+      "platform": "android",
+      "passed": true,
+      "mae": 0,
+      "badFraction": 0
+    },
+    {
+      "id": "empty",
+      "platform": "ios",
+      "passed": true,
+      "mae": 0,
+      "badFraction": 0
+    }
+  ]
+}

@@ -1,0 +1,285 @@
+{
+  "header": {
+    "width": 390,
+    "height": 844,
+    "profiles": 512,
+    "fps": 60,
+    "contentDescription": "layouts"
+  },
+  "root": {
+    "type": "column",
+    "modifiers": [
+      {
+        "fillMaxSize": 1
+      },
+      {
+        "background": "#FFFFFF"
+      },
+      {
+        "padding": 16
+      }
+    ],
+    "children": [
+      {
+        "type": "text",
+        "value": "Nested typography",
+        "fontSize": 28,
+        "fontWeight": 400,
+        "color": "#182C38",
+        "modifiers": [
+          {
+            "padding": 8
+          }
+        ]
+      },
+      {
+        "type": "row",
+        "modifiers": [
+          {
+            "height": 140
+          }
+        ],
+        "children": [
+          {
+            "type": "column",
+            "modifiers": [
+              {
+                "width": 170
+              },
+              {
+                "background": "#E8EDDD"
+              }
+            ],
+            "children": [
+              {
+                "type": "text",
+                "value": "Twelve",
+                "fontSize": 12,
+                "fontWeight": 400,
+                "color": "#182C38",
+                "modifiers": [
+                  {
+                    "padding": 8
+                  }
+                ]
+              },
+              {
+                "type": "text",
+                "value": "Eighteen",
+                "fontSize": 18,
+                "fontWeight": 400,
+                "color": "#182C38",
+                "modifiers": [
+                  {
+                    "padding": 8
+                  }
+                ]
+              },
+              {
+                "type": "text",
+                "value": "Twenty four",
+                "fontSize": 24,
+                "fontWeight": 400,
+                "color": "#182C38",
+                "modifiers": [
+                  {
+                    "padding": 8
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "column",
+            "modifiers": [
+              {
+                "width": 170
+              },
+              {
+                "background": "#EEE7F5"
+              }
+            ],
+            "children": [
+              {
+                "type": "text",
+                "value": "Bold",
+                "fontSize": 24,
+                "fontWeight": 700,
+                "color": "#182C38",
+                "modifiers": [
+                  {
+                    "padding": 8
+                  }
+                ]
+              },
+              {
+                "type": "text",
+                "value": "Larger text",
+                "fontSize": 30,
+                "fontWeight": 400,
+                "color": "#305BEF",
+                "modifiers": [
+                  {
+                    "padding": 8
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "row",
+        "modifiers": [
+          {
+            "height": 120
+          }
+        ],
+        "children": [
+          {
+            "type": "canvas",
+            "modifiers": [
+              {
+                "width": 100
+              },
+              {
+                "height": 100
+              },
+              {
+                "clip": {
+                  "type": "roundRect",
+                  "radius": 50
+                }
+              }
+            ],
+            "commands": [
+              {
+                "type": "paint",
+                "ops": [
+                  {
+                    "shader": 0
+                  },
+                  {
+                    "alpha": 1
+                  },
+                  {
+                    "style": "fill"
+                  },
+                  {
+                    "color": "#305BEF"
+                  }
+                ]
+              },
+              {
+                "type": "drawRect",
+                "left": 0,
+                "top": 0,
+                "right": 100,
+                "bottom": 100
+              }
+            ]
+          },
+          {
+            "type": "canvas",
+            "modifiers": [
+              {
+                "width": 100
+              },
+              {
+                "height": 100
+              },
+              {
+                "clip": {
+                  "type": "roundRect",
+                  "radius": 24
+                }
+              }
+            ],
+            "commands": [
+              {
+                "type": "paint",
+                "ops": [
+                  {
+                    "shader": 0
+                  },
+                  {
+                    "alpha": 1
+                  },
+                  {
+                    "style": "fill"
+                  },
+                  {
+                    "color": "#F7B07B"
+                  }
+                ]
+              },
+              {
+                "type": "drawRect",
+                "left": 0,
+                "top": 0,
+                "right": 100,
+                "bottom": 100
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "value": "A longer text line wraps inside the authored layout width without changing its siblings.",
+        "fontSize": 20,
+        "fontWeight": 400,
+        "color": "#182C38",
+        "modifiers": [
+          {
+            "padding": 8
+          }
+        ]
+      },
+      {
+        "type": "box",
+        "modifiers": [
+          {
+            "height": 120
+          },
+          {
+            "fillMaxWidth": 1
+          },
+          {
+            "background": "#EEF2FF"
+          }
+        ],
+        "children": [
+          {
+            "type": "text",
+            "value": "Overlapping layout",
+            "fontSize": 24,
+            "fontWeight": 400,
+            "color": "#182C38",
+            "modifiers": [
+              {
+                "padding": 8
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "value": "Second layer",
+            "fontSize": 14,
+            "color": "#305BEF",
+            "modifiers": [
+              {
+                "padding": [
+                  20,
+                  70,
+                  0,
+                  0
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

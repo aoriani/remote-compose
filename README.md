@@ -47,3 +47,9 @@ walkthrough, native UI interactions, same-binary landing page, fixes and screens
 The [visual redesign](docs/VISUAL_REDESIGN.md) and [design system](docs/DESIGN_SYSTEM.md)
 show the current illustrated retail page, asset gallery and rendered before/after review.
 [Original artwork and prompts](assets/PROVENANCE.md) are tracked with the source.
+
+The [full feature/rendering report](docs/FULL_FEATURE_TEST_REPORT.md) records the31-document
+three-player gallery, GUI controls, native refresh tests, pixel discrepancies and reviewed
+screenshot evidence. Run `sh scripts/validate-all.sh` for the available suite; browser-only
+mode is documented in GETTING_STARTED. This is measured subset compatibility, not full
+protocol, accessibility or pixel-parity certification.

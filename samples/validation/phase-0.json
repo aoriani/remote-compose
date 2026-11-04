@@ -1,0 +1,346 @@
+{
+  "header": {
+    "width": 390,
+    "height": 844,
+    "profiles": 512,
+    "fps": 60,
+    "contentDescription": "phase-0"
+  },
+  "resources": {
+    "variables": {
+      "phase": 0
+    }
+  },
+  "root": {
+    "type": "column",
+    "modifiers": [
+      {
+        "fillMaxSize": 1
+      },
+      {
+        "background": "#FFFFFF"
+      }
+    ],
+    "children": [
+      {
+        "type": "canvas",
+        "modifiers": [
+          {
+            "fillMaxWidth": 1
+          },
+          {
+            "height": 94
+          }
+        ],
+        "commands": [
+          {
+            "type": "paint",
+            "ops": [
+              {
+                "shader": 0
+              },
+              {
+                "style": "fill"
+              },
+              {
+                "color": "#E8EDDD"
+              }
+            ]
+          },
+          {
+            "type": "drawRoundRect",
+            "left": 20,
+            "top": 8,
+            "right": 370,
+            "bottom": 82,
+            "rx": 18,
+            "ry": 18
+          },
+          {
+            "type": "paint",
+            "ops": [
+              {
+                "shader": 0
+              },
+              {
+                "style": "fill"
+              },
+              {
+                "color": "#305BEF"
+              }
+            ]
+          },
+          {
+            "type": "drawCircle",
+            "cx": 48,
+            "cy": 48,
+            "radius": "4 + 1.2 * sin(@phase * 3)"
+          },
+          {
+            "type": "paint",
+            "ops": [
+              {
+                "shader": 0
+              },
+              {
+                "style": "fill"
+              },
+              {
+                "color": "#182C38"
+              },
+              {
+                "textSize": 15
+              }
+            ]
+          },
+          {
+            "type": "drawTextAnchored",
+            "text": "Good to be a member.",
+            "x": 64,
+            "y": 36,
+            "panX": -1,
+            "panY": 0
+          },
+          {
+            "type": "paint",
+            "ops": [
+              {
+                "shader": 0
+              },
+              {
+                "style": "fill"
+              },
+              {
+                "color": "#616D77"
+              },
+              {
+                "textSize": 11
+              }
+            ]
+          },
+          {
+            "type": "drawTextAnchored",
+            "text": "A fresh little perk, every week.",
+            "x": 64,
+            "y": 58,
+            "panX": -1,
+            "panY": 0
+          },
+          {
+            "type": "paint",
+            "ops": [
+              {
+                "shader": 0
+              },
+              {
+                "color": "#182C38"
+              },
+              {
+                "style": "stroke"
+              },
+              {
+                "strokeWidth": 1.7
+              },
+              {
+                "strokeCap": "round"
+              }
+            ]
+          },
+          {
+            "type": "drawLine",
+            "x1": 332,
+            "y1": 52,
+            "x2": 343,
+            "y2": 41
+          },
+          {
+            "type": "paint",
+            "ops": [
+              {
+                "shader": 0
+              },
+              {
+                "color": "#182C38"
+              },
+              {
+                "style": "stroke"
+              },
+              {
+                "strokeWidth": 1.7
+              },
+              {
+                "strokeCap": "round"
+              }
+            ]
+          },
+          {
+            "type": "drawLine",
+            "x1": 336,
+            "y1": 41,
+            "x2": 343,
+            "y2": 41
+          },
+          {
+            "type": "paint",
+            "ops": [
+              {
+                "shader": 0
+              },
+              {
+                "color": "#182C38"
+              },
+              {
+                "style": "stroke"
+              },
+              {
+                "strokeWidth": 1.7
+              },
+              {
+                "strokeCap": "round"
+              }
+            ]
+          },
+          {
+            "type": "drawLine",
+            "x1": 343,
+            "y1": 41,
+            "x2": 343,
+            "y2": 48
+          }
+        ]
+      },
+      {
+        "type": "canvas",
+        "modifiers": [
+          {
+            "fillMaxWidth": 1
+          },
+          {
+            "height": 104
+          }
+        ],
+        "commands": [
+          {
+            "type": "paint",
+            "ops": [
+              {
+                "shader": 0
+              },
+              {
+                "style": "fill"
+              },
+              {
+                "color": "#182C38"
+              },
+              {
+                "textSize": 14
+              }
+            ]
+          },
+          {
+            "type": "drawTextAnchored",
+            "text": "A little closer to your next reward",
+            "x": 24,
+            "y": 23,
+            "panX": -1,
+            "panY": 0
+          },
+          {
+            "type": "paint",
+            "ops": [
+              {
+                "shader": 0
+              },
+              {
+                "style": "fill"
+              },
+              {
+                "color": "#616D77"
+              },
+              {
+                "textSize": 11
+              }
+            ]
+          },
+          {
+            "type": "drawTextAnchored",
+            "text": "Your membership keeps giving.",
+            "x": 24,
+            "y": 45,
+            "panX": -1,
+            "panY": 0
+          },
+          {
+            "type": "paint",
+            "ops": [
+              {
+                "shader": 0
+              },
+              {
+                "style": "fill"
+              },
+              {
+                "color": "#E0E5DC"
+              }
+            ]
+          },
+          {
+            "type": "drawRoundRect",
+            "left": 20,
+            "top": 67,
+            "right": 370,
+            "bottom": 72,
+            "rx": 2.5,
+            "ry": 2.5
+          },
+          {
+            "type": "paint",
+            "ops": [
+              {
+                "shader": 0
+              },
+              {
+                "style": "fill"
+              },
+              {
+                "color": "#305BEF"
+              }
+            ]
+          },
+          {
+            "type": "drawRect",
+            "left": 20,
+            "top": 67,
+            "right": "205 + 24 * sin(@phase * 2)",
+            "bottom": 72
+          },
+          {
+            "type": "paint",
+            "ops": [
+              {
+                "shader": 0
+              },
+              {
+                "style": "fill"
+              },
+              {
+                "color": "#616D77"
+              },
+              {
+                "textSize": 9
+              }
+            ]
+          },
+          {
+            "type": "drawTextAnchored",
+            "text": "MEMBER MILESTONES",
+            "x": 24,
+            "y": 91,
+            "panX": -1,
+            "panY": 0
+          }
+        ]
+      }
+    ]
+  }
+}
