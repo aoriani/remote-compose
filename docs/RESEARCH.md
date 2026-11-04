@@ -164,3 +164,24 @@ service subset is finite inline absolute M/L/C/Z only. Source pins/upstreams are
 ImageIO preserves alpha and proportionally bounds the new embedded originals to 640px.
 Actual screenshots exposed Remote Compose's start/top/end/bottom padding order and a
 colored-emoji icon mismatch; both were corrected in source primitives. See VISUAL_REDESIGN.
+
+## Interactive surfaces follow-up (2026-11-04)
+
+Reviewed the official Android Dev Summit session and its interactive transcript:
+[Powering interactive surfaces with Remote Compose](https://developer.android.com/events/dev-summit/talks/powering-interactive-surfaces-with-remote-compose)
+(video csh2Opo_wjE). The transcript describes document-side touch/scroll, expression-driven
+graphics, animated changing values, functions and reusable components. This motivates the
+prototype but is not evidence that every shown operation works in our older pinned players.
+
+Verified directly against pinned sources: `DefaultModifierParsers.parseAction` emits
+ValueFloatExpressionChange; `ExpressionParser` maps animationTime() to ID30 and time to
+continuous ID1; `RemoteComposeJsonParser` emits textFromFloat variables and supports
+conditional blocks/functions in its broader registry. The latter two remain outside the
+service subset. No new operation or upstream update was required for this carousel.
+
+Actual browser/Android/iOS tests exercise opcode227 evaluation, ID30 elapsed phases,
+continuous repaint, modulo/clamp translations and formatted numeric text. Browser/C++
+sources evaluate expression changes at click time, reading earlier actions in the same
+list. Generic native hosts only notify/log HostNamedAction float/string arguments.
+See INTERACTIVE_DEMO.md, the minimal nested-action-resource reproduction and the updated
+FULL_FEATURE_TEST_REPORT. Presentation claims are explicitly separate from tested behavior.

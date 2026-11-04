@@ -168,4 +168,58 @@ final class DemoUITests: XCTestCase {
         }
     }
 
+    func testInteractiveRetail() throws {
+        let base="http://127.0.0.1:8092",done=expectation(description:"interactive manifest");var manifest:[String:Any]=[:]
+        URLSession.shared.dataTask(with:URL(string:base+"/samples/interactive-run.json")!){data,_,_ in if let data{manifest=(try? JSONSerialization.jsonObject(with:data) as? [String:Any]) ?? [:]};done.fulfill()}.resume();wait(for:[done],timeout:15)
+        guard let cases=manifest["cases"] as? [[String:Any]],cases.count==3 else{XCTFail("Run browser interactive lifecycle first");return}
+        for (index,item) in cases.enumerated() {
+            let id=item["id"] as! String,version=item["version"] as! Int,digest=item["sha256"] as! String
+            let app=XCUIApplication(bundleIdentifier:"demo.remotecompose.ios");app.launchArguments=["--backend",base,"--version",String(version),"--no-auto"];app.launch()
+            let surface=app.otherElements["remote-document"].firstMatch;XCTAssertTrue(surface.waitForExistence(timeout:15))
+            let ready=XCTNSPredicateExpectation(predicate:NSPredicate(format:"label CONTAINS %@","v\(version) •"),object:app.staticTexts["fetch-status"]);XCTAssertEqual(XCTWaiter.wait(for:[ready],timeout:20),.completed)
+            func point(_ x:CGFloat,_ y:CGFloat)->XCUICoordinate{surface.coordinate(withNormalizedOffset:CGVector(dx:x/surface.frame.width,dy:y/surface.frame.height))}
+            func shot(_ name:String){let a=XCTAttachment(screenshot:app.screenshot());a.name=id+"__"+name;a.lifetime = .keepAlways;add(a)}
+            func action(_ x:CGFloat,_ y:CGFloat,_ expected:String){
+                point(x,y).tap();let notice=app.buttons.matching(NSPredicate(format:"label BEGINSWITH 'Host action:'")).firstMatch
+                XCTAssertTrue(notice.waitForExistence(timeout:3));XCTAssertTrue(notice.label.contains(expected),"Expected \(expected), actual \(notice.label)");print("INTERACTIVE_EVENT \(notice.label)");if notice.exists{notice.tap()}
+            }
+            shot("initial")
+            if index==2 {
+                let w=surface.frame.width
+                action(w-44,286,"carousel.next");Thread.sleep(forTimeInterval:0.6);action(100,80,"promotion.open")
+                action(44,286,"carousel.previous");Thread.sleep(forTimeInterval:0.6);action(100,80,"promotion.open")
+                action(w/2+44,286,"carousel.select");Thread.sleep(forTimeInterval:0.6);action(100,80,"promotion.open")
+                Thread.sleep(forTimeInterval:5.2);action(100,80,"promotion.open");shot("automatic")
+                action(48,594,"favorite.change type=0 value=1.");action(48,594,"favorite.change type=0 value=0.")
+                action(164,392,"category.select type=2 value=Breakfast");action(268,392,"category.select type=2 value=Pantry")
+                action(w-44,594,"cart.add type=0 value=1.");action(w-44,594,"cart.add type=0 value=2.");action(w-140,594,"cart.quantity type=0 value=1.")
+                action(70,470,"product.open type=2 value=field-oat");action(80,646,"scan.open type=2 value=scan-and-go");action(100,695,"membership.open type=2 value=common-market");shot("local-state")
+                app.buttons["Debug"].tap()
+                let logs=app.staticTexts.matching(NSPredicate(format:"label CONTAINS 'name='"));for _ in 0..<5{app.swipeUp()}
+                print("INTERACTIVE_LOG \(logs.allElementsBoundByIndex.map{$0.label})")
+                for _ in 0..<8{if app.staticTexts["event-count"].exists{break};app.swipeDown()};XCTAssertEqual(app.staticTexts["event-count"].label,"Events: 17","No duplicate or missing callbacks")
+                app.buttons["Done"].tap()
+            }
+            app.buttons["Debug"].tap();let hash=app.staticTexts["document-digest"];for _ in 0..<6{if hash.exists{break};app.swipeUp()};XCTAssertEqual(hash.value as? String,digest);shot("digest");app.buttons["Done"].tap()
+            if index != 2 {action(100,80,"promotion.open")}
+            if index==2 {XCUIDevice.shared.press(.home);Thread.sleep(forTimeInterval:5.2);app.activate();let stable=XCTNSPredicateExpectation(predicate:NSPredicate{_,_ in surface.exists && abs(surface.frame.width-app.frame.width)<1 && surface.frame.height>650},object:surface);XCTAssertEqual(XCTWaiter.wait(for:[stable],timeout:10),.completed);Thread.sleep(forTimeInterval:0.5);action(surface.frame.width-44,594,"cart.add type=0 value=2.");shot("resume")}
+            print("INTERACTIVE_DOCUMENT \(id) sha256=\(digest)");app.terminate()
+        }
+    }
+
+    func testInteractiveVisualState() throws {
+        let base="http://127.0.0.1:8092",done=expectation(description:"visual manifest");var manifest:[String:Any]=[:]
+        URLSession.shared.dataTask(with:URL(string:base+"/samples/interactive-run.json")!){data,_,_ in if let data{manifest=(try? JSONSerialization.jsonObject(with:data) as? [String:Any]) ?? [:]};done.fulfill()}.resume();wait(for:[done],timeout:15)
+        let item=(manifest["cases"] as! [[String:Any]]).last!,version=item["version"] as! Int
+        let app=XCUIApplication(bundleIdentifier:"demo.remotecompose.ios");app.launchArguments=["--backend",base,"--version",String(version),"--no-auto"];app.launch()
+        let surface=app.otherElements["remote-document"].firstMatch;XCTAssertTrue(surface.waitForExistence(timeout:15))
+        let ready=XCTNSPredicateExpectation(predicate:NSPredicate(format:"label CONTAINS %@","v\(version) •"),object:app.staticTexts["fetch-status"]);XCTAssertEqual(XCTWaiter.wait(for:[ready],timeout:20),.completed)
+        func point(_ x:CGFloat,_ y:CGFloat)->XCUICoordinate{surface.coordinate(withNormalizedOffset:CGVector(dx:x/surface.frame.width,dy:y/surface.frame.height))}
+        func heart()->Data?{let im=app.screenshot().image,r=CGFloat(im.cgImage!.width)/app.frame.width,f=surface.frame;return im.cgImage?.cropping(to:CGRect(x:30*r,y:(f.minY+578)*r,width:36*r,height:36*r).integral).flatMap{UIImage(cgImage:$0).pngData()}}
+        let before=heart();point(48,594).tap();Thread.sleep(forTimeInterval:0.3);let after=heart();XCTAssertNotEqual(before,after,"Favorite must visibly change, not merely emit a host event")
+        let a=XCTAttachment(screenshot:app.screenshot());a.name="interactive__favorite-selected";a.lifetime = .keepAlways;add(a)
+        let notice=app.buttons.matching(NSPredicate(format:"label BEGINSWITH 'Host action:'")).firstMatch;XCTAssertTrue(notice.label.contains("favorite.change type=0 value=1."));notice.tap()
+        app.terminate()
+    }
+
 }

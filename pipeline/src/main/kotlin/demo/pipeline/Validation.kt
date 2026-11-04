@@ -130,7 +130,17 @@ object Validation {
                 v.get("maxLines")?.let { if (!it.isIntegralNumber || it.asInt() < 1) fail("$p/maxLines", "Expected positive integer") }
             }
             "variable" -> {
-                required(v, "name value", p); text(v.get("name"), "$p/name"); scalar(v.get("value"), "$p/value")
+                required(v, "name value", p); text(v.get("name"), "$p/name")
+                val initial = v.get("value")
+                if (initial.isObject) {
+                    keys(initial, setOf("type", "value", "decimal", "whole", "flags"), "$p/value")
+                    required(initial, "type value", "$p/value")
+                    enum(initial.get("type"), "textFromFloat", "$p/value/type")
+                    scalar(initial.get("value"), "$p/value/value")
+                    for (key in listOf("decimal", "whole", "flags")) initial.get(key)?.let {
+                        if (!it.isIntegralNumber || it.asInt() !in 0..6) fail("$p/value/$key", "Expected integer 0..6")
+                    }
+                } else scalar(initial, "$p/value")
                 v.get("vtype")?.let { enum(it, "float int string", "$p/vtype") }
                 v.get("export")?.let { if (!it.isBoolean) fail("$p/export", "Expected boolean") }
             }
@@ -172,6 +182,12 @@ object Validation {
             "valuefloatchange", "valuefloatexpressionchange", "valueintegerchange", "valuestringchange" -> {
                 keys(n, setOf("type", "targetId", "value"), p); required(n, "targetId value", p)
                 scalar(n.get("targetId"), "$p/targetId"); scalar(n.get("value"), "$p/value")
+                val actionType=n.get("type").asText().lowercase()
+                if(actionType=="valuefloatexpressionchange") {
+                    val expression=n.get("value")
+                    if(!expression.isTextual || expression.asText().toFloatOrNull()!=null)
+                        fail("$p/value", "Expected expression or variable reference; use ValueFloatChange for a literal")
+                }
             }
             else -> fail("$p/type", "Unsupported action", "UNSUPPORTED_OPERATION")
         }

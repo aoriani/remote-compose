@@ -220,3 +220,26 @@ Select an available large device, such as iPhone18ProMax, from your installed ru
 Old390×844 native pixel goldens are historical. Their comparison helpers now reject
 incompatible actual viewport dimensions; use the focused suite for container correctness.
 They must not be made green by stretching a screenshot into the old frame.
+
+## Interactive retail demo
+
+See [interactive guide](INTERACTIVE_DEMO.md). With JAVA_HOME configured, build the backend,
+then start an isolated service (the8092 data directory is separate from the old8080 demo):
+
+```sh
+sh scripts/gradle.sh :pipeline:installDist
+PORT=8092 RC_DATA_DIR=data/interactive sh scripts/start-backend.sh
+```
+
+Open http://127.0.0.1:8092, choose **Load interactive demo** in the Library, Preview and
+Publish. Native debug URLs must also use8092; Android requires `adb reverse tcp:8092 tcp:8092`.
+The inspector exposes carousel text/art/timing/order/visibility/actions; raw JSON remains
+editable. With an idle Android emulator and booted arm64 iOS Simulator, the focused suite is:
+
+```sh
+IOS_SIMULATOR=<booted-simulator-udid> sh scripts/verify-interactive.sh
+```
+
+Set JAVA_HOME, ANDROID_HOME and DEVELOPER_DIR using the earlier setup instructions. The
+suite publishes test documents to the isolated service and writes artifacts/interactive.
+It does not push the private GitHub remote; see [GitHub setup](GITHUB_SETUP.md).

@@ -50,3 +50,5 @@ samples/native-layout-run.json
 *.p8
 *.xcuserstate
 .simulators/
+
+samples/interactive-run.json

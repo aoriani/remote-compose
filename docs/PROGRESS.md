@@ -178,3 +178,32 @@ use git log to identify their hashes. No remote push.
 
 Native implementation, responsive source, tests and full-screen evidence commit:77e7d17.
 The following evidence-summary commit records the final test totals. Branch main; no push.
+
+## Interactive retail and raw-source lifecycle (2026-11-04)
+
+Implemented a protocol-expression promotional carousel with three illustrated offers,
+auto5s rotation, smooth slide/wrap, arrows, selectable active dots, banner events and
+manual interval reset. Inspector supports2–5 slides, order, text/assets/colors, interval,
+duration, visibility and action names. Added an explicit Load interactive demo action;
+older static designed-page fixtures remain unchanged. Local favorite/category/quantity
+and visible formatted counts use actual protocol state/actions. Hosts provide generic
+Toast/native notice/browser logs, with no business widget or carousel timer.
+
+Per-stage checks pass:85 JVM tests,12 model tests, twelve-template editor regression,
+interactive/raw-JSON lifecycle,18 complete custom-tree preservation cases, deterministic
+slide frames,37-event/no-backend stress test and null-action-name minimal reproduction.
+Android build/unit/lint and four-case instrumentation suite pass; an additional native
+selected-heart pixel test passes. iOS interaction/digest/resume/count and separate visible
+heart XCTest methods pass. A final combined scripts/verify-interactive.sh run is being
+collected; the following report/evidence milestone will record its outcome.
+
+Fixed generic nested browser text initialization, alpha/color paint order and Android
+Toast backlog. Initial native timing assumptions and a transient post-resume XCTest frame
+were corrected with known-slide resets/stable geometry waits, preserving failed run notes.
+Native exact bytes include original33a17957… and raw-editeda574d9eb… (see final proof).
+All app-level source remains generic. General function/conditional blocks, physical devices,
+remote accessibility and strict cross-player font equivalence remain unverified/out of scope.
+
+Private GitHub repo https://github.com/aoriani/remote-compose was created at fdb1854;
+origin SSH is configured, GitHub repository size0 confirms no push. No history rewritten.
+See INTERACTIVE_DEMO.md and GITHUB_SETUP.md. Final screenshot/report commit follows.

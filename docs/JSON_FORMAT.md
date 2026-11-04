@@ -147,3 +147,23 @@ Retail hero artwork uses `min(157, windowWidth() - 232)` for its square size and
 right/bottom inset. This avoids headline overlap on a360dp viewport without scaling text
 or the whole document. Explicit fixed widths remain explicit: clients do not rewrite raw
 custom trees to force responsiveness. Existing published documents remain immutable.
+
+### Interactive state and numeric text
+
+The interactive fixture uses real `ValueFloatExpressionChange` actions with
+`targetId:"@shop_quantity"`, `value:"min(99, @shop_quantity + 1)"`. These are evaluated
+at click time; they are distinct from HostAction notifications. Numeric literals are
+rejected for expression actions because the pinned writer requires an expression ID.
+Use ValueFloatChange for fixed values.
+
+A variable may use the following narrowly validated upstream value object:
+
+```json
+{"type":"variable","name":"quantity_text","value":{"type":"textFromFloat","value":"@shop_quantity","decimal":0,"whole":1,"flags":0}}
+```
+
+A `drawTextAnchored` command referencing `"@quantity_text"` displays the actual mutable
+number. Only textFromFloat objects with scalar value and integer decimal/whole/flags0..6
+are enabled by this extension to service validation. General variable value objects,
+function definitions and arbitrary conditional blocks remain outside the enabled subset.
+See INTERACTIVE_DEMO.md for time expressions, action payloads and source examples.

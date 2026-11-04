@@ -15,6 +15,7 @@ private func launchValue(_ name:String)->String? {let args=ProcessInfo.processIn
     @Published var bytes = 0
     @Published var metadata = ""
     @Published var events: [String] = []
+    @Published var actionNotice: String?
     let device = MTLCreateSystemDefaultDevice()
     var renderer: RCMetalRenderer?
     private let documentSelector = launchValue("--version") ?? "latest"
@@ -29,7 +30,7 @@ private func launchValue(_ name:String)->String? {let args=ProcessInfo.processIn
         auto = !ProcessInfo.processInfo.arguments.contains("--no-auto")
         if let value=launchValue("--interval"),let seconds=Double(value) {interval=max(2,min(300,seconds))}
         if let device, let queue = device.makeCommandQueue() { renderer = RCMetalRenderer(device: device, commandQueue: queue) }
-        renderer?.eventHandler = { [weak self] event in self?.events.append(event); if self?.events.count ?? 0 > 50 { self?.events.removeFirst() }; print("RC_HOST_EVENT \(event)") }
+        renderer?.eventHandler = { [weak self] event in self?.actionNotice = event; self?.events.append(event); if self?.events.count ?? 0 > 50 { self?.events.removeFirst() }; print("RC_HOST_EVENT \(event)") }
         renderer?.errorHandler = { [weak self] error in self?.status = "Render failed: \(error)"; print("RC_RENDER_ERROR \(error)") }
         if renderer == nil { status = "Metal renderer unavailable; debug controls remain usable" }
     }
@@ -104,11 +105,17 @@ struct PlayerScreen: View {
             HStack { Text("Remote Compose").font(.headline);Spacer();Button("Refresh"){Task{await model.refresh()}};Button("Debug"){debug=true} }.padding(.horizontal,16).frame(height:48)
             Text("\(model.status) • v\(model.version) • \(model.bytes) bytes").font(.caption).lineLimit(1).padding(.horizontal,16).padding(.vertical,4).frame(maxWidth:.infinity,alignment:.leading).accessibilityIdentifier("fetch-status")
             ProtocolSurface(model:model).frame(maxWidth:.infinity,maxHeight:.infinity).clipped().accessibilityIdentifier("remote-document")
+        }.overlay(alignment:.bottom) {
+            if let notice=model.actionNotice {
+                Button { model.actionNotice=nil } label: {
+                    HStack { Text(notice).font(.caption).lineLimit(2); Image(systemName:"xmark.circle.fill") }.padding(12).foregroundStyle(.white).background(.ultraThickMaterial,in:RoundedRectangle(cornerRadius:12)).environment(\.colorScheme,.dark)
+                }.accessibilityLabel("Host action: \(notice). Dismiss").padding(12)
+            }
         }.sheet(isPresented:$debug) {
             NavigationStack { Form {
                 Section("Connection") { TextField("Backend URL",text:$model.backend).textInputAutocapitalization(.never).autocorrectionDisabled();Toggle("Auto-refresh",isOn:$model.auto);Stepper("Interval: \(Int(model.interval)) seconds",value:$model.interval,in:2...300);Button("Refresh now"){UserDefaults.standard.set(model.backend,forKey:"backend");Task{await model.refresh()}} }
                 Section("Document") { Text("Version \(model.version) • \(model.bytes) bytes");Text("SHA-256 \(model.digest)").font(.caption).textSelection(.enabled).accessibilityIdentifier("document-digest").accessibilityValue(model.digest);Text(model.status);DisclosureGroup("Raw document metadata") { Text(model.metadata).font(.system(.caption,design:.monospaced)).textSelection(.enabled) } }
-                Section("Host events") { Button("Clear event log"){model.events=[]};ForEach(Array(model.events.enumerated()),id:\.offset){ _,event in Text(event) } }
+                Section("Host events") { Text("Events: \(model.events.count)").accessibilityIdentifier("event-count"); Button("Clear event log"){model.events=[]};ForEach(Array(model.events.enumerated()),id:\.offset){ _,event in Text(event) } }
             }.navigationTitle("Player debug").toolbar { Button("Done"){debug=false} } }.presentationDetents([.medium,.large])
         }.task { model.start() }.onChange(of:phase){ _,value in if value == .active {model.start()} else {model.stop()} }
     }

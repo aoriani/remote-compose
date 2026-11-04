@@ -1,0 +1,11 @@
+{
+  "header": {"width":390,"height":844,"profiles":512},
+  "root": {
+    "type":"column",
+    "modifiers":[{"fillMaxSize":1}],
+    "children":[
+      {"type":"text","value":"First control","modifiers":[{"height":64},{"fillMaxWidth":1},{"onClick":{"type":"HostAction","name":"repro.echo","value":"first"}}]},
+      {"type":"text","value":"Tap this second control first","modifiers":[{"height":64},{"fillMaxWidth":1},{"onClick":{"type":"HostAction","name":"repro.echo","value":"second"}}]}
+    ]
+  }
+}

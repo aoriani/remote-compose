@@ -233,3 +233,32 @@ stays2.2.20, and AGP/Compose plugins share the root classloader. Alternatives: k
 buttons or add another toolbar toolkit. Consequences: UI dependencies are locked; plain
 JVM compilation still works without an Android runtime. One-line native status prevents
 error/refresh layout jumps; full errors remain in debug. Upstream revisions are unchanged.
+
+## 024 — Phase-based carousel and session-local shopping state (2026-11-04)
+
+Decision: encode the carousel phase, manual reset/retarget, active indicators and local
+shopping state entirely as existing variables, expressions and opcode227 actions.
+Alternatives: per-platform timers or a native carousel business component; new protocol
+operations; advancing pins. Reasoning: actual source/runtime tests establish support
+for elapsed time, arithmetic, clamp/modulo, translation, textFromFloat and expression
+writes. A single phase avoids overlapping animation jobs or duplicate automatic host
+callbacks. Consequences: backgrounding catches up, state is session-local, decode time
+can consume the initial interval, and inspector slide count is bounded2–5. Native hosts
+only display generic action feedback. Unknown structural JSON remains custom and intact.
+
+## 025 — Initialize interned nested text consistently (2026-11-04)
+
+Decision: apply only immutable browser TextData recursively after loading, before clicks,
+matching the established C++ bridge repair. Context: the third dot emitted null action
+name because the resource was nested under the first dot's unexecuted action list.
+Alternatives: business-specific name maps, clicking the first dot programmatically,
+changing JSON names to avoid interning, or updating upstream. Consequences: generic,
+source-coupled browser shim, pinned API guard, minimal unadapted/adapted reproduction
+and exact name/payload regression tests. No action execution or fake rendering in setup.
+
+## 026 — Private GitHub remote without publication (2026-11-04)
+
+Authenticated owner aoriani and workspace name remote-compose resolved naming. Created
+private aoriani/remote-compose with gh, set origin SSH, retained all local history. No
+push is authorized. Future push requires explicit user authorization and renewed content/
+history secret audit. See GITHUB_SETUP.md. Ignore rules alone do not prove a clean history.

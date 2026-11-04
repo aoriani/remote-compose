@@ -52,3 +52,18 @@ are not pixel-equivalent. Browser wheel input is absent; pointer/touch dragging 
 Android scaled virtual accessibility bounds and canvas labels are incomplete; iOS Metal has
 no generated remote semantic tree. Shadows/elevation/general SVG/external images remain
 outside the enabled subset. Do not extrapolate this gallery to protocol conformance.
+
+## Interactive fixture (2026-11-04)
+
+All three pinned players render samples/interactive-retail.json with automatic5s carousel
+phases, smooth horizontal canvas translation/wrap, arrows/indicators, document-local favorite,
+category and quantity changes, numeric text, and generic named float/string host callbacks.
+Native/browser interaction tests and screenshots are recorded in INTERACTIVE_DEMO.md and
+evidence/interactive. Browser needs the generic nested TextData initialization shim already
+used by the C++ bridge; the minimal repro establishes the unadapted null-name defect.
+
+No per-platform carousel timer or business component was added. Native callbacks differ
+in number formatting (JS numbers, Java Float text, C++ six-decimal strings). They carry
+equivalent values. Native remote-font metrics/accessibility limitations remain open.
+State is local to a decoded document; resume catches up in time rather than freezing.
+General function/conditional-block source support has not been enabled/certified here.

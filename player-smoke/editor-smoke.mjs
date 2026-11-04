@@ -54,8 +54,11 @@ try{
   if(id==='image')assert.equal(sections(added).at(-1).commands[3].right-sections(added).at(-1).commands[3].left,Number(edited));else assert.ok(JSON.stringify(added).includes(edited),id+' property edit');
   await page.locator('[data-op="up"]').click();await page.locator('[data-op="down"]').click();
   await page.locator('[data-op="duplicate"]').click();
-  assert.equal(await page.locator('#outline .selected').textContent(),`${sections(added).length+1}. ${catalog.find(x=>x.id===id).label}`);
-  await page.locator('[data-op="delete"]').click();
+  if(id==='carousel')assert.match(await page.locator('#status').textContent(),/declares IDs or variables/);
+  else {
+   assert.equal(await page.locator('#outline .selected').textContent(),`${sections(added).length+1}. ${catalog.find(x=>x.id===id).label}`);
+   await page.locator('[data-op="delete"]').click();
+  }
   const afterUI=JSON.parse(await page.locator('#source').inputValue());
   assert.equal(JSON.stringify(sections(afterUI)[0]),JSON.stringify(customReview));
   assert.deepEqual(afterUI,added,id+' move/duplicate/delete preserve source');

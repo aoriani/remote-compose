@@ -73,3 +73,13 @@ configuration, errors and metadata usable even when document rendering fails.
 Only allow host actions exposed by each player. Local variable changes do not qualify
 as host-visible interactions. Unsupported protocol operations require explicit errors
 or a documented capability restriction; they cannot become native business fallbacks.
+
+## Document-local interactions
+
+The interactive retail source composes variables, expressions, formatted numeric text,
+canvas transforms and local expression-change actions. Rendering/state updates never
+call the backend. Host events notify generic native/browser feedback shells; they do
+not implement carousel state or business navigation. Native refresh scheduling remains
+separate from document time. See INTERACTIVE_DEMO.md for the phase model and payloads.
+The browser integration preloads nested immutable TextData, matching the generic iOS
+bridge repair for interned action names; pins and wire format remain unchanged.

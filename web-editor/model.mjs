@@ -1,3 +1,4 @@
+import {promotionalCarousel,carouselFields} from './interactive.mjs';
 // Authoring templates only: their output is upstream primitive JSON, never client widgets.
 export const colors={paper:'#F5F4EF',ink:'#182C38',muted:'#616D77',blue:'#305BEF',navy:'#203B73',line:'#E3E6E6',white:'#FFFFFF',sage:'#E6ECDD',peach:'#F7E4D6'};
 export const text=(value,fontSize=20,color=colors.ink)=>({type:'text',value,fontSize,color});
@@ -31,6 +32,7 @@ const news=()=>row([canvas(182,[paint('#DCE7DE'),rect(8,0,250,170,20),...photo('
 const badge=()=>canvas(94,[paint('#E8EDDD'),rect(20,8,350,74,18),paint('#305BEF'),circle(48,48,'4 + 1.2 * sin(time * 3)'),...label('Good to be a member.',64,36,15),...label('A fresh little perk, every week.',64,58,11,colors.muted),...line(332,52,343,41,colors.ink),...line(336,41,343,41,colors.ink),...line(343,41,343,48,colors.ink)]);
 const progress=()=>canvas(104,[...label('A little closer to your next reward',24,23,14),...label('Your membership keeps giving.',24,45,11,colors.muted),paint('#E0E5DC'),rect(20,67,350,5,2.5),paint(colors.blue),{type:'drawRect',left:20,top:67,right:'20 + (windowWidth() - 40) * (185 + 24 * sin(time * 2)) / 350',bottom:72},...label('MEMBER MILESTONES',24,91,9,colors.muted)]);
 const definitions={
+ carousel:['Promotional carousel',promotionalCarousel,[]],
  header:['Brand header',header,[['Brand name',['commands',7,'text']]]],
  text:['Editorial heading',()=>({...text('Picked for your everyday',24),fontWeight:650,modifiers:[{padding:[20,12,20,12]}]}),[['Text',['value']],['Font size',['fontSize'],'number'],['Color',['color']]]],
  spacer:['Spacer',()=>({type:'spacer',modifiers:[{height:16}]}),[['Height',['modifiers',0,'height'],'number']]],
@@ -52,7 +54,7 @@ function canonical(value) { if(Array.isArray(value))return value.map(canonical);
 function signature(node,fields) { const copy=clone(node);for(const [,path,,options] of fields){patch(copy,path,null);if(options?.kind==='image-size')for(const key of ['left','top','bottom'])patch(copy,options[key],null);}return JSON.stringify(canonical(copy)); }
 export function recognize(node) {
   for(const [id,[label,factory,fields]] of Object.entries(definitions)) {
-    try { if(signature(node,fields)===signature(factory(),fields)) return {id,label,fields:fields.map(([label,path,type,options])=>({label,path,type:type||'text',options,value:options?.kind==='image-size'?at(node,path)-at(node,options.left):at(node,path)}))}; } catch {}
+    try { if(id==='carousel'){const f=carouselFields(node), paths=f.map(x=>[x.label,x.path,x.type]);if(signature(node,paths)===signature(factory(node.children[14].value),paths))return {id,label,fields:f};continue;} if(signature(node,fields)===signature(factory(),fields)) return {id,label,fields:fields.map(([label,path,type,options])=>({label,path,type:type||'text',options,value:options?.kind==='image-size'?at(node,path)-at(node,options.left):at(node,path)}))}; } catch {}
   }
   return {id:null,label:'Custom composition',fields:[]};
 }
@@ -74,6 +76,25 @@ export function initialDocument(){return {header:{width:390,height:844,profiles:
 export function assetSlots(node,path=[]){if(!node||typeof node!=='object')return [];let result=[];if(node.type?.toLowerCase()==='addbitmap'&&typeof node.image==='string')result.push({path:[...path,'image'],value:node.image});if(node.addBitmap?.image)result.push({path:[...path,'addBitmap','image'],value:node.addBitmap.image});for(const [key,value] of Object.entries(node))if(value&&typeof value==='object')result.push(...assetSlots(value,[...path,Array.isArray(node)?Number(key):key]));return result;}
 
 export function updateField(node,field,value){
+ if(recognize(node).id==='carousel'){
+  if(field.options?.kind==='carousel-count'){
+   if(!Number.isInteger(value)||value<2||value>5)throw Error('Use 2–5 slides.');
+   const replacement=promotionalCarousel(value), old=node.children[15].commands;
+   for(const f of carouselFields(node))if(f.path[1]<14)patch(replacement,f.path,f.value);
+   const next=replacement.children[15].commands;
+   for(let i=0;i<Math.min(value,node.children[14].value);i++)for(let j=0;j<19;j++)next[2+i*19+j]=structuredClone(old[2+i*19+j]);
+   replacement.children[15].modifiers=structuredClone(node.children[15].modifiers);
+   const oldControls=node.children[16].children,nextControls=replacement.children[16].children;
+   const copyAction=(oldControl,nextControl)=>{nextControl.modifiers[2].onClick[3].name=oldControl.modifiers[2].onClick[3].name;};
+   copyAction(oldControls[0],nextControls[0]);copyAction(oldControls.at(-1),nextControls.at(-1));
+   for(let i=0;i<Math.min(value,node.children[14].value);i++)copyAction(oldControls[2+i],nextControls[2+i]);
+   Object.assign(node,replacement);return;
+  }
+  if(field.path[1]===0 && (!Number.isFinite(value)||value<1||value>60))throw Error('Rotation interval must be 1–60 seconds.');
+  if(field.path[1]===1 && (!Number.isFinite(value)||value<0.1||value>0.9))throw Error('Slide duration must be 0.1–0.9 seconds.');
+  if([12,13].includes(field.path[1]) && ![0,1].includes(value))throw Error('Use 0 or 1 for visibility.');
+ }
+
  if(field.options?.kind==='image-size'){
   const o=field.options;if(value<o.min||value>o.max)throw Error(`Image size must be ${o.min}–${o.max}px inside this art frame. Resize the frame in JSON for larger artwork.`);
   const left=at(node,o.left),right=at(node,field.path),top=at(node,o.top),bottom=at(node,o.bottom),cx=(left+right)/2,cy=(top+bottom)/2,height=value*(bottom-top)/(right-left);

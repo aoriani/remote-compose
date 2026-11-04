@@ -186,3 +186,36 @@ Final responsive retail publication19 is1,970,617bytes, SHA b737dd53ebe96186ebbd
 clears the headline at360dp. Server-only recaptures use unchanged app binaries. Android
 capture checks the latest decoded identity before/after the screenshot, not historical
 log membership; installation/configuration transitions can restore an older task briefly.
+
+## Interactive authoring and native feedback
+
+Read INTERACTIVE_DEMO.md before modifying the phase/state model. The primitive fixture has
+promo_ and shop_ variable namespaces; templates are source factories only. Multiple default
+carousel insertion/ID duplication is explicitly rejected. Inspector count/order changes
+retain banner content and event identifiers; structural custom edits fall back to JSON.
+Raw source remains authoritative and no existing/static retail fixture is migrated.
+
+The browser decoder interns HostAction text under click lists. A later indicator first
+emitted null until its shared name's first control had been clicked. player-adapter.mjs
+preloads only opcode102 TextData through getList recursion, mirroring the existing C++
+bridge. Do not pre-execute action lists or add a business event map. Keep the unadapted/
+adapted action-resource-repro test. Shader/paint alpha must follow color: opaque color
+otherwise overwrites alpha. Numeric expression actions require references/expressions,
+not literal values that idFromNan would misinterpret. textFromFloat is narrowly validated.
+
+Use backend8092/data/interactive for this suite;8080's earlier publication is preserved.
+Browser tests publish source once per version; manifest interactive-run.json binds those
+same digests to native tests and is ignored runtime data. Android tests save shell screenshots
+to /sdcard/Download/rc-interactive so Gradle uninstall does not delete them. adb pull into an
+existing directory nests rc-interactive; account for that when collecting evidence.
+
+iOS XCTest activate can briefly report transition-sized frames. Wait for the real full-width
+surface before calculating normalized coordinates, rather than asserting against a tap
+computed during the resume animation. Native elapsed clocks catch up on resume, not replay
+events. Decode time can exceed the first5s interval; reset/select a known slide before
+timing tests. Cancel Android's previous Toast before showing a new event; otherwise rapid
+clicks queue obsolete feedback. The exact first/last binary and session state are distinct.
+
+GitHub origin is git@github.com:aoriani/remote-compose.git, private and empty at setup.
+Never push without explicit authorization. A limited tracked-file private-key/GitHub-token/
+AWS-key pattern audit passed; this does not replace a full history review before a future push.

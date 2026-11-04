@@ -68,3 +68,12 @@ is not an aspect-ratio constraint. Keep only device pixel conversion. Preserve a
 native screenshot dimensions and full-screen evidence: cropping a fitted rectangle can
 hide container defects. Use scripts/verify-native-layout.sh for four-device checks;
 legacy390×844 goldens must reject incompatible viewports, not stretch the image.
+
+## Interactive demo
+
+Read docs/INTERACTIVE_DEMO.md. Use Load interactive demo or samples/interactive-retail.json;
+the old designed-page sample remains a separate static regression fixture. Carousel/shop
+state is protocol-local; do not add platform timers/business widgets. Preserve the generic
+browser nested-TextData shim and minimal repro. Run scripts/verify-interactive.sh with an
+isolated backend8092, idle emulator and IOS_SIMULATOR; see its prerequisites. origin is a
+private GitHub repository; no push is authorized.

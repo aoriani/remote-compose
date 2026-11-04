@@ -1,0 +1,2245 @@
+{
+  "header": {
+    "width": 390,
+    "height": 844,
+    "profiles": 512,
+    "fps": 60,
+    "contentDescription": "Interactive Common Market — protocol-local state and host actions"
+  },
+  "root": {
+    "type": "column",
+    "modifiers": [
+      {
+        "fillMaxSize": 1
+      },
+      {
+        "background": "#F5F4EF"
+      },
+      {
+        "verticalScroll": 0
+      }
+    ],
+    "children": [
+      {
+        "type": "column",
+        "modifiers": [
+          {
+            "fillMaxWidth": 1
+          }
+        ],
+        "children": [
+          {
+            "type": "variable",
+            "name": "promo_interval",
+            "value": 5,
+            "export": true
+          },
+          {
+            "type": "variable",
+            "name": "promo_duration",
+            "value": 0.45,
+            "export": true
+          },
+          {
+            "type": "variable",
+            "name": "promo_base",
+            "value": 0,
+            "export": true
+          },
+          {
+            "type": "variable",
+            "name": "promo_from",
+            "value": 0,
+            "export": true
+          },
+          {
+            "type": "variable",
+            "name": "promo_epoch",
+            "value": 0,
+            "export": true
+          },
+          {
+            "type": "variable",
+            "name": "promo_clock",
+            "value": "animationTime() + time * 0",
+            "export": true
+          },
+          {
+            "type": "variable",
+            "name": "promo_elapsed",
+            "value": "max(0, @promo_clock - @promo_epoch)",
+            "export": true
+          },
+          {
+            "type": "variable",
+            "name": "promo_step",
+            "value": "floor(@promo_elapsed / @promo_interval)",
+            "export": true
+          },
+          {
+            "type": "variable",
+            "name": "promo_auto_t",
+            "value": "min(1, max(0, (@promo_elapsed % @promo_interval - @promo_interval + @promo_duration) / @promo_duration))",
+            "export": true
+          },
+          {
+            "type": "variable",
+            "name": "promo_manual_t",
+            "value": "min(1, @promo_elapsed / @promo_duration)",
+            "export": true
+          },
+          {
+            "type": "variable",
+            "name": "promo_position",
+            "value": "@promo_base + @promo_step + @promo_auto_t * @promo_auto_t * (3 - 2 * @promo_auto_t) + (@promo_from - @promo_base) * (1 - @promo_manual_t * @promo_manual_t * (3 - 2 * @promo_manual_t))",
+            "export": true
+          },
+          {
+            "type": "variable",
+            "name": "promo_active",
+            "value": "(floor(@promo_position + 0.5) % @promo_count + @promo_count) % @promo_count",
+            "export": true
+          },
+          {
+            "type": "variable",
+            "name": "promo_dots",
+            "value": 1,
+            "export": true
+          },
+          {
+            "type": "variable",
+            "name": "promo_arrows",
+            "value": 1,
+            "export": true
+          },
+          {
+            "type": "variable",
+            "name": "promo_count",
+            "value": 3,
+            "export": true
+          },
+          {
+            "type": "canvas",
+            "modifiers": [
+              {
+                "fillMaxWidth": 1
+              },
+              {
+                "height": 258
+              },
+              {
+                "onClick": {
+                  "type": "HostAction",
+                  "name": "promotion.open",
+                  "value": "@promo_active",
+                  "actionType": 0
+                }
+              }
+            ],
+            "commands": [
+              {
+                "type": "save"
+              },
+              {
+                "type": "clipRect",
+                "left": 20,
+                "top": 0,
+                "right": "windowWidth() - 20",
+                "bottom": 258
+              },
+              {
+                "type": "save"
+              },
+              {
+                "type": "translate",
+                "dx": "(((0 - @promo_position + @promo_count * 1.5) % @promo_count + @promo_count) % @promo_count - @promo_count * 0.5) * (windowWidth() - 40)",
+                "dy": 0
+              },
+              {
+                "type": "paint",
+                "ops": [
+                  {
+                    "shader": 0
+                  },
+                  {
+                    "style": "fill"
+                  },
+                  {
+                    "color": "#E7EDDF"
+                  },
+                  {
+                    "alpha": 1
+                  }
+                ]
+              },
+              {
+                "type": "drawRoundRect",
+                "left": 20,
+                "top": 0,
+                "right": "windowWidth() - 20",
+                "bottom": 258,
+                "rx": 20,
+                "ry": 20
+              },
+              {
+                "type": "paint",
+                "ops": [
+                  {
+                    "shader": 0
+                  },
+                  {
+                    "style": "fill"
+                  },
+                  {
+                    "color": "#263D2F"
+                  },
+                  {
+                    "alpha": 1
+                  },
+                  {
+                    "textSize": 9
+                  }
+                ]
+              },
+              {
+                "type": "drawTextAnchored",
+                "text": "BETTER EVERY MORNING",
+                "x": 40,
+                "y": 28,
+                "panX": -1,
+                "panY": 0
+              },
+              {
+                "type": "paint",
+                "ops": [
+                  {
+                    "shader": 0
+                  },
+                  {
+                    "style": "fill"
+                  },
+                  {
+                    "color": "#263D2F"
+                  },
+                  {
+                    "alpha": 1
+                  },
+                  {
+                    "textSize": 25
+                  }
+                ]
+              },
+              {
+                "type": "drawTextAnchored",
+                "text": "Your daily ritual,",
+                "x": 40,
+                "y": 67,
+                "panX": -1,
+                "panY": 0
+              },
+              {
+                "type": "paint",
+                "ops": [
+                  {
+                    "shader": 0
+                  },
+                  {
+                    "style": "fill"
+                  },
+                  {
+                    "color": "#263D2F"
+                  },
+                  {
+                    "alpha": 1
+                  },
+                  {
+                    "textSize": 25
+                  }
+                ]
+              },
+              {
+                "type": "drawTextAnchored",
+                "text": "made delicious.",
+                "x": 40,
+                "y": 98,
+                "panX": -1,
+                "panY": 0
+              },
+              {
+                "type": "paint",
+                "ops": [
+                  {
+                    "shader": 0
+                  },
+                  {
+                    "style": "fill"
+                  },
+                  {
+                    "color": "#263D2F"
+                  },
+                  {
+                    "alpha": 1
+                  },
+                  {
+                    "textSize": 10
+                  }
+                ]
+              },
+              {
+                "type": "drawTextAnchored",
+                "text": "Plant-based favorites. Member prices.",
+                "x": 40,
+                "y": 126,
+                "panX": -1,
+                "panY": 0
+              },
+              {
+                "type": "addBitmap",
+                "image": "oat-milk",
+                "varName": "promo_art_0"
+              },
+              {
+                "type": "drawBitmap",
+                "image": "@promo_art_0",
+                "left": "windowWidth() - 160",
+                "top": 118,
+                "right": "windowWidth() - 28",
+                "bottom": 250
+              },
+              {
+                "type": "paint",
+                "ops": [
+                  {
+                    "shader": 0
+                  },
+                  {
+                    "style": "fill"
+                  },
+                  {
+                    "color": "#263D2F"
+                  },
+                  {
+                    "alpha": 1
+                  }
+                ]
+              },
+              {
+                "type": "drawRoundRect",
+                "left": 40,
+                "top": 166,
+                "right": 205,
+                "bottom": 210,
+                "rx": 22,
+                "ry": 22
+              },
+              {
+                "type": "paint",
+                "ops": [
+                  {
+                    "shader": 0
+                  },
+                  {
+                    "style": "fill"
+                  },
+                  {
+                    "color": "#FFFFFF"
+                  },
+                  {
+                    "alpha": 1
+                  },
+                  {
+                    "textSize": 12
+                  }
+                ]
+              },
+              {
+                "type": "drawTextAnchored",
+                "text": "Explore breakfast",
+                "x": 55,
+                "y": 189,
+                "panX": -1,
+                "panY": 0
+              },
+              {
+                "type": "restore"
+              },
+              {
+                "type": "save"
+              },
+              {
+                "type": "translate",
+                "dx": "(((1 - @promo_position + @promo_count * 1.5) % @promo_count + @promo_count) % @promo_count - @promo_count * 0.5) * (windowWidth() - 40)",
+                "dy": 0
+              },
+              {
+                "type": "paint",
+                "ops": [
+                  {
+                    "shader": 0
+                  },
+                  {
+                    "style": "fill"
+                  },
+                  {
+                    "color": "#F8E1CA"
+                  },
+                  {
+                    "alpha": 1
+                  }
+                ]
+              },
+              {
+                "type": "drawRoundRect",
+                "left": 20,
+                "top": 0,
+                "right": "windowWidth() - 20",
+                "bottom": 258,
+                "rx": 20,
+                "ry": 20
+              },
+              {
+                "type": "paint",
+                "ops": [
+                  {
+                    "shader": 0
+                  },
+                  {
+                    "style": "fill"
+                  },
+                  {
+                    "color": "#68391F"
+                  },
+                  {
+                    "alpha": 1
+                  },
+                  {
+                    "textSize": 9
+                  }
+                ]
+              },
+              {
+                "type": "drawTextAnchored",
+                "text": "A LITTLE MORE SUNSHINE",
+                "x": 40,
+                "y": 28,
+                "panX": -1,
+                "panY": 0
+              },
+              {
+                "type": "paint",
+                "ops": [
+                  {
+                    "shader": 0
+                  },
+                  {
+                    "style": "fill"
+                  },
+                  {
+                    "color": "#68391F"
+                  },
+                  {
+                    "alpha": 1
+                  },
+                  {
+                    "textSize": 25
+                  }
+                ]
+              },
+              {
+                "type": "drawTextAnchored",
+                "text": "Bring home",
+                "x": 40,
+                "y": 67,
+                "panX": -1,
+                "panY": 0
+              },
+              {
+                "type": "paint",
+                "ops": [
+                  {
+                    "shader": 0
+                  },
+                  {
+                    "style": "fill"
+                  },
+                  {
+                    "color": "#68391F"
+                  },
+                  {
+                    "alpha": 1
+                  },
+                  {
+                    "textSize": 25
+                  }
+                ]
+              },
+              {
+                "type": "drawTextAnchored",
+                "text": "the bright side.",
+                "x": 40,
+                "y": 98,
+                "panX": -1,
+                "panY": 0
+              },
+              {
+                "type": "paint",
+                "ops": [
+                  {
+                    "shader": 0
+                  },
+                  {
+                    "style": "fill"
+                  },
+                  {
+                    "color": "#68391F"
+                  },
+                  {
+                    "alpha": 1
+                  },
+                  {
+                    "textSize": 10
+                  }
+                ]
+              },
+              {
+                "type": "drawTextAnchored",
+                "text": "Small-batch fizz. Big citrus energy.",
+                "x": 40,
+                "y": 126,
+                "panX": -1,
+                "panY": 0
+              },
+              {
+                "type": "addBitmap",
+                "image": "citrus-soda",
+                "varName": "promo_art_1"
+              },
+              {
+                "type": "drawBitmap",
+                "image": "@promo_art_1",
+                "left": "windowWidth() - 160",
+                "top": 118,
+                "right": "windowWidth() - 28",
+                "bottom": 250
+              },
+              {
+                "type": "paint",
+                "ops": [
+                  {
+                    "shader": 0
+                  },
+                  {
+                    "style": "fill"
+                  },
+                  {
+                    "color": "#68391F"
+                  },
+                  {
+                    "alpha": 1
+                  }
+                ]
+              },
+              {
+                "type": "drawRoundRect",
+                "left": 40,
+                "top": 166,
+                "right": 205,
+                "bottom": 210,
+                "rx": 22,
+                "ry": 22
+              },
+              {
+                "type": "paint",
+                "ops": [
+                  {
+                    "shader": 0
+                  },
+                  {
+                    "style": "fill"
+                  },
+                  {
+                    "color": "#FFFFFF"
+                  },
+                  {
+                    "alpha": 1
+                  },
+                  {
+                    "textSize": 12
+                  }
+                ]
+              },
+              {
+                "type": "drawTextAnchored",
+                "text": "Discover Sol",
+                "x": 55,
+                "y": 189,
+                "panX": -1,
+                "panY": 0
+              },
+              {
+                "type": "restore"
+              },
+              {
+                "type": "save"
+              },
+              {
+                "type": "translate",
+                "dx": "(((2 - @promo_position + @promo_count * 1.5) % @promo_count + @promo_count) % @promo_count - @promo_count * 0.5) * (windowWidth() - 40)",
+                "dy": 0
+              },
+              {
+                "type": "paint",
+                "ops": [
+                  {
+                    "shader": 0
+                  },
+                  {
+                    "style": "fill"
+                  },
+                  {
+                    "color": "#EAE0F0"
+                  },
+                  {
+                    "alpha": 1
+                  }
+                ]
+              },
+              {
+                "type": "drawRoundRect",
+                "left": 20,
+                "top": 0,
+                "right": "windowWidth() - 20",
+                "bottom": 258,
+                "rx": 20,
+                "ry": 20
+              },
+              {
+                "type": "paint",
+                "ops": [
+                  {
+                    "shader": 0
+                  },
+                  {
+                    "style": "fill"
+                  },
+                  {
+                    "color": "#503264"
+                  },
+                  {
+                    "alpha": 1
+                  },
+                  {
+                    "textSize": 9
+                  }
+                ]
+              },
+              {
+                "type": "drawTextAnchored",
+                "text": "GOOD THINGS IN STORE",
+                "x": 40,
+                "y": 28,
+                "panX": -1,
+                "panY": 0
+              },
+              {
+                "type": "paint",
+                "ops": [
+                  {
+                    "shader": 0
+                  },
+                  {
+                    "style": "fill"
+                  },
+                  {
+                    "color": "#503264"
+                  },
+                  {
+                    "alpha": 1
+                  },
+                  {
+                    "textSize": 25
+                  }
+                ]
+              },
+              {
+                "type": "drawTextAnchored",
+                "text": "Slow mornings.",
+                "x": 40,
+                "y": 67,
+                "panX": -1,
+                "panY": 0
+              },
+              {
+                "type": "paint",
+                "ops": [
+                  {
+                    "shader": 0
+                  },
+                  {
+                    "style": "fill"
+                  },
+                  {
+                    "color": "#503264"
+                  },
+                  {
+                    "alpha": 1
+                  },
+                  {
+                    "textSize": 25
+                  }
+                ]
+              },
+              {
+                "type": "drawTextAnchored",
+                "text": "Golden moments.",
+                "x": 40,
+                "y": 98,
+                "panX": -1,
+                "panY": 0
+              },
+              {
+                "type": "paint",
+                "ops": [
+                  {
+                    "shader": 0
+                  },
+                  {
+                    "style": "fill"
+                  },
+                  {
+                    "color": "#503264"
+                  },
+                  {
+                    "alpha": 1
+                  },
+                  {
+                    "textSize": 10
+                  }
+                ]
+              },
+              {
+                "type": "drawTextAnchored",
+                "text": "Meet your new pantry essentials.",
+                "x": 40,
+                "y": 126,
+                "panX": -1,
+                "panY": 0
+              },
+              {
+                "type": "addBitmap",
+                "image": "granola",
+                "varName": "promo_art_2"
+              },
+              {
+                "type": "drawBitmap",
+                "image": "@promo_art_2",
+                "left": "windowWidth() - 160",
+                "top": 118,
+                "right": "windowWidth() - 28",
+                "bottom": 250
+              },
+              {
+                "type": "paint",
+                "ops": [
+                  {
+                    "shader": 0
+                  },
+                  {
+                    "style": "fill"
+                  },
+                  {
+                    "color": "#503264"
+                  },
+                  {
+                    "alpha": 1
+                  }
+                ]
+              },
+              {
+                "type": "drawRoundRect",
+                "left": 40,
+                "top": 166,
+                "right": 205,
+                "bottom": 210,
+                "rx": 22,
+                "ry": 22
+              },
+              {
+                "type": "paint",
+                "ops": [
+                  {
+                    "shader": 0
+                  },
+                  {
+                    "style": "fill"
+                  },
+                  {
+                    "color": "#FFFFFF"
+                  },
+                  {
+                    "alpha": 1
+                  },
+                  {
+                    "textSize": 12
+                  }
+                ]
+              },
+              {
+                "type": "drawTextAnchored",
+                "text": "Shop the pantry",
+                "x": 55,
+                "y": 189,
+                "panX": -1,
+                "panY": 0
+              },
+              {
+                "type": "restore"
+              },
+              {
+                "type": "restore"
+              }
+            ]
+          },
+          {
+            "type": "row",
+            "modifiers": [
+              {
+                "fillMaxWidth": 1
+              },
+              {
+                "height": 56
+              },
+              {
+                "padding": [
+                  20,
+                  4,
+                  20,
+                  4
+                ]
+              }
+            ],
+            "children": [
+              {
+                "type": "canvas",
+                "modifiers": [
+                  {
+                    "width": "48 * @promo_arrows"
+                  },
+                  {
+                    "height": 48
+                  },
+                  {
+                    "onClick": [
+                      {
+                        "type": "ValueFloatExpressionChange",
+                        "targetId": "@promo_from",
+                        "value": "@promo_position"
+                      },
+                      {
+                        "type": "ValueFloatExpressionChange",
+                        "targetId": "@promo_base",
+                        "value": "floor(@promo_position + 0.5) - 1"
+                      },
+                      {
+                        "type": "ValueFloatExpressionChange",
+                        "targetId": "@promo_epoch",
+                        "value": "@promo_clock"
+                      },
+                      {
+                        "type": "HostAction",
+                        "name": "carousel.previous",
+                        "value": "@promo_base",
+                        "actionType": 0
+                      }
+                    ]
+                  }
+                ],
+                "commands": [
+                  {
+                    "type": "paint",
+                    "ops": [
+                      {
+                        "shader": 0
+                      },
+                      {
+                        "style": "fill"
+                      },
+                      {
+                        "color": "#203B73"
+                      },
+                      {
+                        "alpha": "@promo_arrows"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "drawCircle",
+                    "cx": 24,
+                    "cy": 24,
+                    "radius": 20
+                  },
+                  {
+                    "type": "paint",
+                    "ops": [
+                      {
+                        "shader": 0
+                      },
+                      {
+                        "style": "fill"
+                      },
+                      {
+                        "color": "#FFFFFF"
+                      },
+                      {
+                        "alpha": "@promo_arrows"
+                      },
+                      {
+                        "textSize": 20
+                      }
+                    ]
+                  },
+                  {
+                    "type": "drawTextAnchored",
+                    "text": "‹",
+                    "x": 24,
+                    "y": 23,
+                    "panX": 0,
+                    "panY": 0
+                  }
+                ]
+              },
+              {
+                "type": "spacer",
+                "modifiers": [
+                  {
+                    "horizontalWeight": 1
+                  }
+                ]
+              },
+              {
+                "type": "canvas",
+                "modifiers": [
+                  {
+                    "width": "min(44, (windowWidth() - 136) / @promo_count) * @promo_dots"
+                  },
+                  {
+                    "height": 48
+                  },
+                  {
+                    "onClick": [
+                      {
+                        "type": "ValueFloatExpressionChange",
+                        "targetId": "@promo_from",
+                        "value": "@promo_position"
+                      },
+                      {
+                        "type": "ValueFloatExpressionChange",
+                        "targetId": "@promo_base",
+                        "value": "floor(@promo_position + 0.5) + ((0 - @promo_active + @promo_count) % @promo_count)"
+                      },
+                      {
+                        "type": "ValueFloatExpressionChange",
+                        "targetId": "@promo_epoch",
+                        "value": "@promo_clock"
+                      },
+                      {
+                        "type": "HostAction",
+                        "name": "carousel.select",
+                        "value": "@promo_base",
+                        "actionType": 0
+                      }
+                    ]
+                  }
+                ],
+                "commands": [
+                  {
+                    "type": "paint",
+                    "ops": [
+                      {
+                        "shader": 0
+                      },
+                      {
+                        "style": "fill"
+                      },
+                      {
+                        "color": "#305BEF"
+                      },
+                      {
+                        "alpha": "@promo_dots * (1 - min(1, abs(@promo_active - 0)))"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "drawCircle",
+                    "cx": "min(44, (windowWidth() - 136) / @promo_count) / 2",
+                    "cy": 24,
+                    "radius": 5
+                  },
+                  {
+                    "type": "paint",
+                    "ops": [
+                      {
+                        "shader": 0
+                      },
+                      {
+                        "style": "fill"
+                      },
+                      {
+                        "color": "#AEB9BC"
+                      },
+                      {
+                        "alpha": "@promo_dots * min(1, abs(@promo_active - 0))"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "drawCircle",
+                    "cx": "min(44, (windowWidth() - 136) / @promo_count) / 2",
+                    "cy": 24,
+                    "radius": 4
+                  }
+                ]
+              },
+              {
+                "type": "canvas",
+                "modifiers": [
+                  {
+                    "width": "min(44, (windowWidth() - 136) / @promo_count) * @promo_dots"
+                  },
+                  {
+                    "height": 48
+                  },
+                  {
+                    "onClick": [
+                      {
+                        "type": "ValueFloatExpressionChange",
+                        "targetId": "@promo_from",
+                        "value": "@promo_position"
+                      },
+                      {
+                        "type": "ValueFloatExpressionChange",
+                        "targetId": "@promo_base",
+                        "value": "floor(@promo_position + 0.5) + ((1 - @promo_active + @promo_count) % @promo_count)"
+                      },
+                      {
+                        "type": "ValueFloatExpressionChange",
+                        "targetId": "@promo_epoch",
+                        "value": "@promo_clock"
+                      },
+                      {
+                        "type": "HostAction",
+                        "name": "carousel.select",
+                        "value": "@promo_base",
+                        "actionType": 0
+                      }
+                    ]
+                  }
+                ],
+                "commands": [
+                  {
+                    "type": "paint",
+                    "ops": [
+                      {
+                        "shader": 0
+                      },
+                      {
+                        "style": "fill"
+                      },
+                      {
+                        "color": "#305BEF"
+                      },
+                      {
+                        "alpha": "@promo_dots * (1 - min(1, abs(@promo_active - 1)))"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "drawCircle",
+                    "cx": "min(44, (windowWidth() - 136) / @promo_count) / 2",
+                    "cy": 24,
+                    "radius": 5
+                  },
+                  {
+                    "type": "paint",
+                    "ops": [
+                      {
+                        "shader": 0
+                      },
+                      {
+                        "style": "fill"
+                      },
+                      {
+                        "color": "#AEB9BC"
+                      },
+                      {
+                        "alpha": "@promo_dots * min(1, abs(@promo_active - 1))"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "drawCircle",
+                    "cx": "min(44, (windowWidth() - 136) / @promo_count) / 2",
+                    "cy": 24,
+                    "radius": 4
+                  }
+                ]
+              },
+              {
+                "type": "canvas",
+                "modifiers": [
+                  {
+                    "width": "min(44, (windowWidth() - 136) / @promo_count) * @promo_dots"
+                  },
+                  {
+                    "height": 48
+                  },
+                  {
+                    "onClick": [
+                      {
+                        "type": "ValueFloatExpressionChange",
+                        "targetId": "@promo_from",
+                        "value": "@promo_position"
+                      },
+                      {
+                        "type": "ValueFloatExpressionChange",
+                        "targetId": "@promo_base",
+                        "value": "floor(@promo_position + 0.5) + ((2 - @promo_active + @promo_count) % @promo_count)"
+                      },
+                      {
+                        "type": "ValueFloatExpressionChange",
+                        "targetId": "@promo_epoch",
+                        "value": "@promo_clock"
+                      },
+                      {
+                        "type": "HostAction",
+                        "name": "carousel.select",
+                        "value": "@promo_base",
+                        "actionType": 0
+                      }
+                    ]
+                  }
+                ],
+                "commands": [
+                  {
+                    "type": "paint",
+                    "ops": [
+                      {
+                        "shader": 0
+                      },
+                      {
+                        "style": "fill"
+                      },
+                      {
+                        "color": "#305BEF"
+                      },
+                      {
+                        "alpha": "@promo_dots * (1 - min(1, abs(@promo_active - 2)))"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "drawCircle",
+                    "cx": "min(44, (windowWidth() - 136) / @promo_count) / 2",
+                    "cy": 24,
+                    "radius": 5
+                  },
+                  {
+                    "type": "paint",
+                    "ops": [
+                      {
+                        "shader": 0
+                      },
+                      {
+                        "style": "fill"
+                      },
+                      {
+                        "color": "#AEB9BC"
+                      },
+                      {
+                        "alpha": "@promo_dots * min(1, abs(@promo_active - 2))"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "drawCircle",
+                    "cx": "min(44, (windowWidth() - 136) / @promo_count) / 2",
+                    "cy": 24,
+                    "radius": 4
+                  }
+                ]
+              },
+              {
+                "type": "spacer",
+                "modifiers": [
+                  {
+                    "horizontalWeight": 1
+                  }
+                ]
+              },
+              {
+                "type": "canvas",
+                "modifiers": [
+                  {
+                    "width": "48 * @promo_arrows"
+                  },
+                  {
+                    "height": 48
+                  },
+                  {
+                    "onClick": [
+                      {
+                        "type": "ValueFloatExpressionChange",
+                        "targetId": "@promo_from",
+                        "value": "@promo_position"
+                      },
+                      {
+                        "type": "ValueFloatExpressionChange",
+                        "targetId": "@promo_base",
+                        "value": "floor(@promo_position + 0.5) + 1"
+                      },
+                      {
+                        "type": "ValueFloatExpressionChange",
+                        "targetId": "@promo_epoch",
+                        "value": "@promo_clock"
+                      },
+                      {
+                        "type": "HostAction",
+                        "name": "carousel.next",
+                        "value": "@promo_base",
+                        "actionType": 0
+                      }
+                    ]
+                  }
+                ],
+                "commands": [
+                  {
+                    "type": "paint",
+                    "ops": [
+                      {
+                        "shader": 0
+                      },
+                      {
+                        "style": "fill"
+                      },
+                      {
+                        "color": "#203B73"
+                      },
+                      {
+                        "alpha": "@promo_arrows"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "drawCircle",
+                    "cx": 24,
+                    "cy": 24,
+                    "radius": 20
+                  },
+                  {
+                    "type": "paint",
+                    "ops": [
+                      {
+                        "shader": 0
+                      },
+                      {
+                        "style": "fill"
+                      },
+                      {
+                        "color": "#FFFFFF"
+                      },
+                      {
+                        "alpha": "@promo_arrows"
+                      },
+                      {
+                        "textSize": 20
+                      }
+                    ]
+                  },
+                  {
+                    "type": "drawTextAnchored",
+                    "text": "›",
+                    "x": 24,
+                    "y": 23,
+                    "panX": 0,
+                    "panY": 0
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "column",
+        "modifiers": [
+          {
+            "fillMaxWidth": 1
+          },
+          {
+            "padding": [
+              20,
+              8,
+              20,
+              16
+            ]
+          }
+        ],
+        "children": [
+          {
+            "type": "variable",
+            "name": "shop_favorite",
+            "value": 0,
+            "export": true
+          },
+          {
+            "type": "variable",
+            "name": "shop_quantity",
+            "value": 0,
+            "export": true
+          },
+          {
+            "type": "variable",
+            "name": "shop_category",
+            "value": 0,
+            "export": true
+          },
+          {
+            "type": "variable",
+            "name": "shop_quantity_text",
+            "value": {
+              "type": "textFromFloat",
+              "value": "@shop_quantity",
+              "decimal": 0,
+              "whole": 1,
+              "flags": 0
+            },
+            "export": true
+          },
+          {
+            "type": "text",
+            "value": "Your everyday, your way",
+            "fontSize": 23,
+            "color": "#182C38",
+            "modifiers": [
+              {
+                "padding": [
+                  0,
+                  8,
+                  0,
+                  12
+                ]
+              }
+            ]
+          },
+          {
+            "type": "row",
+            "modifiers": [
+              {
+                "fillMaxWidth": 1
+              },
+              {
+                "height": 52
+              }
+            ],
+            "children": [
+              {
+                "type": "canvas",
+                "modifiers": [
+                  {
+                    "width": 104
+                  },
+                  {
+                    "height": 52
+                  },
+                  {
+                    "onClick": [
+                      {
+                        "type": "ValueFloatExpressionChange",
+                        "targetId": "@shop_category",
+                        "value": "0 + 0"
+                      },
+                      {
+                        "type": "HostAction",
+                        "name": "category.select",
+                        "value": "All",
+                        "actionType": 2
+                      }
+                    ]
+                  }
+                ],
+                "commands": [
+                  {
+                    "type": "paint",
+                    "ops": [
+                      {
+                        "shader": 0
+                      },
+                      {
+                        "style": "fill"
+                      },
+                      {
+                        "color": "#E5EBDD"
+                      },
+                      {
+                        "alpha": 1
+                      }
+                    ]
+                  },
+                  {
+                    "type": "drawRoundRect",
+                    "left": 0,
+                    "top": 4,
+                    "right": 96,
+                    "bottom": 48,
+                    "rx": 22,
+                    "ry": 22
+                  },
+                  {
+                    "type": "paint",
+                    "ops": [
+                      {
+                        "shader": 0
+                      },
+                      {
+                        "style": "fill"
+                      },
+                      {
+                        "color": "#203B73"
+                      },
+                      {
+                        "alpha": "1 - min(1, abs(@shop_category - 0))"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "drawRoundRect",
+                    "left": 0,
+                    "top": 4,
+                    "right": 96,
+                    "bottom": 48,
+                    "rx": 22,
+                    "ry": 22
+                  },
+                  {
+                    "type": "paint",
+                    "ops": [
+                      {
+                        "shader": 0
+                      },
+                      {
+                        "style": "fill"
+                      },
+                      {
+                        "color": "#182C38"
+                      },
+                      {
+                        "alpha": 1
+                      },
+                      {
+                        "textSize": 12
+                      }
+                    ]
+                  },
+                  {
+                    "type": "drawTextAnchored",
+                    "text": "All",
+                    "x": 48,
+                    "y": 26,
+                    "panX": 0,
+                    "panY": 0
+                  },
+                  {
+                    "type": "paint",
+                    "ops": [
+                      {
+                        "shader": 0
+                      },
+                      {
+                        "style": "fill"
+                      },
+                      {
+                        "color": "#FFFFFF"
+                      },
+                      {
+                        "alpha": "1 - min(1, abs(@shop_category - 0))"
+                      },
+                      {
+                        "textSize": 12
+                      }
+                    ]
+                  },
+                  {
+                    "type": "drawTextAnchored",
+                    "text": "All",
+                    "x": 48,
+                    "y": 26,
+                    "panX": 0,
+                    "panY": 0
+                  }
+                ]
+              },
+              {
+                "type": "canvas",
+                "modifiers": [
+                  {
+                    "width": 104
+                  },
+                  {
+                    "height": 52
+                  },
+                  {
+                    "onClick": [
+                      {
+                        "type": "ValueFloatExpressionChange",
+                        "targetId": "@shop_category",
+                        "value": "1 + 0"
+                      },
+                      {
+                        "type": "HostAction",
+                        "name": "category.select",
+                        "value": "Breakfast",
+                        "actionType": 2
+                      }
+                    ]
+                  }
+                ],
+                "commands": [
+                  {
+                    "type": "paint",
+                    "ops": [
+                      {
+                        "shader": 0
+                      },
+                      {
+                        "style": "fill"
+                      },
+                      {
+                        "color": "#E5EBDD"
+                      },
+                      {
+                        "alpha": 1
+                      }
+                    ]
+                  },
+                  {
+                    "type": "drawRoundRect",
+                    "left": 0,
+                    "top": 4,
+                    "right": 96,
+                    "bottom": 48,
+                    "rx": 22,
+                    "ry": 22
+                  },
+                  {
+                    "type": "paint",
+                    "ops": [
+                      {
+                        "shader": 0
+                      },
+                      {
+                        "style": "fill"
+                      },
+                      {
+                        "color": "#203B73"
+                      },
+                      {
+                        "alpha": "1 - min(1, abs(@shop_category - 1))"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "drawRoundRect",
+                    "left": 0,
+                    "top": 4,
+                    "right": 96,
+                    "bottom": 48,
+                    "rx": 22,
+                    "ry": 22
+                  },
+                  {
+                    "type": "paint",
+                    "ops": [
+                      {
+                        "shader": 0
+                      },
+                      {
+                        "style": "fill"
+                      },
+                      {
+                        "color": "#182C38"
+                      },
+                      {
+                        "alpha": 1
+                      },
+                      {
+                        "textSize": 12
+                      }
+                    ]
+                  },
+                  {
+                    "type": "drawTextAnchored",
+                    "text": "Breakfast",
+                    "x": 48,
+                    "y": 26,
+                    "panX": 0,
+                    "panY": 0
+                  },
+                  {
+                    "type": "paint",
+                    "ops": [
+                      {
+                        "shader": 0
+                      },
+                      {
+                        "style": "fill"
+                      },
+                      {
+                        "color": "#FFFFFF"
+                      },
+                      {
+                        "alpha": "1 - min(1, abs(@shop_category - 1))"
+                      },
+                      {
+                        "textSize": 12
+                      }
+                    ]
+                  },
+                  {
+                    "type": "drawTextAnchored",
+                    "text": "Breakfast",
+                    "x": 48,
+                    "y": 26,
+                    "panX": 0,
+                    "panY": 0
+                  }
+                ]
+              },
+              {
+                "type": "canvas",
+                "modifiers": [
+                  {
+                    "width": 104
+                  },
+                  {
+                    "height": 52
+                  },
+                  {
+                    "onClick": [
+                      {
+                        "type": "ValueFloatExpressionChange",
+                        "targetId": "@shop_category",
+                        "value": "2 + 0"
+                      },
+                      {
+                        "type": "HostAction",
+                        "name": "category.select",
+                        "value": "Pantry",
+                        "actionType": 2
+                      }
+                    ]
+                  }
+                ],
+                "commands": [
+                  {
+                    "type": "paint",
+                    "ops": [
+                      {
+                        "shader": 0
+                      },
+                      {
+                        "style": "fill"
+                      },
+                      {
+                        "color": "#E5EBDD"
+                      },
+                      {
+                        "alpha": 1
+                      }
+                    ]
+                  },
+                  {
+                    "type": "drawRoundRect",
+                    "left": 0,
+                    "top": 4,
+                    "right": 96,
+                    "bottom": 48,
+                    "rx": 22,
+                    "ry": 22
+                  },
+                  {
+                    "type": "paint",
+                    "ops": [
+                      {
+                        "shader": 0
+                      },
+                      {
+                        "style": "fill"
+                      },
+                      {
+                        "color": "#203B73"
+                      },
+                      {
+                        "alpha": "1 - min(1, abs(@shop_category - 2))"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "drawRoundRect",
+                    "left": 0,
+                    "top": 4,
+                    "right": 96,
+                    "bottom": 48,
+                    "rx": 22,
+                    "ry": 22
+                  },
+                  {
+                    "type": "paint",
+                    "ops": [
+                      {
+                        "shader": 0
+                      },
+                      {
+                        "style": "fill"
+                      },
+                      {
+                        "color": "#182C38"
+                      },
+                      {
+                        "alpha": 1
+                      },
+                      {
+                        "textSize": 12
+                      }
+                    ]
+                  },
+                  {
+                    "type": "drawTextAnchored",
+                    "text": "Pantry",
+                    "x": 48,
+                    "y": 26,
+                    "panX": 0,
+                    "panY": 0
+                  },
+                  {
+                    "type": "paint",
+                    "ops": [
+                      {
+                        "shader": 0
+                      },
+                      {
+                        "style": "fill"
+                      },
+                      {
+                        "color": "#FFFFFF"
+                      },
+                      {
+                        "alpha": "1 - min(1, abs(@shop_category - 2))"
+                      },
+                      {
+                        "textSize": 12
+                      }
+                    ]
+                  },
+                  {
+                    "type": "drawTextAnchored",
+                    "text": "Pantry",
+                    "x": 48,
+                    "y": 26,
+                    "panX": 0,
+                    "panY": 0
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "row",
+            "modifiers": [
+              {
+                "fillMaxWidth": 1
+              },
+              {
+                "height": 146
+              }
+            ],
+            "children": [
+              {
+                "type": "canvas",
+                "modifiers": [
+                  {
+                    "width": 136
+                  },
+                  {
+                    "height": 146
+                  },
+                  {
+                    "onClick": {
+                      "type": "HostAction",
+                      "name": "product.open",
+                      "value": "field-oat",
+                      "actionType": 2
+                    }
+                  }
+                ],
+                "commands": [
+                  {
+                    "type": "paint",
+                    "ops": [
+                      {
+                        "shader": 0
+                      },
+                      {
+                        "style": "fill"
+                      },
+                      {
+                        "color": "#E7EDDF"
+                      },
+                      {
+                        "alpha": 1
+                      }
+                    ]
+                  },
+                  {
+                    "type": "drawRoundRect",
+                    "left": 0,
+                    "top": 8,
+                    "right": 126,
+                    "bottom": 138,
+                    "rx": 18,
+                    "ry": 18
+                  },
+                  {
+                    "type": "addBitmap",
+                    "image": "oat-milk",
+                    "varName": "shop_oat"
+                  },
+                  {
+                    "type": "drawBitmap",
+                    "image": "@shop_oat",
+                    "left": 0,
+                    "top": 8,
+                    "right": 126,
+                    "bottom": 134
+                  }
+                ]
+              },
+              {
+                "type": "column",
+                "modifiers": [
+                  {
+                    "horizontalWeight": 1
+                  },
+                  {
+                    "padding": [
+                      8,
+                      20,
+                      0,
+                      0
+                    ]
+                  }
+                ],
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "FIELD / OAT",
+                    "fontSize": 10,
+                    "color": "#616D77"
+                  },
+                  {
+                    "type": "text",
+                    "value": "Barista oat drink",
+                    "fontSize": 16,
+                    "color": "#182C38",
+                    "modifiers": [
+                      {
+                        "onClick": {
+                          "type": "HostAction",
+                          "name": "product.open",
+                          "value": "field-oat",
+                          "actionType": 2
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "value": "1 L · Plant based",
+                    "fontSize": 11,
+                    "color": "#616D77"
+                  },
+                  {
+                    "type": "text",
+                    "value": "$3.49",
+                    "fontSize": 23,
+                    "color": "#182C38"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "row",
+            "modifiers": [
+              {
+                "fillMaxWidth": 1
+              },
+              {
+                "height": 52
+              }
+            ],
+            "children": [
+              {
+                "type": "canvas",
+                "modifiers": [
+                  {
+                    "width": 64
+                  },
+                  {
+                    "height": 52
+                  },
+                  {
+                    "onClick": [
+                      {
+                        "type": "ValueFloatExpressionChange",
+                        "targetId": "@shop_favorite",
+                        "value": "1 - @shop_favorite"
+                      },
+                      {
+                        "type": "HostAction",
+                        "name": "favorite.change",
+                        "value": "@shop_favorite",
+                        "actionType": 0
+                      }
+                    ]
+                  }
+                ],
+                "commands": [
+                  {
+                    "type": "paint",
+                    "ops": [
+                      {
+                        "shader": 0
+                      },
+                      {
+                        "style": "fill"
+                      },
+                      {
+                        "color": "#EEE7F5"
+                      },
+                      {
+                        "alpha": 1
+                      }
+                    ]
+                  },
+                  {
+                    "type": "drawCircle",
+                    "cx": 28,
+                    "cy": 26,
+                    "radius": 23
+                  },
+                  {
+                    "type": "paint",
+                    "ops": [
+                      {
+                        "shader": 0
+                      },
+                      {
+                        "style": "fill"
+                      },
+                      {
+                        "color": "#7D4775"
+                      },
+                      {
+                        "alpha": 0.3
+                      }
+                    ]
+                  },
+                  {
+                    "type": "drawPath",
+                    "path": "M 28 37 C 26 35 13 27 13 20 C 13 12 24 10 28 17 C 32 10 43 12 43 20 C 43 27 30 35 28 37 Z"
+                  },
+                  {
+                    "type": "paint",
+                    "ops": [
+                      {
+                        "shader": 0
+                      },
+                      {
+                        "style": "fill"
+                      },
+                      {
+                        "color": "#A7286D"
+                      },
+                      {
+                        "alpha": "@shop_favorite"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "drawPath",
+                    "path": "M 28 37 C 26 35 13 27 13 20 C 13 12 24 10 28 17 C 32 10 43 12 43 20 C 43 27 30 35 28 37 Z"
+                  }
+                ]
+              },
+              {
+                "type": "spacer",
+                "modifiers": [
+                  {
+                    "horizontalWeight": 1
+                  }
+                ]
+              },
+              {
+                "type": "canvas",
+                "modifiers": [
+                  {
+                    "width": 48
+                  },
+                  {
+                    "height": 52
+                  },
+                  {
+                    "onClick": [
+                      {
+                        "type": "ValueFloatExpressionChange",
+                        "targetId": "@shop_quantity",
+                        "value": "max(0, @shop_quantity - 1)"
+                      },
+                      {
+                        "type": "HostAction",
+                        "name": "cart.quantity",
+                        "value": "@shop_quantity",
+                        "actionType": 0
+                      }
+                    ]
+                  }
+                ],
+                "commands": [
+                  {
+                    "type": "paint",
+                    "ops": [
+                      {
+                        "shader": 0
+                      },
+                      {
+                        "style": "fill"
+                      },
+                      {
+                        "color": "#E5EBDD"
+                      },
+                      {
+                        "alpha": 1
+                      }
+                    ]
+                  },
+                  {
+                    "type": "drawCircle",
+                    "cx": 24,
+                    "cy": 26,
+                    "radius": 22
+                  },
+                  {
+                    "type": "paint",
+                    "ops": [
+                      {
+                        "shader": 0
+                      },
+                      {
+                        "style": "fill"
+                      },
+                      {
+                        "color": "#203B73"
+                      },
+                      {
+                        "alpha": 1
+                      },
+                      {
+                        "textSize": 22
+                      }
+                    ]
+                  },
+                  {
+                    "type": "drawTextAnchored",
+                    "text": "−",
+                    "x": 17,
+                    "y": 26,
+                    "panX": -1,
+                    "panY": 0
+                  }
+                ]
+              },
+              {
+                "type": "canvas",
+                "modifiers": [
+                  {
+                    "width": 48
+                  },
+                  {
+                    "height": 52
+                  }
+                ],
+                "commands": [
+                  {
+                    "type": "paint",
+                    "ops": [
+                      {
+                        "shader": 0
+                      },
+                      {
+                        "style": "fill"
+                      },
+                      {
+                        "color": "#203B73"
+                      },
+                      {
+                        "alpha": 1
+                      },
+                      {
+                        "textSize": 22
+                      }
+                    ]
+                  },
+                  {
+                    "type": "drawTextAnchored",
+                    "text": "@shop_quantity_text",
+                    "x": 24,
+                    "y": 26,
+                    "panX": 0,
+                    "panY": 0
+                  }
+                ]
+              },
+              {
+                "type": "canvas",
+                "modifiers": [
+                  {
+                    "width": 48
+                  },
+                  {
+                    "height": 52
+                  },
+                  {
+                    "onClick": [
+                      {
+                        "type": "ValueFloatExpressionChange",
+                        "targetId": "@shop_quantity",
+                        "value": "min(99, @shop_quantity + 1)"
+                      },
+                      {
+                        "type": "HostAction",
+                        "name": "cart.add",
+                        "value": "@shop_quantity",
+                        "actionType": 0
+                      }
+                    ]
+                  }
+                ],
+                "commands": [
+                  {
+                    "type": "paint",
+                    "ops": [
+                      {
+                        "shader": 0
+                      },
+                      {
+                        "style": "fill"
+                      },
+                      {
+                        "color": "#203B73"
+                      },
+                      {
+                        "alpha": 1
+                      }
+                    ]
+                  },
+                  {
+                    "type": "drawCircle",
+                    "cx": 24,
+                    "cy": 26,
+                    "radius": 22
+                  },
+                  {
+                    "type": "paint",
+                    "ops": [
+                      {
+                        "shader": 0
+                      },
+                      {
+                        "style": "fill"
+                      },
+                      {
+                        "color": "#FFFFFF"
+                      },
+                      {
+                        "alpha": 1
+                      },
+                      {
+                        "textSize": 22
+                      }
+                    ]
+                  },
+                  {
+                    "type": "drawTextAnchored",
+                    "text": "+",
+                    "x": 17,
+                    "y": 26,
+                    "panX": -1,
+                    "panY": 0
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "value": "Scan & Go  →",
+            "fontSize": 17,
+            "color": "#305BEF",
+            "modifiers": [
+              {
+                "padding": [
+                  0,
+                  16,
+                  0,
+                  16
+                ]
+              },
+              {
+                "onClick": {
+                  "type": "HostAction",
+                  "name": "scan.open",
+                  "value": "scan-and-go",
+                  "actionType": 2
+                }
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "value": "Explore your member benefits  →",
+            "fontSize": 14,
+            "color": "#203B73",
+            "modifiers": [
+              {
+                "padding": [
+                  0,
+                  12,
+                  0,
+                  12
+                ]
+              },
+              {
+                "onClick": {
+                  "type": "HostAction",
+                  "name": "membership.open",
+                  "value": "common-market",
+                  "actionType": 2
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
